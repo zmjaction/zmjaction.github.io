@@ -117,4 +117,4 @@ search:
   path: search.xml
   field: post
   format: html
-  limit: 100
+  limit: 10000
