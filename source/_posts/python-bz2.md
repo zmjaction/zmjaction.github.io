@@ -1,5 +1,5 @@
 ---
-title: ModuleNotFoundError: No module named '_bz2'
+title: No module named '_bz2'
 date: 2018-11-09 10:28:31
 categories:
     - python
