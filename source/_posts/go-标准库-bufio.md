@@ -1,5 +1,5 @@
 ---
-title: go -- 标准库-- bytes.buffer
+title: go -- 标准库-- bufio
 mathjax: false
 date: 2018-03-06 01:23:09
 categories:
@@ -10,7 +10,7 @@ tags:
     - bufio
 ---
 
-bufio](https://golang.org/pkg/bufio/) 用来帮助处理 [I/O 缓存](https://www.quora.com/In-C-what-does-buffering-I-O-or-buffered-I-O-mean/answer/Robert-Love-1)。 我们将通过一些示例来熟悉其为我们提供的：Reader, Writer and Scanner 等一系列功能
+[bufio](https://golang.org/pkg/bufio/) 用来帮助处理 [I/O 缓存](https://www.quora.com/In-C-what-does-buffering-I-O-or-buffered-I-O-mean/answer/Robert-Love-1)。 我们将通过一些示例来熟悉其为我们提供的：Reader, Writer and Scanner 等一系列功能
 
 ## bufio.Writer
 
