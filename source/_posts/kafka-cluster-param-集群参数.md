@@ -81,11 +81,11 @@ tags:
 
 ```bash
 # 创建Topic时进行设置，保存最近半年的交易数据，单个消息很大，但也不会超过5MB
-$ kafka-topics --bootstrap-server localhost:9092 --create --topic transaction --partitions 1 --replication-factor 1 --config retention.ms=15552000000 --config max.message.bytes=5242880
+$ bin/kafka-configs.sh --bootstrap-server localhost:9092 --create --topic transaction --partitions 1 --replication-factor 1 --config retention.ms=15552000000 --config max.message.bytes=5242880
 
 # 修改Topic级别参数，将消息的最大大小修改为10MB
 # 推荐使用kafka-configs，社区未来很有可能统一使用kafka-configs来调整Topic级别参数
-$ kafka-configs --zookeeper localhost:2181 --entity-type topics --entity-name transaction --alter --add-config max.message.bytes=10485760
+$ bin/kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name transaction --alter --add-config max.message.bytes=10485760
 ```
 
 ## JVM参数
