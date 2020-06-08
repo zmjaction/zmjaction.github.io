@@ -93,20 +93,20 @@ numChildren = 0
 ### 设置cluster-wide参数
 如果要设置`cluster-wide`范围的动态参数，需要显式指定**`entity-default`**
 ```
-$ kafka-configs --bootstrap-server localhost:9092 --entity-type brokers --entity-default --alter --add-config unclean.leader.election.enable=true
+$ bin/kafka-configs.sh --bootstrap-server localhost:9092 --entity-type brokers --entity-default --alter --add-config unclean.leader.election.enable=true
 Completed updating default config for brokers in the cluster,
 ```
 查看配置是否成功，`sensitive=false`表明**要调整的参数不是敏感数据**
 ```
-$ kafka-configs --bootstrap-server localhost:9092 --entity-type brokers --entity-default --describe
+$ bin/kafka-configs.sh --bootstrap-server localhost:9092 --entity-type brokers --entity-default --describe
 Default config for brokers in the cluster are:
   unclean.leader.election.enable=true sensitive=false synonyms={DYNAMIC_DEFAULT_BROKER_CONFIG:unclean.leader.election.enable=true}
 ```
 
 ### 设置per-broker参数
 ```
-$ kafka-configs --bootstrap-server localhost:9092 --entity-type brokers --entity-name 0 --alter --add-config unclean.leader.election.enable=false,leader.replication.throttled.rate=104857600,follower.replication.throttled.rate=104857600
-Completed updating config for broker: 0.
+$ bin/kafka-configs.sh --bootstrap-server localhost:9092 --entity-type brokers --entity-name 1 --alter --add-config    unclean.leader.election.enable=false,leader.replication.throttled.rate=104857600,follower.replication.throttled.rate=104857600
+Completed updating config for broker: 1.
 ```
 查看配置是否成功，重点关注
 实际值：`unclean.leader.election.enable=false`
@@ -114,7 +114,7 @@ per-broker参数：`DYNAMIC_BROKER_CONFIG:unclean.leader.election.enable=false`
 cluster-wide参数：`DYNAMIC_DEFAULT_BROKER_CONFIG:unclean.leader.election.enable=true`
 Kafka默认值：`DEFAULT_CONFIG:unclean.leader.election.enable=false`
 ```
-$ kafka-configs --bootstrap-server localhost:9092 --entity-type brokers --entity-name 0 --describe
+$ bin/kafka-configs.sh --bootstrap-server localhost:9092 --entity-type brokers --entity-name 1 --describe
 Configs for broker 0 are:
   leader.replication.throttled.rate=null sensitive=true synonyms={DYNAMIC_BROKER_CONFIG:leader.replication.throttled.rate=null}
   follower.replication.throttled.rate=null sensitive=true synonyms={DYNAMIC_BROKER_CONFIG:follower.replication.throttled.rate=null}

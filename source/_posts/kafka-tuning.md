@@ -31,7 +31,7 @@ tags:
 1. `mount -o noatime`
     - 在**挂载**文件系统时禁用**atime**（Access Time）更新，记录的是**文件最后被访问的时间**
     - 记录**atime**需要操作系统访问**inode**资源，禁用atime可以**避免inode访问时间的写入操作**
-2. 文件系统选择**ext4**、**XFS**、**ZFS**
+2. 文件系统选择**ext4**、**XFS**（最优）、**ZFS**
 3. 将**swappiness**设置成一个**很小的值**（1~10，默认是60），防止Linux的`OOM Killer`开启**随机杀掉**进程
     - **swappiness=0**，并不会禁止对swap的使用，只是**最大限度**地降低使用swap的可能性
         - 因为一旦设置为0，当物理内存耗尽时，操作系统会触发**OOM Killer**

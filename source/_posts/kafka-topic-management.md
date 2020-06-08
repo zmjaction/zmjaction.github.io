@@ -17,7 +17,7 @@ tags:
 
 ### 创建主题
 ```
-$ kafka-topics --bootstrap-server localhost:9092 --create --topic t1 --partitions 1 --replication-factor 1
+$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic t1 --partitions 1 --replication-factor 1
 ```
 1. 从Kafka **2.2**版本开始，推荐使用`--bootstrap-server`代替`--zookeeper`（标记为**已过期**）
 2. 原因
@@ -28,7 +28,7 @@ $ kafka-topics --bootstrap-server localhost:9092 --create --topic t1 --partition
 
 ### 查询主题列表
 ```
-$ kafka-topics --bootstrap-server localhost:9092 --list
+$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 __consumer_offsets
 _schemas
 t1
@@ -37,7 +37,7 @@ transaction
 
 ### 查询单个主题
 ```
-$ kafka-topics --bootstrap-server localhost:9092 --describe --topic __consumer_offsets
+$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic __consumer_offsets
 Topic:__consumer_offsets	PartitionCount:50	ReplicationFactor:1	Configs:compression.type=producer,cleanup.policy=compact,segment.bytes=104857600
     Topic: __consumer_offsets	Partition: 0	Leader: 0	Replicas: 0	Isr: 0
     Topic: __consumer_offsets	Partition: 1	Leader: 0	Replicas: 0	Isr: 0
@@ -49,15 +49,15 @@ Topic:__consumer_offsets	PartitionCount:50	ReplicationFactor:1	Configs:compressi
 ### 增加主题分区
 Kafka目前**不允许减少某个主题的分区数**，指定的分区数一定要**比原有分区数大**，否则Kafka会抛出InvalidPartitionsException
 ```
-$ kafka-topics --bootstrap-server localhost:9092 --alter --topic t1 --partitions 3
+$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --alter --topic t1 --partitions 3
 
-$ kafka-topics --bootstrap-server localhost:9092 --describe --topic t1
+$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic t1
 Topic:t1	PartitionCount:3	ReplicationFactor:1	Configs:segment.bytes=1073741824
 	Topic: t1	Partition: 0	Leader: 0	Replicas: 0	Isr: 0
 	Topic: t1	Partition: 1	Leader: 0	Replicas: 0	Isr: 0
 	Topic: t1	Partition: 2	Leader: 0	Replicas: 0	Isr: 0
 
-$ kafka-topics --bootstrap-server localhost:9092 --alter --topic t1 --partitions 2
+$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --alter --topic t1 --partitions 2
 Error while executing topic command : org.apache.kafka.common.errors.InvalidPartitionsException: Topic currently has 3 partitions, which is higher than the requested 2.
 [2019-10-21 09:36:14,368] ERROR java.util.concurrent.ExecutionException: org.apache.kafka.common.errors.InvalidPartitionsException: Topic currently has 3 partitions, which is higher than the requested 2.
 	at org.apache.kafka.common.internals.KafkaFutureImpl.wrapAndThrow(KafkaFutureImpl.java:45)
@@ -74,7 +74,7 @@ Caused by: org.apache.kafka.common.errors.InvalidPartitionsException: Topic curr
 ### 修改主题级别参数
 `--bootstrap-server`是用来设置**动态参数**的，而**常规的主题级别参数**，还是使用`--zookeeper`
 ```java
-$ kafka-configs --zookeeper localhost:2181 --entity-type topics --entity-name t1 --alter --add-config max.message.bytes=10485760
+$ bin/kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name t1 --alter --add-config max.message.bytes=10485760
 Completed Updating config for entity: topic 't1'.
 ```
 
@@ -86,12 +86,12 @@ Completed Updating config for entity: topic 't1'.
 需要修改Broker端参数**`leader.replication.throttled.rate`**和**`follower.replication.throttled.rate`**
 如果某主题的副本分别在0、1、2、3多个Broker上，需要依次到Broker0、Broker1、Broker2、Broker3上执行这条命令
 ```
-$ kafka-configs --zookeeper localhost:2181 --entity-type brokers --entity-name 0 --alter --add-config 'leader.replication.throttled.rate=104857600,follower.replication.throttled.rate=104857600'
+$ bin/kafka-configs.sh --zookeeper localhost:2181 --entity-type brokers --entity-name 0 --alter --add-config 'leader.replication.throttled.rate=104857600,follower.replication.throttled.rate=104857600'
 Completed Updating config for entity: brokers '0'.
 ```
 设置完上面两个参数后，需要为该主题设置要限速的副本，通配符`*`代表**所有副本**都设置限速
 ```
-$ kafka-configs --zookeeper localhost:2181 --entity-type topics --entity-name t1 --alter --add-config 'leader.replication.throttled.replicas=*,follower.replication.throttled.replicas=*'
+$ bin/kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name t1 --alter --add-config 'leader.replication.throttled.replicas=*,follower.replication.throttled.replicas=*'
 Completed Updating config for entity: topic 't1'.
 ```
 
@@ -101,7 +101,7 @@ Completed Updating config for entity: topic 't1'.
 ### 删除主题
 删除操作是**异步**的，执行完命令后，主题仅仅被**标记为已删除**而已，Kafka会在**后台**默默开启主题删除操作
 ```
-$ kafka-topics --bootstrap-server localhost:9092 --delete --topic t1
+$ bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic t1
 ```
 
 ## 位移主题
@@ -125,7 +125,7 @@ reassign.json -- 副本的配置
 ]}
 ```
 ```
-$ kafka-reassign-partitions --zookeeper localhost:2181 --reassignment-json-file reassign.json --execute
+$ bin/kafka-reassign-partitions.sh --zookeeper localhost:2181 --reassignment-json-file reassign.json --execute
 Current partition replica assignment
 
 {"version":1,"partitions":[{"topic":"__consumer_offsets","partition":22,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":30,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":8,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":21,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":4,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":27,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":7,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":9,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":46,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":25,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":35,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":41,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":33,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":23,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":49,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":47,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":16,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":28,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":31,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":36,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":42,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":3,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":18,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":37,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":15,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":24,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":38,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":17,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":48,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":19,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":11,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":13,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":2,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":43,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":6,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":14,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":20,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":0,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":44,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":39,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":12,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":45,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":1,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":5,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":26,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":29,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":34,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":10,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":32,"replicas":[0],"log_dirs":["any"]},{"topic":"__consumer_offsets","partition":40,"replicas":[0],"log_dirs":["any"]}]}
@@ -137,7 +137,7 @@ Successfully started reassignment of partitions.
 ### 查看消费者组提交的位移数据
 **OffsetsMessageFormatter**
 ```
-$ kafka-console-consumer --bootstrap-server localhost:9092 --topic __consumer_offsets --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter" --from-beginning
+$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic __consumer_offsets --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter" --from-beginning
 [console-consumer-40652,test,0]::OffsetAndMetadata(offset=2, leaderEpoch=Optional.empty, metadata=, commitTimestamp=1538842068384, expireTimestamp=Some(1539446868384))
 [console-consumer-6657,test,0]::NULL
 [console-consumer-66385,zhongmingmao,0]::OffsetAndMetadata(offset=5, leaderEpoch=Optional.empty, metadata=, commitTimestamp=1538999538770, expireTimestamp=Some(1539604338770))
@@ -169,7 +169,7 @@ $ kafka-console-consumer --bootstrap-server localhost:9092 --topic __consumer_of
 ### 读取位移主题消息，查看消费者组的状态信息
 **GroupMetadataMessageFormatter**
 ```
-$ kafka-console-consumer --bootstrap-server localhost:9092 --topic __consumer_offsets --formatter "kafka.coordinator.group.GroupMetadataManager\$GroupMetadataMessageFormatter" --from-beginning
+$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic __consumer_offsets --formatter "kafka.coordinator.group.GroupMetadataManager\$GroupMetadataMessageFormatter" --from-beginning
 console-consumer-40652::GroupMetadata(groupId=console-consumer-40652, generation=2, protocolType=Some(consumer), currentState=Empty, members=Map())
 console-consumer-18364::GroupMetadata(groupId=console-consumer-18364, generation=1, protocolType=Some(consumer), currentState=Stable, members=Map(consumer-1-6aa558f4-7166-457e-9006-39a5843aa976 -> MemberMetadata(memberId=consumer-1-6aa558f4-7166-457e-9006-39a5843aa976, groupInstanceId=Some(null), clientId=consumer-1, clientHost=/127.0.0.1, sessionTimeoutMs=10000, rebalanceTimeoutMs=300000, supportedProtocols=List(range), )))
 console-consumer-18364::GroupMetadata(groupId=console-consumer-18364, generation=2, protocolType=Some(consumer), currentState=Empty, members=Map())
@@ -217,4 +217,36 @@ console-consumer-60394::NULL
 zhongmingmao::NULL
 console-consumer-49544::GroupMetadata(groupId=console-consumer-49544, generation=1, protocolType=Some(consumer), currentState=Stable, members=Map(consumer-1-5629e772-0ef1-4248-b9ed-42f997f54a4a -> MemberMetadata(memberId=consumer-1-5629e772-0ef1-4248-b9ed-42f997f54a4a, groupInstanceId=Some(null), clientId=consumer-1, clientHost=/127.0.0.1, sessionTimeoutMs=10000, rebalanceTimeoutMs=300000, supportedProtocols=List(range), )))
 ```
+###常见主题错误处理
+
+#### 常见错误 1：主题删除失败。
+
+删除命令后，很多人发现已删除主题的分区数据依然“躺在”硬盘上，没有被清除。这时该怎么办呢?
+
+######最常见的原因有两个：
+
+* 副本所在的 Broker 宕机了；
+
+  * 重启对应的 Broker 之后，删除操作就能自动恢复
+
+* 待删除主题的部分分区依然在执行迁移过程
+
+  * 1. 手动删除 ZooKeeper 节点 /admin/delete_topics 下以待删除主题为名的 znode
+
+  * 2. 手动删除该主题在磁盘上的分区目录
+
+  * 3. 在 ZooKeeper 中执行 rmr /controller，触发 Controller 重选举，刷新 Controller 缓存
+
+       > 注意：第三步骤，可能造成大面积的分区 Leader 重选举。事实上，仅仅执行前两步也是可以的，只是 Controller 缓存中没有清空待删除主题罢了，也不影响使用
+
+#### 常见错误 2：__consumer_offsets 占用太多的磁盘。
+
+用` jstack `命令查看一下 `kafka-log-cleaner-thread` 前缀的线程状态,如果是该线程挂掉了，无法及时清理此内部主题，只能重启对应的	Broker
+
+### 思考
+
+为什么 Kafka 不允许减少分区数？如果减少分区数，可能会有什么样的问题？
+
+> 多个broker节点都冗余有分区的数据，减少分区数需要操作多个broker且需要迁移该分区数据到其他分区。如果是按消息key hash选的分区，那么迁移就不知道迁到哪里了，因为只有业务代码可以决定放在哪
+
 参考：<http://zhongmingmao.me>
