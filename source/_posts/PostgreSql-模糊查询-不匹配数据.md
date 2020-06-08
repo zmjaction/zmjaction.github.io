@@ -3,9 +3,11 @@ title: postgresql -- 模糊查询
 mathjax: false
 date: 2020-06-03 19:39:43
 categories:
+	- 数据库
     - postgresql
     - 模糊查询
 tags:
+	- 数据库
     - postgresql
     - like
     - not like
