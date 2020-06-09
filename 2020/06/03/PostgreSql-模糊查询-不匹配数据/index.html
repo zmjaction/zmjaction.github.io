@@ -31,9 +31,12 @@
 <meta property="og:description" content="like  和 not like like、not like在SQL中用于模糊查询，%表示任意个字符，_表示单个任意字符 ESCAPE转义使用  ilike 和 not ilike ilike表示在模糊匹配字符串时不区分大小写，i即是ignore的意思。 not ilike表示不模糊匹配字符串且不区分大小写。  ~和~*，!~和!~* ~表示匹配正则表达式，且区分大小写。 ~*表示匹配正则表达式，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-03T11:39:43.000Z">
-<meta property="article:modified_time" content="2020-06-08T05:55:37.663Z">
+<meta property="article:modified_time" content="2020-06-09T14:46:35.806Z">
 <meta property="article:author" content="Action">
-<meta property="article:tag" content="数据库 - postgresql - like - not like">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="postgresql">
+<meta property="article:tag" content="like">
+<meta property="article:tag" content="not like">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yijunworld.com/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/">
@@ -126,12 +129,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">76</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">39</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">40</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -227,7 +230,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-postgresql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" itemprop="url" rel="index"><span itemprop="name">数据库 - postgresql - 模糊查询</span></a>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" itemprop="url" rel="index"><span itemprop="name">模糊查询</span></a>
                 </span>
             </span>
 
@@ -285,7 +296,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93-postgresql-like-not-like/" rel="tag"># 数据库 - postgresql - like - not like</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/postgresql/" rel="tag"># postgresql</a>
+              <a href="/tags/like/" rel="tag"># like</a>
+              <a href="/tags/not-like/" rel="tag"># not like</a>
           </div>
 
         
@@ -294,8 +308,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/03/%E6%95%B0%E6%8D%AE%E5%BA%93-PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="prev" title="postgresql -- 模糊查询">
-      <i class="fa fa-chevron-left"></i> postgresql -- 模糊查询
+    <a href="/2020/06/03/%E6%95%B0%E6%8D%AE%E5%BA%93-PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="prev" title="postgresql -- 窗口函数">
+      <i class="fa fa-chevron-left"></i> postgresql -- 窗口函数
     </a></div>
       <div class="post-nav-item">
     <a href="/2020/06/08/kafka-LEO-HW/" rel="next" title="kafka-LEO-HW">
@@ -382,13 +396,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -435,13 +449,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">251k</span>
+    <span title="站点总字数">254k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:48</span>
+    <span title="站点阅读时长">3:51</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

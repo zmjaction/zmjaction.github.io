@@ -123,12 +123,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">76</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">39</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">40</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -297,7 +297,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-postgresql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" itemprop="url" rel="index"><span itemprop="name">数据库 - postgresql - 模糊查询</span></a>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" itemprop="url" rel="index"><span itemprop="name">模糊查询</span></a>
                 </span>
             </span>
 
@@ -379,7 +387,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/03/%E6%95%B0%E6%8D%AE%E5%BA%93-PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">postgresql -- 模糊查询</a>
+            <a href="/2020/06/03/%E6%95%B0%E6%8D%AE%E5%BA%93-PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">postgresql -- 窗口函数</a>
         </h2>
 
         <div class="post-meta">
@@ -397,7 +405,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-postgresql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" itemprop="url" rel="index"><span itemprop="name">数据库 - postgresql - 窗口函数</span></a>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" itemprop="url" rel="index"><span itemprop="name">窗口函数</span></a>
                 </span>
             </span>
 
@@ -407,14 +423,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>4.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -523,6 +539,64 @@
 </tbody>
 </table>
 </div>
+<blockquote>
+<p>最近在看《深入浅出PostgreSql》想总结下窗口函数，书上示例比较少，网上搜索一番，发现了一篇好的文章，借以引用望原作者知晓，<a href="https://www.cnblogs.com/funnyzpc/p/9311281.html" target="_blank" rel="noopener">参考连接</a></p>
+</blockquote>
+<h5 id="创建表，插入原始测试数据"><a href="#创建表，插入原始测试数据" class="headerlink" title="创建表，插入原始测试数据"></a>创建表，插入原始测试数据</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">"public"</span>.<span class="string">"products"</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">"public"</span>.<span class="string">"products"</span> (</span><br><span class="line">    <span class="string">"id"</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">COLLATE</span> <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"name"</span> <span class="built_in">text</span> <span class="keyword">COLLATE</span> <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"price"</span> <span class="built_in">numeric</span>,</span><br><span class="line">    <span class="string">"uid"</span> <span class="built_in">varchar</span>(<span class="number">14</span>) <span class="keyword">COLLATE</span> <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"type"</span> <span class="built_in">varchar</span>(<span class="number">100</span>) <span class="keyword">COLLATE</span> <span class="string">"default"</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">WITH</span> (OIDS=<span class="literal">FALSE</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0006'</span>, <span class="string">'iPhone X'</span>, <span class="string">'9600'</span>, <span class="literal">null</span>, <span class="string">'电器'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0012'</span>, <span class="string">'电视'</span>, <span class="string">'3299'</span>, <span class="string">'4'</span>, <span class="string">'电器'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0004'</span>, <span class="string">'辣条'</span>, <span class="string">'5.6'</span>, <span class="string">'4'</span>, <span class="string">'零食'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0007'</span>, <span class="string">'薯条'</span>, <span class="string">'7.5'</span>, <span class="string">'1'</span>, <span class="string">'零食'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0009'</span>, <span class="string">'方便面'</span>, <span class="string">'3.5'</span>, <span class="string">'1'</span>, <span class="string">'零食'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0005'</span>, <span class="string">'铅笔'</span>, <span class="string">'7'</span>, <span class="string">'4'</span>, <span class="string">'文具'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0014'</span>, <span class="string">'作业本'</span>, <span class="string">'1'</span>, <span class="literal">null</span>, <span class="string">'文具'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0001'</span>, <span class="string">'鞋子'</span>, <span class="string">'27'</span>, <span class="string">'2'</span>, <span class="string">'衣物'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0002'</span>, <span class="string">'外套'</span>, <span class="string">'110.9'</span>, <span class="string">'3'</span>, <span class="string">'衣物'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0013'</span>, <span class="string">'围巾'</span>, <span class="string">'93'</span>, <span class="string">'5'</span>, <span class="string">'衣物'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0008'</span>, <span class="string">'香皂'</span>, <span class="string">'17.5'</span>, <span class="string">'2'</span>, <span class="string">'日用品'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0010'</span>, <span class="string">'水杯'</span>, <span class="string">'27'</span>, <span class="string">'3'</span>, <span class="string">'日用品'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0015'</span>, <span class="string">'洗发露'</span>, <span class="string">'36'</span>, <span class="string">'1'</span>, <span class="string">'日用品'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0011'</span>, <span class="string">'毛巾'</span>, <span class="string">'15'</span>, <span class="string">'1'</span>, <span class="string">'日用品'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0003'</span>, <span class="string">'手表'</span>, <span class="string">'1237.55'</span>, <span class="string">'5'</span>, <span class="string">'电器'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0016'</span>, <span class="string">'绘图笔'</span>, <span class="string">'15'</span>, <span class="literal">null</span>, <span class="string">'文具'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0017'</span>, <span class="string">'汽水'</span>, <span class="string">'3.5'</span>, <span class="literal">null</span>, <span class="string">'零食'</span>);</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="row-number-使用"><a href="#row-number-使用" class="headerlink" title="row_number()使用"></a><strong>row_number()</strong>使用</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,row_number() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">as</span> idx <span class="keyword">from</span> products</span><br></pre></td></tr></table></figure>
+<p><img src="//tvax1.sinaimg.cn/large/d479ba17gy1gfmef0ig19j208a0cwglx.jpg" alt=""></p>
+<h5 id="Partition-by"><a href="#Partition-by" class="headerlink" title="Partition by"></a>Partition by</h5><blockquote>
+<p>以上输出想要在type 类别，按照价格price 升序排序</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,row_number() <span class="keyword">over</span>(<span class="keyword">PARTITION</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">as</span> idx <span class="keyword">from</span> products ;</span><br></pre></td></tr></table></figure>
+<p><img src="//tva4.sinaimg.cn/large/d479ba17gy1gfmei9kezrj208j0cpmxg.jpg" alt=""></p>
+<h5 id="rank"><a href="#rank" class="headerlink" title="rank()"></a>rank()</h5><blockquote>
+<p>以上输出，方便面和汽水价格是一样，如何将零食和汽水并列第一呢？</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,<span class="keyword">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">from</span> products</span><br></pre></td></tr></table></figure>
+<p><img src="//tva4.sinaimg.cn/large/d479ba17gy1gfmel68ud8j209b0cudg2.jpg" alt=""></p>
+<h5 id="dense-rank"><a href="#dense-rank" class="headerlink" title="dense_rank()"></a><strong>dense_rank</strong>()</h5><blockquote>
+<p>以上输出中，辣条排在了第三位，想要排在第二位怎么处理呢？</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,<span class="keyword">dense_rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">from</span> products;</span><br></pre></td></tr></table></figure>
+<p><img src="//tva1.sinaimg.cn/large/d479ba17gy1gfmenzzfekj20a00cq74m.jpg" alt=""></p>
+<h5 id="percernt-rank"><a href="#percernt-rank" class="headerlink" title="percernt_rank()"></a><strong>percernt_rank</strong>()</h5><blockquote>
+<p>限制序号在0~1之间,(0作为第一个序)</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,<span class="keyword">percent_rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">from</span> products</span><br></pre></td></tr></table></figure>
+<p><img src="//tva1.sinaimg.cn/large/d479ba17gy1gfmeqwjuxlj20be0d30t4.jpg" alt=""></p>
+<h5 id="cume-dist"><a href="#cume-dist" class="headerlink" title="cume_dist()"></a><strong>cume_dist</strong>()</h5><blockquote>
+<p>限制序号在0~1之间相对排名</p>
+</blockquote>
+<p><img src="//tvax4.sinaimg.cn/large/d479ba17gy1gfmes99eh7j20bb0d374p.jpg" alt=""></p>
+<h5 id="ntile-val1"><a href="#ntile-val1" class="headerlink" title="ntile(val1)"></a><strong>ntile(val1)</strong></h5><blockquote>
+<p>限制最大序列号</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,ntile(<span class="number">10</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">from</span> products;</span><br></pre></td></tr></table></figure>
+<p><img src="//tva1.sinaimg.cn/large/d479ba17gy1gfmeud4oj3j208w0ciaae.jpg" alt=""></p>
+<h5 id="lag-val1-val2-val3"><a href="#lag-val1-val2-val3" class="headerlink" title="lag(val1,val2,val3)"></a>l<strong>ag(val1,val2,val3)</strong></h5><blockquote>
+<p>获取偏移值(向下偏移)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT id,type,name,price,lag(id,1,&#39;&#39;) over(partition by type order by price asc) as topid from products;</span><br></pre></td></tr></table></figure>
+<p><img src="//tva4.sinaimg.cn/large/d479ba17gy1gfmewwinw8j20ak0cr74p.jpg" alt=""></p>
+<h5 id="lead-val1-val2-val3"><a href="#lead-val1-val2-val3" class="headerlink" title="lead(val1,val2,val3)"></a><strong>lead(val1,val2,val3)</strong></h5><blockquote>
+<p>偏移值(向上偏移) </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">type</span>,<span class="keyword">name</span>,price,<span class="keyword">lead</span>(<span class="keyword">id</span>,<span class="number">1</span>,<span class="string">''</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">as</span> downid <span class="keyword">from</span> products;</span><br></pre></td></tr></table></figure>
+<h5 id="first-value-val1"><a href="#first-value-val1" class="headerlink" title="first_value(val1)"></a><strong>first_value(val1)</strong></h5><blockquote>
+<p>第一条记录的某个字段的值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT id,type,name,price,first_value(name) over(partition by type order by price asc) from products;</span><br></pre></td></tr></table></figure>
+<p><img src="//tva3.sinaimg.cn/large/d479ba17gy1gfmf0vqrooj20ar0cv0t7.jpg" alt=""></p>
+<h5 id="last-value-val1"><a href="#last-value-val1" class="headerlink" title="last_value(val1)"></a><strong>last_value(val1)</strong></h5><blockquote>
+<p>最后一条记录的某个字段</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT id,type,name,price,last_value(name) over(partition by type order by price range between unbounded preceding and unbounded following) from products;</span><br></pre></td></tr></table></figure>
+<h5 id="nth-value-val1-val2"><a href="#nth-value-val1-val2" class="headerlink" title="nth_value(val1,val2)"></a><strong>nth_value(val1,val2)</strong></h5><blockquote>
+<p>指定序号记录的某个字段值</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">type</span>,<span class="keyword">name</span>,price,<span class="keyword">nth_value</span>(<span class="keyword">name</span>,<span class="number">2</span>) <span class="keyword">OVER</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">range</span> <span class="keyword">between</span> <span class="keyword">unbounded</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="keyword">unbounded</span> <span class="keyword">following</span> ) <span class="keyword">from</span> products;</span><br></pre></td></tr></table></figure>
+<h5 id="窗口函数-聚合函数"><a href="#窗口函数-聚合函数" class="headerlink" title="窗口函数+聚合函数"></a>窗口函数+聚合函数</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">sum(price) over (partition by type) 类别金额合计,</span><br><span class="line">(sum(price) over (order by type))/sum(price) over() 类别总额占所有品类商品百分比,</span><br><span class="line">round(price/(sum(price) over (partition by type rows between unbounded preceding and unbounded following)),3) 子除类别百分比,</span><br><span class="line">rank() over (partition by type order by price desc) 排名,</span><br><span class="line">sum(price) over() 金额总计</span><br><span class="line">from products ORDER BY type,price asc;</span><br><span class="line"><span class="comment">-- 放在from后使用</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">    <span class="keyword">id</span>,<span class="keyword">type</span>,<span class="keyword">name</span>,price,</span><br><span class="line">    <span class="keyword">sum</span>(price) <span class="keyword">over</span> w1 类别金额合计,</span><br><span class="line">    (<span class="keyword">sum</span>(price) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">type</span>))/<span class="keyword">sum</span>(price) <span class="keyword">over</span>() 类别总额占所有品类商品百分比,</span><br><span class="line">    <span class="keyword">round</span>(price/(<span class="keyword">sum</span>(price) <span class="keyword">over</span> w2),<span class="number">3</span>) 子除类别百分比,</span><br><span class="line">    <span class="keyword">rank</span>() <span class="keyword">over</span> w3 排名,</span><br><span class="line">    <span class="keyword">sum</span>(price) <span class="keyword">over</span>() 金额总计</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    products</span><br><span class="line"><span class="keyword">WINDOW</span></span><br><span class="line">    w1 <span class="keyword">as</span> (<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span>),</span><br><span class="line">    w2 <span class="keyword">as</span> (<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">rows</span> <span class="keyword">between</span> <span class="keyword">unbounded</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="keyword">unbounded</span> <span class="keyword">following</span>),</span><br><span class="line">    w3 <span class="keyword">as</span> (<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">desc</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">type</span>,price <span class="keyword">asc</span>;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1053,11 +1127,15 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/postgresql/case/" itemprop="url" rel="index"><span itemprop="name">case</span></a>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/case/" itemprop="url" rel="index"><span itemprop="name">case</span></a>
                 </span>
             </span>
 
@@ -1272,13 +1350,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1325,13 +1403,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">251k</span>
+    <span title="站点总字数">254k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:48</span>
+    <span title="站点阅读时长">3:51</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
