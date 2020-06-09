@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yijunworld.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="高水位水位的定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kafka -- 高水位 + Leader Epoch">
+<meta property="og:url" content="http://yijunworld.com/2019/09/20/kafka-high-watermark-leader-epoch/index.html">
+<meta property="og:site_name" content="Action">
+<meta property="og:description" content="高水位水位的定义">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-watermark.png">
+<meta property="og:image" content="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark.png">
+<meta property="og:image" content="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark-update.png">
+<meta property="og:image" content="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark-example-1.png">
+<meta property="og:image" content="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark-example-2.png">
+<meta property="og:image" content="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark-example-3.png">
+<meta property="og:image" content="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark-example-4.png">
+<meta property="og:image" content="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-leader-epoch-example-1.png">
+<meta property="og:image" content="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-leader-epoch-example-2.png">
+<meta property="article:published_time" content="2019-09-20T02:22:43.000Z">
+<meta property="article:modified_time" content="2020-06-08T05:53:30.779Z">
+<meta property="article:author" content="Action">
+<meta property="article:tag" content="Middleware">
+<meta property="article:tag" content="MQ">
+<meta property="article:tag" content="Kafka">
+<meta property="article:tag" content="Stream">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-watermark.png">
+
+<link rel="canonical" href="http://yijunworld.com/2019/09/20/kafka-high-watermark-leader-epoch/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Kafka -- 高水位 + Leader Epoch | Action</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Action" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Action</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">锤子</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">39</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/zmjaction" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/09/20/kafka-high-watermark-leader-epoch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Kafka -- 高水位 + Leader Epoch
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-20 10:22:43" itemprop="dateCreated datePublished" datetime="2019-09-20T10:22:43+08:00">2019-09-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="高水位"><a href="#高水位" class="headerlink" title="高水位"></a>高水位</h2><h3 id="水位的定义"><a href="#水位的定义" class="headerlink" title="水位的定义"></a>水位的定义</h3><p><img src="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-watermark.png" width=1000/></p>
+<a id="more"></a>
+<ol>
+<li>经典教科书<ul>
+<li>在时刻T，任意创建时间（<strong>Event Time</strong>）为<code>T&#39;</code>，且<code>T&#39;&lt;=T</code>的所有事件都已经到达，那么T就被定义为水位</li>
+</ul>
+</li>
+<li>《Streaming System》<ul>
+<li>水位是一个<strong>单调增加</strong>且表征<strong>最早未完成工作的时间戳</strong></li>
+</ul>
+</li>
+<li>上图中标注为<code>Completed</code>的蓝色部分代表<strong>已经完成</strong>的工作，标注为<code>In-Flight</code>的红色部分代表<strong>正在进行中</strong>的工作<ul>
+<li>两者的<strong>边界</strong>就是水位线</li>
+</ul>
+</li>
+<li>在<strong>Kafka</strong>中，水位不是时间戳，而是与位置信息绑定的，即用<strong>消息位移</strong>来表征水位<ul>
+<li>Kafka中也有<strong>低水位</strong>（Low Watermark），是与Kafka<strong>删除消息</strong>相关联的概念</li>
+</ul>
+</li>
+</ol>
+<h3 id="高水位的作用"><a href="#高水位的作用" class="headerlink" title="高水位的作用"></a>高水位的作用</h3><p><img src="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark.png" width=800/></p>
+<ol>
+<li>两个作用<ul>
+<li>定义<strong>消息可见性</strong>，即用来标识分区下的哪些消息可以被消费者消费的</li>
+<li>帮助Kafka完成<strong>副本同步</strong></li>
+</ul>
+</li>
+<li>上图是某个分区<strong>Leader副本</strong>的高水位图，在<strong>分区高水位以下</strong>的消息被认为是<strong>已提交消息</strong>，反之为未提交消息<ul>
+<li><strong>消费者只能消费已提交消息</strong>，即位移小于8的所有消息</li>
+<li>暂不讨论Kafka事务，Kafka的<strong>事务</strong>机制会影响消费者所能看到的消息的范围，不只是简单依赖高水位来判断<ul>
+<li>而是依靠<strong>LSO</strong>（Log <strong>Stable</strong> Offset）的位移值来判断事务型消费者的可见性</li>
+</ul>
+</li>
+<li><strong>位移值等于高水位的消息也属于未提交消息</strong>，即高水位上的消息是不能被消费者消费的</li>
+<li>图中还有一个<strong>日志末端位移</strong>（Log <strong>End</strong> Offset，<strong>LEO</strong>）的概念，表示<strong>副本写入下一条消息的位移值</strong><ul>
+<li>LEO为15，方框是虚线，表示当前副本只有15条消息，位移从0到14，下一条新消息的位移为15</li>
+</ul>
+</li>
+<li><code>[高水位,LEO)</code>的消息属于<strong>未提交消息</strong>，在同一个副本对象，<strong>高水位值不会大于LEO值</strong></li>
+<li><strong>高水位</strong>和<strong>LEO</strong>是副本对象的两个重要属性<ul>
+<li>Kafka<strong>所有副本对象</strong>都有对应的高水位和LEO，而Kafka使用<strong>Leader副本的高水位</strong>来定义<strong>所在分区的高水位</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="高水位的更新机制"><a href="#高水位的更新机制" class="headerlink" title="高水位的更新机制"></a>高水位的更新机制</h3><h4 id="远程副本"><a href="#远程副本" class="headerlink" title="远程副本"></a>远程副本</h4><p><img src="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark-update.png" width=600/></p>
+<ol>
+<li>每个副本对象都保存了一组高水位和LEO值，<strong>Leader副本所在的Broker</strong>还保存了<em><strong>其它Follower副本的LEO值</strong></em></li>
+<li>Kafka把Broker 0上保存的Follower副本又称为<strong>远程副本</strong>（<strong>Remote</strong> Replica）</li>
+<li>Kafka<strong>副本机制</strong>在运行过程中<ul>
+<li>会更新<ul>
+<li>Broker 1上Follower副本的高水位和LEO值</li>
+<li>Broker 0上Leader副本的高水位和LEO以及<strong>所有远程副本的LEO</strong></li>
+</ul>
+</li>
+<li>不会更新<ul>
+<li>Broker 0<strong>所有远程副本的高水位值</strong>，即图中标记为<strong>灰色</strong>的部分</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Broker 0保存远程副本的作用<ul>
+<li><strong>帮助</strong>Leader副本<strong>确定</strong>其<strong>高水位</strong>，即<strong>分区高水位</strong></li>
+</ul>
+</li>
+</ol>
+<h4 id="更新时机"><a href="#更新时机" class="headerlink" title="更新时机"></a>更新时机</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>更新对象</th>
+<th>更新时机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Broker 0上Leader副本的LEO</td>
+<td>Leader副本<strong>接收</strong>到生产者发送的消息，<strong>写入到本地磁盘</strong>后，会更新其LEO值</td>
+</tr>
+<tr>
+<td>Broker 1上Follower副本的LEO</td>
+<td>Follower副本从Leader副本<strong>拉取</strong>消息，<strong>写入本地磁盘</strong>后，会更新其LEO值</td>
+</tr>
+<tr>
+<td>Broker 0上远程副本的LEO</td>
+<td>Follower副本从Leader副本<strong>拉取</strong>消息时，会告诉Leader副本<strong>从哪个位移开始拉取</strong>，<br/>Leader副本会使用这个位移值来更新远程副本的LEO</td>
+</tr>
+<tr>
+<td>Broker 0上Leader副本的高水位</td>
+<td>两个更新时机：一个是Leader副本更新其LEO之后，一个是更新完远程副本LEO之后<br/>具体算法：取Leader副本和所有与Leader<strong>同步</strong>的远程副本LEO中的<strong>最小值</strong></td>
+</tr>
+<tr>
+<td>Broker 1上Follower副本的高水位</td>
+<td>Follower副本成功更新完LEO后，会比较其LEO与<strong>Leader副本发来的高水位值</strong>，<br/>并用两者的<strong>较小值</strong>去更新自己的高水位</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li>与Leader副本保持同步，需要满足两个条件<ul>
+<li>该远程Follower副本在<strong>ISR</strong>中</li>
+<li>该远程Follower副本LEO值<strong>落后</strong>Leader副本LEO值的时间<strong>不超过</strong>参数<code>replica.lag.time.max.ms</code>（<strong>10秒</strong>）</li>
+</ul>
+</li>
+<li>某个副本能否进入ISR是由第二个条件判断的<ul>
+<li>2个条件判断是为了应对意外情况：<strong>Follower副本已经追上Leader，却不在ISR中</strong></li>
+<li>假设Kafka只判断第1个条件，副本F刚刚重启，并且已经具备进入ISR的资格，但此时尚未进入到ISR<ul>
+<li>由于缺少了副本F的判断，<strong>分区高水位有可能超过真正ISR中的副本LEO</strong>，而<strong>高水位&gt;LEO</strong>是<strong>不允许</strong>的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="Leader副本"><a href="#Leader副本" class="headerlink" title="Leader副本"></a>Leader副本</h4><ol>
+<li><strong>处理生产者请求</strong><ul>
+<li>写入消息到本地磁盘，更新<strong>LEO</strong></li>
+<li>更新<strong>分区高水位</strong>值<ul>
+<li>获取Leader副本所在Broker端保存的所有远程副本LEO值<code>{LEO-1, LEO-2,... LEO-n}</code></li>
+<li>获取Leader副本的LEO值：<code>currentLEO</code></li>
+<li>更新<strong><code>currentHW = min(currentLEO, LEO-1, LEO-2,... LEO-n)</code></strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>处理Follower副本拉取消息</strong><ul>
+<li>读取<strong>磁盘</strong>（或<strong>页缓存</strong>）中的消息数据</li>
+<li>使用Follower副本发送请求中的位移值来更新远程副本的<strong>LEO</strong>值</li>
+<li>更新<strong>分区高水位</strong>值（与上面一致）</li>
+</ul>
+</li>
+</ol>
+<h4 id="Follower副本"><a href="#Follower副本" class="headerlink" title="Follower副本"></a>Follower副本</h4><ol>
+<li><strong>从Leader拉取消息</strong><ul>
+<li>写入消息到本地磁盘</li>
+<li>更新<strong>LEO</strong></li>
+<li>更新<strong>高水位</strong>值<ul>
+<li>获取<strong>Leader发送</strong>的高水位值：<code>currentHW</code></li>
+<li>获取步骤2中更新的LEO值：<code>currentLEO</code></li>
+<li>更新高水位<strong><code>min(currentHW, currentLEO)</code></strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="副本同步样例"><a href="#副本同步样例" class="headerlink" title="副本同步样例"></a>副本同步样例</h3><p>主题是<strong>单分区两副本</strong>，首先是初始状态，所有值都是0<br><img src="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark-example-1.png" width=1000/></p>
+<p>当生产者向主题分区发送一条消息后，状态变更为<br><img src="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark-example-2.png" width=1000/></p>
+<p>此时，Leader副本成功将消息写入到<strong>本地磁盘</strong>，将<strong>LEO</strong>值更新为1（更新高水位值为0，并把结果发送给Follower副本）<br>Follower再次尝试从Leader拉取消息，此时有消息可以拉取，Follower副本也成功更新<strong>LEO</strong>为1（并将高水位更新为0）<br>此时，Leader副本和Follower副本的<strong>LEO</strong>都是1，但各自的<strong>高水位依然是0</strong>，需要等到<strong>下一轮</strong>的拉取中被更新<br><img src="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark-example-3.png" width=1000/></p>
+<p>在新一轮的拉取请求中，由于位移值为0的消息已经拉取成功，因此Follower副本这次拉取请求的位移值为<strong>1</strong><br>Leader副本接收到此请求后，更新<strong>远程副本LEO</strong>为<strong>1</strong>，然后更新<strong>Leader高水位</strong>值为<strong>1</strong><br>最后，<strong>Leader副本</strong>会将<strong>当前更新过的高水位</strong>值1发送给<strong>Follower副本</strong>，Follower副本接收到后，也会将自己的高水位值更新为<strong>1</strong><br><img src="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-high-watermark-example-4.png" width=1000/></p>
+<h2 id="Leader-Epoch"><a href="#Leader-Epoch" class="headerlink" title="Leader Epoch"></a>Leader Epoch</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ol>
+<li>上面的副本同步过程中，Follower副本的<strong>高水位更新</strong>需要<strong>一轮额外的拉取请求</strong>才能实现<ul>
+<li>如果扩展到<strong>多个Follower副本</strong>，可能需要<strong>多轮拉取请求</strong></li>
+<li>即<strong>Leader副本高水位更新</strong>和<strong>Follower副本高水位更新</strong>在<strong>时间</strong>上存在<strong>错配</strong><ul>
+<li>这种错配是很多<strong>数据丢失</strong>或<strong>数据不一致</strong>问题的根源</li>
+<li>因此，社区在<strong>0.11</strong>版本正式引入了<code>Leader Epoch</code>概念，来规避<strong>高水位更新错配</strong>导致的各种<strong>不一致</strong>问题</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Leader Epoch可以大致认为是<strong>Leader版本</strong>，由两部分数据组成<ul>
+<li><strong>Epoch</strong><ul>
+<li>一个<strong>单调递增</strong>的版本号</li>
+<li>每当<strong>副本领导权发生变更</strong>时，都会增加该版本号</li>
+<li>小版本号的Leader被认为是<strong>过期Leader</strong>，不能再行使Leader权利</li>
+</ul>
+</li>
+<li><strong>起始位移</strong>（Start Offset）<ul>
+<li><strong>Leader副本</strong>在该Epoch值上写入的<strong>首条消息</strong>的位移</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>两个Leader Epoch，<code>&lt;0,0&gt;</code>和<code>&lt;1,120&gt;</code><ul>
+<li><code>&lt;0,0&gt;</code>表示版本号为0，该版本的Leader从位移0开始保存消息，一共保存了120条消息</li>
+<li>之后Leader发生了<strong>变更</strong>，版本号增加到1，新版本的起始位移是120</li>
+</ul>
+</li>
+<li>Broker在<strong>内存</strong>中为每个<strong>分区</strong>都缓存<code>Leader Epoch</code>数据，同时还会<strong>定期</strong>地将这些数据<strong>持久化</strong>到一个<code>checkpoint</code>文件中<ul>
+<li>当<strong>Leader副本写入消息到磁盘</strong>时，Broker会尝试更新这部分缓存</li>
+<li>如果Leader是<strong>首次</strong>写入消息，那么Broker会向缓存中<strong>增加Leader Epoch条目</strong>，否则不做更新</li>
+<li>这样每次有Leader变更时，新的Leader副本会查询这部分缓存，取出对应的Leader Epoch的起始位移<ul>
+<li>然后进行相关的逻辑判断，避免<strong>数据丢失</strong>和<strong>数据不一致</strong>的情况</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="数据丢失"><a href="#数据丢失" class="headerlink" title="数据丢失"></a>数据丢失</h3><p><img src="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-leader-epoch-example-1.png" width=1000/></p>
+<ol>
+<li>开始时，副本A和副本B都处于正常状态，A是Leader副本</li>
+<li>某个的生产者（<strong>默认acks设置</strong>）向A发送了两条消息，A全部写入成功，Kafka会通知生产者说两条消息全部发送成功</li>
+<li>假设Leader和Follower都写入了这两条消息，而且Leader副本的高水位也更新了，但<em><strong>Follower副本的高水位还未更新</strong></em></li>
+<li>此时副本B所在的Broker<strong>宕机</strong>，当它<strong>重启</strong>回来后，副本B会执行<em><strong>日志截断!!</strong></em><ul>
+<li><strong>将LEO值调整为之前的高水位值!!</strong>，也就是1</li>
+<li>位移值为1的那条消息被副本B<strong>从磁盘中删除</strong>，此时副本B的<strong>底层磁盘文件</strong>中只保留1条消息，即位移为0的消息</li>
+</ul>
+</li>
+<li>副本B执行完日志截断操作后，开始从A拉取消息，此时恰好副本A所在的Broker也宕机了，副本B自然成为新的Leader<ul>
+<li>当A回来后，需要执行相同的<strong>日志截断</strong>操作，但<strong>不能超过新Leader</strong>，即<strong>将高水位调整与B相同的值</strong>，也就是1</li>
+<li>操作完成后，位移值为1的那条消息就从两个副本中被<strong>永远抹掉</strong>，造成了<strong>数据丢失</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="Leader-Epoch规避数据丢失"><a href="#Leader-Epoch规避数据丢失" class="headerlink" title="Leader Epoch规避数据丢失"></a>Leader Epoch规避数据丢失</h3><p><img src="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-leader-epoch-example-2.png" width=1000/></p>
+<ol>
+<li>Follower副本B重启后，需要向A发送一个特殊的请求去获取<strong>Leader的LEO值</strong>，该值为2</li>
+<li>当获知Leader LEO后，B发现该LEO值<strong>大于等于</strong>自己的LEO，而且缓存中也<strong>没有保存任何起始位移值&gt;2的Epoch条目</strong><ul>
+<li><strong>B无需执行任何日志截断操作</strong></li>
+<li>明显改进：<em><strong>副本是否执行日志截断不再依赖于高水位进行判断</strong></em></li>
+</ul>
+</li>
+<li>A宕机，B成为Leader，当A重启回来后，执行与B相同的逻辑判断，发现同样<strong>不需要执行日志截断</strong><ul>
+<li>至此位移值为1的那条消息在两个副本中<strong>均得到保留</strong></li>
+<li>后面生产者向B<strong>写入新消息</strong>后，副本B所在的Broker缓存中会生成新的Leader Epoch条目：<strong><code>[Epoch=1, Offset=2]</code></strong></li>
+</ul>
+</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ol>
+<li><strong>高水位</strong>在界定<strong>Kafka消息对外可见性</strong>以及实现<strong>副本机制</strong>方面起到非常重要的作用<ul>
+<li>但设计上的缺陷给Kafka留下了很多<strong>数据丢失</strong>或<strong>数据不一致</strong>的潜在风险</li>
+</ul>
+</li>
+<li>为此，社区引入了<strong><code>Leader Epoch</code></strong>机制，尝试规避这类风险，并且效果不错</li>
+</ol>
+<p>参考：<a href="http://zhongmingmao.me" target="_blank" rel="noopener">http://zhongmingmao.me</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Middleware/" rel="tag"># Middleware</a>
+              <a href="/tags/MQ/" rel="tag"># MQ</a>
+              <a href="/tags/Kafka/" rel="tag"># Kafka</a>
+              <a href="/tags/Stream/" rel="tag"># Stream</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/18/kafka-controller/" rel="prev" title="Kafka --  控制器">
+      <i class="fa fa-chevron-left"></i> Kafka --  控制器
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/09/23/kafka-topic-management/" rel="next" title="Kafka -- 主题管理">
+      Kafka -- 主题管理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#高水位"><span class="nav-number">1.</span> <span class="nav-text">高水位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#水位的定义"><span class="nav-number">1.1.</span> <span class="nav-text">水位的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高水位的作用"><span class="nav-number">1.2.</span> <span class="nav-text">高水位的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高水位的更新机制"><span class="nav-number">1.3.</span> <span class="nav-text">高水位的更新机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#远程副本"><span class="nav-number">1.3.1.</span> <span class="nav-text">远程副本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新时机"><span class="nav-number">1.3.2.</span> <span class="nav-text">更新时机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Leader副本"><span class="nav-number">1.3.3.</span> <span class="nav-text">Leader副本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Follower副本"><span class="nav-number">1.3.4.</span> <span class="nav-text">Follower副本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#副本同步样例"><span class="nav-number">1.4.</span> <span class="nav-text">副本同步样例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Leader-Epoch"><span class="nav-number">2.</span> <span class="nav-text">Leader Epoch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据丢失"><span class="nav-number">2.2.</span> <span class="nav-text">数据丢失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Leader-Epoch规避数据丢失"><span class="nav-number">2.3.</span> <span class="nav-text">Leader Epoch规避数据丢失</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Action"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Action</p>
+  <div class="site-description" itemprop="description">热爱你所坚持的，坚持你所热爱的</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Action8686" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Action8686" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:748173631@qq.com" title="E-Mail → mailto:748173631@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Action</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">251k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">3:48</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yijunworld.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一道面试题12345下列那个ip地址不在192.168.11.18&#x2F;30网段中？A) 192.168.11.17B）192.168.11.18C) 192.168.11.19D) 192.168.11.20 1.子网络掩码，作用 网络掩码”又叫“子网掩码”、“地址掩码”、“子网路遮罩”（subnet mask），它是一种用来指明一个IP地址的哪些位标识的是主机所在的网络地址以及哪些位标识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="子网络掩码">
+<meta property="og:url" content="http://yijunworld.com/2018/12/21/%E7%BD%91%E7%BB%9C-ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/index.html">
+<meta property="og:site_name" content="Action">
+<meta property="og:description" content="一道面试题12345下列那个ip地址不在192.168.11.18&#x2F;30网段中？A) 192.168.11.17B）192.168.11.18C) 192.168.11.19D) 192.168.11.20 1.子网络掩码，作用 网络掩码”又叫“子网掩码”、“地址掩码”、“子网路遮罩”（subnet mask），它是一种用来指明一个IP地址的哪些位标识的是主机所在的网络地址以及哪些位标识">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-21T15:09:21.000Z">
+<meta property="article:modified_time" content="2020-06-08T05:53:30.789Z">
+<meta property="article:author" content="Action">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="ip">
+<meta property="article:tag" content="Subnet Mask">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yijunworld.com/2018/12/21/%E7%BD%91%E7%BB%9C-ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>子网络掩码 | Action</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Action" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Action</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">锤子</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">39</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/zmjaction" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/12/21/%E7%BD%91%E7%BB%9C-ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          子网络掩码
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-21 23:09:21" itemprop="dateCreated datePublished" datetime="2018-12-21T23:09:21+08:00">2018-12-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">网络</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C/ip/" itemprop="url" rel="index"><span itemprop="name">ip</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C/ip/Subnet-Mask/" itemprop="url" rel="index"><span itemprop="name">Subnet Mask</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="一道面试题"><a href="#一道面试题" class="headerlink" title="一道面试题"></a>一道面试题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">下列那个ip地址不在192.168.11.18&#x2F;30网段中？</span><br><span class="line">A) 192.168.11.17</span><br><span class="line">B）192.168.11.18</span><br><span class="line">C) 192.168.11.19</span><br><span class="line">D) 192.168.11.20</span><br></pre></td></tr></table></figure>
+<h4 id="1-子网络掩码，作用"><a href="#1-子网络掩码，作用" class="headerlink" title="1.子网络掩码，作用"></a>1.子网络掩码，作用</h4><blockquote>
+<p>网络掩码”又叫“子网掩码”、“地址掩码”、“子网路遮罩”（subnet mask），它是一种用来指明一个<a href="https://zh.wikipedia.org/wiki/IP%E5%9C%B0%E5%9D%80" target="_blank" rel="noopener">IP地址</a>的哪些位标识的是主机所在的网络地址以及哪些位标识的是主机地址的<a href="https://zh.wikipedia.org/wiki/%E6%8E%A9%E7%A0%81" target="_blank" rel="noopener">位掩码</a>。</p>
+<p>来源：维基百科</p>
+</blockquote>
+<ul>
+<li>作用：就是将ip地址划分为网络地址和主机地址两个部分</li>
+</ul>
+<a id="more"></a>
+<h4 id="2-子网络掩码的分类"><a href="#2-子网络掩码的分类" class="headerlink" title="2.子网络掩码的分类"></a>2.子网络掩码的分类</h4><ol>
+<li><p>缺省子网络掩码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A类网络缺省子网掩码： 255.0.0.0，用CIDR表示为&#x2F;8</span><br><span class="line">B类网络缺省子网掩码： 255.255.0.0，用CIDR表示为&#x2F;16</span><br><span class="line">C类网络缺省子网掩码： 255.255.255.0，用CIDR表示为&#x2F;24</span><br></pre></td></tr></table></figure>
+<p>2.自定义子网络掩码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">将一个网络划分子网后，把原本的主机号位置的一部分给了子网号，余下的才是给了子网的主机号</span><br><span class="line">做子网划分后的IP地址：网络号＋子网号＋子网主机号</span><br><span class="line">如：192.168.1.100&#x2F;25，</span><br><span class="line">其子网掩码表示：255.255.255.128</span><br><span class="line">其子网掩码二进制表示:11111111.11111111.11111111.10000000</span><br><span class="line">意思就是将192.168.1.0这个网段的主机位的最高1位划分为了子网</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="3-子网个数"><a href="#3-子网个数" class="headerlink" title="3.子网个数"></a>3.子网个数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2n（n代表子网掩码往右移动的位数）</span><br></pre></td></tr></table></figure>
+<h4 id="4-子网可用地址个数"><a href="#4-子网可用地址个数" class="headerlink" title="4. 子网可用地址个数"></a>4. 子网可用地址个数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每个子网可用地址个数（IP_num）&#x3D; 2^(8-n)-2</span><br></pre></td></tr></table></figure>
+<h4 id="5-子网地址块大小"><a href="#5-子网地址块大小" class="headerlink" title="5.子网地址块大小"></a>5.子网地址块大小</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每个子网地址块大小（IP_block）&#x3D; 2^(8-n)</span><br></pre></td></tr></table></figure>
+<h4 id="用上边的实例举例说明"><a href="#用上边的实例举例说明" class="headerlink" title="用上边的实例举例说明"></a>用上边的实例举例说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">192.168.11.18&#x2F;30</span><br><span class="line">网络地址：192.168.11.18 子网掩码用CIDR表示为&#x2F;30</span><br><span class="line">1.计算子网数</span><br><span class="line">    因为子网掩码用CIDR表示为&#x2F;30，</span><br><span class="line">    所以子网络掩码二进制：11111111.11111111.11111111.11111100</span><br><span class="line">    故子网络掩码：255.255.255.252</span><br><span class="line">    我们对比一下发现：例子中的C类子网掩码的网络地址比标准的C类子网掩码多了6位，其实比标准的自网络掩码多出来的位数，就是网络位</span><br><span class="line">    有效子网:2^6 &#x3D; 64个</span><br><span class="line">2. 子网可用地址个数</span><br><span class="line">	0表示主机位</span><br><span class="line">	主机个数: 2^2</span><br><span class="line">	有效主机个数: 2^2 -2 &#x3D; 2个 </span><br><span class="line">	每个子网络中的有效主机个数是2个</span><br><span class="line">3.子网地址块大小</span><br><span class="line">	2^(8-n) &#x3D; 4</span><br><span class="line">	第一个子网的广播地址192.168.11.0。第二个子网的广播地址192.168.11.4。第三个广播地址：192.168.11.8。第四个广播地址：192.168.11.12，第五个广播地址：192.168.11.16，第五个广播地址：192.168.11.20,....</span><br><span class="line"></span><br><span class="line">4.计算子网ip地址范围</span><br><span class="line">	第一个子网的网络地址:192.168.11.0主机地址是192.168.11.1到192.168.11.3,广播地址:192.168.11.4</span><br><span class="line">	第二个子网的网络地址:192.168.11.8主机地址是192.168.11.9到192.168.11.10,广播地址:192.168.11.11</span><br><span class="line">	第三个子网的网络地址:192.168.11.12主机地址是192.168.11.13到192.168.11.14,广播地址:192.168.11.15</span><br><span class="line">	第四个子网的网络地址:192.168.11.16主机地址是192.168.11.17到192.168.11.18,广播地址:192.168.11.19</span><br><span class="line">	第五个子网的网络地址:192.168.11.20主机地址是192.168.11.21到192.168.11.22,广播地址:192.168.11.23</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://www.jianshu.com/p/f70fcec5fc92" target="_blank" rel="noopener">https://www.jianshu.com/p/f70fcec5fc92</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+              <a href="/tags/ip/" rel="tag"># ip</a>
+              <a href="/tags/Subnet-Mask/" rel="tag"># Subnet Mask</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/09/python-bz2/" rel="prev" title="No module named '_bz2'">
+      <i class="fa fa-chevron-left"></i> No module named '_bz2'
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/05/09/python-%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%A4%9A%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%BC%96%E7%A8%8B/" rel="next" title="python -- 多线程 多进程 线程池编程">
+      python -- 多线程 多进程 线程池编程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一道面试题"><span class="nav-number">1.</span> <span class="nav-text">一道面试题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-子网络掩码，作用"><span class="nav-number">2.</span> <span class="nav-text">1.子网络掩码，作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-子网络掩码的分类"><span class="nav-number">3.</span> <span class="nav-text">2.子网络掩码的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-子网个数"><span class="nav-number">4.</span> <span class="nav-text">3.子网个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-子网可用地址个数"><span class="nav-number">5.</span> <span class="nav-text">4. 子网可用地址个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-子网地址块大小"><span class="nav-number">6.</span> <span class="nav-text">5.子网地址块大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用上边的实例举例说明"><span class="nav-number">7.</span> <span class="nav-text">用上边的实例举例说明</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Action"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Action</p>
+  <div class="site-description" itemprop="description">热爱你所坚持的，坚持你所热爱的</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Action8686" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Action8686" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:748173631@qq.com" title="E-Mail → mailto:748173631@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Action</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">251k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">3:48</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

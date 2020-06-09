@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yijunworld.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1.collections中的abc MutableMapping是Mapping的子类 Mapping是Collection的子类 Collection是Sized，Iterable，Container的子类 dict被注册到MutableMapping中拥有了MutableMapping的方法，dict是鸭子类型，相当于MutableMapping的子类。  123456from collec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python -- set dict">
+<meta property="og:url" content="http://yijunworld.com/2019/06/15/python-set-dict/index.html">
+<meta property="og:site_name" content="Action">
+<meta property="og:description" content="1.collections中的abc MutableMapping是Mapping的子类 Mapping是Collection的子类 Collection是Sized，Iterable，Container的子类 dict被注册到MutableMapping中拥有了MutableMapping的方法，dict是鸭子类型，相当于MutableMapping的子类。  123456from collec">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-15T01:10:23.000Z">
+<meta property="article:modified_time" content="2020-06-08T05:53:30.789Z">
+<meta property="article:author" content="Action">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="dict">
+<meta property="article:tag" content="set">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yijunworld.com/2019/06/15/python-set-dict/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>python -- set dict | Action</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Action" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Action</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">锤子</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">39</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/zmjaction" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/06/15/python-set-dict/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python -- set dict
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-15 09:10:23" itemprop="dateCreated datePublished" datetime="2019-06-15T09:10:23+08:00">2019-06-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="1-collections中的abc"><a href="#1-collections中的abc" class="headerlink" title="1.collections中的abc"></a>1.collections中的abc</h3><ul>
+<li>MutableMapping是Mapping的子类</li>
+<li>Mapping是Collection的子类</li>
+<li>Collection是Sized，Iterable，Container的子类</li>
+<li>dict被注册到MutableMapping中拥有了MutableMapping的方法，dict是鸭子类型，相当于MutableMapping的子类。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections.abc <span class="keyword">import</span> MutableMapping</span><br><span class="line"></span><br><span class="line"><span class="comment"># dict属于MutableMapping类型</span></span><br><span class="line"></span><br><span class="line">a = &#123;&#125;</span><br><span class="line">print(isinstance(a, MutableMapping))  <span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="2-dict的常见用法"><a href="#2-dict的常见用法" class="headerlink" title="2.dict的常见用法"></a>2.dict的常见用法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="string">"1"</span>:&#123;<span class="string">"a"</span>:<span class="string">"aa"</span>&#125;,</span><br><span class="line">     <span class="string">"2"</span>:&#123;<span class="string">"b"</span>:<span class="string">"bb"</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清空字典</span></span><br><span class="line">a.clear()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 浅拷贝字典 浅拷贝虽然可以正常赋值，但是如果 my_dopy_dict 中的值进行了改变，则 a 中的值也会进行对应的改变</span></span><br><span class="line">my_dopy_dict = a.copy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 深拷贝 深拷贝则是实实在在的在内存当中声明了一个新的变量</span></span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">new_dict = copy.deepcopy(a)</span><br><span class="line"></span><br><span class="line"><span class="comment"># get函数 dict.get(要查找的key,如果没找到对应key的内容返回的数据)</span></span><br><span class="line">print(a.get(<span class="string">"3"</span>,&#123;<span class="number">1</span>:<span class="string">"3"</span>&#125;)) <span class="comment"># &#123;1: '3'&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dict.fromkeys() 函数用于创建一个新字典，以序列 seq 中元素做字典的键 seq可以是可迭代的，value 为字典所有键对应的初始值。</span></span><br><span class="line">my_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">my_new_dict = dict.fromkeys(my_list, &#123;<span class="string">"222"</span>:<span class="string">"3434"</span>&#125;) <span class="comment">#&#123;1: &#123;'222': '3434'&#125;, 2: &#123;'222': '3434'&#125;, 3: &#123;'222': '3434'&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># setdefault() 函数和 get()方法 类似,</span></span><br><span class="line"><span class="comment"># 如果键不存在于字典中，将会添加键并将值设为默认值。</span></span><br><span class="line"><span class="comment"># 如果存在，则将会返回该key对应的value</span></span><br><span class="line">a.setdefault(<span class="string">"3"</span>, <span class="string">"cc"</span>) <span class="comment"># a= &#123;'1': &#123;'a': 'aa'&#125;, '2': &#123;'b': 'bb'&#125;, '3': 'cc'&#125;</span></span><br><span class="line">print(a.setdefault(<span class="string">"2"</span>, <span class="string">"cc"</span>)) <span class="comment"># 返回&#123;'b': 'bb'&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># update() 函数是合并两个字典：把字典dict2的键/值对更新到dict里。</span></span><br><span class="line"><span class="comment"># 如果字典b中有与a相同的key，则会把a中的key对应的value进行更新</span></span><br><span class="line"><span class="comment"># 如果字典b中有a中没有的key，则a会将未有的key与value添加进去</span></span><br><span class="line">b = &#123;<span class="string">"3"</span>: <span class="string">"cc"</span>, <span class="string">"2"</span>: <span class="string">"dd"</span>&#125;</span><br><span class="line">a.update(b)</span><br><span class="line">print(a) <span class="comment"># &#123;'1': &#123;'a': 'aa'&#125;, '2': 'dd', '3': 'cc'&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-dict的子类"><a href="#3-dict的子类" class="headerlink" title="3.dict的子类"></a>3.dict的子类</h3><ul>
+<li>不可以去继承dict类，由于dict实现方式是C语言实现（没有重写方法的概念），所以重写dict中的方法是无效的</li>
+<li>可以去继承UserDict类，UserDict类是由python语言自己实现的可以重写</li>
+<li>我们也可以不去继承dict类而是去使用dict的子类defaultdict，由于defaultdict构造函数需要传入一个工厂所以我们传入dict来构造defaultdict</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mydict</span><span class="params">(dict)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setitem__</span><span class="params">(self, key, value)</span>:</span></span><br><span class="line">        super().__setitem__(key, value * <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">my_dict = Mydict(one=<span class="number">1</span>)</span><br><span class="line">print(my_dict)  <span class="comment"># &#123;'one': 1&#125; 不可以修改</span></span><br><span class="line">my_dict[<span class="string">"one"</span>] = <span class="number">1</span></span><br><span class="line">print(my_dict)   <span class="comment"># &#123;'one': 2&#125; 可以像C语言一样修改</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> UserDict</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mydict</span><span class="params">(UserDict)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setitem__</span><span class="params">(self, key, value)</span>:</span></span><br><span class="line">        super().__setitem__(key, value * <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">my_dict = Mydict(one=<span class="number">3</span>)</span><br><span class="line">print(my_dict)  <span class="comment"># &#123;'one': 15&#125; 调用重写的__setitem__</span></span><br><span class="line">my_dict[<span class="string">"one"</span>] = <span class="number">4</span></span><br><span class="line">print(my_dict)  <span class="comment"># &#123;'one': 20&#125; 调用重写的__setitem__</span></span><br></pre></td></tr></table></figure>
+<h3 id="set和frozenset"><a href="#set和frozenset" class="headerlink" title="set和frozenset"></a>set和frozenset</h3><ul>
+<li>set：无序，不重复，可修改集合</li>
+<li><p>frozenset：无序，不重复，不可修改集合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = set(<span class="string">'abcdee'</span>)</span><br><span class="line">a.add(<span class="string">'f'</span>)</span><br><span class="line">print(a)    <span class="comment"># &#123;'a', 'd', 'c', 'b', 'e', 'f'&#125;</span></span><br><span class="line">another_set = set(<span class="string">'defgh'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3></li>
+</ul>
+<p>a.update(another_set)<br>print(a)    # {‘a’, ‘d’, ‘c’, ‘b’, ‘e’, ‘g’, ‘f’, ‘h’}</p>
+<h3 id="集合的差集"><a href="#集合的差集" class="headerlink" title="集合的差集"></a>集合的差集</h3><p>re_set = a.difference(another_set)</p>
+<h3 id="减法实现于ior魔法函数"><a href="#减法实现于ior魔法函数" class="headerlink" title="减法实现于ior魔法函数"></a>减法实现于<strong>ior</strong>魔法函数</h3><p>re_set2 = a - another_set</p>
+<h3 id="集合的交集-amp"><a href="#集合的交集-amp" class="headerlink" title="集合的交集&amp;"></a>集合的交集&amp;</h3><p>re_set3 = a &amp; another_set</p>
+<h3 id="集合的并集"><a href="#集合的并集" class="headerlink" title="集合的并集|"></a>集合的并集|</h3><p>re_set4 = a | another_set<br>print(re_set)   # {‘c’, ‘a’, ‘b’}<br>print(re_set2)  # {‘c’, ‘a’, ‘b’}<br>print(re_set3)  # {‘d’, ‘e’, ‘g’, ‘f’, ‘h’}<br>print(re_set4)  # {‘a’, ‘d’, ‘c’, ‘b’, ‘e’, ‘g’, ‘f’, ‘h’}</p>
+<h3 id="也可以用if-in判断（实现于contains魔法函数）"><a href="#也可以用if-in判断（实现于contains魔法函数）" class="headerlink" title="也可以用if in判断（实现于contains魔法函数）"></a>也可以用if in判断（实现于<strong>contains</strong>魔法函数）</h3><p>if ‘a’ in re_set:<br>    print(‘a in re_set’)    # a in re_set<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">### dict和set实现原理</span></span><br><span class="line"></span><br><span class="line">- set和dict的查询性能远远好于list</span><br><span class="line">- list会随数据量的增大而增大，set和dict不会</span><br><span class="line"></span><br><span class="line">  dist和set使用哈希表存储：</span><br><span class="line"></span><br><span class="line">![](https://img2018.cnblogs.com/blog/<span class="number">842724</span>/<span class="number">201912</span>/<span class="number">842724</span><span class="number">-20191221153146795</span><span class="number">-406100300.</span>png)</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> dict的key以及set的value都必须是可以hash的</span><br><span class="line"><span class="number">2.</span> 什么是可以hash：不可变对象：str,frozenset,tuple以及自己实现了__hash__的类</span><br><span class="line"><span class="number">3.</span> dict的内存花销大，但查询速度快，自定义的对象或python内部的对象都是用dict包装的</span><br><span class="line"><span class="number">4.</span> dict的存储顺序和元素添加顺序有关</span><br><span class="line"><span class="number">5.</span> dict在添加数据时可能改变已有数据的顺序</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/dict/" rel="tag"># dict</a>
+              <a href="/tags/set/" rel="tag"># set</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/06/12/python-kafka/" rel="prev" title="python -- 序列类">
+      <i class="fa fa-chevron-left"></i> python -- 序列类
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/06/20/python-%E5%AF%B9%E8%B1%A1%E5%BC%95%E7%94%A8-%E5%8F%AF%E5%8F%98%E6%80%A7-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" rel="next" title="python -- 对象引用-可变性-垃圾回收">
+      python -- 对象引用-可变性-垃圾回收 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-collections中的abc"><span class="nav-number">1.</span> <span class="nav-text">1.collections中的abc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-dict的常见用法"><span class="nav-number">2.</span> <span class="nav-text">2.dict的常见用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-dict的子类"><span class="nav-number">3.</span> <span class="nav-text">3.dict的子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set和frozenset"><span class="nav-number">4.</span> <span class="nav-text">set和frozenset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加数据"><span class="nav-number">5.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合的差集"><span class="nav-number">6.</span> <span class="nav-text">集合的差集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减法实现于ior魔法函数"><span class="nav-number">7.</span> <span class="nav-text">减法实现于ior魔法函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合的交集-amp"><span class="nav-number">8.</span> <span class="nav-text">集合的交集&amp;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合的并集"><span class="nav-number">9.</span> <span class="nav-text">集合的并集|</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#也可以用if-in判断（实现于contains魔法函数）"><span class="nav-number">10.</span> <span class="nav-text">也可以用if in判断（实现于contains魔法函数）</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Action"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Action</p>
+  <div class="site-description" itemprop="description">热爱你所坚持的，坚持你所热爱的</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Action8686" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Action8686" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:748173631@qq.com" title="E-Mail → mailto:748173631@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Action</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">251k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">3:48</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

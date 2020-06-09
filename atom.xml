@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Action</title>
+  <icon>http://yijunworld.com/icon.png</icon>
+  <subtitle>锤子</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yijunworld.com/"/>
+  <updated>2020-06-08T05:53:30.769Z</updated>
+  <id>http://yijunworld.com/</id>
+  
+  <author>
+    <name>Action</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>kafka-LEO-HW</title>
+    <link href="http://yijunworld.com/2020/06/08/kafka-LEO-HW/"/>
+    <id>http://yijunworld.com/2020/06/08/kafka-LEO-HW/</id>
+    <published>2020-06-08T05:53:30.769Z</published>
+    <updated>2020-06-08T05:53:30.769Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;LEO(log end offset) 和HW(Hight watemark)概念 简单解释&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>postgresql -- 模糊查询</title>
+    <link href="http://yijunworld.com/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/"/>
+    <id>http://yijunworld.com/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/</id>
+    <published>2020-06-03T11:39:43.000Z</published>
+    <updated>2020-06-08T05:55:37.663Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;like-和-not-like&quot;&gt;&lt;a href=&quot;#like-和-not-like&quot; class=&quot;headerlink&quot; title=&quot;like  和 not like&quot;&gt;&lt;/a&gt;&lt;code&gt;like&lt;/code&gt;  和 &lt;code&gt;not
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据库 - postgresql - 模糊查询" scheme="http://yijunworld.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-postgresql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/"/>
+    
+    
+      <category term="数据库 - postgresql - like - not like" scheme="http://yijunworld.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93-postgresql-like-not-like/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>postgresql -- 模糊查询</title>
+    <link href="http://yijunworld.com/2020/06/03/%E6%95%B0%E6%8D%AE%E5%BA%93-PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
+    <id>http://yijunworld.com/2020/06/03/%E6%95%B0%E6%8D%AE%E5%BA%93-PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/</id>
+    <published>2020-06-03T11:39:43.000Z</published>
+    <updated>2020-06-08T05:56:47.290Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;窗口函数&quot;&gt;&lt;a href=&quot;#窗口函数&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据库 - postgresql - 窗口函数" scheme="http://yijunworld.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-postgresql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
+    
+    
+      <category term="数据库 - postgresql - 窗口函数" scheme="http://yijunworld.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93-postgresql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>零拷贝</title>
+    <link href="http://yijunworld.com/2020/05/22/%E9%9B%B6%E6%8B%B7%E8%B4%9D%EF%BC%88zero%20copy%EF%BC%89/"/>
+    <id>http://yijunworld.com/2020/05/22/%E9%9B%B6%E6%8B%B7%E8%B4%9D%EF%BC%88zero%20copy%EF%BC%89/</id>
+    <published>2020-05-22T15:17:58.000Z</published>
+    <updated>2020-06-08T05:53:30.789Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;文件传输到网络的公共数据路径&quot;&gt;&lt;a href=&quot;#文件传输到网络的公共数据路径&quot; class=&quot;headerlink&quot; title=&quot;文件传输到网络的公共数据路径&quot;&gt;&lt;/a&gt;文件传输到网络的公共数据路径&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;操作系统将数据从磁盘读入到内核空间的页缓存（page cache）&lt;/li&gt;
+&lt;li&gt;应用程序将数据从内核空间读取到用户空间缓存中（因为应用程序无法直接操纵内核空间，只能操作用户空间）&lt;/li&gt;
+&lt;li&gt;应用程序将数据写回到内核空间到socket缓存中（要发送到网络中，所以需要写到socket缓存中）&lt;/li&gt;
+&lt;li&gt;操作系统将数据从socket缓冲区复制到网卡缓冲区，以便将数据经网络发出&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
+    
+      <category term="零拷贝" scheme="http://yijunworld.com/tags/%E9%9B%B6%E6%8B%B7%E8%B4%9D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>postman -- 上传文件</title>
+    <link href="http://yijunworld.com/2020/05/11/Postman-upload_file/"/>
+    <id>http://yijunworld.com/2020/05/11/Postman-upload_file/</id>
+    <published>2020-05-10T17:01:23.000Z</published>
+    <updated>2020-06-08T05:53:30.769Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-选择post请求&quot;&gt;&lt;a href=&quot;#1-选择post请求&quot; class=&quot;headerlink&quot; title=&quot;1.选择post请求&quot;&gt;&lt;/a&gt;1.选择post请求&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;http:&amp;#x2F;&amp;#x2F;127.0.0.1:9810&amp;#x2F;data&amp;#x2F;site_upload_file&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&quot;http://qa7i5mbcj.bkt.clouddn.com/post.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="postman" scheme="http://yijunworld.com/categories/postman/"/>
+    
+    
+      <category term="postman" scheme="http://yijunworld.com/tags/postman/"/>
+    
+      <category term="上传文件" scheme="http://yijunworld.com/tags/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nc 命令使用</title>
+    <link href="http://yijunworld.com/2020/05/10/nc%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yijunworld.com/2020/05/10/nc%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-05-09T19:30:40.000Z</published>
+    <updated>2020-06-08T05:53:30.789Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;什么是nc&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;nc是netcat简称&lt;/p&gt;
+&lt;p&gt;1.实现任意TCP/UDP端口的监听&lt;/p&gt;
+&lt;p&gt;2.与telnet类似&lt;/p&gt;
+&lt;p&gt;3.端口的扫描&lt;/p&gt;
+&lt;p&gt;4.机器之间传输文件&lt;/p&gt;
+&lt;p&gt;5.机器之间网络测速 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;语法格式：&lt;/strong&gt;nc [参数]&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-l: 作为监听，开启一个port监听用户的联机&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-u: 不适用tcp而是使用udp作为连接的数据包状态&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yijunworld.com/categories/Linux/"/>
+    
+      <category term="nc" scheme="http://yijunworld.com/categories/Linux/nc/"/>
+    
+    
+      <category term="Linux" scheme="http://yijunworld.com/tags/Linux/"/>
+    
+      <category term="nc" scheme="http://yijunworld.com/tags/nc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pyminizip -- 压缩加密文件 简单使用</title>
+    <link href="http://yijunworld.com/2020/05/09/python-compress-file/"/>
+    <id>http://yijunworld.com/2020/05/09/python-compress-file/</id>
+    <published>2020-05-09T15:08:32.000Z</published>
+    <updated>2020-06-08T05:53:30.789Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;使用pyminizip压缩加密文件&quot;&gt;&lt;a href=&quot;#使用pyminizip压缩加密文件&quot; class=&quot;headerlink&quot; title=&quot;使用pyminizip压缩加密文件&quot;&gt;&lt;/a&gt;使用pyminizip压缩加密文件&lt;/h3&gt;&lt;figure
+        
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yijunworld.com/categories/python/"/>
+    
+      <category term="pyminizip" scheme="http://yijunworld.com/categories/python/pyminizip/"/>
+    
+    
+      <category term="python" scheme="http://yijunworld.com/tags/python/"/>
+    
+      <category term="pyminizip" scheme="http://yijunworld.com/tags/pyminizip/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>io -- 多路复用 理解</title>
+    <link href="http://yijunworld.com/2020/05/09/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/"/>
+    <id>http://yijunworld.com/2020/05/09/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/</id>
+    <published>2020-05-08T20:01:23.000Z</published>
+    <updated>2020-06-08T05:53:30.789Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;不通过浏览器访问百度主页&quot;&gt;&lt;a href=&quot;#不通过浏览器访问百度主页&quot; class=&quot;headerlink&quot; title=&quot;不通过浏览器访问百度主页&quot;&gt;&lt;/a&gt;不通过浏览器访问百度主页&lt;/h5&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;exec&lt;/span&gt; 8&amp;lt;&amp;gt; /dev/tcp/www.baidu.com/80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 8文件描述符 可以理解为一个对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# &amp;lt;&amp;gt; 输入输出流&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 以读写方式打开/dev/tcp，并指定服务器名为:www.baidu.com,端口号为：80,指定描述符为8 要注意的是 /dev/tcp本身是不存在的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# /dev/tcp  类似于发出了一个socket调用，建立一个socket连接，读写这个文件就相当于在这个socket连接中传输数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; /proc/$$/fd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# $$ 当前解释器的进程&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="io" scheme="http://yijunworld.com/categories/io/"/>
+    
+      <category term="多路复用" scheme="http://yijunworld.com/categories/io/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/"/>
+    
+      <category term="TCP/IP" scheme="http://yijunworld.com/categories/io/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/TCP-IP/"/>
+    
+    
+      <category term="io" scheme="http://yijunworld.com/tags/io/"/>
+    
+      <category term="多路复用" scheme="http://yijunworld.com/tags/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/"/>
+    
+      <category term="TCP/IP" scheme="http://yijunworld.com/tags/TCP-IP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>postgresql -- case-- case when</title>
+    <link href="http://yijunworld.com/2020/05/01/PostgreSql-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%EF%BC%9ACASE%E3%80%81CASE%20WHEN/"/>
+    <id>http://yijunworld.com/2020/05/01/PostgreSql-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%EF%BC%9ACASE%E3%80%81CASE%20WHEN/</id>
+    <published>2020-05-01T15:39:41.000Z</published>
+    <updated>2020-06-08T05:54:47.498Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;1-CASE条件判断&quot;&gt;&lt;a href=&quot;#1-CASE条件判断&quot; class=&quot;headerlink&quot; title=&quot;1. CASE条件判断&quot;&gt;&lt;/a&gt;1. &lt;code&gt;CASE&lt;/code&gt;条件判断&lt;/h4&gt;&lt;figure class=&quot;highlight
+        
+      
+    
+    </summary>
+    
+    
+      <category term="postgresql" scheme="http://yijunworld.com/categories/postgresql/"/>
+    
+      <category term="case" scheme="http://yijunworld.com/categories/postgresql/case/"/>
+    
+    
+      <category term="postgresql" scheme="http://yijunworld.com/tags/postgresql/"/>
+    
+      <category term="case" scheme="http://yijunworld.com/tags/case/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux -- 中man 1 和 man 2 ...</title>
+    <link href="http://yijunworld.com/2020/03/09/Linux%E4%B8%ADman1-man2-man3%E5%8C%BA%E5%88%AB/"/>
+    <id>http://yijunworld.com/2020/03/09/Linux%E4%B8%ADman1-man2-man3%E5%8C%BA%E5%88%AB/</id>
+    <published>2020-03-08T18:01:32.000Z</published>
+    <updated>2020-06-08T05:53:30.769Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yijunworld.com/categories/Linux/"/>
+    
+      <category term="man" scheme="http://yijunworld.com/categories/Linux/man/"/>
+    
+    
+      <category term="Linux" scheme="http://yijunworld.com/tags/Linux/"/>
+    
+      <category term="man" scheme="http://yijunworld.com/tags/man/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka -- 调优</title>
+    <link href="http://yijunworld.com/2019/09/30/kafka-tuning/"/>
+    <id>http://yijunworld.com/2019/09/30/kafka-tuning/</id>
+    <published>2019-09-30T10:47:22.000Z</published>
+    <updated>2020-06-08T05:54:47.498Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;调优目标&quot;&gt;&lt;a href=&quot;#调优目标&quot; class=&quot;headerlink&quot; title=&quot;调优目标&quot;&gt;&lt;/a&gt;调优目标&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;主要目标：&lt;strong&gt;高吞吐量&lt;/strong&gt;、&lt;strong&gt;低延时&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;吞吐量&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;即&lt;strong&gt;TPS&lt;/strong&gt;，指的是Broker端进程或Client端应用程序每秒能处理的&lt;strong&gt;字节数&lt;/strong&gt;或&lt;strong&gt;消息数&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;延时&lt;/strong&gt;，可以有两种理解&lt;ul&gt;
+&lt;li&gt;从&lt;strong&gt;Producer发送消息&lt;/strong&gt;到&lt;strong&gt;Broker持久化&lt;/strong&gt;完成之间的时间间隔&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;端到端的延时&lt;/strong&gt;，即从&lt;strong&gt;Producer发送消息&lt;/strong&gt;到&lt;strong&gt;Consumer成功消费该消息&lt;/strong&gt;的总时长&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
+    
+      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka -- 监控</title>
+    <link href="http://yijunworld.com/2019/09/29/kafka-monitor/"/>
+    <id>http://yijunworld.com/2019/09/29/kafka-monitor/</id>
+    <published>2019-09-29T11:56:03.000Z</published>
+    <updated>2020-06-08T05:53:30.779Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;主机监控&quot;&gt;&lt;a href=&quot;#主机监控&quot; class=&quot;headerlink&quot; title=&quot;主机监控&quot;&gt;&lt;/a&gt;主机监控&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;主机监控：监控Kafka集群Broker所在的节点机器的性能&lt;/li&gt;
+&lt;li&gt;常见的主机监控指标&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;机器负载&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CPU使用率&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内存使用率&lt;/strong&gt;，包括空闲内存和已使用内存&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;磁盘IO使用率&lt;/strong&gt;，包括读使用率和写使用率&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;网络IO使用率&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TCP连接数&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;打开文件数&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;inode使用情况&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
+    
+      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka -- KafkaAdminClient</title>
+    <link href="http://yijunworld.com/2019/09/28/kafka-admin-client/"/>
+    <id>http://yijunworld.com/2019/09/28/kafka-admin-client/</id>
+    <published>2019-09-28T01:15:51.000Z</published>
+    <updated>2020-06-08T05:53:30.769Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;命令行脚本只能运行在控制台上，在应用程序、运维框架或者监控平台中集成它们，会非常困难&lt;/li&gt;
+&lt;li&gt;很多命令行脚本都是通过连接&lt;strong&gt;ZK&lt;/strong&gt;来提供服务的，这会存在潜在的问题，即绕过Kafka的安全设置&lt;/li&gt;
+&lt;li&gt;运行这些命令行脚本需要使用Kafka内部的类实现，也就是Kafka&lt;strong&gt;服务端&lt;/strong&gt;的代码&lt;ul&gt;
+&lt;li&gt;社区是希望用户使用Kafka&lt;strong&gt;客户端&lt;/strong&gt;代码，通过&lt;strong&gt;现有的请求机制&lt;/strong&gt;来运维管理集群&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;基于上述原因，社区于&lt;strong&gt;0.11&lt;/strong&gt;版本正式推出&lt;strong&gt;Java客户端版的KafkaAdminClient&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
+    
+      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka -- 常用脚本</title>
+    <link href="http://yijunworld.com/2019/09/27/kafka-shell/"/>
+    <id>http://yijunworld.com/2019/09/27/kafka-shell/</id>
+    <published>2019-09-27T01:49:25.000Z</published>
+    <updated>2020-06-08T05:53:30.779Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;脚本列表&quot;&gt;&lt;a href=&quot;#脚本列表&quot; class=&quot;headerlink&quot; title=&quot;脚本列表&quot;&gt;&lt;/a&gt;脚本列表&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;connect-distributed              kafka-consumer-perf-test         kafka-reassign-partitions        kafka-verifiable-producer&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;connect-standalone               kafka-delegation-tokens          kafka-replica-verification       trogdor&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kafka-acls                       kafka-delete-records             kafka-run-class                  zookeeper-security-migration&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kafka-broker-api-versions        kafka-dump-log                   kafka-server-start               zookeeper-server-start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kafka-configs                    kafka-log-dirs                   kafka-server-stop                zookeeper-server-stop&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kafka-console-consumer           kafka-mirror-maker               kafka-streams-application-reset  zookeeper-shell&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kafka-console-producer           kafka-preferred-replica-election kafka-topics&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kafka-consumer-groups            kafka-producer-perf-test         kafka-verifiable-consumer&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
+    
+      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka -- 重设消费者组位移</title>
+    <link href="http://yijunworld.com/2019/09/26/kafka-reset-consumer-group-offset/"/>
+    <id>http://yijunworld.com/2019/09/26/kafka-reset-consumer-group-offset/</id>
+    <published>2019-09-26T11:42:21.000Z</published>
+    <updated>2020-06-08T05:53:30.779Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Kafka和传统的消息引擎在设计上有很大的区别，Kafka消费者读取消息是可以&lt;strong&gt;重演&lt;/strong&gt;的&lt;/li&gt;
+&lt;li&gt;像RabbitMQ和ActiveMQ等传统消息中间件，处理和响应消息的方式是&lt;strong&gt;破坏性&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;一旦消息被成功处理，就会从Broker上被&lt;strong&gt;删除&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Kafka是基于&lt;strong&gt;日志&lt;/strong&gt;结构（Log-based）的消息引擎&lt;ul&gt;
+&lt;li&gt;消费者在消费消息时，仅仅是从磁盘文件中读取数据而已，是&lt;strong&gt;只读&lt;/strong&gt;操作，因为消费者&lt;strong&gt;不会删除&lt;/strong&gt;消息数据&lt;/li&gt;
+&lt;li&gt;同时，由于位移数据是由消费者控制的，因此能够很容易地修改位移值，实现&lt;strong&gt;重复消费&lt;/strong&gt;历史数据的功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Kafka Or 传统消息中间件&lt;ul&gt;
+&lt;li&gt;传统消息中间件：消息处理逻辑非常复杂，处理代价高、又&lt;strong&gt;不关心消息之间的顺序&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Kafka：需要&lt;strong&gt;较高的吞吐量&lt;/strong&gt;、但&lt;strong&gt;每条消息的处理时间很短&lt;/strong&gt;，又&lt;strong&gt;关心消息的顺序&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
+    
+      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka -- 动态配置</title>
+    <link href="http://yijunworld.com/2019/09/25/kafka-dynamic-config/"/>
+    <id>http://yijunworld.com/2019/09/25/kafka-dynamic-config/</id>
+    <published>2019-09-25T01:58:18.000Z</published>
+    <updated>2020-06-08T05:54:47.498Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Kafka安装目录的config路径下，有&lt;code&gt;server.properties&lt;/code&gt;文件&lt;ul&gt;
+&lt;li&gt;通常情况下，会指定&lt;code&gt;server.properties&lt;/code&gt;来启动Broker&lt;/li&gt;
+&lt;li&gt;如果要设置Broker端的任何参数，必须要显式修改&lt;code&gt;server.properties&lt;/code&gt;，然后重启Broker，让参数生效&lt;/li&gt;
+&lt;li&gt;但在生产环境，不能随意重启Broker，因此需要能够&lt;strong&gt;动态&lt;/strong&gt;修改Broker端参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;社区于&lt;strong&gt;1.1.0&lt;/strong&gt;正式引入了&lt;strong&gt;动态Broker参数&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;动态指的是修改参数后，无需重启Broker就能立即生效，而之前&lt;code&gt;server.properties&lt;/code&gt;中配置的参数称为&lt;strong&gt;静态参数&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;并非所有Broker端参数都可以动态调整的，官方文档中有&lt;code&gt;Dynamic Update Mode&lt;/code&gt;一列&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;read-only&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;与原来的参数行为一样，只有重启Broker，才能令修改生效&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;per-broker&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;动态参数&lt;/strong&gt;，修改之后，只会在&lt;strong&gt;对应的Broker&lt;/strong&gt;上生效&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;cluster-wide&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;动态参数&lt;/strong&gt;，修改之后，会在&lt;strong&gt;整个集群&lt;/strong&gt;范围内生效&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
+    
+      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka -- 主题管理</title>
+    <link href="http://yijunworld.com/2019/09/23/kafka-topic-management/"/>
+    <id>http://yijunworld.com/2019/09/23/kafka-topic-management/</id>
+    <published>2019-09-22T17:27:38.000Z</published>
+    <updated>2020-06-08T05:54:47.498Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;日常管理&quot;&gt;&lt;a href=&quot;#日常管理&quot; class=&quot;headerlink&quot; title=&quot;日常管理&quot;&gt;&lt;/a&gt;日常管理&lt;/h2&gt;&lt;h3 id=&quot;创建主题&quot;&gt;&lt;a href=&quot;#创建主题&quot; class=&quot;headerlink&quot; title=&quot;创建主题&quot;&gt;&lt;/a&gt;创建主题&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ bin&amp;#x2F;kafka-topics.sh --bootstrap-server localhost:9092 --create --topic t1 --partitions 1 --replication-factor 1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;从Kafka &lt;strong&gt;2.2&lt;/strong&gt;版本开始，推荐使用&lt;code&gt;--bootstrap-server&lt;/code&gt;代替&lt;code&gt;--zookeeper&lt;/code&gt;（标记为&lt;strong&gt;已过期&lt;/strong&gt;）&lt;/li&gt;
+&lt;li&gt;原因&lt;ul&gt;
+&lt;li&gt;使用&lt;code&gt;--zookeeper&lt;/code&gt;会绕过Kafka的&lt;strong&gt;安全体系&lt;/strong&gt;，不受认证体系的约束&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;--bootstrap-server&lt;/code&gt;与集群交互是&lt;strong&gt;未来的趋势&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
+    
+      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka -- 高水位 + Leader Epoch</title>
+    <link href="http://yijunworld.com/2019/09/20/kafka-high-watermark-leader-epoch/"/>
+    <id>http://yijunworld.com/2019/09/20/kafka-high-watermark-leader-epoch/</id>
+    <published>2019-09-20T02:22:43.000Z</published>
+    <updated>2020-06-08T05:53:30.779Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;高水位&quot;&gt;&lt;a href=&quot;#高水位&quot; class=&quot;headerlink&quot; title=&quot;高水位&quot;&gt;&lt;/a&gt;高水位&lt;/h2&gt;&lt;h3 id=&quot;水位的定义&quot;&gt;&lt;a href=&quot;#水位的定义&quot; class=&quot;headerlink&quot; title=&quot;水位的定义&quot;&gt;&lt;/a&gt;水位的定义&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-watermark.png&quot; width=1000/&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
+    
+      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka --  控制器</title>
+    <link href="http://yijunworld.com/2019/09/18/kafka-controller/"/>
+    <id>http://yijunworld.com/2019/09/18/kafka-controller/</id>
+    <published>2019-09-18T10:22:52.000Z</published>
+    <updated>2020-06-08T05:53:30.779Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;控制器&quot;&gt;&lt;a href=&quot;#控制器&quot; class=&quot;headerlink&quot; title=&quot;控制器&quot;&gt;&lt;/a&gt;控制器&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;控制器&lt;/strong&gt;（Controller）是Kafka的&lt;strong&gt;核心组件&lt;/strong&gt;，主要作用是在&lt;strong&gt;ZK&lt;/strong&gt;的帮助下&lt;strong&gt;管理和协调整个Kafka集群&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;集群中&lt;strong&gt;任一&lt;/strong&gt;Broker都能充当控制器的角色，但在运行过程中，&lt;strong&gt;只能有一个Broker成为控制器&lt;/strong&gt;，行使管理和协调的职责&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[zk: localhost:2181(CONNECTED) 1] get &amp;#x2F;controller&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;quot;version&amp;quot;:1,&amp;quot;brokerid&amp;quot;:0,&amp;quot;timestamp&amp;quot;:&amp;quot;1571311742367&amp;quot;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cZxid &amp;#x3D; 0xd68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ctime &amp;#x3D; Thu Oct 17 19:29:02 CST 2019&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mZxid &amp;#x3D; 0xd68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mtime &amp;#x3D; Thu Oct 17 19:29:02 CST 2019&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pZxid &amp;#x3D; 0xd68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cversion &amp;#x3D; 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dataVersion &amp;#x3D; 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;aclVersion &amp;#x3D; 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ephemeralOwner &amp;#x3D; 0x1000209974b0000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dataLength &amp;#x3D; 54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;numChildren &amp;#x3D; 0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
+    
+      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka -- 重平衡</title>
+    <link href="http://yijunworld.com/2019/09/16/kafka-rebalance/"/>
+    <id>http://yijunworld.com/2019/09/16/kafka-rebalance/</id>
+    <published>2019-09-16T00:59:36.000Z</published>
+    <updated>2020-06-08T05:53:30.779Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;触发重平衡&quot;&gt;&lt;a href=&quot;#触发重平衡&quot; class=&quot;headerlink&quot; title=&quot;触发重平衡&quot;&gt;&lt;/a&gt;触发重平衡&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;组成员数量&lt;/strong&gt;发生变化 — &lt;strong&gt;最常见&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;订阅主题数量&lt;/strong&gt;发生变化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;订阅主题的分区数&lt;/strong&gt;发生变化&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
+    
+    
+      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
+    
+      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
+    
+      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
+    
+      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
+    
+      <category term="Rebalance" scheme="http://yijunworld.com/tags/Rebalance/"/>
+    
+  </entry>
+  
+</feed>

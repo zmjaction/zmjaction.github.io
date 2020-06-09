@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yijunworld.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="日常管理创建主题1$ bin&#x2F;kafka-topics.sh --bootstrap-server localhost:9092 --create --topic t1 --partitions 1 --replication-factor 1  从Kafka 2.2版本开始，推荐使用--bootstrap-server代替--zookeeper（标记为已过期） 原因 使用--zooke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kafka -- 主题管理">
+<meta property="og:url" content="http://yijunworld.com/2019/09/23/kafka-topic-management/index.html">
+<meta property="og:site_name" content="Action">
+<meta property="og:description" content="日常管理创建主题1$ bin&#x2F;kafka-topics.sh --bootstrap-server localhost:9092 --create --topic t1 --partitions 1 --replication-factor 1  从Kafka 2.2版本开始，推荐使用--bootstrap-server代替--zookeeper（标记为已过期） 原因 使用--zooke">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-22T17:27:38.000Z">
+<meta property="article:modified_time" content="2020-06-08T05:54:47.498Z">
+<meta property="article:author" content="Action">
+<meta property="article:tag" content="Middleware">
+<meta property="article:tag" content="MQ">
+<meta property="article:tag" content="Kafka">
+<meta property="article:tag" content="Stream">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yijunworld.com/2019/09/23/kafka-topic-management/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Kafka -- 主题管理 | Action</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Action" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Action</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">锤子</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">39</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/zmjaction" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/09/23/kafka-topic-management/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Kafka -- 主题管理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-23 01:27:38" itemprop="dateCreated datePublished" datetime="2019-09-23T01:27:38+08:00">2019-09-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>25k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>22 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="日常管理"><a href="#日常管理" class="headerlink" title="日常管理"></a>日常管理</h2><h3 id="创建主题"><a href="#创建主题" class="headerlink" title="创建主题"></a>创建主题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-topics.sh --bootstrap-server localhost:9092 --create --topic t1 --partitions 1 --replication-factor 1</span><br></pre></td></tr></table></figure>
+<ol>
+<li>从Kafka <strong>2.2</strong>版本开始，推荐使用<code>--bootstrap-server</code>代替<code>--zookeeper</code>（标记为<strong>已过期</strong>）</li>
+<li>原因<ul>
+<li>使用<code>--zookeeper</code>会绕过Kafka的<strong>安全体系</strong>，不受认证体系的约束</li>
+<li>使用<code>--bootstrap-server</code>与集群交互是<strong>未来的趋势</strong></li>
+</ul>
+</li>
+</ol>
+<a id="more"></a>
+<h3 id="查询主题列表"><a href="#查询主题列表" class="headerlink" title="查询主题列表"></a>查询主题列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-topics.sh --bootstrap-server localhost:9092 --list</span><br><span class="line">__consumer_offsets</span><br><span class="line">_schemas</span><br><span class="line">t1</span><br><span class="line">transaction</span><br></pre></td></tr></table></figure>
+<h3 id="查询单个主题"><a href="#查询单个主题" class="headerlink" title="查询单个主题"></a>查询单个主题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic __consumer_offsets</span><br><span class="line">Topic:__consumer_offsets	PartitionCount:50	ReplicationFactor:1	Configs:compression.type&#x3D;producer,cleanup.policy&#x3D;compact,segment.bytes&#x3D;104857600</span><br><span class="line">    Topic: __consumer_offsets	Partition: 0	Leader: 0	Replicas: 0	Isr: 0</span><br><span class="line">    Topic: __consumer_offsets	Partition: 1	Leader: 0	Replicas: 0	Isr: 0</span><br><span class="line">    ...</span><br><span class="line">    Topic: __consumer_offsets	Partition: 48	Leader: 0	Replicas: 0	Isr: 0</span><br><span class="line">    Topic: __consumer_offsets	Partition: 49	Leader: 0	Replicas: 0	Isr: 0</span><br></pre></td></tr></table></figure>
+<h3 id="增加主题分区"><a href="#增加主题分区" class="headerlink" title="增加主题分区"></a>增加主题分区</h3><p>Kafka目前<strong>不允许减少某个主题的分区数</strong>，指定的分区数一定要<strong>比原有分区数大</strong>，否则Kafka会抛出InvalidPartitionsException<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-topics.sh --bootstrap-server localhost:9092 --alter --topic t1 --partitions 3</span><br><span class="line"></span><br><span class="line">$ bin&#x2F;kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic t1</span><br><span class="line">Topic:t1	PartitionCount:3	ReplicationFactor:1	Configs:segment.bytes&#x3D;1073741824</span><br><span class="line">	Topic: t1	Partition: 0	Leader: 0	Replicas: 0	Isr: 0</span><br><span class="line">	Topic: t1	Partition: 1	Leader: 0	Replicas: 0	Isr: 0</span><br><span class="line">	Topic: t1	Partition: 2	Leader: 0	Replicas: 0	Isr: 0</span><br><span class="line"></span><br><span class="line">$ bin&#x2F;kafka-topics.sh --bootstrap-server localhost:9092 --alter --topic t1 --partitions 2</span><br><span class="line">Error while executing topic command : org.apache.kafka.common.errors.InvalidPartitionsException: Topic currently has 3 partitions, which is higher than the requested 2.</span><br><span class="line">[2019-10-21 09:36:14,368] ERROR java.util.concurrent.ExecutionException: org.apache.kafka.common.errors.InvalidPartitionsException: Topic currently has 3 partitions, which is higher than the requested 2.</span><br><span class="line">	at org.apache.kafka.common.internals.KafkaFutureImpl.wrapAndThrow(KafkaFutureImpl.java:45)</span><br><span class="line">	at org.apache.kafka.common.internals.KafkaFutureImpl.access$000(KafkaFutureImpl.java:32)</span><br><span class="line">	at org.apache.kafka.common.internals.KafkaFutureImpl$SingleWaiter.await(KafkaFutureImpl.java:89)</span><br><span class="line">	at org.apache.kafka.common.internals.KafkaFutureImpl.get(KafkaFutureImpl.java:260)</span><br><span class="line">	at kafka.admin.TopicCommand$AdminClientTopicService.alterTopic(TopicCommand.scala:215)</span><br><span class="line">	at kafka.admin.TopicCommand$.main(TopicCommand.scala:62)</span><br><span class="line">	at kafka.admin.TopicCommand.main(TopicCommand.scala)</span><br><span class="line">Caused by: org.apache.kafka.common.errors.InvalidPartitionsException: Topic currently has 3 partitions, which is higher than the requested 2.</span><br><span class="line"> (kafka.admin.TopicCommand$)</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改主题级别参数"><a href="#修改主题级别参数" class="headerlink" title="修改主题级别参数"></a>修改主题级别参数</h3><p><code>--bootstrap-server</code>是用来设置<strong>动态参数</strong>的，而<strong>常规的主题级别参数</strong>，还是使用<code>--zookeeper</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-configs.sh --zookeeper localhost:<span class="number">2181</span> --entity-type topics --entity-name t1 --alter --add-config max.message.bytes=<span class="number">10485760</span></span><br><span class="line">Completed Updating config <span class="keyword">for</span> entity: topic <span class="string">'t1'</span>.</span><br></pre></td></tr></table></figure></p>
+<h3 id="变更副本数"><a href="#变更副本数" class="headerlink" title="变更副本数"></a>变更副本数</h3><p>使用<code>kafka-reassign-partitions</code>脚本<strong>增加</strong>主题的副本数，参照下文</p>
+<h3 id="修改主题限速"><a href="#修改主题限速" class="headerlink" title="修改主题限速"></a>修改主题限速</h3><p>主要是指设置Leader副本和Follower副本使用的<strong>带宽</strong>，想要让某个主题的副本在执行<strong>副本同步</strong>机制时，不要消耗过多的带宽<br>需要修改Broker端参数<strong><code>leader.replication.throttled.rate</code></strong>和<strong><code>follower.replication.throttled.rate</code></strong><br>如果某主题的副本分别在0、1、2、3多个Broker上，需要依次到Broker0、Broker1、Broker2、Broker3上执行这条命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-configs.sh --zookeeper localhost:2181 --entity-type brokers --entity-name 0 --alter --add-config &#39;leader.replication.throttled.rate&#x3D;104857600,follower.replication.throttled.rate&#x3D;104857600&#39;</span><br><span class="line">Completed Updating config for entity: brokers &#39;0&#39;.</span><br></pre></td></tr></table></figure><br>设置完上面两个参数后，需要为该主题设置要限速的副本，通配符<code>*</code>代表<strong>所有副本</strong>都设置限速<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name t1 --alter --add-config &#39;leader.replication.throttled.replicas&#x3D;*,follower.replication.throttled.replicas&#x3D;*&#39;</span><br><span class="line">Completed Updating config for entity: topic &#39;t1&#39;.</span><br></pre></td></tr></table></figure></p>
+<h3 id="主题分区迁移"><a href="#主题分区迁移" class="headerlink" title="主题分区迁移"></a>主题分区迁移</h3><p>使用<code>kafka-reassign-partitions</code>脚本对<strong>主题各个分区的副本</strong>进行调整，如把某些分区批量迁移到其它Broker上，参照下文</p>
+<h3 id="删除主题"><a href="#删除主题" class="headerlink" title="删除主题"></a>删除主题</h3><p>删除操作是<strong>异步</strong>的，执行完命令后，主题仅仅被<strong>标记为已删除</strong>而已，Kafka会在<strong>后台</strong>默默开启主题删除操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic t1</span><br></pre></td></tr></table></figure></p>
+<h2 id="位移主题"><a href="#位移主题" class="headerlink" title="位移主题"></a>位移主题</h2><h3 id="副本数量"><a href="#副本数量" class="headerlink" title="副本数量"></a>副本数量</h3><ol>
+<li>在Kafka <strong>0.11</strong>之前，当Kafka<strong>自动创建</strong><code>__consumer_offsets</code>时<ul>
+<li>会综合考虑<strong>当前运行的Broker台数</strong>和Broker端参数<strong><code>offsets.topic.replication.factor</code></strong>，取两者中的<strong>较小值</strong></li>
+<li>这违背了用户设置<code>offsets.topic.replication.factor</code>的初衷</li>
+</ul>
+</li>
+<li>在Kafka <strong>0.11</strong>之后，Kafka会<strong>严格遵守</strong><code>offsets.topic.replication.factor</code>的值<ul>
+<li>如果当前运行的Broker数量小于<code>offsets.topic.replication.factor</code>，Kafka会<strong>创建位移主题失败</strong>，并抛出异常</li>
+</ul>
+</li>
+<li>如果<code>__consumer_offsets</code>的副本值为1，可以<strong>增加</strong>到3</li>
+</ol>
+<p>reassign.json — 副本的配置<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"version"</span>:<span class="number">1</span>, <span class="attr">"partitions"</span>:[</span><br><span class="line">    &#123;<span class="attr">"topic"</span>:<span class="string">"__consumer_offsets"</span>,<span class="attr">"partition"</span>:<span class="number">0</span>,<span class="attr">"replicas"</span>:[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>]&#125;, </span><br><span class="line">    &#123;<span class="attr">"topic"</span>:<span class="string">"__consumer_offsets"</span>,<span class="attr">"partition"</span>:<span class="number">1</span>,<span class="attr">"replicas"</span>:[<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">"topic"</span>:<span class="string">"__consumer_offsets"</span>,<span class="attr">"partition"</span>:<span class="number">2</span>,<span class="attr">"replicas"</span>:[<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>]&#125;,</span><br><span class="line">    ...</span><br><span class="line">    &#123;<span class="attr">"topic"</span>:<span class="string">"__consumer_offsets"</span>,<span class="attr">"partition"</span>:<span class="number">49</span>,<span class="attr">"replicas"</span>:[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>]&#125;</span><br><span class="line">]&#125;</span><br></pre></td></tr></table></figure><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-reassign-partitions.sh --zookeeper localhost:2181 --reassignment-json-file reassign.json --execute</span><br><span class="line">Current partition replica assignment</span><br><span class="line"></span><br><span class="line">&#123;&quot;version&quot;:1,&quot;partitions&quot;:[&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:22,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:30,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:8,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:21,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:4,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:27,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:7,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:9,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:46,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:25,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:35,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:41,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:33,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:23,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:49,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:47,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:16,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:28,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:31,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:36,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:42,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:3,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:18,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:37,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:15,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:24,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:38,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:17,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:48,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:19,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:11,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:13,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:2,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:43,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:6,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:14,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:20,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:0,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:44,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:39,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:12,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:45,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:1,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:5,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:26,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:29,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:34,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:10,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:32,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;,&#123;&quot;topic&quot;:&quot;__consumer_offsets&quot;,&quot;partition&quot;:40,&quot;replicas&quot;:[0],&quot;log_dirs&quot;:[&quot;any&quot;]&#125;]&#125;</span><br><span class="line"></span><br><span class="line">Save this to use as the --reassignment-json-file option during rollback</span><br><span class="line">Successfully started reassignment of partitions.</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看消费者组提交的位移数据"><a href="#查看消费者组提交的位移数据" class="headerlink" title="查看消费者组提交的位移数据"></a>查看消费者组提交的位移数据</h3><p><strong>OffsetsMessageFormatter</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic __consumer_offsets --formatter &quot;kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter&quot; --from-beginning</span><br><span class="line">[console-consumer-40652,test,0]::OffsetAndMetadata(offset&#x3D;2, leaderEpoch&#x3D;Optional.empty, metadata&#x3D;, commitTimestamp&#x3D;1538842068384, expireTimestamp&#x3D;Some(1539446868384))</span><br><span class="line">[console-consumer-6657,test,0]::NULL</span><br><span class="line">[console-consumer-66385,zhongmingmao,0]::OffsetAndMetadata(offset&#x3D;5, leaderEpoch&#x3D;Optional.empty, metadata&#x3D;, commitTimestamp&#x3D;1538999538770, expireTimestamp&#x3D;Some(1539604338770))</span><br><span class="line">[console-consumer-41615,test,0]::NULL</span><br><span class="line">[zhongmingmao,zhongmingmao1,0]::NULL</span><br><span class="line">[stock,stock,0]::NULL</span><br><span class="line">[zhongmingmao,zhongmingmao,1]::OffsetAndMetadata(offset&#x3D;5, leaderEpoch&#x3D;Optional.empty, metadata&#x3D;, commitTimestamp&#x3D;1570536122165, expireTimestamp&#x3D;None)</span><br><span class="line">[zhongmingmao,zhongmingmao,0]::OffsetAndMetadata(offset&#x3D;5, leaderEpoch&#x3D;Optional.empty, metadata&#x3D;, commitTimestamp&#x3D;1570536122165, expireTimestamp&#x3D;None)</span><br><span class="line">[zhongmingmao,zhongmingmao,4]::OffsetAndMetadata(offset&#x3D;6, leaderEpoch&#x3D;Optional.empty, metadata&#x3D;, commitTimestamp&#x3D;1570536122165, expireTimestamp&#x3D;None)</span><br><span class="line">[zhongmingmao,zhongmingmao,3]::OffsetAndMetadata(offset&#x3D;6, leaderEpoch&#x3D;Optional.empty, metadata&#x3D;, commitTimestamp&#x3D;1570536122165, expireTimestamp&#x3D;None)</span><br><span class="line">[zhongmingmao,zhongmingmao,2]::OffsetAndMetadata(offset&#x3D;6, leaderEpoch&#x3D;Optional.empty, metadata&#x3D;, commitTimestamp&#x3D;1570536122165, expireTimestamp&#x3D;None)</span><br><span class="line">[console-consumer-29492,test,0]::OffsetAndMetadata(offset&#x3D;5, leaderEpoch&#x3D;Optional.empty, metadata&#x3D;, commitTimestamp&#x3D;1539220886461, expireTimestamp&#x3D;Some(1539825686461))</span><br><span class="line">[console-consumer-88677,test,0]::OffsetAndMetadata(offset&#x3D;10, leaderEpoch&#x3D;Optional.empty, metadata&#x3D;, commitTimestamp&#x3D;1539222370827, expireTimestamp&#x3D;Some(1539827170827))</span><br><span class="line">[bijection,bijection,0]::OffsetAndMetadata(offset&#x3D;20, leaderEpoch&#x3D;Optional.empty, metadata&#x3D;, commitTimestamp&#x3D;1553425113337, expireTimestamp&#x3D;None)</span><br><span class="line">[console-consumer-60394,zhongmingmao,0]::OffsetAndMetadata(offset&#x3D;3, leaderEpoch&#x3D;Optional.empty, metadata&#x3D;, commitTimestamp&#x3D;1538880245612, expireTimestamp&#x3D;Some(1539485045612))</span><br><span class="line">[console-consumer-40652,test,0]::NULL</span><br><span class="line">[console-consumer-29492,test,0]::NULL</span><br><span class="line">[console-consumer-88677,test,0]::NULL</span><br><span class="line">[bijection,bijection,0]::NULL</span><br><span class="line">[console-consumer-66385,zhongmingmao,0]::NULL</span><br><span class="line">[console-consumer-60394,zhongmingmao,0]::NULL</span><br><span class="line">[zhongmingmao,zhongmingmao,1]::NULL</span><br><span class="line">[zhongmingmao,zhongmingmao,0]::NULL</span><br><span class="line">[zhongmingmao,zhongmingmao,4]::NULL</span><br><span class="line">[zhongmingmao,zhongmingmao,3]::NULL</span><br><span class="line">[zhongmingmao,zhongmingmao,2]::NULL</span><br></pre></td></tr></table></figure></p>
+<h3 id="读取位移主题消息，查看消费者组的状态信息"><a href="#读取位移主题消息，查看消费者组的状态信息" class="headerlink" title="读取位移主题消息，查看消费者组的状态信息"></a>读取位移主题消息，查看消费者组的状态信息</h3><p><strong>GroupMetadataMessageFormatter</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">$ bin&#x2F;kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic __consumer_offsets --formatter &quot;kafka.coordinator.group.GroupMetadataManager\$GroupMetadataMessageFormatter&quot; --from-beginning</span><br><span class="line">console-consumer-40652::GroupMetadata(groupId&#x3D;console-consumer-40652, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-18364::GroupMetadata(groupId&#x3D;console-consumer-18364, generation&#x3D;1, protocolType&#x3D;Some(consumer), currentState&#x3D;Stable, members&#x3D;Map(consumer-1-6aa558f4-7166-457e-9006-39a5843aa976 -&gt; MemberMetadata(memberId&#x3D;consumer-1-6aa558f4-7166-457e-9006-39a5843aa976, groupInstanceId&#x3D;Some(null), clientId&#x3D;consumer-1, clientHost&#x3D;&#x2F;127.0.0.1, sessionTimeoutMs&#x3D;10000, rebalanceTimeoutMs&#x3D;300000, supportedProtocols&#x3D;List(range), )))</span><br><span class="line">console-consumer-18364::GroupMetadata(groupId&#x3D;console-consumer-18364, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-6657::NULL</span><br><span class="line">console-consumer-20884::NULL</span><br><span class="line">console-consumer-60618::GroupMetadata(groupId&#x3D;console-consumer-60618, generation&#x3D;1, protocolType&#x3D;Some(consumer), currentState&#x3D;Stable, members&#x3D;Map(consumer-1-da910be4-7520-4187-bb58-f1c060c48749 -&gt; MemberMetadata(memberId&#x3D;consumer-1-da910be4-7520-4187-bb58-f1c060c48749, groupInstanceId&#x3D;Some(null), clientId&#x3D;consumer-1, clientHost&#x3D;&#x2F;127.0.0.1, sessionTimeoutMs&#x3D;10000, rebalanceTimeoutMs&#x3D;300000, supportedProtocols&#x3D;List(range), )))</span><br><span class="line">console-consumer-60618::GroupMetadata(groupId&#x3D;console-consumer-60618, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-46196::GroupMetadata(groupId&#x3D;console-consumer-46196, generation&#x3D;1, protocolType&#x3D;Some(consumer), currentState&#x3D;Stable, members&#x3D;Map(consumer-1-4091fa6c-3326-4e2c-b860-fe94350c9433 -&gt; MemberMetadata(memberId&#x3D;consumer-1-4091fa6c-3326-4e2c-b860-fe94350c9433, groupInstanceId&#x3D;None, clientId&#x3D;consumer-1, clientHost&#x3D;&#x2F;192.168.11.195, sessionTimeoutMs&#x3D;10000, rebalanceTimeoutMs&#x3D;300000, supportedProtocols&#x3D;List(range), )))</span><br><span class="line">console-consumer-46196::GroupMetadata(groupId&#x3D;console-consumer-46196, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-46196::NULL</span><br><span class="line">console-consumer-66385::GroupMetadata(groupId&#x3D;console-consumer-66385, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-41615::NULL</span><br><span class="line">stock::NULL</span><br><span class="line">zhongmingmao::GroupMetadata(groupId&#x3D;zhongmingmao, generation&#x3D;11, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-82389::GroupMetadata(groupId&#x3D;console-consumer-82389, generation&#x3D;1, protocolType&#x3D;Some(consumer), currentState&#x3D;Stable, members&#x3D;Map(consumer-1-354b4b29-df13-456c-80c5-6701e8900828 -&gt; MemberMetadata(memberId&#x3D;consumer-1-354b4b29-df13-456c-80c5-6701e8900828, groupInstanceId&#x3D;Some(null), clientId&#x3D;consumer-1, clientHost&#x3D;&#x2F;192.168.2.1, sessionTimeoutMs&#x3D;10000, rebalanceTimeoutMs&#x3D;300000, supportedProtocols&#x3D;List(range), )))</span><br><span class="line">console-consumer-82389::GroupMetadata(groupId&#x3D;console-consumer-82389, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-82389::NULL</span><br><span class="line">console-consumer-37711::GroupMetadata(groupId&#x3D;console-consumer-37711, generation&#x3D;1, protocolType&#x3D;Some(consumer), currentState&#x3D;Stable, members&#x3D;Map(consumer-1-b8bc1ccd-5388-4f07-bfcf-0a416c143572 -&gt; MemberMetadata(memberId&#x3D;consumer-1-b8bc1ccd-5388-4f07-bfcf-0a416c143572, groupInstanceId&#x3D;Some(null), clientId&#x3D;consumer-1, clientHost&#x3D;&#x2F;127.0.0.1, sessionTimeoutMs&#x3D;10000, rebalanceTimeoutMs&#x3D;300000, supportedProtocols&#x3D;List(range), )))</span><br><span class="line">console-consumer-37711::GroupMetadata(groupId&#x3D;console-consumer-37711, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-29492::GroupMetadata(groupId&#x3D;console-consumer-29492, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-88677::GroupMetadata(groupId&#x3D;console-consumer-88677, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-3420::GroupMetadata(groupId&#x3D;console-consumer-3420, generation&#x3D;1, protocolType&#x3D;Some(consumer), currentState&#x3D;Stable, members&#x3D;Map(consumer-1-7e402ca2-5b9f-49a0-83e3-262443f148ca -&gt; MemberMetadata(memberId&#x3D;consumer-1-7e402ca2-5b9f-49a0-83e3-262443f148ca, groupInstanceId&#x3D;Some(null), clientId&#x3D;consumer-1, clientHost&#x3D;&#x2F;127.0.0.1, sessionTimeoutMs&#x3D;10000, rebalanceTimeoutMs&#x3D;300000, supportedProtocols&#x3D;List(range), )))</span><br><span class="line">console-consumer-3420::GroupMetadata(groupId&#x3D;console-consumer-3420, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">bijection::GroupMetadata(groupId&#x3D;bijection, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-37719::NULL</span><br><span class="line">console-consumer-56242::NULL</span><br><span class="line">console-consumer-51162::GroupMetadata(groupId&#x3D;console-consumer-51162, generation&#x3D;1, protocolType&#x3D;Some(consumer), currentState&#x3D;Stable, members&#x3D;Map(consumer-1-0ae0c268-a22a-425b-be55-30393a02c0ad -&gt; MemberMetadata(memberId&#x3D;consumer-1-0ae0c268-a22a-425b-be55-30393a02c0ad, groupInstanceId&#x3D;Some(null), clientId&#x3D;consumer-1, clientHost&#x3D;&#x2F;192.168.2.1, sessionTimeoutMs&#x3D;10000, rebalanceTimeoutMs&#x3D;300000, supportedProtocols&#x3D;List(range), )))</span><br><span class="line">console-consumer-51162::GroupMetadata(groupId&#x3D;console-consumer-51162, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-51162::NULL</span><br><span class="line">console-consumer-60394::GroupMetadata(groupId&#x3D;console-consumer-60394, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-40652::NULL</span><br><span class="line">console-consumer-29492::NULL</span><br><span class="line">console-consumer-88677::NULL</span><br><span class="line">bijection::NULL</span><br><span class="line">console-consumer-85955::GroupMetadata(groupId&#x3D;console-consumer-85955, generation&#x3D;1, protocolType&#x3D;Some(consumer), currentState&#x3D;Stable, members&#x3D;Map(consumer-1-a127b884-0a3a-4fe0-a1ea-8bbee57c668a -&gt; MemberMetadata(memberId&#x3D;consumer-1-a127b884-0a3a-4fe0-a1ea-8bbee57c668a, groupInstanceId&#x3D;Some(null), clientId&#x3D;consumer-1, clientHost&#x3D;&#x2F;127.0.0.1, sessionTimeoutMs&#x3D;10000, rebalanceTimeoutMs&#x3D;300000, supportedProtocols&#x3D;List(range), )))</span><br><span class="line">console-consumer-85955::GroupMetadata(groupId&#x3D;console-consumer-85955, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-85955::NULL</span><br><span class="line">console-consumer-54404::GroupMetadata(groupId&#x3D;console-consumer-54404, generation&#x3D;1, protocolType&#x3D;Some(consumer), currentState&#x3D;Stable, members&#x3D;Map(consumer-1-5edfac05-7f42-4e4c-b906-b8e26149d527 -&gt; MemberMetadata(memberId&#x3D;consumer-1-5edfac05-7f42-4e4c-b906-b8e26149d527, groupInstanceId&#x3D;Some(null), clientId&#x3D;consumer-1, clientHost&#x3D;&#x2F;127.0.0.1, sessionTimeoutMs&#x3D;10000, rebalanceTimeoutMs&#x3D;300000, supportedProtocols&#x3D;List(range), )))</span><br><span class="line">console-consumer-54404::GroupMetadata(groupId&#x3D;console-consumer-54404, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-6483::GroupMetadata(groupId&#x3D;console-consumer-6483, generation&#x3D;1, protocolType&#x3D;Some(consumer), currentState&#x3D;Stable, members&#x3D;Map(consumer-1-bfa8f79d-03db-43c5-b9bb-a168849e162e -&gt; MemberMetadata(memberId&#x3D;consumer-1-bfa8f79d-03db-43c5-b9bb-a168849e162e, groupInstanceId&#x3D;Some(null), clientId&#x3D;consumer-1, clientHost&#x3D;&#x2F;127.0.0.1, sessionTimeoutMs&#x3D;10000, rebalanceTimeoutMs&#x3D;300000, supportedProtocols&#x3D;List(range), )))</span><br><span class="line">console-consumer-6483::GroupMetadata(groupId&#x3D;console-consumer-6483, generation&#x3D;2, protocolType&#x3D;Some(consumer), currentState&#x3D;Empty, members&#x3D;Map())</span><br><span class="line">console-consumer-6483::NULL</span><br><span class="line">console-consumer-66385::NULL</span><br><span class="line">console-consumer-60394::NULL</span><br><span class="line">zhongmingmao::NULL</span><br><span class="line">console-consumer-49544::GroupMetadata(groupId&#x3D;console-consumer-49544, generation&#x3D;1, protocolType&#x3D;Some(consumer), currentState&#x3D;Stable, members&#x3D;Map(consumer-1-5629e772-0ef1-4248-b9ed-42f997f54a4a -&gt; MemberMetadata(memberId&#x3D;consumer-1-5629e772-0ef1-4248-b9ed-42f997f54a4a, groupInstanceId&#x3D;Some(null), clientId&#x3D;consumer-1, clientHost&#x3D;&#x2F;127.0.0.1, sessionTimeoutMs&#x3D;10000, rebalanceTimeoutMs&#x3D;300000, supportedProtocols&#x3D;List(range), )))</span><br></pre></td></tr></table></figure></p>
+<h3 id="常见主题错误处理"><a href="#常见主题错误处理" class="headerlink" title="常见主题错误处理"></a>常见主题错误处理</h3><h4 id="常见错误-1：主题删除失败。"><a href="#常见错误-1：主题删除失败。" class="headerlink" title="常见错误 1：主题删除失败。"></a>常见错误 1：主题删除失败。</h4><p>删除命令后，很多人发现已删除主题的分区数据依然“躺在”硬盘上，没有被清除。这时该怎么办呢?</p>
+<h6 id="最常见的原因有两个："><a href="#最常见的原因有两个：" class="headerlink" title="最常见的原因有两个："></a>最常见的原因有两个：</h6><ul>
+<li><p>副本所在的 Broker 宕机了；</p>
+<ul>
+<li>重启对应的 Broker 之后，删除操作就能自动恢复</li>
+</ul>
+</li>
+<li><p>待删除主题的部分分区依然在执行迁移过程</p>
+<ul>
+<li><ol>
+<li>手动删除 ZooKeeper 节点 /admin/delete_topics 下以待删除主题为名的 znode</li>
+</ol>
+</li>
+<li><ol>
+<li>手动删除该主题在磁盘上的分区目录</li>
+</ol>
+</li>
+<li><ol>
+<li><p>在 ZooKeeper 中执行 rmr /controller，触发 Controller 重选举，刷新 Controller 缓存</p>
+<blockquote>
+<p>注意：第三步骤，可能造成大面积的分区 Leader 重选举。事实上，仅仅执行前两步也是可以的，只是 Controller 缓存中没有清空待删除主题罢了，也不影响使用</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="常见错误-2：-consumer-offsets-占用太多的磁盘。"><a href="#常见错误-2：-consumer-offsets-占用太多的磁盘。" class="headerlink" title="常见错误 2：__consumer_offsets 占用太多的磁盘。"></a>常见错误 2：__consumer_offsets 占用太多的磁盘。</h4><p>用<code>jstack</code>命令查看一下 <code>kafka-log-cleaner-thread</code> 前缀的线程状态,如果是该线程挂掉了，无法及时清理此内部主题，只能重启对应的    Broker</p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>为什么 Kafka 不允许减少分区数？如果减少分区数，可能会有什么样的问题？</p>
+<blockquote>
+<p>多个broker节点都冗余有分区的数据，减少分区数需要操作多个broker且需要迁移该分区数据到其他分区。如果是按消息key hash选的分区，那么迁移就不知道迁到哪里了，因为只有业务代码可以决定放在哪</p>
+</blockquote>
+<p>参考：<a href="http://zhongmingmao.me" target="_blank" rel="noopener">http://zhongmingmao.me</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Middleware/" rel="tag"># Middleware</a>
+              <a href="/tags/MQ/" rel="tag"># MQ</a>
+              <a href="/tags/Kafka/" rel="tag"># Kafka</a>
+              <a href="/tags/Stream/" rel="tag"># Stream</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/20/kafka-high-watermark-leader-epoch/" rel="prev" title="Kafka -- 高水位 + Leader Epoch">
+      <i class="fa fa-chevron-left"></i> Kafka -- 高水位 + Leader Epoch
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/09/25/kafka-dynamic-config/" rel="next" title="Kafka -- 动态配置">
+      Kafka -- 动态配置 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#日常管理"><span class="nav-number">1.</span> <span class="nav-text">日常管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建主题"><span class="nav-number">1.1.</span> <span class="nav-text">创建主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询主题列表"><span class="nav-number">1.2.</span> <span class="nav-text">查询主题列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询单个主题"><span class="nav-number">1.3.</span> <span class="nav-text">查询单个主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加主题分区"><span class="nav-number">1.4.</span> <span class="nav-text">增加主题分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改主题级别参数"><span class="nav-number">1.5.</span> <span class="nav-text">修改主题级别参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变更副本数"><span class="nav-number">1.6.</span> <span class="nav-text">变更副本数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改主题限速"><span class="nav-number">1.7.</span> <span class="nav-text">修改主题限速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题分区迁移"><span class="nav-number">1.8.</span> <span class="nav-text">主题分区迁移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除主题"><span class="nav-number">1.9.</span> <span class="nav-text">删除主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位移主题"><span class="nav-number">2.</span> <span class="nav-text">位移主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#副本数量"><span class="nav-number">2.1.</span> <span class="nav-text">副本数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看消费者组提交的位移数据"><span class="nav-number">2.2.</span> <span class="nav-text">查看消费者组提交的位移数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取位移主题消息，查看消费者组的状态信息"><span class="nav-number">2.3.</span> <span class="nav-text">读取位移主题消息，查看消费者组的状态信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见主题错误处理"><span class="nav-number">2.4.</span> <span class="nav-text">常见主题错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见错误-1：主题删除失败。"><span class="nav-number">2.4.1.</span> <span class="nav-text">常见错误 1：主题删除失败。</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#最常见的原因有两个："><span class="nav-number">2.4.1.0.1.</span> <span class="nav-text">最常见的原因有两个：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见错误-2：-consumer-offsets-占用太多的磁盘。"><span class="nav-number">2.4.2.</span> <span class="nav-text">常见错误 2：__consumer_offsets 占用太多的磁盘。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">2.5.</span> <span class="nav-text">思考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Action"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Action</p>
+  <div class="site-description" itemprop="description">热爱你所坚持的，坚持你所热爱的</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Action8686" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Action8686" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:748173631@qq.com" title="E-Mail → mailto:748173631@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Action</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">251k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">3:48</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

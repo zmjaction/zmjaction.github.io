@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yijunworld.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="脚本列表12345678connect-distributed              kafka-consumer-perf-test         kafka-reassign-partitions        kafka-verifiable-producerconnect-standalone               kafka-delegation-tokens">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kafka -- 常用脚本">
+<meta property="og:url" content="http://yijunworld.com/2019/09/27/kafka-shell/index.html">
+<meta property="og:site_name" content="Action">
+<meta property="og:description" content="脚本列表12345678connect-distributed              kafka-consumer-perf-test         kafka-reassign-partitions        kafka-verifiable-producerconnect-standalone               kafka-delegation-tokens">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-27T01:49:25.000Z">
+<meta property="article:modified_time" content="2020-06-08T05:53:30.779Z">
+<meta property="article:author" content="Action">
+<meta property="article:tag" content="Middleware">
+<meta property="article:tag" content="MQ">
+<meta property="article:tag" content="Kafka">
+<meta property="article:tag" content="Stream">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yijunworld.com/2019/09/27/kafka-shell/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Kafka -- 常用脚本 | Action</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Action" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Action</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">锤子</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">39</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/zmjaction" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/09/27/kafka-shell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Kafka -- 常用脚本
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-27 09:49:25" itemprop="dateCreated datePublished" datetime="2019-09-27T09:49:25+08:00">2019-09-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>15k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>13 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="脚本列表"><a href="#脚本列表" class="headerlink" title="脚本列表"></a>脚本列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">connect-distributed              kafka-consumer-perf-test         kafka-reassign-partitions        kafka-verifiable-producer</span><br><span class="line">connect-standalone               kafka-delegation-tokens          kafka-replica-verification       trogdor</span><br><span class="line">kafka-acls                       kafka-delete-records             kafka-run-class                  zookeeper-security-migration</span><br><span class="line">kafka-broker-api-versions        kafka-dump-log                   kafka-server-start               zookeeper-server-start</span><br><span class="line">kafka-configs                    kafka-log-dirs                   kafka-server-stop                zookeeper-server-stop</span><br><span class="line">kafka-console-consumer           kafka-mirror-maker               kafka-streams-application-reset  zookeeper-shell</span><br><span class="line">kafka-console-producer           kafka-preferred-replica-election kafka-topics</span><br><span class="line">kafka-consumer-groups            kafka-producer-perf-test         kafka-verifiable-consumer</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="脚本注解"><a href="#脚本注解" class="headerlink" title="脚本注解"></a>脚本注解</h4><ul>
+<li><p><code>connect-standalone 和 connect-distributed</code>: 这两个脚本是 Kafka Connect 组件的启动脚本</p>
+</li>
+<li><p><code>kafka-acls</code>: 它是用于设置 Kafka 权限的，比如设置哪些用户可以访问 Kafka 的哪些主题之类的权限</p>
+</li>
+<li><p><code>kafka-broker-api-versions</code>: 这个脚本的主要目的是验证不同 Kafka 版本之间服务器和客户端的适配性</p>
+</li>
+<li><p><code>kafka-configs</code>: 主要参数配置</p>
+</li>
+<li><p><code>kafka-console-consumer</code>：消费者脚本</p>
+</li>
+<li><p><code>kafka-console-producer</code>： 生产者脚本</p>
+</li>
+<li><p><code>kafka-producer-perf-test、 kafka-consumer-perf-test</code> ：生产者和消费者的性能测试工具</p>
+</li>
+<li><p><code>kafka-consumer-groups</code>:消费者组位移</p>
+</li>
+<li><p><code>kafka-delegation-tokens</code>：它是管理 Delegation Token 的。基于 Delegation Token 的认证是一种轻量级的认证机制，补充了现有的 SASL 认证机制</p>
+</li>
+<li><p><code>kafka-delete-records</code>：用于删除kafka分区消息，kafka本身有自己的自动消息删除策略，所以使用的不多</p>
+</li>
+<li><p><code>kafka-dump-log</code> ：非常实用，查看kafka消息文件的内容，消息的元数据信息，消息体本身</p>
+</li>
+<li><p><code>kafka-log-dirs</code>：查询各个Broker上的各个日志路径的磁盘占用情况</p>
+</li>
+<li><p><code>kafka-mirror-maker</code>：实现kafka集群间的消息同步的</p>
+</li>
+<li><p><code>kafka-preferred-replica-election</code>：执行 Preferred Leader 选举的。它可以为指定的主题执行“换 Leader”的操作</p>
+</li>
+<li><p><code>kafka-reassign-partitions</code>：用于执行分区副本迁移以及副本文件路径迁移</p>
+</li>
+<li><p><code>kafka-topics</code>：所有主题管理操作</p>
+</li>
+<li><p><code>kafka-run-class</code>： 执行任何带 main 方法的 Kafka 类</p>
+</li>
+<li><p><code>kafka-server-start、kafka-server-stop</code>：用于启动和停止 Kafka Broker 进程的</p>
+</li>
+<li><p><code>kafka-streams-application-reset</code>: 脚本用来给 Kafka Streams 应用程序重设位移，以便重新消费数据</p>
+</li>
+<li><p><code>kafka-verifiable-producer 、 kafka-verifiable-consumer</code>: 脚本是用来测试生产者和消费者功能的，过时，用不到</p>
+<p>​</p>
+</li>
+</ul>
+<h2 id="kafka-broker-api-versions"><a href="#kafka-broker-api-versions" class="headerlink" title="kafka-broker-api-versions"></a>kafka-broker-api-versions</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">kafka-broker-api-versions --bootstrap-server localhost:9092</span><br><span class="line">localhost:9092 (id: 0 rack: null) -&gt; (</span><br><span class="line">	Produce(0): 0 to 7 [usable: 7],</span><br><span class="line">	Fetch(1): 0 to 11 [usable: 11],</span><br><span class="line">	ListOffsets(2): 0 to 5 [usable: 5],</span><br><span class="line">	Metadata(3): 0 to 8 [usable: 8],</span><br><span class="line">	LeaderAndIsr(4): 0 to 2 [usable: 2],</span><br><span class="line">    ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>kafka-broker-api-versions脚本用于验证<strong>不同Kafka版本</strong>之间<strong>服务器</strong>和<strong>客户端</strong>的适配性</li>
+<li><code>Produce(0): 0 to 7 [usable: 7]</code><ul>
+<li>Produce请求，序号为0，表示Kafka所有请求类型中的<strong>第一号</strong>请求</li>
+<li><code>0 to 7</code>表示Produce请求在Kafka 2.3中总共有<strong>8个版本</strong></li>
+<li><code>usable: 7</code>表示当前连入这个Broker的客户端API能够使用的版本号是7，即<strong>最新版本</strong></li>
+</ul>
+</li>
+<li>在<strong>0.10.2.0</strong>之前，Kafka是<strong>单向兼容</strong>的，即高版本的Broker能够处理低版本Client发送的请求，反正则不行</li>
+<li>从<strong>0.10.2.0</strong>开始，Kafka正式支持<strong>双向兼容</strong>，即<em><strong>低版本的Broker也能处理高版本Client的请求</strong></em></li>
+</ol>
+<h2 id="kafka-topics"><a href="#kafka-topics" class="headerlink" title="kafka-topics"></a>kafka-topics</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-- 创建主题 </span><br><span class="line">    bin/kafka-topics.sh --create --zookeeper zk1:2181 --replication-factor 3 --partitions 1 --topic action</span><br><span class="line">	bin/kafka-topics.sh --zookeeper zk1:2181 --create --topic action --partitions 1 --replication-factor 1 --config retention.ms=15552000000 --config max.message.bytes=5242880</span><br><span class="line">	-- topic 定义topic名</span><br><span class="line">    -- partitions 定义分区数</span><br><span class="line">    -- replication-factor 定义副本数</span><br><span class="line">-- 修改主题</span><br><span class="line">	bin/kafka-configs.sh --zookeeper zk1:2181 --entity-type topics --entity-name action --alter --add-config max.message.bytes=10485760</span><br><span class="line">-- 查看主题</span><br><span class="line">	bin/kafka-topics.sh --describe --zookeeper zk1:2181 --topic action</span><br><span class="line">-- 查看所有主题</span><br><span class="line">	bin/kafka-topics.sh --zookeeper zk1:2181 --list</span><br><span class="line">-- 删除主题</span><br><span class="line">	bin/kafka-topics.sh --zookeeper  zk1:2181 --delete --topic first</span><br></pre></td></tr></table></figure>
+<h2 id="kafka-console-producer"><a href="#kafka-console-producer" class="headerlink" title="kafka-console-producer"></a>kafka-console-producer</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;kafka-console-producer.sh --broker-list 192.168.1.67:9092 --topic second --request-required-acks -1 --producer-property compression.type&#x3D;lz4</span><br><span class="line">&gt;hello</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="kafka-console-consumer"><a href="#kafka-console-consumer" class="headerlink" title="kafka-console-consumer"></a>kafka-console-consumer</h2><p>如果没有指定<code>group</code>，每次运行Console Consumer，都会<strong>自动生成一个新的消费者组</strong>（console-consumer开头）来消费<br><code>--from-beginning</code>等同于将Consumer端参数<code>auto.offset.reset</code>设置为<strong><code>Earliest</code></strong>（默认值为<code>Latest</code>）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;kafka-console-consumer.sh --bootstrap-server 192.168.1.67:9092 --topic second --group second --from-beginning --consumer-property enable.auto.commit&#x3D;false</span><br><span class="line">hello</span><br></pre></td></tr></table></figure></p>
+<h2 id="kafka-producer-perf-test"><a href="#kafka-producer-perf-test" class="headerlink" title="kafka-producer-perf-test"></a>kafka-producer-perf-test</h2><p>向指定专题发送1千万条消息，每条消息大小为<strong>1KB</strong>，一般关注<strong>99th</strong>分位即可，可以作为该生产者对外承诺的<strong>SLA</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;kafka-producer-perf-test.sh --topic second --num-records 10000000 --throughput -1 --record-size 1024 --producer-props bootstrap.servers&#x3D;192.168.1.67:9092 acks&#x3D;-1 linger.ms&#x3D;2000 compression.type&#x3D;lz4</span><br><span class="line">24041 records sent, 4802.4 records&#x2F;sec (4.69 MB&#x2F;sec), 2504.6 ms avg latency, 3686.0 ms max latency.</span><br><span class="line">374745 records sent, 74829.3 records&#x2F;sec (73.08 MB&#x2F;sec), 3955.9 ms avg latency, 4258.0 ms max latency.</span><br><span class="line">530462 records sent, 106092.4 records&#x2F;sec (103.61 MB&#x2F;sec), 5043.2 ms avg latency, 5979.0 ms max latency.</span><br><span class="line">973178 records sent, 194402.3 records&#x2F;sec (189.85 MB&#x2F;sec), 4616.0 ms avg latency, 6092.0 ms max latency.</span><br><span class="line">1114737 records sent, 222858.3 records&#x2F;sec (217.64 MB&#x2F;sec), 3226.9 ms avg latency, 3501.0 ms max latency.</span><br><span class="line">1274003 records sent, 254647.8 records&#x2F;sec (248.68 MB&#x2F;sec), 2967.1 ms avg latency, 3258.0 ms max latency.</span><br><span class="line">1315568 records sent, 262798.2 records&#x2F;sec (256.64 MB&#x2F;sec), 2655.6 ms avg latency, 2790.0 ms max latency.</span><br><span class="line">1384239 records sent, 276847.8 records&#x2F;sec (270.36 MB&#x2F;sec), 2665.2 ms avg latency, 2799.0 ms max latency.</span><br><span class="line">1419418 records sent, 283883.6 records&#x2F;sec (277.23 MB&#x2F;sec), 2509.9 ms avg latency, 2612.0 ms max latency.</span><br><span class="line">10000000 records sent, 201751.200420 records&#x2F;sec (197.02 MB&#x2F;sec), 3041.05 ms avg latency, 6092.00 ms max latency, 2684 ms 50th, 5500 ms 95th, 5999 ms 99th, 6085 ms 99.9th.</span><br></pre></td></tr></table></figure></p>
+<h2 id="kafka-consumer-perf-test"><a href="#kafka-consumer-perf-test" class="headerlink" title="kafka-consumer-perf-test"></a>kafka-consumer-perf-test</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;kafka-consumer-perf-test.sh --broker-list 192.168.1.67:9092 --messages 10000000 --topic second</span><br><span class="line">start.time, end.time, data.consumed.in.MB, MB.sec, data.consumed.in.nMsg, nMsg.sec, rebalance.time.ms, fetch.time.ms, fetch.MB.sec, fetch.nMsg.sec</span><br><span class="line">2019-09-27 19:46:34:219, 2019-10-30 19:46:52:092, 9765.6250, 546.3898, 10000002, 559503.2731, 50, 17823, 547.9226, 561072.8834</span><br></pre></td></tr></table></figure>
+<h2 id="查看主题消息总数"><a href="#查看主题消息总数" class="headerlink" title="查看主题消息总数"></a>查看主题消息总数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ .&#x2F;kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list 192.168.1.67:9092 --time -2 --topic second</span><br><span class="line">second:0:0</span><br><span class="line"></span><br><span class="line">$ .&#x2F;kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list 192.168.1.67:9092 --time -1 --topic second</span><br><span class="line">second:0:10000014</span><br></pre></td></tr></table></figure>
+<h2 id="查看消息文件数据"><a href="#查看消息文件数据" class="headerlink" title="查看消息文件数据"></a>查看消息文件数据</h2><p><code>--files</code>显式的是消息批次或消息集合的<strong>元数据</strong>信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;kafka-dump-log.sh --files &#x2F;tmp&#x2F;kafka-logs&#x2F;transaction-0&#x2F;00000000000000635791.log | head -n 10</span><br><span class="line">Dumping &#x2F;tmp&#x2F;kafka-logs&#x2F;transaction-0&#x2F;00000000000000635791.log</span><br><span class="line">Starting offset: 635791</span><br><span class="line">baseOffset: 635791 lastOffset: 635791 count: 1 baseSequence: -1 lastSequence: -1 producerId: -1 producerEpoch: -1 partitionLeaderEpoch: 0 isTransactional: false isControl: false position: 0 CreateTime: 1590738831653 isvalid: true size: 51272 magic: 2 compresscodec: NONE crc: 2926696969</span><br><span class="line">baseOffset: 635792 lastOffset: 635792 count: 1 baseSequence: -1 lastSequence: -1 producerId: -1 producerEpoch: -1 partitionLeaderEpoch: 0 isTransactional: false isControl: false position: 51272 CreateTime: 1590738831657 isvalid: true size: 51272 magic: 2 compresscodec: NONE crc: 3982704702</span><br><span class="line">baseOffset: 635793 lastOffset: 635793 count: 1 baseSequence: -1 lastSequence: -1 producerId: -1 producerEpoch: -1 partitionLeaderEpoch: 0 isTransactional: false isControl: false position: 102544 CreateTime: 1590738831657 isvalid: true size: 51272 magic: 2 compresscodec: NONE crc: 3982704702</span><br><span class="line">baseOffset: 635794 lastOffset: 635794 count: 1 baseSequence: -1 lastSequence: -1 producerId: -1 producerEpoch: -1 partitionLeaderEpoch: 0 isTransactional: false isControl: false position: 153816 CreateTime: 1590738831657 isvalid: true size: 51272 magic: 2 compresscodec: NONE crc: 3982704702</span><br><span class="line">baseOffset: 635795 lastOffset: 635795 count: 1 baseSequence: -1 lastSequence: -1 producerId: -1 producerEpoch: -1 partitionLeaderEpoch: 0 isTransactional: false isControl: false position: 205088 CreateTime: 1590738831657 isvalid: true size: 51272 magic: 2 compresscodec: NONE crc: 3982704702</span><br><span class="line">baseOffset: 635796 lastOffset: 635796 count: 1 baseSequence: -1 lastSequence: -1 producerId: -1 producerEpoch: -1 partitionLeaderEpoch: 0 isTransactional: false isControl: false position: 256360 CreateTime: 1590738831657 isvalid: true size: 51272 magic: 2 compresscodec: NONE crc: 3982704702</span><br><span class="line">baseOffset: 635797 lastOffset: 635797 count: 1 baseSequence: -1 lastSequence: -1 producerId: -1 producerEpoch: -1 partitionLeaderEpoch: 0 isTransactional: false isControl: false position: 307632 CreateTime: 1590738831657 isvalid: true size: 51272 magic: 2 compresscodec: NONE crc: 3982704702</span><br><span class="line">baseOffset: 635798 lastOffset: 635798 count: 1 baseSequence: -1 lastSequence: -1 producerId: -1 producerEpoch: -1 partitionLeaderEpoch: 0 isTransactional: false isControl: false position: 358904 CreateTime: 1590738831657 isvalid: true size: 51272 magic: 2 compresscodec: NONE crc: 3982704702</span><br></pre></td></tr></table></figure><br><code>--deep-iteration</code>用于查看每条<strong>具体</strong>的消息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ .&#x2F;kafka-dump-log.sh --files &#x2F;tmp&#x2F;kafka-logs&#x2F;transaction-0&#x2F;00000000000000635791.log --deep-iteration | head -n 25</span><br><span class="line">Dumping &#x2F;tmp&#x2F;kafka-logs&#x2F;transaction-0&#x2F;00000000000000635791.log</span><br><span class="line">Starting offset: 635791</span><br><span class="line">offset: 635791 position: 0 CreateTime: 1590738831653 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635792 position: 51272 CreateTime: 1590738831657 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635793 position: 102544 CreateTime: 1590738831657 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635794 position: 153816 CreateTime: 1590738831657 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635795 position: 205088 CreateTime: 1590738831657 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635796 position: 256360 CreateTime: 1590738831657 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635797 position: 307632 CreateTime: 1590738831657 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635798 position: 358904 CreateTime: 1590738831657 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635799 position: 410176 CreateTime: 1590738831657 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635800 position: 461448 CreateTime: 1590738831658 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635801 position: 512720 CreateTime: 1590738831660 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635802 position: 563992 CreateTime: 1590738831660 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635803 position: 615264 CreateTime: 1590738831661 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635804 position: 666536 CreateTime: 1590738831661 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635805 position: 717808 CreateTime: 1590738831661 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635806 position: 769080 CreateTime: 1590738831662 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635807 position: 820352 CreateTime: 1590738831662 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635808 position: 871624 CreateTime: 1590738831663 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635809 position: 922896 CreateTime: 1590738831663 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635810 position: 974168 CreateTime: 1590738831663 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635811 position: 1025440 CreateTime: 1590738831668 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635812 position: 1076712 CreateTime: 1590738831668 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br><span class="line">offset: 635813 position: 1127984 CreateTime: 1590738831668 isvalid: true keysize: -1 valuesize: 51200 magic: 2 compresscodec: NONE producerId: -1 producerEpoch: -1 sequence: -1 isTransactional: false headerKeys: []</span><br></pre></td></tr></table></figure><br><code>--print-data-log</code>用于查看<strong>消息里面的实际数据</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ kafka-dump-log --files &#x2F;tmp&#x2F;kafka-logs&#x2F;transaction-0&#x2F;00000000000000000000.log --deep-iteration --print-data-log | head -n 8</span><br><span class="line">Dumping &#x2F;usr&#x2F;local&#x2F;var&#x2F;lib&#x2F;kafka-logs&#x2F;transaction-0&#x2F;00000000000000000000.log</span><br><span class="line">Starting offset: 0</span><br><span class="line">baseOffset: 0 lastOffset: 0 count: 1 baseSequence: -1 lastSequence: -1 producerId: -1 producerEpoch: -1 partitionLeaderEpoch: 0 isTransactional: false isControl: false position: 0 CreateTime: 1572434815538 size: 79 magic: 2 compresscodec: NONE crc: 234703942 isvalid: true</span><br><span class="line">| offset: 0 CreateTime: 1572434815538 keysize: -1 valuesize: 11 sequence: -1 headerKeys: [] payload: hello world</span><br><span class="line">baseOffset: 1 lastOffset: 1 count: 1 baseSequence: -1 lastSequence: -1 producerId: -1 producerEpoch: -1 partitionLeaderEpoch: 0 isTransactional: false isControl: false position: 79 CreateTime: 1572434920055 size: 69 magic: 2 compresscodec: NONE crc: 1305542871 isvalid: true</span><br><span class="line">| offset: 1 CreateTime: 1572434920055 keysize: -1 valuesize: 1 sequence: -1 headerKeys: [] payload: w</span><br><span class="line">baseOffset: 2 lastOffset: 16 count: 15 baseSequence: -1 lastSequence: -1 producerId: -1 producerEpoch: -1 partitionLeaderEpoch: 0 isTransactional: false isControl: false position: 148 CreateTime: 1572435583918 size: 1241 magic: 2 compresscodec: LZ4 crc: 3547131642 isvalid: true</span><br><span class="line">| offset: 2 CreateTime: 1572435583623 keysize: -1 valuesize: 1024 sequence: -1 headerKeys: [] payload: SSXVNJHPDQDXVCRASTVYBCWVMGNYKRXVZXKGXTSPSJDGYLUEGQFLAQLOCFLJBEPOWFNSOMYARHAOPUFOJHHDXEHXJBHWGSMZJGNLONJVXZXZOZITKXJBOZWDJMCBOSYQQKCPRRDCZWMRLFXBLGQPRPGRNTAQOOSVXPKJPJLAVSQCCRXFRROLLHWHOHFGCFWPNDLMWCSSHWXQQYKALAAWCMXYLMZALGDESKKTEESEMPRHROVKUMPSXHELIDQEOOHOIHEGJOAZBVPUMCHSHGXZYXXQRUICRIJGQEBBWAXABQRIRUGZJUUVFYQOVCDEDXYFPRLGSGZXSNIAVODTJKSQWHNWVPSAMZKOUDTWHIORJSCZIQYPCZMBYWKDIKOKYNGWPXZWMKRDCMBXKFUILWDHBFXRFAOPRUGDFLPDLHXXCXCUPLWGDPPHEMJGMTVMFQQFVCUPOFYWLDUEBICKPZKHKVMCJVWVKTXBKAPWAPENUEZNWNWDCACDRLPIPHJQQKMOFDQSPKKNURFBORJLBPCBIWTSJNPRBNITTKJYWAHWGKZYNUSFISPIYPIOGAUPZDXHCFVGXGIVVCPFHIXAACZXZLFDMOOSSNTKUPJQEIRRQAMUCTBLBSVPDDYOIHAOODZNJTVHDCIEGTAVMYZOCIVSKUNSMXEKBEWNZPRPWPUJABJXNQBOXSHOEGMJSNBUTGTIFVEQPSYBDXEXORPQDDODZGBELOISTRWXMEYWVVHGMJKWLJCCHPKAFRASZEYQZCVLFSLOWTLBMPPWPPFPQSAZPTULSTCDMODYKZGSRFQTRFTGCNMNXQQIYVUQZHVNIPHZWVBSGOBYIFDNNXUTBBQUYNXOZCSICGRTZSSRHROJRGBHMHEQJRDLOQBEPTOBMYLMIGPPDPOLTEUVDGATCGYPQOGOYYESKEGBLOCBIYSLQEYGCCIPBXPNSPKDYTBEWDHBHWVDPLOVHJPNYGJUHKKHDASNFGZDAIWWQEPPBRJKDGOSAFAPRLWFFXRVMZQTKRYF</span><br></pre></td></tr></table></figure></p>
+<h2 id="查询消费者组位移"><a href="#查询消费者组位移" class="headerlink" title="查询消费者组位移"></a>查询消费者组位移</h2><p><code>CURRENT-OFFSET</code>表示该消费者当前消费的最新位移，<code>LOG-END-OFFSET</code>表示对应分区最新生产消息的位移<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group transaction</span><br></pre></td></tr></table></figure><br>参考：<a href="http://zhongmingmao.me" target="_blank" rel="noopener">http://zhongmingmao.me</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Middleware/" rel="tag"># Middleware</a>
+              <a href="/tags/MQ/" rel="tag"># MQ</a>
+              <a href="/tags/Kafka/" rel="tag"># Kafka</a>
+              <a href="/tags/Stream/" rel="tag"># Stream</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/26/kafka-reset-consumer-group-offset/" rel="prev" title="Kafka -- 重设消费者组位移">
+      <i class="fa fa-chevron-left"></i> Kafka -- 重设消费者组位移
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/09/28/kafka-admin-client/" rel="next" title="Kafka -- KafkaAdminClient">
+      Kafka -- KafkaAdminClient <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本列表"><span class="nav-number">1.</span> <span class="nav-text">脚本列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#脚本注解"><span class="nav-number">1.0.1.</span> <span class="nav-text">脚本注解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka-broker-api-versions"><span class="nav-number">2.</span> <span class="nav-text">kafka-broker-api-versions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka-topics"><span class="nav-number">3.</span> <span class="nav-text">kafka-topics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka-console-producer"><span class="nav-number">4.</span> <span class="nav-text">kafka-console-producer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka-console-consumer"><span class="nav-number">5.</span> <span class="nav-text">kafka-console-consumer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka-producer-perf-test"><span class="nav-number">6.</span> <span class="nav-text">kafka-producer-perf-test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka-consumer-perf-test"><span class="nav-number">7.</span> <span class="nav-text">kafka-consumer-perf-test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看主题消息总数"><span class="nav-number">8.</span> <span class="nav-text">查看主题消息总数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看消息文件数据"><span class="nav-number">9.</span> <span class="nav-text">查看消息文件数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询消费者组位移"><span class="nav-number">10.</span> <span class="nav-text">查询消费者组位移</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Action"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Action</p>
+  <div class="site-description" itemprop="description">热爱你所坚持的，坚持你所热爱的</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Action8686" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Action8686" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:748173631@qq.com" title="E-Mail → mailto:748173631@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Action</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">251k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">3:48</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>
