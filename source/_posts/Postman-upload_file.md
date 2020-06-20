@@ -15,8 +15,6 @@ tags:
 http://127.0.0.1:9810/data/site_upload_file
 ```
 
-![](http://qa7i5mbcj.bkt.clouddn.com/post.png)
-
 <!-- more -->
 
 #### 2.填写Headers
@@ -25,8 +23,8 @@ http://127.0.0.1:9810/data/site_upload_file
 Content-Type : multipart/form-data
 ```
 
-![](http://qa7i5mbcj.bkt.clouddn.com/headers.png)
+![](https://img-blog.csdn.net/20180601143717485?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21hb3dlbmRp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 #### 3.选择form-data，上传文件
 
-![](http://qa7i5mbcj.bkt.clouddn.com/body.png)
+![](https://img-blog.csdn.net/20180601143141175?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21hb3dlbmRp/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
