@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yijunworld.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="HBase简介 HBase是一个分布式的、面向列的开源Nosql数据库  来源于googlBigtable HBase在Hadoop之上提供了类似于Bigtable的能力（是基于Hadoop的HDFS进行存储）  HBase不同于一般的关系数据库，它适合非结构化数据存储  Bigtable是什么 Bigtable是压缩的、高性能的、高可扩展性的、基于Google GFS文件系统的数据库 用于存储大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大数据 Hbase简介">
+<meta property="og:url" content="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/index.html">
+<meta property="og:site_name" content="Action">
+<meta property="og:description" content="HBase简介 HBase是一个分布式的、面向列的开源Nosql数据库  来源于googlBigtable HBase在Hadoop之上提供了类似于Bigtable的能力（是基于Hadoop的HDFS进行存储）  HBase不同于一般的关系数据库，它适合非结构化数据存储  Bigtable是什么 Bigtable是压缩的、高性能的、高可扩展性的、基于Google GFS文件系统的数据库 用于存储大">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tva3.sinaimg.cn/large/d479ba17ly1gfyuhy9bvkj21970mhk2n.jpg">
+<meta property="og:image" content="http://tvax1.sinaimg.cn/large/d479ba17ly1gfyuj0d0lvj21am0kk7cj.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/d479ba17ly1gfyujvakg6j21at0mm12h.jpg">
+<meta property="og:image" content="http://tvax1.sinaimg.cn/large/d479ba17ly1gfyuldxw1bj20s40obtg4.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/d479ba17ly1gfyultxh5cj213h0npgu0.jpg">
+<meta property="og:image" content="http://tvax2.sinaimg.cn/large/d479ba17ly1gfyutv9p8sj20pu0f7n1e.jpg">
+<meta property="article:published_time" content="2020-06-20T07:27:40.000Z">
+<meta property="article:modified_time" content="2020-06-20T08:55:01.328Z">
+<meta property="article:author" content="Action">
+<meta property="article:tag" content="大数据">
+<meta property="article:tag" content="Hbase">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tva3.sinaimg.cn/large/d479ba17ly1gfyuhy9bvkj21970mhk2n.jpg">
+
+<link rel="canonical" href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>大数据 Hbase简介 | Action</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Action" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Action</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">锤子</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">83</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">46</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">73</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/zmjaction" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          大数据 Hbase简介
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-20 15:27:40" itemprop="dateCreated datePublished" datetime="2020-06-20T15:27:40+08:00">2020-06-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hbase/" itemprop="url" rel="index"><span itemprop="name">Hbase</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="HBase简介"><a href="#HBase简介" class="headerlink" title="HBase简介"></a>HBase简介</h3><ul>
+<li><p>HBase是一个分布式的、面向列的开源Nosql数据库</p>
+</li>
+<li><p>来源于googlBigtable</p>
+<p>HBase在Hadoop之上提供了类似于Bigtable的能力（是基于Hadoop的HDFS进行存储）</p>
+</li>
+<li><p>HBase不同于一般的关系数据库，它适合非结构化数据存储</p>
+</li>
+<li><p>Bigtable是什么</p>
+<p>Bigtable是压缩的、高性能的、高可扩展性的、基于Google GFS文件系统的数据库</p>
+<p>用于存储大规模的结构化数据</p>
+<p>在扩展性和性能方面有很大的优势</p>
+</li>
+<li><p>什么是面向列的数据库</p>
+<p>即列式数据库，就是把每一列中的数据值放在一起进行存储</p>
+<p>对应的就是行式数据库（常见的有关系型数据库）：把每一行的数据放在一起存储，存储完了之后就存储下一行的数据</p>
+</li>
+</ul>
+<p><strong>为什么HBase适合非结构化数据存储</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">为什么HBase适合非结构化数据存储</span><br><span class="line">结构化数据与非结构化数据的概念</span><br><span class="line"></span><br><span class="line">结构化数据：可以用二维表格形式存储的数据</span><br><span class="line"></span><br><span class="line">非结构化数据：图片、文档这些可以认为为非结构化数据</span><br><span class="line"></span><br><span class="line">我们可以将这些非结构化数据以二进制的方式存到HBase里面，这样无论是存储还是查询都是比较方便快捷的，而且很容易进行扩展</span><br></pre></td></tr></table></figure>
+<h3 id="HBase与HDFS"><a href="#HBase与HDFS" class="headerlink" title="HBase与HDFS"></a>HBase与HDFS</h3><ul>
+<li>HBase建立在Hadoop文件系统之上，利用了Hadoop的文件系统的容错能力</li>
+<li>HBase提供了对数据的随机实时读/写访问功能</li>
+<li>HBase内部使用哈希表，并存储索引，可将在HDFS文件中的数据进行快速查找</li>
+</ul>
+<h3 id="HBase使用场景"><a href="#HBase使用场景" class="headerlink" title="HBase使用场景"></a>HBase使用场景</h3><ul>
+<li>瞬间写入量很大，常用数据库不好支撑或需要很高成本支撑的场景</li>
+<li>数据需要长久保存，且量会持久增长到比较大的场景</li>
+<li>HBase不适用于有join，多级索引，表关系复杂的数据模型</li>
+</ul>
+<h3 id="CAP定理"><a href="#CAP定理" class="headerlink" title="CAP定理"></a>CAP定理</h3><p>CAP定理就是对于一个分布式计算系统不可能同时满足以下三点：</p>
+<ul>
+<li>一致性（所有节点在同一时间具有相同的数据）</li>
+<li>可用性（保证每个请求不管成功或者失败都有响应，但不保证获取的数据为正确的数据）</li>
+<li>分区容错性（系统中任意信息的丢失或失败不会影响系统的继续运作，系统如果不能在某一个时限内达成数据一致性，就必须在上面两个操作之间做出选择）</li>
+</ul>
+<p>那么对于分布式数据系统，分区容错性是最基本的要求，否则就失去了存在的意义，因此需要在一致性和可用性上做出取舍：在很多情况下会牺牲一致性从而来换取可用性，比如：Cassandra就是AP类型的，当然，牺牲一致性，只是要求不像关系型数据库一样，要求强一致性，而是要求系统能达到最终一致性。而HBase属于CP类型的，是强一致性的，它的每一行有regionserver、rowkey、版本标签等来组合，从而保证行的一致性。</p>
+<h3 id="ACID定义"><a href="#ACID定义" class="headerlink" title="ACID定义"></a>ACID定义</h3><p>数据库事务正确执行的4个基本要素</p>
+<ul>
+<li>原子性（一个事务要么全部执行，要么全部不执行。如果执行过程中发生了错误，系统会回滚到最初的状态）</li>
+<li>一致性（事务的运行，不会改变数据库中数据的一致性）</li>
+<li>隔离性（2个以上的事务在执行的过程中，不会出现交错执行的状态（因为这样的话可能会导致数据的不一致））</li>
+<li>持久性（一个事务执行成功之后，该事务对数据库的更改，要持久性的保存在数据库当中）</li>
+</ul>
+<p>一个支持事务的数据库系统中必须得有这4个特性，否则在事务的过程当中就无法保证事务的正确性</p>
+<p>HBase作为一个NoSQL数据库，为了性能不支持严格的ACID，只支持到单个的行</p>
+<h2 id="HBase概念"><a href="#HBase概念" class="headerlink" title="HBase概念"></a>HBase概念</h2><ul>
+<li>NameSpace：可以把NameSpace理解为RDBMS的“数据库”，1个NameSpace包含一组表</li>
+<li>Table：表名必须是能用在文件路径里的合法名字。这样做是因为HBase的表是映射成HDFS上相应的文件的，因此表名必须是合法的路径</li>
+<li>Row：在表里面，每一行代表着一个数据对象，每一行都是以一个Row Key来进行唯一标识的，Row Key并没有什么特定的数据类型，以二进制的字节来存储</li>
+<li>Column：HBase的列由Column family和Column qualifier组成，由冒号（:）进行间隔；比如 family:qualifier</li>
+<li>RowKey：可以唯一标识一行记录，不可被改变；改变的唯一方式是删除这个RowKey，再重新插入</li>
+<li>Column Family：是一些Column的集合，1个Column Family所包含的所有的Column成员是有着相同的前缀；在物理上1个Column Family所有的成员是存储在一起的，存储的优化都是针对Column Family级别的；这就意味着1个- Column Family的成员都是用相同的方式进行访问的；在定义HBase表的时候需要提前设置好列族，表中所有的列都需要组织在列族里面；列族一旦定义好之后，就不能轻易的更改了，因为它会影响到HBase真实的物理存储结构</li>
+<li>Column Qualifier：列族中的数据通过列标识（Column Qualifier）来进行映射，可以理解为一个键值对，Column Qualifier就是key</li>
+<li>Cell：每一个RowKey、Column Family、Column Qualifier共同组成的一个单元；存储在Cell里面就是我们想要保存的数据；Cell存储的数据没有特定的数据类型，以二进制字节来进行存储</li>
+<li>Timestamp：每个值都会有一个timestamp，作为该值特定版本的标识符；默认HBase中每次插入数据的时候，都会用timestamp来进行版本标识；读取数据时，如果这个时间戳没有被指定，就默认返回最新的数据；写入数据时，如果没有设置时间戳，默认使用当前的时间戳；每一个列族的数据的版本都由HBase单独维护；默认情况下，HBase会保留3个版本的数据</li>
+</ul>
+<h2 id="HBase与传统关系型数据库的区别"><a href="#HBase与传统关系型数据库的区别" class="headerlink" title="HBase与传统关系型数据库的区别"></a>HBase与传统关系型数据库的区别</h2><p><img src="//tva3.sinaimg.cn/large/d479ba17ly1gfyuhy9bvkj21970mhk2n.jpg" alt=""></p>
+<p>查询的时候只能通过API去查询，不支持SQL，所以也默认支持通过RowKey去进行查询<br>两者的数据排布方式有很大的区别：</p>
+<ul>
+<li>传统的数据库就是行列的组织</li>
+<li>对于HBase这种NoSQL数据库我们可以理解为稀疏的多维的map</li>
+</ul>
+<p>每一行都是一个文件，每一列都是相关的属性</p>
+<p><strong>关系型数据库：</strong></p>
+<p><img src="//tvax1.sinaimg.cn/large/d479ba17ly1gfyuj0d0lvj21am0kk7cj.jpg" alt=""></p>
+<p><img src="//tva1.sinaimg.cn/large/d479ba17ly1gfyujvakg6j21at0mm12h.jpg" alt=""></p>
+<h3 id="HBase数据模型"><a href="#HBase数据模型" class="headerlink" title="HBase数据模型"></a>HBase数据模型</h3><p><img src="//tvax1.sinaimg.cn/large/d479ba17ly1gfyuldxw1bj20s40obtg4.jpg" alt=""></p>
+<p><img src="//tva1.sinaimg.cn/large/d479ba17ly1gfyultxh5cj213h0npgu0.jpg" alt=""></p>
+<h3 id="HBase基础架构"><a href="#HBase基础架构" class="headerlink" title="HBase基础架构"></a>HBase基础架构</h3><p><img src="//tvax2.sinaimg.cn/large/d479ba17ly1gfyutv9p8sj20pu0f7n1e.jpg" alt=""></p>
+<p>HBase依托于HDFS之上；整体上又划分为HMaster和RegionServer，在上层通过Java API提供查询的功能；通过Zookeeper进行管理</p>
+<p>通过上图我们可以发现，HBase工作的三大模块：</p>
+<ol>
+<li><p>HMaster</p>
+<ul>
+<li>HMaster是HBase主/从集群架构中的中央节点</li>
+<li>HMaster用于协调多个RegionServer、检测各个RegionServer的状态、并且平衡各个RegionServer之间的负载、同时还负责分配region到RegionServer</li>
+<li>region：region是HBase中存储的最小的单元、是HBase表格的基本单位</li>
+<li>HMaster维护表和Region的元数据，不参与数据的输入/输出过程</li>
+<li>HBase本身是支持HA的，也就是说同时可以有多个HMaster进行运行，但是只有1个处于active状态；如果处于active的节点失效了，挂掉了，其它的HMaster节点就会选举出一个active节点来接管整个HBase集群</li>
+<li>HMaster只负责各种协调工作（ 其实就是打杂） ， 比如建表、 删表、移动Region、 合并等操作 </li>
+</ul>
+</li>
+<li><p>RegionServer</p>
+<ul>
+<li>维护HMaster分配给他的region，处理堆这些region的io请求。当用户需要读取数据的时候会连接到对应的RegionServer，从相关的region中去获取数据</li>
+<li>负责切分正在运行过程中变的过大的region，从而保证查询的效率</li>
+</ul>
+</li>
+<li><p>Zookeeer</p>
+<ul>
+<li><p>Zookeeper是HBase HA的解决方案，是整个集群的协调器</p>
+<p>通过Zookeeper保证了至少有一个HMaster处于active状态</p>
+<p>HMaster并不直接参与数据的读写操作，当我们使用HBase的API的时候，当我们想用HBase的API去读取数据的时候，我们并不需要知道HMaster的地址、也不需要知道RegionServer的地址，我们只需要知Zookeeper集群的地址就可以了</p>
+</li>
+<li><p>HMaster启动将系统加载到Zookeeper</p>
+<p>Zookeeper保存了HBase集群region的信息、meta的信息等等</p>
+</li>
+<li><p>维护着RegionServer的状态信息，知道哪些数据需要从哪些RegionServer去读取</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>结构化数据：可以用二维表格形式存储的数据</p>
+<p>非结构化数据：图片、文档这些可以认为为非结构化数据</p>
+<p>我们可以将这些非结构化数据以二进制的方式存到HBase里面，这样无论是存储还是查询都是比较方便快捷的，而且很容易进行扩展</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag"># 大数据</a>
+              <a href="/tags/Hbase/" rel="tag"># Hbase</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/08/kafka-LEO-HW/" rel="prev" title="kafka-LEO-HW">
+      <i class="fa fa-chevron-left"></i> kafka-LEO-HW
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/" rel="next" title="大数据 Hbase伪分布式集群安装">
+      大数据 Hbase伪分布式集群安装 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase简介"><span class="nav-number">1.</span> <span class="nav-text">HBase简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase与HDFS"><span class="nav-number">2.</span> <span class="nav-text">HBase与HDFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase使用场景"><span class="nav-number">3.</span> <span class="nav-text">HBase使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAP定理"><span class="nav-number">4.</span> <span class="nav-text">CAP定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACID定义"><span class="nav-number">5.</span> <span class="nav-text">ACID定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase概念"><span class="nav-number"></span> <span class="nav-text">HBase概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase与传统关系型数据库的区别"><span class="nav-number"></span> <span class="nav-text">HBase与传统关系型数据库的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase数据模型"><span class="nav-number">1.</span> <span class="nav-text">HBase数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase基础架构"><span class="nav-number">2.</span> <span class="nav-text">HBase基础架构</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Action"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Action</p>
+  <div class="site-description" itemprop="description">热爱你所坚持的，坚持你所热爱的</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Action8686" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Action8686" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:748173631@qq.com" title="E-Mail → mailto:748173631@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Action</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">263k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">3:59</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>
