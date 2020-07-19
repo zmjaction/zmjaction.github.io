@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yijunworld.com/"/>
-  <updated>2020-06-20T08:28:01.469Z</updated>
+  <updated>2020-07-19T14:07:44.588Z</updated>
   <id>http://yijunworld.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>go -- excelize-- 导出文件</title>
+    <link href="http://yijunworld.com/2020/07/06/go%E4%BD%BF%E7%94%A8excelize%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6/"/>
+    <id>http://yijunworld.com/2020/07/06/go%E4%BD%BF%E7%94%A8excelize%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6/</id>
+    <published>2020-07-06T02:10:09.000Z</published>
+    <updated>2020-07-19T14:07:44.588Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;360EntSecGroup-Skylar-excelize&quot;&gt;&lt;a href=&quot;#360EntSecGroup-Skylar-excelize&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="go" scheme="http://yijunworld.com/categories/go/"/>
+    
+      <category term="excelize" scheme="http://yijunworld.com/categories/go/excelize/"/>
+    
+    
+      <category term="go" scheme="http://yijunworld.com/tags/go/"/>
+    
+      <category term="excelize" scheme="http://yijunworld.com/tags/excelize/"/>
+    
+  </entry>
   
   <entry>
     <title>大数据 Hbase伪分布式集群安装</title>
@@ -138,41 +169,6 @@
   </entry>
   
   <entry>
-    <title>postgresql -- 窗口函数</title>
-    <link href="http://yijunworld.com/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
-    <id>http://yijunworld.com/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/</id>
-    <published>2020-06-03T11:39:43.000Z</published>
-    <updated>2020-06-09T14:45:28.129Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;窗口函数&quot;&gt;&lt;a href=&quot;#窗口函数&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据库" scheme="http://yijunworld.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="postgresql" scheme="http://yijunworld.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/"/>
-    
-      <category term="窗口函数" scheme="http://yijunworld.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
-    
-    
-      <category term="数据库" scheme="http://yijunworld.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="postgresql" scheme="http://yijunworld.com/tags/postgresql/"/>
-    
-      <category term="窗口函数" scheme="http://yijunworld.com/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>postgresql -- 模糊查询</title>
     <link href="http://yijunworld.com/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/"/>
     <id>http://yijunworld.com/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/</id>
@@ -206,6 +202,41 @@
       <category term="like" scheme="http://yijunworld.com/tags/like/"/>
     
       <category term="not like" scheme="http://yijunworld.com/tags/not-like/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>postgresql -- 窗口函数</title>
+    <link href="http://yijunworld.com/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
+    <id>http://yijunworld.com/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/</id>
+    <published>2020-06-03T11:39:43.000Z</published>
+    <updated>2020-06-09T14:45:28.129Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;窗口函数&quot;&gt;&lt;a href=&quot;#窗口函数&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yijunworld.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="postgresql" scheme="http://yijunworld.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/"/>
+    
+      <category term="窗口函数" scheme="http://yijunworld.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
+    
+    
+      <category term="数据库" scheme="http://yijunworld.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="postgresql" scheme="http://yijunworld.com/tags/postgresql/"/>
+    
+      <category term="窗口函数" scheme="http://yijunworld.com/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   
@@ -637,63 +668,6 @@
 &lt;li&gt;Kafka Or 传统消息中间件&lt;ul&gt;
 &lt;li&gt;传统消息中间件：消息处理逻辑非常复杂，处理代价高、又&lt;strong&gt;不关心消息之间的顺序&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Kafka：需要&lt;strong&gt;较高的吞吐量&lt;/strong&gt;、但&lt;strong&gt;每条消息的处理时间很短&lt;/strong&gt;，又&lt;strong&gt;关心消息的顺序&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-    
-      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
-    
-      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
-    
-      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
-    
-    
-      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
-    
-      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
-    
-      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
-    
-      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kafka -- 动态配置</title>
-    <link href="http://yijunworld.com/2019/09/25/kafka-dynamic-config/"/>
-    <id>http://yijunworld.com/2019/09/25/kafka-dynamic-config/</id>
-    <published>2019-09-25T01:58:18.000Z</published>
-    <updated>2020-06-08T05:54:47.498Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Kafka安装目录的config路径下，有&lt;code&gt;server.properties&lt;/code&gt;文件&lt;ul&gt;
-&lt;li&gt;通常情况下，会指定&lt;code&gt;server.properties&lt;/code&gt;来启动Broker&lt;/li&gt;
-&lt;li&gt;如果要设置Broker端的任何参数，必须要显式修改&lt;code&gt;server.properties&lt;/code&gt;，然后重启Broker，让参数生效&lt;/li&gt;
-&lt;li&gt;但在生产环境，不能随意重启Broker，因此需要能够&lt;strong&gt;动态&lt;/strong&gt;修改Broker端参数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;社区于&lt;strong&gt;1.1.0&lt;/strong&gt;正式引入了&lt;strong&gt;动态Broker参数&lt;/strong&gt;&lt;ul&gt;
-&lt;li&gt;动态指的是修改参数后，无需重启Broker就能立即生效，而之前&lt;code&gt;server.properties&lt;/code&gt;中配置的参数称为&lt;strong&gt;静态参数&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;并非所有Broker端参数都可以动态调整的，官方文档中有&lt;code&gt;Dynamic Update Mode&lt;/code&gt;一列&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;read-only&lt;/strong&gt;&lt;ul&gt;
-&lt;li&gt;与原来的参数行为一样，只有重启Broker，才能令修改生效&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;per-broker&lt;/strong&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;动态参数&lt;/strong&gt;，修改之后，只会在&lt;strong&gt;对应的Broker&lt;/strong&gt;上生效&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;cluster-wide&lt;/strong&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;动态参数&lt;/strong&gt;，修改之后，会在&lt;strong&gt;整个集群&lt;/strong&gt;范围内生效&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
