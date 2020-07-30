@@ -123,17 +123,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">85</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">94</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">48</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">82</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -188,6 +188,514 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/12/21/%E7%BD%91%E7%BB%9C-ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/21/%E7%BD%91%E7%BB%9C-ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/" class="post-title-link" itemprop="url">子网络掩码</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-21 23:09:21" itemprop="dateCreated datePublished" datetime="2018-12-21T23:09:21+08:00">2018-12-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">网络</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C/ip/" itemprop="url" rel="index"><span itemprop="name">ip</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C/ip/Subnet-Mask/" itemprop="url" rel="index"><span itemprop="name">Subnet Mask</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="一道面试题"><a href="#一道面试题" class="headerlink" title="一道面试题"></a>一道面试题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">下列那个ip地址不在192.168.11.18&#x2F;30网段中？</span><br><span class="line">A) 192.168.11.17</span><br><span class="line">B）192.168.11.18</span><br><span class="line">C) 192.168.11.19</span><br><span class="line">D) 192.168.11.20</span><br></pre></td></tr></table></figure>
+<h4 id="1-子网络掩码，作用"><a href="#1-子网络掩码，作用" class="headerlink" title="1.子网络掩码，作用"></a>1.子网络掩码，作用</h4><blockquote>
+<p>网络掩码”又叫“子网掩码”、“地址掩码”、“子网路遮罩”（subnet mask），它是一种用来指明一个<a href="https://zh.wikipedia.org/wiki/IP%E5%9C%B0%E5%9D%80" target="_blank" rel="noopener">IP地址</a>的哪些位标识的是主机所在的网络地址以及哪些位标识的是主机地址的<a href="https://zh.wikipedia.org/wiki/%E6%8E%A9%E7%A0%81" target="_blank" rel="noopener">位掩码</a>。</p>
+<p>来源：维基百科</p>
+</blockquote>
+<ul>
+<li>作用：就是将ip地址划分为网络地址和主机地址两个部分</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/12/21/%E7%BD%91%E7%BB%9C-ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/11/09/python-bz2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/09/python-bz2/" class="post-title-link" itemprop="url">No module named '_bz2'</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-09 10:28:31" itemprop="dateCreated datePublished" datetime="2018-11-09T10:28:31+08:00">2018-11-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>147</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="ModuleNotFoundError-No-module-named-‘-bz2’"><a href="#ModuleNotFoundError-No-module-named-‘-bz2’" class="headerlink" title="ModuleNotFoundError: No module named ‘_bz2’"></a>ModuleNotFoundError: No module named ‘_bz2’</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install bzip2-devel </span><br><span class="line"><span class="comment"># 进入python3的安装目录,重新编译python3 cd /usr/local/Python3</span></span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/10/14/java-%E7%BB%A7%E6%89%BF-%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/14/java-%E7%BB%A7%E6%89%BF-%E6%8A%BD%E8%B1%A1%E7%B1%BB/" class="post-title-link" itemprop="url">java-- 继承-- 抽象类</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-14 20:31:27" itemprop="dateCreated datePublished" datetime="2018-10-14T20:31:27+08:00">2018-10-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/%E7%BB%A7%E6%89%BF/" itemprop="url" rel="index"><span itemprop="name">继承</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/%E7%BB%A7%E6%89%BF/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" itemprop="url" rel="index"><span itemprop="name">抽象类</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><blockquote>
+<p>Java只支持单继承，不支持多继承。</p>
+<p>顶层父类是Object类。所有的类默认继承Object，作为父类。</p>
+<p>继承：就是子类继承父类的属性和行为，使得子类对象具有与父类相同的属性、相同的行为。子类可以直接 </p>
+<p>访问父类中的非私有的属性和行为</p>
+<p>好处：</p>
+<ol>
+<li>提高代码的复用性。 </li>
+</ol>
+<ol>
+<li>类与类之间产生了关系，是多态的前提。</li>
+</ol>
+</blockquote>
+<h5 id="通过-extends-关键字，可以声明一个子类继承另外一个父类"><a href="#通过-extends-关键字，可以声明一个子类继承另外一个父类" class="headerlink" title="通过 extends 关键字，可以声明一个子类继承另外一个父类"></a>通过 <code>extends</code> 关键字，可以声明一个子类继承另外一个父类</h5><p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"去工作"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">extends</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public void work()&#123;</span></span><br><span class="line"><span class="comment">//        System.out.println("老师去工作");</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Teacher th = <span class="keyword">new</span> Teacher();</span><br><span class="line">        th.work();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="继承之后-成员变量重名、不重名"><a href="#继承之后-成员变量重名、不重名" class="headerlink" title="继承之后-成员变量重名、不重名"></a>继承之后-成员变量重名、不重名</h4><blockquote>
+<p>子父类中出现了同名的成员变量时，在子类中需要访问父类中非私有成员变量时，需要使用 <code>super</code>关键字，修饰 父类成员变量，类似于<code>this</code> ;</p>
+<p>super.父类成员变量名 </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">6</span>;</span><br><span class="line">    <span class="keyword">int</span> num1 = <span class="number">20</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"去工作"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">extends</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">10</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"老师去工作"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 子类中访问父类得同名变量</span></span><br><span class="line">        System.out.println(<span class="keyword">super</span>.num);</span><br><span class="line">        <span class="comment">// 子类中访问自己得变量</span></span><br><span class="line">        System.out.println(<span class="keyword">this</span>.num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">直接通过子类对象访问成员变量：</span></span><br><span class="line"><span class="comment">    等号左边是谁，就优先用谁，没有则向上找。</span></span><br><span class="line"><span class="comment">间接通过成员方法访问成员变量：</span></span><br><span class="line"><span class="comment">    该方法属于谁，就优先用谁，没有则向上找。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Teacher th = <span class="keyword">new</span> Teacher();</span><br><span class="line">        th.work();</span><br><span class="line">        <span class="comment">// 优先子类得</span></span><br><span class="line">        System.out.println(th.num);</span><br><span class="line">        <span class="comment">// 子类中没有查找父类得</span></span><br><span class="line">        System.out.println(th.num1);</span><br><span class="line">        th.method();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="继承之后-方法重名、不重名"><a href="#继承之后-方法重名、不重名" class="headerlink" title="继承之后-方法重名、不重名"></a>继承之后-方法重名、不重名</h4><blockquote>
+<p>重写（Override）<br>概念：在继承关系当中，方法的名称一样，参数列表也一样。</p>
+<p>重写（Override）：方法的名称一样，参数列表【也一样】。覆盖、覆写。</p>
+<p>重载（Overload）：方法的名称一样，参数列表【不一样】</p>
+<p>注意：</p>
+<p>子类方法的权限必须【大于等于】父类方法的权限修饰符</p>
+<p>public &gt; protected &gt; (default) &gt; private</p>
+<p>不是关键字default，而是什么都不写，留空</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"吃东西"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"吃骨头"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Call</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"汪汪叫"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo1main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Dog dg = <span class="keyword">new</span> Dog();</span><br><span class="line">        <span class="comment">// 不同名得方法直接调用即可</span></span><br><span class="line">        dg.Eat();</span><br><span class="line">        dg.Call();</span><br><span class="line">        <span class="comment">// 覆盖父类中得同名方法</span></span><br><span class="line">        dg.Eat();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="继承之后-构造方法"><a href="#继承之后-构造方法" class="headerlink" title="继承之后-构造方法"></a>继承之后-构造方法</h4><blockquote>
+<p>子类必须调用父类构造方法，不写默认调用super()；写了则用写的指定的super调用，super只能有一个，还必须是第一个。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Animal</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"父类的无参数构造方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="title">Animal</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"父类中的有参构造方法"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dog</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        super();</span></span><br><span class="line">        <span class="keyword">super</span>(<span class="number">100</span>);</span><br><span class="line">        System.out.println(<span class="string">"子类中构造方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"子类中的方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">demomain</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Dog dg = <span class="keyword">new</span> Dog();</span><br><span class="line">        dg.method();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><blockquote>
+<p>抽象方法 ： 没有方法体的方法。 </p>
+<p>抽象类：包含抽象方法的类。 </p>
+<ol>
+<li><p>抽象类不能创建对象，如果创建，编译无法通过而报错。只能创建其非抽象子类的对象。</p>
+</li>
+<li><p>抽象类中，可以有构造方法，是供子类创建对象时，初始化父类成员使用的。</p>
+</li>
+<li><p>抽象类中，不一定包含抽象方法，但是有抽象方法的类必定是抽象类</p>
+</li>
+<li><p>抽象类的子类，必须重写抽象父类中所有的抽象方法，否则，编译无法通过而报错。除非该子类也是抽象 </p>
+<p>类</p>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"猫吃鱼"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Cat ct = <span class="keyword">new</span> Cat();</span><br><span class="line">        ct.eat();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/10/13/java-Math/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/13/java-Math/" class="post-title-link" itemprop="url">java-- Math类</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-13 19:42:51" itemprop="dateCreated datePublished" datetime="2018-10-13T19:42:51+08:00">2018-10-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>546</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h5><p><code>java.lang.Math</code> 类包含用于执行基本数学运算的方法，如初等指数、对数、平方根和三角函数。类似这样的工具 </p>
+<p>类，其所有方法均为静态方法，并且不会创建对象</p>
+<h5 id="运算方法"><a href="#运算方法" class="headerlink" title="运算方法"></a>运算方法</h5><ul>
+<li><code>public static double abs(double a)</code> ：返回 double 值的绝对值。</li>
+<li><code>public static double ceil(double a)</code> ：返回大于等于参数的最小的整数。 </li>
+<li><code>public static double floor(double a)</code> ：返回小于等于参数最大的整数。 </li>
+<li><code>public static long round(double a)</code> ：返回最接近参数的 long。(相当于四舍五入方法) </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">demoMath</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 获取绝对值</span></span><br><span class="line">        System.out.println(Math.abs(<span class="number">3.14</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 向上取整</span></span><br><span class="line">        System.out.println(Math.ceil(<span class="number">3.9</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 向下取整</span></span><br><span class="line">        System.out.println(Math.floor(<span class="number">3.9</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 四舍五入</span></span><br><span class="line">        System.out.println(Math.round(<span class="number">3.5</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/10/13/java-Arrays/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/13/java-Arrays/" class="post-title-link" itemprop="url">java-- Arrays类</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-13 19:39:43" itemprop="dateCreated datePublished" datetime="2018-10-13T19:39:43+08:00">2018-10-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/Arrays%E7%B1%BB/" itemprop="url" rel="index"><span itemprop="name">Arrays类</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>992</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="Arrays类"><a href="#Arrays类" class="headerlink" title="Arrays类"></a>Arrays类</h5><ul>
+<li><code>java.util.Arrays</code> 此类包含用来操作数组的各种方法，比如排序和搜索等，所有方法均为静态方法</li>
+</ul>
+<h5 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h5><ul>
+<li><code>public static String toString(int[] a)</code> ：返回指定数组内容的字符串表示形式。 </li>
+<li><code>public static void sort(int[] a)</code>：对指定的 int 型数组按数字升序进行排序。 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">demotestArrays</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] intArrays = &#123;<span class="number">10</span>, <span class="number">50</span>, <span class="number">30</span> ,<span class="number">20</span>&#125;;</span><br><span class="line">        <span class="comment">// int[] 转换为str</span></span><br><span class="line">        String intstr = Arrays.toString(intArrays);</span><br><span class="line">        System.out.println(intstr);</span><br><span class="line">        <span class="comment">// sort 排序</span></span><br><span class="line">        <span class="keyword">int</span>[] array1 = &#123;<span class="number">9</span>,<span class="number">20</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">1</span>&#125;;</span><br><span class="line">        Arrays.sort(array1);</span><br><span class="line">        System.out.println(Arrays.toString(array1));</span><br><span class="line">        <span class="comment">// sort 字符串排序</span></span><br><span class="line">        String[] array2 = &#123;<span class="string">"bb"</span>, <span class="string">"ccc"</span>,<span class="string">"aaa"</span>,<span class="string">"sgfagf"</span>&#125;;</span><br><span class="line">        Arrays.sort(array2);</span><br><span class="line">        System.out.println(Arrays.toString(array2));</span><br><span class="line">        <span class="comment">// </span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">demo02convert</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//将一个随机字符串中的所有字符升序排列，并倒序打印</span></span><br><span class="line">        String str1 = <span class="string">"sdsa34snsth92o3afahuoh4qd"</span>;</span><br><span class="line">        <span class="keyword">char</span>[] charstr1 = str1.toCharArray();</span><br><span class="line">        System.out.println(charstr1);</span><br><span class="line">        Arrays.sort(charstr1);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = charstr1.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            System.out.println(charstr1[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -370,6 +878,107 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/10/10/java-Random/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/10/java-Random/" class="post-title-link" itemprop="url">java-- Random</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-10 09:51:36" itemprop="dateCreated datePublished" datetime="2018-10-10T09:51:36+08:00">2018-10-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/Random/" itemprop="url" rel="index"><span itemprop="name">Random</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-什么是Random类"><a href="#1-什么是Random类" class="headerlink" title="1.什么是Random类"></a>1.什么是Random类</h4><p>此类的实例用于生成伪随机数。 </p>
+<p>例如，以下代码使用户能够得到一个随机数： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Random r &#x3D; new Random(); </span><br><span class="line">int i &#x3D; r.nextInt();</span><br></pre></td></tr></table></figure>
+<h4 id="2-Random使用步骤"><a href="#2-Random使用步骤" class="headerlink" title="2.Random使用步骤"></a>2.Random使用步骤</h4><h5 id="查看类"><a href="#查看类" class="headerlink" title="查看类"></a>查看类</h5><ul>
+<li><code>java.util.Random</code> ：该类需要 import导入使后使用。</li>
+</ul>
+<h5 id="查看构造方法"><a href="#查看构造方法" class="headerlink" title="查看构造方法"></a>查看构造方法</h5><ul>
+<li><code>public Random()</code> ：创建一个新的随机数生成器。</li>
+</ul>
+<h5 id="查看成员方法"><a href="#查看成员方法" class="headerlink" title="查看成员方法"></a>查看成员方法</h5><ul>
+<li><p><code>public int nextInt(int n)</code>：返回一个伪随机数，范围在 0 （包括）和 指定值 n （不包括）之间的 </p>
+<p>int 值。 </p>
+</li>
+</ul>
+<h5 id="示例-1-生成随机数"><a href="#示例-1-生成随机数" class="headerlink" title="示例 1.生成随机数"></a>示例 1.生成随机数</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Random类用来生成随机数字。使用起来也是三个步骤：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1. 导包</span></span><br><span class="line"><span class="comment">import java.util.Random;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">2. 创建</span></span><br><span class="line"><span class="comment">Random r = new Random(); // 小括号当中留空即可</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">3. 使用</span></span><br><span class="line"><span class="comment">获取一个随机的int数字（范围是int所有范围，有正负两种）：int num = r.nextInt()</span></span><br><span class="line"><span class="comment">获取一个随机的int数字（参数代表了范围，左闭右开区间）：int num = r.nextInt(3)</span></span><br><span class="line"><span class="comment">实际上代表的含义是：[0,3)，也就是0~2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Random</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> num = r.nextInt(<span class="number">10</span>);</span><br><span class="line">        System.out.println(num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">题目要求：</span></span><br><span class="line"><span class="comment">根据int变量n的值，来获取随机数字，范围是[1,n]，可以取到1也可以取到n。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">思路：</span></span><br><span class="line"><span class="comment">1. 定义一个int变量n，随意赋值</span></span><br><span class="line"><span class="comment">2. 要使用Random：三个步骤，导包、创建、使用</span></span><br><span class="line"><span class="comment">3. 如果写10，那么就是0~9，然而想要的是1~10，可以发现：整体+1即可。</span></span><br><span class="line"><span class="comment">4. 打印随机数字</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02Random</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">5</span>;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// 本来范围是[0,n)，整体+1之后变成了[1,n+1)，也就是[1,n]</span></span><br><span class="line">            <span class="keyword">int</span> result = r.nextInt(n) + <span class="number">1</span>;</span><br><span class="line">            System.out.println(result);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">题目：</span></span><br><span class="line"><span class="comment">用代码模拟猜数字的小游戏。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">思路：</span></span><br><span class="line"><span class="comment">1. 首先需要产生一个随机数字，并且一旦产生不再变化。用Random的nextInt方法</span></span><br><span class="line"><span class="comment">2. 需要键盘输入，所以用到了Scanner</span></span><br><span class="line"><span class="comment">3. 获取键盘输入的数字，用Scanner当中的nextInt方法</span></span><br><span class="line"><span class="comment">4. 已经得到了两个数字，判断（if）一下：</span></span><br><span class="line"><span class="comment">    如果太大了，提示太大，并且重试；</span></span><br><span class="line"><span class="comment">    如果太小了，提示太小，并且重试；</span></span><br><span class="line"><span class="comment">    如果猜中了，游戏结束。</span></span><br><span class="line"><span class="comment">5. 重试就是再来一次，循环次数不确定，用while(true)。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03RandomGame</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> randomNum = r.nextInt(<span class="number">100</span>) + <span class="number">1</span>; <span class="comment">// [1,100]</span></span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"请输入你猜测的数字："</span>);</span><br><span class="line">            <span class="keyword">int</span> guessNum = sc.nextInt(); <span class="comment">// 键盘输入猜测的数字</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (guessNum &gt; randomNum) &#123;</span><br><span class="line">                System.out.println(<span class="string">"太大了，请重试。"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (guessNum &lt; randomNum) &#123;</span><br><span class="line">                System.out.println(<span class="string">"太小了，请重试。"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"恭喜你，猜中啦！"</span>);</span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 如果猜中，不再重试</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"游戏结束。"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/10/10/java-basic-data-type/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -509,107 +1118,6 @@
 <h4 id="转换规则"><a href="#转换规则" class="headerlink" title="转换规则"></a>转换规则</h4><p>范围小的类型向范围大的类型提升，<code>byte、short、char</code> 运算时直接提升为 <code>int</code>。 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">byte、short、char‐‐&gt;int‐‐&gt;long‐‐&gt;float‐‐&gt;double</span><br></pre></td></tr></table></figure>
 <p>参考：<a href="https://www.runoob.com/java/java-basic-datatypes.html" target="_blank" rel="noopener">https://www.runoob.com/java/java-basic-datatypes.html</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/10/10/java-Random/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/10/java-Random/" class="post-title-link" itemprop="url">java-- Random</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-10-10 09:51:36" itemprop="dateCreated datePublished" datetime="2018-10-10T09:51:36+08:00">2018-10-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/Random/" itemprop="url" rel="index"><span itemprop="name">Random</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="1-什么是Random类"><a href="#1-什么是Random类" class="headerlink" title="1.什么是Random类"></a>1.什么是Random类</h4><p>此类的实例用于生成伪随机数。 </p>
-<p>例如，以下代码使用户能够得到一个随机数： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Random r &#x3D; new Random(); </span><br><span class="line">int i &#x3D; r.nextInt();</span><br></pre></td></tr></table></figure>
-<h4 id="2-Random使用步骤"><a href="#2-Random使用步骤" class="headerlink" title="2.Random使用步骤"></a>2.Random使用步骤</h4><h5 id="查看类"><a href="#查看类" class="headerlink" title="查看类"></a>查看类</h5><ul>
-<li><code>java.util.Random</code> ：该类需要 import导入使后使用。</li>
-</ul>
-<h5 id="查看构造方法"><a href="#查看构造方法" class="headerlink" title="查看构造方法"></a>查看构造方法</h5><ul>
-<li><code>public Random()</code> ：创建一个新的随机数生成器。</li>
-</ul>
-<h5 id="查看成员方法"><a href="#查看成员方法" class="headerlink" title="查看成员方法"></a>查看成员方法</h5><ul>
-<li><p><code>public int nextInt(int n)</code>：返回一个伪随机数，范围在 0 （包括）和 指定值 n （不包括）之间的 </p>
-<p>int 值。 </p>
-</li>
-</ul>
-<h5 id="示例-1-生成随机数"><a href="#示例-1-生成随机数" class="headerlink" title="示例 1.生成随机数"></a>示例 1.生成随机数</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Random类用来生成随机数字。使用起来也是三个步骤：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1. 导包</span></span><br><span class="line"><span class="comment">import java.util.Random;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">2. 创建</span></span><br><span class="line"><span class="comment">Random r = new Random(); // 小括号当中留空即可</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">3. 使用</span></span><br><span class="line"><span class="comment">获取一个随机的int数字（范围是int所有范围，有正负两种）：int num = r.nextInt()</span></span><br><span class="line"><span class="comment">获取一个随机的int数字（参数代表了范围，左闭右开区间）：int num = r.nextInt(3)</span></span><br><span class="line"><span class="comment">实际上代表的含义是：[0,3)，也就是0~2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Random</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> num = r.nextInt(<span class="number">10</span>);</span><br><span class="line">        System.out.println(num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">题目要求：</span></span><br><span class="line"><span class="comment">根据int变量n的值，来获取随机数字，范围是[1,n]，可以取到1也可以取到n。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">思路：</span></span><br><span class="line"><span class="comment">1. 定义一个int变量n，随意赋值</span></span><br><span class="line"><span class="comment">2. 要使用Random：三个步骤，导包、创建、使用</span></span><br><span class="line"><span class="comment">3. 如果写10，那么就是0~9，然而想要的是1~10，可以发现：整体+1即可。</span></span><br><span class="line"><span class="comment">4. 打印随机数字</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02Random</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">5</span>;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// 本来范围是[0,n)，整体+1之后变成了[1,n+1)，也就是[1,n]</span></span><br><span class="line">            <span class="keyword">int</span> result = r.nextInt(n) + <span class="number">1</span>;</span><br><span class="line">            System.out.println(result);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">题目：</span></span><br><span class="line"><span class="comment">用代码模拟猜数字的小游戏。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">思路：</span></span><br><span class="line"><span class="comment">1. 首先需要产生一个随机数字，并且一旦产生不再变化。用Random的nextInt方法</span></span><br><span class="line"><span class="comment">2. 需要键盘输入，所以用到了Scanner</span></span><br><span class="line"><span class="comment">3. 获取键盘输入的数字，用Scanner当中的nextInt方法</span></span><br><span class="line"><span class="comment">4. 已经得到了两个数字，判断（if）一下：</span></span><br><span class="line"><span class="comment">    如果太大了，提示太大，并且重试；</span></span><br><span class="line"><span class="comment">    如果太小了，提示太小，并且重试；</span></span><br><span class="line"><span class="comment">    如果猜中了，游戏结束。</span></span><br><span class="line"><span class="comment">5. 重试就是再来一次，循环次数不确定，用while(true)。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03RandomGame</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> randomNum = r.nextInt(<span class="number">100</span>) + <span class="number">1</span>; <span class="comment">// [1,100]</span></span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"请输入你猜测的数字："</span>);</span><br><span class="line">            <span class="keyword">int</span> guessNum = sc.nextInt(); <span class="comment">// 键盘输入猜测的数字</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (guessNum &gt; randomNum) &#123;</span><br><span class="line">                System.out.println(<span class="string">"太大了，请重试。"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (guessNum &lt; randomNum) &#123;</span><br><span class="line">                System.out.println(<span class="string">"太小了，请重试。"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"恭喜你，猜中啦！"</span>);</span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 如果猜中，不再重试</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"游戏结束。"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -813,490 +1321,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/10/09/strace%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/10/09/strace%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">strace -- 跟踪器</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-10-09 01:48:40" itemprop="dateCreated datePublished" datetime="2018-10-09T01:48:40+08:00">2018-10-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/strace/" itemprop="url" rel="index"><span itemprop="name">strace</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="什么是strace"><a href="#什么是strace" class="headerlink" title="什么是strace"></a>什么是strace</h4><blockquote>
-<p>strace是一个可用于诊断，调试，用户控件跟踪器，监控用户空间进程和内核的交互，如系统调用，信号传递，进程状态变更</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/10/09/strace%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/07/01/Go%E8%AF%AD%E8%A8%80goroutine/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/07/01/Go%E8%AF%AD%E8%A8%80goroutine/" class="post-title-link" itemprop="url">go -- goroutine--示例解析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-07-01 10:10:09" itemprop="dateCreated datePublished" datetime="2018-07-01T10:10:09+08:00">2018-07-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/go/goroutine/" itemprop="url" rel="index"><span itemprop="name">goroutine</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>简单的goroutine示例：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a [<span class="number">10</span>]<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(i <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">			<span class="keyword">for</span>  &#123;</span><br><span class="line">				fmt.Printf(<span class="string">"Hello goroutine %d\n"</span>, i) <span class="comment">// i/O操作</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;(i)</span><br><span class="line">	&#125;</span><br><span class="line">	time.Sleep(time.Microsecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>上边的代码如果不加go执行的话，只会在第一次i=0的时候无限循环执行<code>fmt.Printf(&quot;Hello goroutine %d\n&quot;, i)</code></li>
-<li>main()也是一个goroutine，主goroutine已经结束， 子goroutine还没有执行，所以需要加上<code>time.Sleep(time.Microsecond)</code></li>
-</ul>
-<h4 id="go开启的其实不是线程，而是协程"><a href="#go开启的其实不是线程，而是协程" class="headerlink" title="go开启的其实不是线程，而是协程"></a>go开启的其实不是线程，而是协程</h4><ul>
-<li>轻量级的协程</li>
-<li><strong>非抢占式</strong> 多任务处理，由协程主动交出控制权</li>
-<li>而线程再任何时候都可以被系统切换，所有线程又称之为抢占式多任务处理，哪怕程序执行到一半，都可以被系统切换</li>
-<li>编译器，解析器或者虚拟机层面的多任务</li>
-<li>协程可以看作是编译器层面的多任务而不是操作系统的多任务 操作系统只有线程没有协程</li>
-<li>go语言在执行goroutine时 编译器会有一个调度器为他调度协程 操作系统有调度器 go语言有自己的调度器</li>
-<li>多个协程可能再一个或多个线程上运行</li>
-</ul>
-<h4 id="非抢占式"><a href="#非抢占式" class="headerlink" title="非抢占式"></a>非抢占式</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a [<span class="number">10</span>]<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(i <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">			<span class="keyword">for</span>  &#123;</span><br><span class="line">				a[i]++</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;(i)</span><br><span class="line">	&#125;</span><br><span class="line">	time.Sleep(time.Microsecond)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行发现程序 夯住了，查看cpu占用，发现已经快达到100%了<br>产生的原因：</p>
-<pre><code>* a[i]++ 无法主动交出控制权
-* main函数事主goroutine，由于 go func 没有交出控制权，导致main一直等待
-</code></pre><p>从之前的代码可以看到，io操作时可以自动交出控制权的，如何手动交出控制权？可以使用<code>runtime.Gosched()</code>。一般情况下不会用到<code>runtime.Gosched()</code><br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a [<span class="number">10</span>]<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(i <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">			<span class="keyword">for</span>  &#123;</span><br><span class="line">				a[i]++</span><br><span class="line">				runtime.Gosched()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;(i)</span><br><span class="line">	&#125;</span><br><span class="line">	time.Sleep(time.Microsecond)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="go-func-中不传入变量可不可以？"><a href="#go-func-中不传入变量可不可以？" class="headerlink" title="go func(){}() 中不传入变量可不可以？"></a>go func(){}() 中不传入变量可不可以？</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过执行发现 报错了</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a [<span class="number">10</span>]<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">			<span class="keyword">for</span>  &#123;</span><br><span class="line">				a[i]++</span><br><span class="line">				runtime.Gosched()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;()</span><br><span class="line">	&#125;</span><br><span class="line">	time.Sleep(time.Microsecond)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过执行发现报错了，但是为什么报错呢？</p>
-<ul>
-<li>go run -race goroutine.go 看下究竟发生了什么</li>
-<li>从上边的执行命令,可以看出，出错的原因是因为如果不把i作为参数传给func，就不会形成闭包，在最后一次执行for的时候i会是10，导致a[10]超出范围</li>
-</ul>
-<h4 id="go语言调度器"><a href="#go语言调度器" class="headerlink" title="go语言调度器"></a>go语言调度器</h4><p>在go语言里，具体每个协程如何分配到线程里，都是交给调度器来分配，我们不用操心。</p>
-<h4 id="goroutine的定义"><a href="#goroutine的定义" class="headerlink" title="goroutine的定义"></a>goroutine的定义</h4><ul>
-<li>直接在函数前加入go</li>
-<li>不需要再定义时区分是否是异步函数</li>
-<li>调度器在合适的点进行切换</li>
-<li>使用-race检测数据访问冲突<h4 id="goroutine的切换点"><a href="#goroutine的切换点" class="headerlink" title="goroutine的切换点"></a>goroutine的切换点</h4>下面这些点可以参考，但是由于我们无法100%控制，所以只能是参考。</li>
-<li>I/O select</li>
-<li>channel</li>
-<li>等待锁</li>
-<li>函数调用（有时）</li>
-<li>runtime.Gosched()</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/05/20/Linux-%E4%BD%BF%E7%94%A8rz%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/20/Linux-%E4%BD%BF%E7%94%A8rz%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决使用 rz 命令乱码问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-05-20 10:20:40" itemprop="dateCreated datePublished" datetime="2018-05-20T10:20:40+08:00">2018-05-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/rz/" itemprop="url" rel="index"><span itemprop="name">rz</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>154</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="解决使用-rz-命令乱码问题"><a href="#解决使用-rz-命令乱码问题" class="headerlink" title="解决使用 rz 命令乱码问题"></a>解决使用 rz 命令乱码问题</h4><h6 id="使用-rz-命令上传一个-tar-包出现一堆乱七八糟的乱码，这个时候使用"><a href="#使用-rz-命令上传一个-tar-包出现一堆乱七八糟的乱码，这个时候使用" class="headerlink" title="使用 rz 命令上传一个 tar 包出现一堆乱七八糟的乱码，这个时候使用"></a><strong>使用 rz 命令上传一个 tar 包出现一堆乱七八糟的乱码，这个时候使用</strong></h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rz -be</span><br><span class="line">或者</span><br><span class="line">rz -e</span><br><span class="line">解析：-e</span><br><span class="line">Force sender to escape all control characters; normally XON, XOFF, DLE, CR-@-CR, and Ctrl-X are escaped.</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/03/20/Linux%20vim%E7%B2%98%E8%B4%B4%E6%A0%BC%E5%BC%8F%E9%94%99%E4%B9%B1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/03/20/Linux%20vim%E7%B2%98%E8%B4%B4%E6%A0%BC%E5%BC%8F%E9%94%99%E4%B9%B1/" class="post-title-link" itemprop="url">linux vim复制粘贴格式错乱</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-03-20 22:40:41" itemprop="dateCreated datePublished" datetime="2018-03-20T22:40:41+08:00">2018-03-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/vim/" itemprop="url" rel="index"><span itemprop="name">vim</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>38</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="linux-vim复制粘贴格式错乱"><a href="#linux-vim复制粘贴格式错乱" class="headerlink" title="linux vim复制粘贴格式错乱"></a>linux vim复制粘贴格式错乱</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">先按ESC输入:set paste再复制粘贴</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/03/06/go-%E6%A0%87%E5%87%86%E5%BA%93-bufio/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/03/06/go-%E6%A0%87%E5%87%86%E5%BA%93-bufio/" class="post-title-link" itemprop="url">go -- 标准库-- bufio</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-03-06 01:23:09" itemprop="dateCreated datePublished" datetime="2018-03-06T01:23:09+08:00">2018-03-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/go/bufio/" itemprop="url" rel="index"><span itemprop="name">bufio</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>16k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>15 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://golang.org/pkg/bufio/" target="_blank" rel="noopener">bufio</a> 用来帮助处理 <a href="https://www.quora.com/In-C-what-does-buffering-I-O-or-buffered-I-O-mean/answer/Robert-Love-1" target="_blank" rel="noopener">I/O 缓存</a>。 我们将通过一些示例来熟悉其为我们提供的：Reader, Writer and Scanner 等一系列功能</p>
-<h2 id="bufio-Writer"><a href="#bufio-Writer" class="headerlink" title="bufio.Writer"></a>bufio.Writer</h2><p>多次进行小量的写操作会影响程序性能。每一次写操作最终都会体现为系统层调用，频繁进行该操作将有可能对 CPU 造成伤害。而且很多硬件设备更适合处理块对齐的数据，例如硬盘。为了减少进行多次写操作所需的开支，golang 提供了 <a href="https://golang.org/pkg/bufio/#Writer" target="_blank" rel="noopener">bufio.Writer</a>。数据将不再直接写入目的地(实现了 <a href="https://golang.org/pkg/io/#Writer" target="_blank" rel="noopener">io.Writer</a> 接口)，而是先写入缓存，当缓存写满后再统一写入目的地：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">producer --&gt; buffer --&gt; io.Writer</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/03/06/go-%E6%A0%87%E5%87%86%E5%BA%93-bufio/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1364,20 +1392,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-count">94</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1424,13 +1452,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">267k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:03</span>
+    <span title="站点阅读时长">4:39</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

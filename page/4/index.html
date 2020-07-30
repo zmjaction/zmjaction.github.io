@@ -123,17 +123,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">85</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">94</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">48</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">82</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -188,6 +188,557 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/09/15/kafka-process-request/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/15/kafka-process-request/" class="post-title-link" itemprop="url">Kafka -- 处理请求</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-15 09:44:40" itemprop="dateCreated datePublished" datetime="2019-09-15T09:44:40+08:00">2019-09-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="请求协议"><a href="#请求协议" class="headerlink" title="请求协议"></a>请求协议</h2><ol>
+<li>Kafka自定义了一组请求协议，用于实现各种各样的交互操作<ul>
+<li><strong>PRODUCE</strong>请求用于生产消息，<strong>FETCH</strong>请求用于消费消息，<strong>METADATA</strong>请求用于请求Kafka集群元数据信息</li>
+</ul>
+</li>
+<li>Kafka 2.3总共定义了<strong>45</strong>种请求格式，所有请求都通过<strong>TCP</strong>网络以<strong>Socket</strong>的方式进行通讯</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/15/kafka-process-request/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/09/14/kafka-replication/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/14/kafka-replication/" class="post-title-link" itemprop="url">Kafka -- 副本</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-14 18:33:30" itemprop="dateCreated datePublished" datetime="2019-09-14T18:33:30+08:00">2019-09-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="副本机制的优点"><a href="#副本机制的优点" class="headerlink" title="副本机制的优点"></a>副本机制的优点</h2><ol>
+<li>提供<strong>数据冗余</strong><ul>
+<li>即使系统部分组件失效，系统依然能够继续运转，增加了<strong>整体可用性</strong>和<strong>数据持久性</strong></li>
+</ul>
+</li>
+<li>提供<strong>高伸缩性</strong><ul>
+<li>支持<strong>横向扩展</strong>，能够通过增加机器的方式来提升读性能，进而提高<strong>读操作吞吐量</strong></li>
+</ul>
+</li>
+<li>改善<strong>数据局部性</strong><ul>
+<li>允许将数据放入与用户<strong>地理位置相近</strong>的地方，从而<strong>降低系统延时</strong></li>
+</ul>
+</li>
+<li><strong>Kafka</strong>只能享受副本机制提供<strong>数据冗余</strong>实现的<strong>高可用性</strong>和<strong>高持久性</strong></li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/14/kafka-replication/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/09/12/kafka-monitor-consume-progress/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/12/kafka-monitor-consume-progress/" class="post-title-link" itemprop="url">Kafka -- 监控消费进度</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-12 15:20:35" itemprop="dateCreated datePublished" datetime="2019-09-12T15:20:35+08:00">2019-09-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Consumer-Lag"><a href="#Consumer-Lag" class="headerlink" title="Consumer Lag"></a>Consumer Lag</h2><ol>
+<li>Consumer Lag（滞后程度）：<strong>消费者当前落后于生产者的程度</strong></li>
+<li>Lag的单位是<strong>消息数</strong>，一般是在<strong>主题</strong>的级别上讨论Lag，但Kafka是在<strong>分区</strong>的级别上<strong>监控</strong>Lag，因此需要手动汇总</li>
+<li>对于消费者而言，Lag是<strong>最重要</strong>的监控指标，直接反应了一个消费者的运行情况<ul>
+<li>一个正常工作的消费者，它的Lag值应该很小，甚至<strong>接近于0</strong>，<strong>滞后程度很小</strong></li>
+<li>如果Lag很大，表明消费者无法跟上生产者的速度，Lag会越来越大<ul>
+<li>极有可能导致消费者消费的数据已经不在<strong>操作系统的页缓存</strong>中了，这些数据会失去享有<strong>Zero Copy</strong>技术的资格</li>
+<li>这样消费者不得不从<strong>磁盘</strong>读取这些数据，这将<strong>进一步拉大</strong>与生产者的差距</li>
+<li>马太效应：<em><strong>Lag原本就很大的消费者会越来越慢，Lag也会也来越大</strong></em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/12/kafka-monitor-consume-progress/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/09/10/kafka-consumer-manage-tcp-connection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/10/kafka-consumer-manage-tcp-connection/" class="post-title-link" itemprop="url">Kafka -- Java消费者管理TCP连接</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-10 10:03:46" itemprop="dateCreated datePublished" datetime="2019-09-10T10:03:46+08:00">2019-09-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="创建TCP连接"><a href="#创建TCP连接" class="headerlink" title="创建TCP连接"></a>创建TCP连接</h2><ol>
+<li>消费者端的主要程序入口是KafkaConsumer，但<strong>构建KafkaConsumer实例不会创建任何TCP连接</strong><ul>
+<li>构建<strong>KafkaProducer</strong>实例时，会在后台默默地启动一个<strong>Sender</strong>线程，Sender线程负责<strong>Socket</strong>连接的创建</li>
+<li>在Java构造函数中启动线程，会造成<strong>this指针逃逸</strong>，是一个<strong>隐患</strong></li>
+</ul>
+</li>
+<li>消费者的TCP连接是在调用<strong><code>KafkaConsumer.poll</code></strong>方法时被创建的，poll方法内部有3个时机可以创建TCP连接</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/10/kafka-consumer-manage-tcp-connection/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/09/08/kafka-multi-thread-consumer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/08/kafka-multi-thread-consumer/" class="post-title-link" itemprop="url">Kafka -- 多线程消费者</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-08 09:55:31" itemprop="dateCreated datePublished" datetime="2019-09-08T09:55:31+08:00">2019-09-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Kafka-Java-Consumer设计原理"><a href="#Kafka-Java-Consumer设计原理" class="headerlink" title="Kafka Java Consumer设计原理"></a>Kafka Java Consumer设计原理</h2><ol>
+<li>Kafka Java Consumer从Kafka 0.10.1.0开始，KafkaConsumer变成了<strong>双线程</strong>设计，即<strong>用户主线程</strong>和<strong>心跳线程</strong><ul>
+<li>用户主线程：启动Consumer应用程序main方法的那个线程</li>
+<li>心跳线程：只负责定期给对应的Broker机器发送心跳请求，以标识消费者应用的存活性</li>
+</ul>
+</li>
+<li>引入心跳线程的另一个目的<ul>
+<li>将心跳频率和主线程调用KafkaConsumer.poll方法的频率分开，解耦<strong>真实的消息处理逻辑</strong>和<strong>消费组成员存活性管理</strong></li>
+</ul>
+</li>
+<li>虽然有了心跳线程，但实际的消息获取逻辑依然是在用户主线程中完成<ul>
+<li>因此在<strong>消费消息</strong>的这个层面，依然可以安全地认为KafkaConsumer是<strong>单线程的设计</strong></li>
+</ul>
+</li>
+<li>老版本Consumer是<strong>多线程</strong>的架构<ul>
+<li>每个Consumer实例在内部为<strong>所有订阅的主题分区</strong>创建对应的<strong>消息获取线程</strong>，即Fetcher线程</li>
+</ul>
+</li>
+<li>老版本Consumer同时也是<strong>阻塞式</strong>的，Consumer实例启动后，内部会创建很多阻塞式的消息获取迭代器<ul>
+<li>但在很多场景下，Consumer端有<strong>非阻塞</strong>需求，如在<strong>流处理</strong>应用中执行<strong>过滤</strong>、<strong>分组</strong>等操作就不能是阻塞式的</li>
+<li>基于这个原因，社区为新版本Consumer设计了<strong>单线程+轮询</strong>的机制，该机制能较好地实现非阻塞的消息获取</li>
+</ul>
+</li>
+<li>单线程的设计<strong>简化</strong>了Consumer端的设计<ul>
+<li>Consumer获取到消息后，处理消息的逻辑是否采用多线程，完全由使用者决定</li>
+</ul>
+</li>
+<li>不论使用哪一种编程语言，单线程的设计都比较容易实现<ul>
+<li>并不是所有的编程语言都能很好地支持多线程，而单线程设计的Consumer更容易<strong>移植</strong>到其他语言上</li>
+</ul>
+</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/08/kafka-multi-thread-consumer/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -706,536 +1257,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/08/19/kafka-producer-idempotence-transaction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/19/kafka-producer-idempotence-transaction/" class="post-title-link" itemprop="url">Kafka -- 幂等性生产者 + 事务生产者</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-19 22:29:07" itemprop="dateCreated datePublished" datetime="2019-08-19T22:29:07+08:00">2019-08-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="消息交付可靠性保障"><a href="#消息交付可靠性保障" class="headerlink" title="消息交付可靠性保障"></a>消息交付可靠性保障</h2><ol>
-<li>消息交付可靠性保障：Kafka对Producer和Consumer要处理的消息所提供的承诺</li>
-<li>常见的承诺<ul>
-<li>最多一次（at most once）：消息可能会丢失，但绝不会被重复发送</li>
-<li><strong>至少一次</strong>（at least once）：消息不会丢失，但有可能被重复发送</li>
-<li>精确一次（exactly once）：消息不会丢失，也不会被重复发送</li>
-</ul>
-</li>
-<li>Kafka默认提供的交付可靠性保障：<em><strong>至少一次</strong></em><ul>
-<li>只有Broker成功<strong>提交</strong>消息且Producer接到Broker的应答才会认为该消息成功发送</li>
-<li>如果Broker成功提交消息，但Broker的应答没有成功送回Producer端，Producer只能选择<strong>重试</strong></li>
-</ul>
-</li>
-<li>最多一次<ul>
-<li>Kafka也可以提供<strong>最多一次</strong>交付可靠性保证，只需要让<strong>Producer禁止重试</strong>即可，但大部分场景下并不希望出现消息丢失</li>
-</ul>
-</li>
-<li><strong>精确一次</strong><ul>
-<li>消息不会丢失，也不会被重复处理，即使Producer端重复发送了相同的消息，Broker端也能自动去重</li>
-<li>两种机制：<strong>幂等性</strong>、<strong>事务</strong></li>
-</ul>
-</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/08/19/kafka-producer-idempotence-transaction/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/08/16/kafka-producer-manage-tcp-connection/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/16/kafka-producer-manage-tcp-connection/" class="post-title-link" itemprop="url">Kafka -- 生产者管理TCP连接</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-16 09:35:46" itemprop="dateCreated datePublished" datetime="2019-08-16T09:35:46+08:00">2019-08-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="为何采用TCP"><a href="#为何采用TCP" class="headerlink" title="为何采用TCP"></a>为何采用TCP</h2><ul>
-<li>1.TCP本身提供多路复用请求，同时轮询多个连接的能力</li>
-<li>2.已知的 HTTP 库在很多编程语言中都略显简陋</li>
-</ul>
-<h2 id="建立TCP连接"><a href="#建立TCP连接" class="headerlink" title="建立TCP连接"></a>建立TCP连接</h2><h3 id="创建KafkaProducer实例"><a href="#创建KafkaProducer实例" class="headerlink" title="创建KafkaProducer实例"></a>创建KafkaProducer实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">properties.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"localhost:9092"</span>);</span><br><span class="line">properties.put(<span class="string">"key.serializer"</span>, StringSerializer<span class="class">.<span class="keyword">class</span>.<span class="title">getName</span>())</span>;</span><br><span class="line">properties.put(<span class="string">"value.serializer"</span>, StringSerializer<span class="class">.<span class="keyword">class</span>.<span class="title">getName</span>())</span>;</span><br><span class="line"><span class="comment">// try-with-resources</span></span><br><span class="line"><span class="comment">// 创建KafkaProducer实例时，会在后台创建并启动Sender线程，Sender线程开始运行时首先会创建与Broker的TCP连接</span></span><br><span class="line"><span class="keyword">try</span> (Producer&lt;String, String&gt; producer = <span class="keyword">new</span> KafkaProducer&lt;&gt;(properties)) &#123;</span><br><span class="line">    ProducerRecord&lt;String, String&gt; record = <span class="keyword">new</span> ProducerRecord&lt;&gt;(TOPIC, KEY, VALUE);</span><br><span class="line">    Callback callback = (metadata, exception) -&gt; &#123;</span><br><span class="line">    &#125;;</span><br><span class="line">    producer.send(record, callback);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/08/16/kafka-producer-manage-tcp-connection/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/08/13/kafka-interceptor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/13/kafka-interceptor/" class="post-title-link" itemprop="url">Kafka -- 拦截器</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-13 17:56:01" itemprop="dateCreated datePublished" datetime="2019-08-13T17:56:01+08:00">2019-08-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><ol>
-<li>基本思想：允许应用程序在不修改逻辑的情况下，动态地实现一组<strong>可插拔</strong>的事件处理逻辑链</li>
-<li>拦截器能够在主业务操作的前后多个时间点上插入对应的拦截逻辑</li>
-<li>以配置<strong>拦截器类</strong>的方式<strong>动态</strong>插入到应用程序中，可以快速地切换不同的拦截器，而不影响主程序逻辑</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/08/13/kafka-interceptor/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/08/09/kafka-no-msg-loss/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/09/kafka-no-msg-loss/" class="post-title-link" itemprop="url">Kafka -- 无消息丢失</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-09 18:18:55" itemprop="dateCreated datePublished" datetime="2019-08-09T18:18:55+08:00">2019-08-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="持久化保证"><a href="#持久化保证" class="headerlink" title="持久化保证"></a>持久化保证</h2><ol>
-<li>Kafka只对<strong>已提交的消息</strong>做<strong>有限度的持久化保证</strong></li>
-<li><strong>已提交的消息</strong><ul>
-<li>当Kafka的<strong>若干个Broker</strong>成功地<strong>接收</strong>到一条消息并<strong>写入到日志文件</strong>后，会告诉生产者这条消息已经成功提交</li>
-</ul>
-</li>
-<li><strong>有限度的持久化保证</strong><ul>
-<li>Kafka不保证在任何情况下都能做到不丢失消息，例如机房着火等极端情况</li>
-</ul>
-</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/08/09/kafka-no-msg-loss/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/08/02/kafka-compression/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/02/kafka-compression/" class="post-title-link" itemprop="url">Kafka -- 压缩</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-02 21:33:13" itemprop="dateCreated datePublished" datetime="2019-08-02T21:33:13+08:00">2019-08-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Middleware/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="压缩的目的"><a href="#压缩的目的" class="headerlink" title="压缩的目的"></a>压缩的目的</h2><p>时间换空间，用<strong>CPU时间</strong>去换<strong>磁盘空间</strong>或<strong>网络IO传输量</strong></p>
-<h2 id="消息层次"><a href="#消息层次" class="headerlink" title="消息层次"></a>消息层次</h2><ol>
-<li><strong>消息集合</strong>（Message Set）和<strong>消息</strong></li>
-<li>一个消息集合中包含若干条<strong>日志项</strong>（Record Item），而日志项用于封装消息</li>
-<li>Kafka底层的消息日志由一系列消息集合日志项组成</li>
-<li>Kafka不会直接操作具体的消息，而是在<strong>消息集合</strong>这个层面上进行写入操作</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/08/02/kafka-compression/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1303,20 +1328,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-count">94</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1363,13 +1388,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">267k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:03</span>
+    <span title="站点阅读时长">4:39</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
