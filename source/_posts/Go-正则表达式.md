@@ -1,11 +1,11 @@
 ---
-title: Go--正则表达式
+title: go--正则表达式
 date: 2019-11-12 12:01:40
 categories:
-    - Go
+    - go
     - regex
 tags:
-    - Go
+    - go
     - regex
 ---
 ### 正则的使用
@@ -305,7 +305,7 @@ func main() {
     5.{M,},至少M次
     6.{M,N},至少m次，至多n次
 ```
-    
+
 示例代码：
 ```go 
 

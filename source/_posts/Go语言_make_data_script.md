@@ -1,11 +1,11 @@
 ---
-title: Go-语言_make_data_script
+title: go-语言_make_data_script
 date: 2020-07-12 23:10:21
 categories:
-    - Go
+    - go
     - go_script
 tags:
-    - Go
+    - go
     - go_script
 ---
 #### 简单示例

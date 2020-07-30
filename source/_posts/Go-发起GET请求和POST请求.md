@@ -1,12 +1,12 @@
 ---
-title: Go--发起GET请求和POST请求
+title: go--发起GET请求和POST请求
 date: 2018-03-12 03:21:41
 categories:
-    - Go
+    - go
     - Get
     - Post
 tags:
-    - Go
+    - go
     - Get
     - Post
 ---

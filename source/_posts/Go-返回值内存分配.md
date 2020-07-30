@@ -1,12 +1,12 @@
 ---
-title: Go -- 返回值内存分配
+title: go -- 返回值内存分配
 mathjax: false
 date: 2020-07-26 22:09:07
 categories:
-    - Go
+    - go
     - defer
 tags:
-    - Go
+    - go
     - defer
 ---
 局部变量内存由所在的函数分配，但返回值内存却是由调用方（caller）提供，这种差别会导致某些行为上的差异

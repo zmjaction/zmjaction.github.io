@@ -1,11 +1,11 @@
 ---
-title: Go-语言Channel
+title: go-语言Channel
 date: 2018-07-12 22:09:21
 categories:
-    - Go
+    - go
     - Channel
 tags:
-    - Go
+    - go
     - Channel
 ---
 #### Channel 
