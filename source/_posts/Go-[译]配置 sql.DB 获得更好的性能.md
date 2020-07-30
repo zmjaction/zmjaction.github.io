@@ -1,5 +1,7 @@
+
 ---
-title: Go--[译]配置 sql.DB 获得更好的性能
+title: go -- [译]配置 sql.DB 获得更好的性能
+mathjax: false
 date: 2020-01-21 22:01:21
 categories:
     - go
@@ -8,6 +10,7 @@ tags:
     - go
     - sql.DB
 ---
+
 网上有很多教程介绍`sql.DB`, 以及如何使用它来执行SQL数据库查询和语句, 但是大部分都没有介绍`SetMaxOpenConns（）`、`SetMaxIdleConns（）`和`SetConnmaxLifetime（）`方法。事实上你可以使用这些方法来配置`sql.DB`的行为并改善其性能。
 
 在这篇文章中，我想准确地解释这些设置的作用，并演示它们可能产生的（正面和负面）影响。
