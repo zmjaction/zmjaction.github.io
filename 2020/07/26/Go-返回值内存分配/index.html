@@ -25,19 +25,19 @@
 
   <meta name="description" content="局部变量内存由所在的函数分配，但返回值内存却是由调用方（caller）提供，这种差别会导致某些行为上的差异  defer 注册延迟调用，确保再函数结束前（ret）调用这些逻辑  注意，return语句执行顺序是：   写返回值    调用defer    执行ret指令    1234567891011121314func test() int &amp;#123;	x :&#x3D; 0">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go -- 返回值内存分配">
-<meta property="og:url" content="http://yijunworld.com/2020/07/26/Go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/index.html">
+<meta property="og:title" content="go -- 返回值内存分配">
+<meta property="og:url" content="http://yijunworld.com/2020/07/26/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/index.html">
 <meta property="og:site_name" content="Action">
 <meta property="og:description" content="局部变量内存由所在的函数分配，但返回值内存却是由调用方（caller）提供，这种差别会导致某些行为上的差异  defer 注册延迟调用，确保再函数结束前（ret）调用这些逻辑  注意，return语句执行顺序是：   写返回值    调用defer    执行ret指令    1234567891011121314func test() int &amp;#123;	x :&#x3D; 0">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-26T14:09:07.000Z">
-<meta property="article:modified_time" content="2020-07-30T14:45:37.936Z">
+<meta property="article:modified_time" content="2020-07-30T15:03:36.213Z">
 <meta property="article:author" content="Action">
-<meta property="article:tag" content="Go">
+<meta property="article:tag" content="go">
 <meta property="article:tag" content="defer">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yijunworld.com/2020/07/26/Go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/">
+<link rel="canonical" href="http://yijunworld.com/2020/07/26/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/">
 
 
 <script id="page-configurations">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>Go -- 返回值内存分配 | Action</title>
+  <title>go -- 返回值内存分配 | Action</title>
   
 
 
@@ -127,12 +127,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">94</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">93</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">58</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -197,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/07/26/Go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/07/26/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
@@ -210,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Go -- 返回值内存分配
+          go -- 返回值内存分配
         </h1>
 
         <div class="post-meta">
@@ -228,11 +228,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
+                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Go/defer/" itemprop="url" rel="index"><span itemprop="name">defer</span></a>
+                  <a href="/categories/go/defer/" itemprop="url" rel="index"><span itemprop="name">defer</span></a>
                 </span>
             </span>
 
@@ -342,7 +342,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Go/" rel="tag"># Go</a>
+              <a href="/tags/go/" rel="tag"># go</a>
               <a href="/tags/defer/" rel="tag"># defer</a>
           </div>
 
@@ -352,8 +352,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/07/12/Go%E8%AF%AD%E8%A8%80_make_data_script/" rel="prev" title="Go-语言_make_data_script">
-      <i class="fa fa-chevron-left"></i> Go-语言_make_data_script
+    <a href="/2020/07/12/go%E8%AF%AD%E8%A8%80_make_data_script/" rel="prev" title="go-语言_make_data_script">
+      <i class="fa fa-chevron-left"></i> go-语言_make_data_script
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -436,13 +436,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">94</span>
+        <span class="site-state-item-count">93</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
