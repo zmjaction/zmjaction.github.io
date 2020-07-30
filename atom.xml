@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yijunworld.com/"/>
-  <updated>2020-07-30T15:03:36.213Z</updated>
+  <updated>2020-07-30T15:03:58.861Z</updated>
   <id>http://yijunworld.com/</id>
   
   <author>
@@ -15,39 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>go -- 返回值内存分配</title>
-    <link href="http://yijunworld.com/2020/07/26/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/"/>
-    <id>http://yijunworld.com/2020/07/26/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/</id>
-    <published>2020-07-26T14:09:07.000Z</published>
-    <updated>2020-07-30T15:03:36.213Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;局部变量内存由所在的函数分配，但返回值内存却是由调用方（caller）提供，这种差别会导致某些行为上的差异&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;defer
-        
-      
-    
-    </summary>
-    
-    
-      <category term="go" scheme="http://yijunworld.com/categories/go/"/>
-    
-      <category term="defer" scheme="http://yijunworld.com/categories/go/defer/"/>
-    
-    
-      <category term="go" scheme="http://yijunworld.com/tags/go/"/>
-    
-      <category term="defer" scheme="http://yijunworld.com/tags/defer/"/>
-    
-  </entry>
   
   <entry>
     <title>go-语言_make_data_script</title>
@@ -112,11 +79,11 @@
   </entry>
   
   <entry>
-    <title>大数据 Hbase简介</title>
-    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/"/>
-    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/</id>
+    <title>大数据 Hbase伪分布式集群安装</title>
+    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/"/>
+    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/</id>
     <published>2020-06-20T07:27:40.000Z</published>
-    <updated>2020-06-20T08:55:01.328Z</updated>
+    <updated>2020-06-20T08:28:01.469Z</updated>
     
     <summary type="html">
     
@@ -124,7 +91,7 @@
       
         
         
-          &lt;h3 id=&quot;HBase简介&quot;&gt;&lt;a href=&quot;#HBase简介&quot; class=&quot;headerlink&quot;
+          &lt;h4 id=&quot;HBase伪分布式环境部署&quot;&gt;&lt;a href=&quot;#HBase伪分布式环境部署&quot; class=&quot;headerlink&quot; title=&quot;HBase伪分布式环境部署&quot;&gt;&lt;/a&gt;HBase伪分布式环境部署&lt;/h4&gt;&lt;figure class=&quot;highlight
         
       
     
@@ -143,11 +110,11 @@
   </entry>
   
   <entry>
-    <title>大数据 Hbase伪分布式集群安装</title>
-    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/"/>
-    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/</id>
+    <title>大数据 Hbase简介</title>
+    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/"/>
+    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/</id>
     <published>2020-06-20T07:27:40.000Z</published>
-    <updated>2020-06-20T08:28:01.469Z</updated>
+    <updated>2020-06-20T08:55:01.328Z</updated>
     
     <summary type="html">
     
@@ -155,7 +122,7 @@
       
         
         
-          &lt;h4 id=&quot;HBase伪分布式环境部署&quot;&gt;&lt;a href=&quot;#HBase伪分布式环境部署&quot; class=&quot;headerlink&quot; title=&quot;HBase伪分布式环境部署&quot;&gt;&lt;/a&gt;HBase伪分布式环境部署&lt;/h4&gt;&lt;figure class=&quot;highlight
+          &lt;h3 id=&quot;HBase简介&quot;&gt;&lt;a href=&quot;#HBase简介&quot; class=&quot;headerlink&quot;
         
       
     
@@ -368,6 +335,39 @@
       <category term="docker" scheme="http://yijunworld.com/tags/docker/"/>
     
       <category term="Hub镜像" scheme="http://yijunworld.com/tags/Hub%E9%95%9C%E5%83%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go--返回值内存分配</title>
+    <link href="http://yijunworld.com/2020/05/12/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/"/>
+    <id>http://yijunworld.com/2020/05/12/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/</id>
+    <published>2020-05-12T13:21:30.000Z</published>
+    <updated>2020-07-30T15:32:31.065Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;局部变量内存由所在的函数分配，但返回值内存却是由调用方（caller）提供，这种差别会导致某些行为上的差异&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;defer
+        
+      
+    
+    </summary>
+    
+    
+      <category term="go" scheme="http://yijunworld.com/categories/go/"/>
+    
+      <category term="defer" scheme="http://yijunworld.com/categories/go/defer/"/>
+    
+    
+      <category term="go" scheme="http://yijunworld.com/tags/go/"/>
+    
+      <category term="defer" scheme="http://yijunworld.com/tags/defer/"/>
     
   </entry>
   

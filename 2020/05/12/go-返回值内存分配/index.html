@@ -25,19 +25,19 @@
 
   <meta name="description" content="局部变量内存由所在的函数分配，但返回值内存却是由调用方（caller）提供，这种差别会导致某些行为上的差异  defer 注册延迟调用，确保再函数结束前（ret）调用这些逻辑  注意，return语句执行顺序是：   写返回值    调用defer    执行ret指令    1234567891011121314func test() int &amp;#123;	x :&#x3D; 0">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go -- 返回值内存分配">
-<meta property="og:url" content="http://yijunworld.com/2020/07/26/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/index.html">
+<meta property="og:title" content="go--返回值内存分配">
+<meta property="og:url" content="http://yijunworld.com/2020/05/12/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/index.html">
 <meta property="og:site_name" content="Action">
 <meta property="og:description" content="局部变量内存由所在的函数分配，但返回值内存却是由调用方（caller）提供，这种差别会导致某些行为上的差异  defer 注册延迟调用，确保再函数结束前（ret）调用这些逻辑  注意，return语句执行顺序是：   写返回值    调用defer    执行ret指令    1234567891011121314func test() int &amp;#123;	x :&#x3D; 0">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-26T14:09:07.000Z">
-<meta property="article:modified_time" content="2020-07-30T15:03:36.213Z">
+<meta property="article:published_time" content="2020-05-12T13:21:30.000Z">
+<meta property="article:modified_time" content="2020-07-30T15:32:31.065Z">
 <meta property="article:author" content="Action">
 <meta property="article:tag" content="go">
 <meta property="article:tag" content="defer">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yijunworld.com/2020/07/26/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/">
+<link rel="canonical" href="http://yijunworld.com/2020/05/12/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/">
 
 
 <script id="page-configurations">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>go -- 返回值内存分配 | Action</title>
+  <title>go--返回值内存分配 | Action</title>
   
 
 
@@ -197,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/07/26/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/05/12/go-%E8%BF%94%E5%9B%9E%E5%80%BC%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
@@ -210,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          go -- 返回值内存分配
+          go--返回值内存分配
         </h1>
 
         <div class="post-meta">
@@ -220,7 +220,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-07-26 22:09:07" itemprop="dateCreated datePublished" datetime="2020-07-26T22:09:07+08:00">2020-07-26</time>
+              <time title="创建时间：2020-05-12 21:21:30" itemprop="dateCreated datePublished" datetime="2020-05-12T21:21:30+08:00">2020-05-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -352,10 +352,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/07/12/go%E8%AF%AD%E8%A8%80_make_data_script/" rel="prev" title="go-语言_make_data_script">
-      <i class="fa fa-chevron-left"></i> go-语言_make_data_script
+    <a href="/2020/05/11/Postman-upload_file/" rel="prev" title="postman -- 上传文件">
+      <i class="fa fa-chevron-left"></i> postman -- 上传文件
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/12/Docker-%20Hub%20%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/" rel="next" title="docker--Hub镜像加速器">
+      docker--Hub镜像加速器 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
