@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yijunworld.com/"/>
-  <updated>2020-06-20T08:28:01.469Z</updated>
+  <updated>2020-06-20T08:55:01.328Z</updated>
   <id>http://yijunworld.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>大数据 Hbase伪分布式集群安装</title>
-    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/"/>
-    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/</id>
+    <title>大数据 Hbase简介</title>
+    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/"/>
+    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/</id>
     <published>2020-06-20T07:27:40.000Z</published>
-    <updated>2020-06-20T08:28:01.469Z</updated>
+    <updated>2020-06-20T08:55:01.328Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h4 id=&quot;HBase伪分布式环境部署&quot;&gt;&lt;a href=&quot;#HBase伪分布式环境部署&quot; class=&quot;headerlink&quot; title=&quot;HBase伪分布式环境部署&quot;&gt;&lt;/a&gt;HBase伪分布式环境部署&lt;/h4&gt;&lt;figure class=&quot;highlight
+          &lt;h3 id=&quot;HBase简介&quot;&gt;&lt;a href=&quot;#HBase简介&quot; class=&quot;headerlink&quot;
         
       
     
@@ -48,11 +48,11 @@
   </entry>
   
   <entry>
-    <title>大数据 Hbase简介</title>
-    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/"/>
-    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/</id>
+    <title>大数据 Hbase伪分布式集群安装</title>
+    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/"/>
+    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/</id>
     <published>2020-06-20T07:27:40.000Z</published>
-    <updated>2020-06-20T08:55:01.328Z</updated>
+    <updated>2020-06-20T08:28:01.469Z</updated>
     
     <summary type="html">
     
@@ -60,7 +60,7 @@
       
         
         
-          &lt;h3 id=&quot;HBase简介&quot;&gt;&lt;a href=&quot;#HBase简介&quot; class=&quot;headerlink&quot;
+          &lt;h4 id=&quot;HBase伪分布式环境部署&quot;&gt;&lt;a href=&quot;#HBase伪分布式环境部署&quot; class=&quot;headerlink&quot; title=&quot;HBase伪分布式环境部署&quot;&gt;&lt;/a&gt;HBase伪分布式环境部署&lt;/h4&gt;&lt;figure class=&quot;highlight
         
       
     
@@ -242,6 +242,93 @@
       <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
     
       <category term="零拷贝" scheme="http://yijunworld.com/tags/%E9%9B%B6%E6%8B%B7%E8%B4%9D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker -- Hub -- 镜像加速器</title>
+    <link href="http://yijunworld.com/2020/05/12/Docker-%20Hub%20%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/"/>
+    <id>http://yijunworld.com/2020/05/12/Docker-%20Hub%20%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/</id>
+    <published>2020-05-12T13:21:30.000Z</published>
+    <updated>2020-08-04T14:58:39.604Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Docker-Hub-镜像加速器列表&quot;&gt;&lt;a href=&quot;#Docker-Hub-镜像加速器列表&quot; class=&quot;headerlink&quot; title=&quot;Docker Hub 镜像加速器列表&quot;&gt;&lt;/a&gt;Docker Hub 镜像加速器列表&lt;/h2&gt;&lt;div class=&quot;table-container&quot;&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;镜像加速器&lt;/th&gt;
+&lt;th&gt;镜像加速器地址&lt;/th&gt;
+&lt;th&gt;专属加速器&lt;a href=&quot;#&quot; title=&quot;需登录后获取平台分配的专属加速器&quot;&gt;？&lt;/a&gt;&lt;/th&gt;
+&lt;th&gt;其它加速&lt;a href=&quot;#&quot; title=&quot;支持哪些镜像来源的镜像加速&quot;&gt;？&lt;/a&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;del&gt;&lt;a href=&quot;https://docker-cn.com/registry-mirror&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Docker 中国官方镜像&lt;/a&gt;&lt;/del&gt;&lt;/td&gt;
+&lt;td&gt;&lt;del&gt;&lt;code&gt;https://registry.docker-cn.com&lt;/code&gt;&lt;/del&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;del&gt;Docker Hub&lt;/del&gt;（&lt;a href=&quot;https://github.com/docker/docker.github.io/issues/8793&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;已关闭&lt;/a&gt;）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://daocloud.io/mirror&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;DaoCloud 镜像站&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;http://f1361db2.m.daocloud.io&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;可登录，系统分配&lt;/td&gt;
+&lt;td&gt;Docker Hub&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/Azure/container-service-for-azure-china/blob/master/aks/README.md#22-container-registry-proxy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure 中国镜像&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://dockerhub.azk8s.cn&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Docker Hub、GCR、Quay&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://mirrors.ustc.edu.cn/help/dockerhub.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;科大镜像站&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://docker.mirrors.ustc.edu.cn&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Docker Hub、&lt;a href=&quot;https://github.com/ustclug/mirrorrequest/issues/91&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GCR&lt;/a&gt;、&lt;a href=&quot;https://github.com/ustclug/mirrorrequest/issues/135&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Quay&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://cr.console.aliyun.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;阿里云&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://&amp;lt;your_code&amp;gt;.mirror.aliyuncs.com&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;需登录，系统分配&lt;/td&gt;
+&lt;td&gt;Docker Hub&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://kirk-enterprise.github.io/hub-docs/#/user-guide/mirror&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;七牛云&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://reg-mirror.qiniu.com&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Docker Hub、GCR、Quay&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://c.163yun.com/hub&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;网易云&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://hub-mirror.c.163.com&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Docker Hub&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://cloud.tencent.com/document/product/457/9113&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;腾讯云&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;https://mirror.ccs.tencentyun.com&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Docker Hub&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;由于镜像服务可能出现宕机，建议同时配置多个镜像。各个镜像站测试结果请到 docker-practice/docker-registry-cn-mirror-test 查看。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="http://yijunworld.com/categories/docker/"/>
+    
+      <category term="Hub镜像" scheme="http://yijunworld.com/categories/docker/Hub%E9%95%9C%E5%83%8F/"/>
+    
+    
+      <category term="docker" scheme="http://yijunworld.com/tags/docker/"/>
+    
+      <category term="Hub镜像" scheme="http://yijunworld.com/tags/Hub%E9%95%9C%E5%83%8F/"/>
     
   </entry>
   
@@ -637,63 +724,6 @@
 &lt;li&gt;Kafka Or 传统消息中间件&lt;ul&gt;
 &lt;li&gt;传统消息中间件：消息处理逻辑非常复杂，处理代价高、又&lt;strong&gt;不关心消息之间的顺序&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Kafka：需要&lt;strong&gt;较高的吞吐量&lt;/strong&gt;、但&lt;strong&gt;每条消息的处理时间很短&lt;/strong&gt;，又&lt;strong&gt;关心消息的顺序&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-    
-      <category term="Middleware" scheme="http://yijunworld.com/categories/Middleware/"/>
-    
-      <category term="MQ" scheme="http://yijunworld.com/categories/Middleware/MQ/"/>
-    
-      <category term="Kafka" scheme="http://yijunworld.com/categories/Middleware/MQ/Kafka/"/>
-    
-    
-      <category term="Middleware" scheme="http://yijunworld.com/tags/Middleware/"/>
-    
-      <category term="MQ" scheme="http://yijunworld.com/tags/MQ/"/>
-    
-      <category term="Kafka" scheme="http://yijunworld.com/tags/Kafka/"/>
-    
-      <category term="Stream" scheme="http://yijunworld.com/tags/Stream/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kafka -- 动态配置</title>
-    <link href="http://yijunworld.com/2019/09/25/kafka-dynamic-config/"/>
-    <id>http://yijunworld.com/2019/09/25/kafka-dynamic-config/</id>
-    <published>2019-09-25T01:58:18.000Z</published>
-    <updated>2020-06-08T05:54:47.498Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Kafka安装目录的config路径下，有&lt;code&gt;server.properties&lt;/code&gt;文件&lt;ul&gt;
-&lt;li&gt;通常情况下，会指定&lt;code&gt;server.properties&lt;/code&gt;来启动Broker&lt;/li&gt;
-&lt;li&gt;如果要设置Broker端的任何参数，必须要显式修改&lt;code&gt;server.properties&lt;/code&gt;，然后重启Broker，让参数生效&lt;/li&gt;
-&lt;li&gt;但在生产环境，不能随意重启Broker，因此需要能够&lt;strong&gt;动态&lt;/strong&gt;修改Broker端参数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;社区于&lt;strong&gt;1.1.0&lt;/strong&gt;正式引入了&lt;strong&gt;动态Broker参数&lt;/strong&gt;&lt;ul&gt;
-&lt;li&gt;动态指的是修改参数后，无需重启Broker就能立即生效，而之前&lt;code&gt;server.properties&lt;/code&gt;中配置的参数称为&lt;strong&gt;静态参数&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;并非所有Broker端参数都可以动态调整的，官方文档中有&lt;code&gt;Dynamic Update Mode&lt;/code&gt;一列&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;read-only&lt;/strong&gt;&lt;ul&gt;
-&lt;li&gt;与原来的参数行为一样，只有重启Broker，才能令修改生效&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;per-broker&lt;/strong&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;动态参数&lt;/strong&gt;，修改之后，只会在&lt;strong&gt;对应的Broker&lt;/strong&gt;上生效&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;cluster-wide&lt;/strong&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;动态参数&lt;/strong&gt;，修改之后，会在&lt;strong&gt;整个集群&lt;/strong&gt;范围内生效&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;

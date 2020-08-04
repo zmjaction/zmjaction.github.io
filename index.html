@@ -123,17 +123,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">83</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">84</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">46</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">48</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">73</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">74</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -188,91 +188,6 @@
 
           <div class="content index posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/" class="post-title-link" itemprop="url">大数据 Hbase伪分布式集群安装</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-20 15:27:40" itemprop="dateCreated datePublished" datetime="2020-06-20T15:27:40+08:00">2020-06-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hbase/" itemprop="url" rel="index"><span itemprop="name">Hbase</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="HBase伪分布式环境部署"><a href="#HBase伪分布式环境部署" class="headerlink" title="HBase伪分布式环境部署"></a>HBase伪分布式环境部署</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">hadoop@hadoop001:~ $ cd ~&#x2F;softeware</span><br><span class="line">hadoop@hadoop001:~&#x2F;software $ tar -zxvf hbase-1.2.4-bin.tar.gz –C ..&#x2F;app</span><br><span class="line">hadoop@hadoop001:~&#x2F;software $ cd ..&#x2F;app</span><br><span class="line">hadoop@hadoop001:~&#x2F;app $ cd hbase-1.2.4&#x2F;conf</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cp ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;etc&#x2F;hadoop</span><br><span class="line">&#x2F;hdfs-site.xml .</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cp ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;etc&#x2F;hadoop</span><br><span class="line">&#x2F;core-site.xml .</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ vi hbase-env.sh</span><br><span class="line">export JAVA_HOME&#x3D;~&#x2F;app&#x2F;jdk1.8.0_161</span><br><span class="line"># export HBASE_MASTER_OPTS&#x3D;”$HBASE_MASTER_OPTS –XX:PermSize&#x3D;128m –XX:MaxPermSize</span><br><span class="line">&#x3D;128m”</span><br><span class="line"># export HBASE_REGIONSERVER_OPTS&#x3D;”$HBASE_REGIONSERVER_OPTS –XX:PermSize&#x3D;128m –XX:</span><br><span class="line">MaxPermSize&#x3D;128m”</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ vi hbase-site.xml</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.root.dir &lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;hdfs:&#x2F;&#x2F;localhost:9000&#x2F;hbase&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.zookeeper.property.dataDir&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;&#x2F;home&#x2F;hadoop&#x2F;hadoop_data&#x2F;zookeeper &lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.cluster.distributed&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;true&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cd ..&#x2F;bin</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ .&#x2F;start-hbase.sh</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ jps</span><br><span class="line">13792 HQuorumPeer</span><br><span class="line">13968 HRegionServer</span><br><span class="line">13864 HMaster</span><br><span class="line">12156 NameNode</span><br><span class="line">12556 SecondaryNameNode</span><br><span class="line">14317 Jps</span><br><span class="line">12335 DataNode</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ .&#x2F;hbase shell</span><br><span class="line">hbase(main):001:0&gt; status</span><br><span class="line">1 active master, 0 backup master, 1 servers, 0 dead, 2.0000 average load </span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ cd ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;bin</span><br><span class="line">hadoop@hadoop001: ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;bin $ .&#x2F;hdfs dfs –ls &#x2F;</span><br><span class="line">Found 2 items</span><br><span class="line">drwxr-xr-x  - hadoop supergroup 0 2018-07-15 17:23 &#x2F;hbase</span><br><span class="line">drwxr-xr-x  - hadoop supergroup 0 2018-07-15 17:08 &#x2F;test</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
       
   
   
@@ -448,6 +363,91 @@
 <p>结构化数据：可以用二维表格形式存储的数据</p>
 <p>非结构化数据：图片、文档这些可以认为为非结构化数据</p>
 <p>我们可以将这些非结构化数据以二进制的方式存到HBase里面，这样无论是存储还是查询都是比较方便快捷的，而且很容易进行扩展</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/" class="post-title-link" itemprop="url">大数据 Hbase伪分布式集群安装</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-20 15:27:40" itemprop="dateCreated datePublished" datetime="2020-06-20T15:27:40+08:00">2020-06-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hbase/" itemprop="url" rel="index"><span itemprop="name">Hbase</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="HBase伪分布式环境部署"><a href="#HBase伪分布式环境部署" class="headerlink" title="HBase伪分布式环境部署"></a>HBase伪分布式环境部署</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">hadoop@hadoop001:~ $ cd ~&#x2F;softeware</span><br><span class="line">hadoop@hadoop001:~&#x2F;software $ tar -zxvf hbase-1.2.4-bin.tar.gz –C ..&#x2F;app</span><br><span class="line">hadoop@hadoop001:~&#x2F;software $ cd ..&#x2F;app</span><br><span class="line">hadoop@hadoop001:~&#x2F;app $ cd hbase-1.2.4&#x2F;conf</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cp ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;etc&#x2F;hadoop</span><br><span class="line">&#x2F;hdfs-site.xml .</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cp ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;etc&#x2F;hadoop</span><br><span class="line">&#x2F;core-site.xml .</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ vi hbase-env.sh</span><br><span class="line">export JAVA_HOME&#x3D;~&#x2F;app&#x2F;jdk1.8.0_161</span><br><span class="line"># export HBASE_MASTER_OPTS&#x3D;”$HBASE_MASTER_OPTS –XX:PermSize&#x3D;128m –XX:MaxPermSize</span><br><span class="line">&#x3D;128m”</span><br><span class="line"># export HBASE_REGIONSERVER_OPTS&#x3D;”$HBASE_REGIONSERVER_OPTS –XX:PermSize&#x3D;128m –XX:</span><br><span class="line">MaxPermSize&#x3D;128m”</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ vi hbase-site.xml</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.root.dir &lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;hdfs:&#x2F;&#x2F;localhost:9000&#x2F;hbase&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.zookeeper.property.dataDir&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;&#x2F;home&#x2F;hadoop&#x2F;hadoop_data&#x2F;zookeeper &lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.cluster.distributed&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;true&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cd ..&#x2F;bin</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ .&#x2F;start-hbase.sh</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ jps</span><br><span class="line">13792 HQuorumPeer</span><br><span class="line">13968 HRegionServer</span><br><span class="line">13864 HMaster</span><br><span class="line">12156 NameNode</span><br><span class="line">12556 SecondaryNameNode</span><br><span class="line">14317 Jps</span><br><span class="line">12335 DataNode</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ .&#x2F;hbase shell</span><br><span class="line">hbase(main):001:0&gt; status</span><br><span class="line">1 active master, 0 backup master, 1 servers, 0 dead, 2.0000 average load </span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ cd ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;bin</span><br><span class="line">hadoop@hadoop001: ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;bin $ .&#x2F;hdfs dfs –ls &#x2F;</span><br><span class="line">Found 2 items</span><br><span class="line">drwxr-xr-x  - hadoop supergroup 0 2018-07-15 17:23 &#x2F;hbase</span><br><span class="line">drwxr-xr-x  - hadoop supergroup 0 2018-07-15 17:08 &#x2F;test</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1130,6 +1130,160 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/05/12/Docker-%20Hub%20%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/12/Docker-%20Hub%20%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/" class="post-title-link" itemprop="url">docker -- Hub -- 镜像加速器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-12 21:21:30" itemprop="dateCreated datePublished" datetime="2020-05-12T21:21:30+08:00">2020-05-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/Hub%E9%95%9C%E5%83%8F/" itemprop="url" rel="index"><span itemprop="name">Hub镜像</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Docker-Hub-镜像加速器列表"><a href="#Docker-Hub-镜像加速器列表" class="headerlink" title="Docker Hub 镜像加速器列表"></a>Docker Hub 镜像加速器列表</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>镜像加速器</th>
+<th>镜像加速器地址</th>
+<th>专属加速器<a href="#" title="需登录后获取平台分配的专属加速器">？</a></th>
+<th>其它加速<a href="#" title="支持哪些镜像来源的镜像加速">？</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><del><a href="https://docker-cn.com/registry-mirror" target="_blank" rel="noopener">Docker 中国官方镜像</a></del></td>
+<td><del><code>https://registry.docker-cn.com</code></del></td>
+<td></td>
+<td><del>Docker Hub</del>（<a href="https://github.com/docker/docker.github.io/issues/8793" target="_blank" rel="noopener">已关闭</a>）</td>
+</tr>
+<tr>
+<td><a href="https://daocloud.io/mirror" target="_blank" rel="noopener">DaoCloud 镜像站</a></td>
+<td><code>http://f1361db2.m.daocloud.io</code></td>
+<td>可登录，系统分配</td>
+<td>Docker Hub</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Azure/container-service-for-azure-china/blob/master/aks/README.md#22-container-registry-proxy" target="_blank" rel="noopener">Azure 中国镜像</a></td>
+<td><code>https://dockerhub.azk8s.cn</code></td>
+<td></td>
+<td>Docker Hub、GCR、Quay</td>
+</tr>
+<tr>
+<td><a href="https://mirrors.ustc.edu.cn/help/dockerhub.html" target="_blank" rel="noopener">科大镜像站</a></td>
+<td><code>https://docker.mirrors.ustc.edu.cn</code></td>
+<td></td>
+<td>Docker Hub、<a href="https://github.com/ustclug/mirrorrequest/issues/91" target="_blank" rel="noopener">GCR</a>、<a href="https://github.com/ustclug/mirrorrequest/issues/135" target="_blank" rel="noopener">Quay</a></td>
+</tr>
+<tr>
+<td><a href="https://cr.console.aliyun.com" target="_blank" rel="noopener">阿里云</a></td>
+<td><code>https://&lt;your_code&gt;.mirror.aliyuncs.com</code></td>
+<td>需登录，系统分配</td>
+<td>Docker Hub</td>
+</tr>
+<tr>
+<td><a href="https://kirk-enterprise.github.io/hub-docs/#/user-guide/mirror" target="_blank" rel="noopener">七牛云</a></td>
+<td><code>https://reg-mirror.qiniu.com</code></td>
+<td></td>
+<td>Docker Hub、GCR、Quay</td>
+</tr>
+<tr>
+<td><a href="https://c.163yun.com/hub" target="_blank" rel="noopener">网易云</a></td>
+<td><code>https://hub-mirror.c.163.com</code></td>
+<td></td>
+<td>Docker Hub</td>
+</tr>
+<tr>
+<td><a href="https://cloud.tencent.com/document/product/457/9113" target="_blank" rel="noopener">腾讯云</a></td>
+<td><code>https://mirror.ccs.tencentyun.com</code></td>
+<td></td>
+<td>Docker Hub</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>由于镜像服务可能出现宕机，建议同时配置多个镜像。各个镜像站测试结果请到 docker-practice/docker-registry-cn-mirror-test 查看。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/12/Docker-%20Hub%20%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/05/11/Postman-upload_file/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1316,97 +1470,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/05/09/python-compress-file/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/09/python-compress-file/" class="post-title-link" itemprop="url">pyminizip -- 压缩加密文件 简单使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-09 23:08:32" itemprop="dateCreated datePublished" datetime="2020-05-09T23:08:32+08:00">2020-05-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/pyminizip/" itemprop="url" rel="index"><span itemprop="name">pyminizip</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>442</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="使用pyminizip压缩加密文件"><a href="#使用pyminizip压缩加密文件" class="headerlink" title="使用pyminizip压缩加密文件"></a>使用pyminizip压缩加密文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pyminizip</span><br><span class="line"><span class="comment"># 压缩</span></span><br><span class="line">compression_level = <span class="number">5</span> <span class="comment"># 1-9</span></span><br><span class="line">pyminizip.compress(<span class="string">"record.db"</span>, <span class="literal">None</span>, <span class="string">"dst.zip"</span>, <span class="string">"password"</span>, compression_level)</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line"><span class="keyword">import</span> pyminizip</span><br><span class="line">pyminizip.uncompress(<span class="string">"dst.zip"</span>, <span class="string">"password"</span>, <span class="string">"./"</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>参考：</p>
-<p><a href="https://github.com/smihica/pyminizip" target="_blank" rel="noopener">https://github.com/smihica/pyminizip</a></p>
-<p><a href="https://stackoverflow.com/questions/17250/create-an-encrypted-zip-file-in-python/40164739" target="_blank" rel="noopener">https://stackoverflow.com/questions/17250/create-an-encrypted-zip-file-in-python/40164739</a></p>
-<p><a href="https://stackoverflow.com/questions/59437912/how-do-i-create-a-temporary-zip-in-python-3-x-using-pyminizip" target="_blank" rel="noopener">https://stackoverflow.com/questions/59437912/how-do-i-create-a-temporary-zip-in-python-3-x-using-pyminizip</a></p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1478,20 +1541,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">84</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1538,13 +1601,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">263k</span>
+    <span title="站点总字数">265k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:59</span>
+    <span title="站点阅读时长">4:01</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

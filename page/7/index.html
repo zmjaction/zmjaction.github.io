@@ -123,17 +123,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">83</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">84</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">46</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">48</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">73</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">74</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -192,7 +192,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/10/10/java-Random/">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/10/11/java-ArrayList/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
@@ -206,7 +206,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/10/10/java-Random/" class="post-title-link" itemprop="url">java-- Random</a>
+            <a href="/2018/10/11/java-ArrayList/" class="post-title-link" itemprop="url">java-- ArrayList</a>
         </h2>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-10-10 09:51:36" itemprop="dateCreated datePublished" datetime="2018-10-10T09:51:36+08:00">2018-10-10</time>
+              <time title="创建时间：2018-10-11 10:20:06" itemprop="dateCreated datePublished" datetime="2018-10-11T10:20:06+08:00">2018-10-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,7 +228,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/Random/" itemprop="url" rel="index"><span itemprop="name">Random</span></a>
+                  <a href="/categories/java/ArrayList/" itemprop="url" rel="index"><span itemprop="name">ArrayList</span></a>
                 </span>
             </span>
 
@@ -238,14 +238,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -257,23 +257,100 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="1-什么是Random类"><a href="#1-什么是Random类" class="headerlink" title="1.什么是Random类"></a>1.什么是Random类</h4><p>此类的实例用于生成伪随机数。 </p>
-<p>例如，以下代码使用户能够得到一个随机数： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Random r &#x3D; new Random(); </span><br><span class="line">int i &#x3D; r.nextInt();</span><br></pre></td></tr></table></figure>
-<h4 id="2-Random使用步骤"><a href="#2-Random使用步骤" class="headerlink" title="2.Random使用步骤"></a>2.Random使用步骤</h4><h5 id="查看类"><a href="#查看类" class="headerlink" title="查看类"></a>查看类</h5><ul>
-<li><code>java.util.Random</code> ：该类需要 import导入使后使用。</li>
+          <h4 id="1-什么要用ArrayList"><a href="#1-什么要用ArrayList" class="headerlink" title="1.什么要用ArrayList"></a>1.什么要用ArrayList</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">数组有一个缺点：一旦创建，程序运行期间长度不可以发生改变。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Students</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Students</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Students</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 首先创建一个长度为3的数组，里面用来存放Students类型的对象</span></span><br><span class="line">        Students[] array = <span class="keyword">new</span> Students[<span class="number">3</span>];</span><br><span class="line">        Students s1 = <span class="keyword">new</span> Students(<span class="string">"小明"</span>, <span class="number">10</span>);</span><br><span class="line">        Students s2 = <span class="keyword">new</span> Students(<span class="string">"小李"</span>, <span class="number">20</span>);</span><br><span class="line">        Students s3 = <span class="keyword">new</span> Students(<span class="string">"Tom"</span>, <span class="number">30</span>);</span><br><span class="line">        array[<span class="number">0</span>] = s1;</span><br><span class="line">        array[<span class="number">1</span>] = s2;</span><br><span class="line">        array[<span class="number">2</span>] = s3;</span><br><span class="line">        System.out.println(array[<span class="number">0</span>].getName());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-ArrayList使用步骤"><a href="#2-ArrayList使用步骤" class="headerlink" title="2.ArrayList使用步骤"></a>2.ArrayList使用步骤</h4><h5 id="查看类"><a href="#查看类" class="headerlink" title="查看类"></a>查看类</h5><ul>
+<li><code>java.util.ArrayList&lt;E&gt;</code>:该类需要 import导入使后使用</li>
 </ul>
+<p><E> ，表示一种指定的数据类型，叫做泛型。 E ，取自Element（元素）的首字母。在出现 E 的地方，我们使 </p>
+<p>用一种引用数据类型将其替换即可，表示我们将存储哪种引用类型的元素。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt;，ArrayList&lt;Student&gt;</span><br></pre></td></tr></table></figure>
 <h5 id="查看构造方法"><a href="#查看构造方法" class="headerlink" title="查看构造方法"></a>查看构造方法</h5><ul>
-<li><code>public Random()</code> ：创建一个新的随机数生成器。</li>
+<li><code>public ArrayList()</code> ：构造一个内容为空的集合</li>
 </ul>
-<h5 id="查看成员方法"><a href="#查看成员方法" class="headerlink" title="查看成员方法"></a>查看成员方法</h5><ul>
-<li><p><code>public int nextInt(int n)</code>：返回一个伪随机数，范围在 0 （包括）和 指定值 n （不包括）之间的 </p>
-<p>int 值。 </p>
-</li>
+<p>基本格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list &#x3D; new ArrayList&lt;String&gt;();</span><br></pre></td></tr></table></figure>
+<p>在JDK 7后,右侧泛型的尖括号之内可以留空，但是&lt;&gt;仍然要写。简化格式： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list &#x3D; new ArrayList&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<h4 id="4-常用的方法和遍历"><a href="#4-常用的方法和遍历" class="headerlink" title="4.常用的方法和遍历"></a>4.常用的方法和遍历</h4><p>对于元素的操作基本体现在-增，删，查</p>
+<ul>
+<li><code>public boolean add(E e)</code> ：将指定的元素添加到此集合的尾部。 </li>
+<li><code>public E remove(int index)</code> ：移除此集合中指定位置上的元素。返回被删除的元素。 </li>
+<li><code>public E get(int index)</code> ：返回此集合中指定位置上的元素。返回获取的元素。 </li>
+<li><code>public int size()</code> ：返回此集合中的元素数。遍历集合时，可以控制索引范围，防止越界。</li>
 </ul>
-<h5 id="示例-1-生成随机数"><a href="#示例-1-生成随机数" class="headerlink" title="示例 1.生成随机数"></a>示例 1.生成随机数</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Random类用来生成随机数字。使用起来也是三个步骤：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1. 导包</span></span><br><span class="line"><span class="comment">import java.util.Random;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">2. 创建</span></span><br><span class="line"><span class="comment">Random r = new Random(); // 小括号当中留空即可</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">3. 使用</span></span><br><span class="line"><span class="comment">获取一个随机的int数字（范围是int所有范围，有正负两种）：int num = r.nextInt()</span></span><br><span class="line"><span class="comment">获取一个随机的int数字（参数代表了范围，左闭右开区间）：int num = r.nextInt(3)</span></span><br><span class="line"><span class="comment">实际上代表的含义是：[0,3)，也就是0~2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Random</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> num = r.nextInt(<span class="number">10</span>);</span><br><span class="line">        System.out.println(num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">题目要求：</span></span><br><span class="line"><span class="comment">根据int变量n的值，来获取随机数字，范围是[1,n]，可以取到1也可以取到n。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">思路：</span></span><br><span class="line"><span class="comment">1. 定义一个int变量n，随意赋值</span></span><br><span class="line"><span class="comment">2. 要使用Random：三个步骤，导包、创建、使用</span></span><br><span class="line"><span class="comment">3. 如果写10，那么就是0~9，然而想要的是1~10，可以发现：整体+1即可。</span></span><br><span class="line"><span class="comment">4. 打印随机数字</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02Random</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">5</span>;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// 本来范围是[0,n)，整体+1之后变成了[1,n+1)，也就是[1,n]</span></span><br><span class="line">            <span class="keyword">int</span> result = r.nextInt(n) + <span class="number">1</span>;</span><br><span class="line">            System.out.println(result);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">题目：</span></span><br><span class="line"><span class="comment">用代码模拟猜数字的小游戏。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">思路：</span></span><br><span class="line"><span class="comment">1. 首先需要产生一个随机数字，并且一旦产生不再变化。用Random的nextInt方法</span></span><br><span class="line"><span class="comment">2. 需要键盘输入，所以用到了Scanner</span></span><br><span class="line"><span class="comment">3. 获取键盘输入的数字，用Scanner当中的nextInt方法</span></span><br><span class="line"><span class="comment">4. 已经得到了两个数字，判断（if）一下：</span></span><br><span class="line"><span class="comment">    如果太大了，提示太大，并且重试；</span></span><br><span class="line"><span class="comment">    如果太小了，提示太小，并且重试；</span></span><br><span class="line"><span class="comment">    如果猜中了，游戏结束。</span></span><br><span class="line"><span class="comment">5. 重试就是再来一次，循环次数不确定，用while(true)。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03RandomGame</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> randomNum = r.nextInt(<span class="number">100</span>) + <span class="number">1</span>; <span class="comment">// [1,100]</span></span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"请输入你猜测的数字："</span>);</span><br><span class="line">            <span class="keyword">int</span> guessNum = sc.nextInt(); <span class="comment">// 键盘输入猜测的数字</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (guessNum &gt; randomNum) &#123;</span><br><span class="line">                System.out.println(<span class="string">"太大了，请重试。"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (guessNum &lt; randomNum) &#123;</span><br><span class="line">                System.out.println(<span class="string">"太小了，请重试。"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"恭喜你，猜中啦！"</span>);</span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 如果猜中，不再重试</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"游戏结束。"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01.d1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">数组的长度不可以改变</span></span><br><span class="line"><span class="comment">但是ArrayList的长度是可以随意改变的</span></span><br><span class="line"><span class="comment">对于ArrayList来说，有一个尖括号&lt;E&gt;表示泛型</span></span><br><span class="line"><span class="comment">泛型：装在集合中的元素，统一是什么类型</span></span><br><span class="line"><span class="comment">注意：泛型只能是引用类型，不能是基本类型</span></span><br><span class="line"><span class="comment">引用类型：</span></span><br><span class="line"><span class="comment">基本类型：</span></span><br><span class="line"><span class="comment">注意：</span></span><br><span class="line"><span class="comment">对于ArrayList集合来说，直接打印得到的不是地址值，而是内容。</span></span><br><span class="line"><span class="comment">如果内容是空，得到的是空的中括号：[]</span></span><br><span class="line"><span class="comment">===============================================</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo01</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建了一个ArrayList集合，集合名称是list，里边的元素是String类型的数据</span></span><br><span class="line">        ArrayList&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">// 想集合中添加一些元素</span></span><br><span class="line">        list.add(<span class="string">"xiaoming"</span>);</span><br><span class="line">        list.add(<span class="string">"xiaohong"</span>);</span><br><span class="line">        list.add(<span class="string">"xiaofeng"</span>);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">        <span class="comment">// 从集合中获取到元素：get 索引从0开始</span></span><br><span class="line">        String name = list.get(<span class="number">2</span>);</span><br><span class="line">        System.out.println(name);</span><br><span class="line">        <span class="comment">// 从集合中删除元素，remove 索引值从0开始</span></span><br><span class="line">        String rename = list.remove(<span class="number">2</span>);</span><br><span class="line">        System.out.println(rename);</span><br><span class="line">        <span class="comment">// 获取集合的长度，也就是元素的个数</span></span><br><span class="line">        <span class="keyword">int</span> size = list.size();</span><br><span class="line">        System.out.println(size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="如何存基本数据类型数据"><a href="#如何存基本数据类型数据" class="headerlink" title="如何存基本数据类型数据"></a>如何存基本数据类型数据</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>大小（bit)</th>
+<th>范围</th>
+<th>默认值</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte(字节)</td>
+<td>8</td>
+<td>-128 - 127</td>
+<td>0</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short(短整型)</td>
+<td>16</td>
+<td>-32768~32767</td>
+<td>0</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int(整型)</td>
+<td>32</td>
+<td>-2^31 ~ 2^31 -1</td>
+<td>0</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long(长整型)</td>
+<td>64</td>
+<td>-2^63 ~ 2^63 -1</td>
+<td>0L</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float(浮点型)</td>
+<td>32</td>
+<td>1.4013E-45~3.4028E+38</td>
+<td>0.0f</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double(双精度)</td>
+<td>64</td>
+<td>4.9E-324~1.7977E+308</td>
+<td>0.0d</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>char(字符型)</td>
+<td>16</td>
+<td>0-65535 / <code>\u0000~ \uffff</code></td>
+<td>‘u0000’</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>boolean(布尔型)</td>
+<td>1</td>
+<td>true/false</td>
+<td>false</td>
+<td>Boolean</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01.d1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayListDemo02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> num = r.nextInt(<span class="number">30</span>) + <span class="number">1</span>;</span><br><span class="line">            list.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//便利集合</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            System.out.println(list.get(i));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -432,6 +509,107 @@
 <h4 id="转换规则"><a href="#转换规则" class="headerlink" title="转换规则"></a>转换规则</h4><p>范围小的类型向范围大的类型提升，<code>byte、short、char</code> 运算时直接提升为 <code>int</code>。 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">byte、short、char‐‐&gt;int‐‐&gt;long‐‐&gt;float‐‐&gt;double</span><br></pre></td></tr></table></figure>
 <p>参考：<a href="https://www.runoob.com/java/java-basic-datatypes.html" target="_blank" rel="noopener">https://www.runoob.com/java/java-basic-datatypes.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/10/10/java-Random/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/10/java-Random/" class="post-title-link" itemprop="url">java-- Random</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-10 09:51:36" itemprop="dateCreated datePublished" datetime="2018-10-10T09:51:36+08:00">2018-10-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/Random/" itemprop="url" rel="index"><span itemprop="name">Random</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-什么是Random类"><a href="#1-什么是Random类" class="headerlink" title="1.什么是Random类"></a>1.什么是Random类</h4><p>此类的实例用于生成伪随机数。 </p>
+<p>例如，以下代码使用户能够得到一个随机数： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Random r &#x3D; new Random(); </span><br><span class="line">int i &#x3D; r.nextInt();</span><br></pre></td></tr></table></figure>
+<h4 id="2-Random使用步骤"><a href="#2-Random使用步骤" class="headerlink" title="2.Random使用步骤"></a>2.Random使用步骤</h4><h5 id="查看类"><a href="#查看类" class="headerlink" title="查看类"></a>查看类</h5><ul>
+<li><code>java.util.Random</code> ：该类需要 import导入使后使用。</li>
+</ul>
+<h5 id="查看构造方法"><a href="#查看构造方法" class="headerlink" title="查看构造方法"></a>查看构造方法</h5><ul>
+<li><code>public Random()</code> ：创建一个新的随机数生成器。</li>
+</ul>
+<h5 id="查看成员方法"><a href="#查看成员方法" class="headerlink" title="查看成员方法"></a>查看成员方法</h5><ul>
+<li><p><code>public int nextInt(int n)</code>：返回一个伪随机数，范围在 0 （包括）和 指定值 n （不包括）之间的 </p>
+<p>int 值。 </p>
+</li>
+</ul>
+<h5 id="示例-1-生成随机数"><a href="#示例-1-生成随机数" class="headerlink" title="示例 1.生成随机数"></a>示例 1.生成随机数</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Random类用来生成随机数字。使用起来也是三个步骤：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1. 导包</span></span><br><span class="line"><span class="comment">import java.util.Random;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">2. 创建</span></span><br><span class="line"><span class="comment">Random r = new Random(); // 小括号当中留空即可</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">3. 使用</span></span><br><span class="line"><span class="comment">获取一个随机的int数字（范围是int所有范围，有正负两种）：int num = r.nextInt()</span></span><br><span class="line"><span class="comment">获取一个随机的int数字（参数代表了范围，左闭右开区间）：int num = r.nextInt(3)</span></span><br><span class="line"><span class="comment">实际上代表的含义是：[0,3)，也就是0~2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Random</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> num = r.nextInt(<span class="number">10</span>);</span><br><span class="line">        System.out.println(num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">题目要求：</span></span><br><span class="line"><span class="comment">根据int变量n的值，来获取随机数字，范围是[1,n]，可以取到1也可以取到n。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">思路：</span></span><br><span class="line"><span class="comment">1. 定义一个int变量n，随意赋值</span></span><br><span class="line"><span class="comment">2. 要使用Random：三个步骤，导包、创建、使用</span></span><br><span class="line"><span class="comment">3. 如果写10，那么就是0~9，然而想要的是1~10，可以发现：整体+1即可。</span></span><br><span class="line"><span class="comment">4. 打印随机数字</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02Random</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">5</span>;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// 本来范围是[0,n)，整体+1之后变成了[1,n+1)，也就是[1,n]</span></span><br><span class="line">            <span class="keyword">int</span> result = r.nextInt(n) + <span class="number">1</span>;</span><br><span class="line">            System.out.println(result);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zmjaction.demo01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">题目：</span></span><br><span class="line"><span class="comment">用代码模拟猜数字的小游戏。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">思路：</span></span><br><span class="line"><span class="comment">1. 首先需要产生一个随机数字，并且一旦产生不再变化。用Random的nextInt方法</span></span><br><span class="line"><span class="comment">2. 需要键盘输入，所以用到了Scanner</span></span><br><span class="line"><span class="comment">3. 获取键盘输入的数字，用Scanner当中的nextInt方法</span></span><br><span class="line"><span class="comment">4. 已经得到了两个数字，判断（if）一下：</span></span><br><span class="line"><span class="comment">    如果太大了，提示太大，并且重试；</span></span><br><span class="line"><span class="comment">    如果太小了，提示太小，并且重试；</span></span><br><span class="line"><span class="comment">    如果猜中了，游戏结束。</span></span><br><span class="line"><span class="comment">5. 重试就是再来一次，循环次数不确定，用while(true)。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03RandomGame</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> randomNum = r.nextInt(<span class="number">100</span>) + <span class="number">1</span>; <span class="comment">// [1,100]</span></span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"请输入你猜测的数字："</span>);</span><br><span class="line">            <span class="keyword">int</span> guessNum = sc.nextInt(); <span class="comment">// 键盘输入猜测的数字</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (guessNum &gt; randomNum) &#123;</span><br><span class="line">                System.out.println(<span class="string">"太大了，请重试。"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (guessNum &lt; randomNum) &#123;</span><br><span class="line">                System.out.println(<span class="string">"太小了，请重试。"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"恭喜你，猜中啦！"</span>);</span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 如果猜中，不再重试</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"游戏结束。"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1092,87 +1270,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2017/06/01/centos7%20%E5%AE%89%E8%A3%85supervisor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/06/01/centos7%20%E5%AE%89%E8%A3%85supervisor/" class="post-title-link" itemprop="url">centos7 安装 supervisor</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-06-01 11:11:40" itemprop="dateCreated datePublished" datetime="2017-06-01T11:11:40+08:00">2017-06-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>167</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa|grep epel-release &gt;&amp;/dev/null ||yum install -y epel-release</span><br><span class="line">rpm -qa|grep supervisor &gt;&amp;/dev/null ||yum install -y supervisor</span><br><span class="line">supervisord -c /etc/supervisord.conf</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1244,20 +1341,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">84</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1304,13 +1401,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">263k</span>
+    <span title="站点总字数">265k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:59</span>
+    <span title="站点阅读时长">4:01</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
