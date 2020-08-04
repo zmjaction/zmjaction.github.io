@@ -123,17 +123,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">84</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">93</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">48</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">74</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">82</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -188,6 +188,793 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/10/09/windows-docker-nginx-request-error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/09/windows-docker-nginx-request-error/" class="post-title-link" itemprop="url">Kafka -- 集群安装与配置（Docker）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-09 01:48:40" itemprop="dateCreated datePublished" datetime="2018-10-09T01:48:40+08:00">2018-10-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/windows10/" itemprop="url" rel="index"><span itemprop="name">windows10</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/windows10/docker-toolbox/" itemprop="url" rel="index"><span itemprop="name">docker toolbox</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/windows10/docker-toolbox/nginx/" itemprop="url" rel="index"><span itemprop="name">nginx</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>175</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h5><blockquote>
+<p>在windows10中安装docker toolbox，启动nginx，页面无法访问</p>
+</blockquote>
+<h5 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.在windows上运行的docker实际是在Linux中运行</span><br><span class="line">2.启动的服务中的localhost指linux中，而不是宿主机windows中的地址</span><br><span class="line">3.使用docker-machine ip default 得到真正的ip是192.168.99.100</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/07/12/go%E8%AF%AD%E8%A8%80Channel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/12/go%E8%AF%AD%E8%A8%80Channel/" class="post-title-link" itemprop="url">go -- 语言Channel</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-12 22:09:21" itemprop="dateCreated datePublished" datetime="2018-07-12T22:09:21+08:00">2018-07-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/Channel/" itemprop="url" rel="index"><span itemprop="name">Channel</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h4><p>再使用goroutine的时候提到过多个goroutine会产生竞争关系。可以通过原子函数和互斥锁来解决竞争关系，更推荐使用channel</p>
+<h4 id="定义channel"><a href="#定义channel" class="headerlink" title="定义channel"></a>定义channel</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//无缓冲的整型通道</span></span><br><span class="line">unbuffered := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line"><span class="comment">//有缓冲的字符串通道</span></span><br><span class="line">buffered := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">string</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="从channel里发送数据"><a href="#从channel里发送数据" class="headerlink" title="从channel里发送数据"></a>从channel里发送数据</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过通道发送一个字符串 </span></span><br><span class="line">buffered &lt;- <span class="number">1</span></span><br><span class="line"><span class="comment">//从通道接收一个字符串 </span></span><br><span class="line">value := &lt;- buffered</span><br></pre></td></tr></table></figure>
+<p>示例1：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(c <span class="keyword">chan</span> <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			n := &lt;- c</span><br><span class="line">			fmt.Println(n)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;(c)</span><br><span class="line">	c &lt;- <span class="number">1</span></span><br><span class="line">	c &lt;- <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>示例2：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	chanDemo()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">chanDemo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// create channel slice</span></span><br><span class="line">	<span class="keyword">var</span> channels [<span class="number">10</span>]<span class="keyword">chan</span> <span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="comment">//channels[i] = make(chan int)</span></span><br><span class="line">		<span class="comment">//go worker(i, channels[i])</span></span><br><span class="line">		channels[i] = Createworker(i)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt;<span class="number">10</span>; i++ &#123;</span><br><span class="line"></span><br><span class="line">		channels[i] &lt;- <span class="string">'a'</span> + i</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt;<span class="number">10</span>; i++ &#123;</span><br><span class="line">		channels[i] &lt;- <span class="string">'A'</span> + i</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">(id <span class="keyword">int</span>, c <span class="keyword">chan</span> <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span>  &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"Worker %d received %d\n"</span>,</span><br><span class="line">			id, &lt;-c)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Createworker</span><span class="params">(id <span class="keyword">int</span>)</span> <span class="title">chan</span> <span class="title">int</span></span>&#123;</span><br><span class="line">	c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span>  &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"worker %d received %c\n"</span>, id ,&lt;-c)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">	<span class="keyword">return</span> c</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="有缓冲区的channel"><a href="#有缓冲区的channel" class="headerlink" title="有缓冲区的channel"></a>有缓冲区的channel</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>,<span class="number">3</span>)</span><br><span class="line">	<span class="keyword">go</span> worker(c)</span><br><span class="line">	<span class="comment">//for i := 0; i &lt; 10; i++ &#123;</span></span><br><span class="line">	<span class="comment">//	c &lt;- 'a' +i</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line">	c &lt;- <span class="string">'a'</span></span><br><span class="line">	c &lt;- <span class="string">'b'</span></span><br><span class="line">	c &lt;- <span class="string">'c'</span></span><br><span class="line">	<span class="comment">// 设置缓冲区，不读取数据也不会报错</span></span><br><span class="line">	time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">(c <span class="keyword">chan</span> <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span>  &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"worker received %c\n"</span>, &lt;-c)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>// close() 关闭缓冲区<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>,<span class="number">3</span>)</span><br><span class="line">	<span class="comment">// 设置缓冲区，不读取数据也不会报错</span></span><br><span class="line">	<span class="keyword">go</span> worker(c)</span><br><span class="line">	<span class="comment">//for i := 0; i &lt; 10; i++ &#123;</span></span><br><span class="line">	<span class="comment">//	c &lt;- 'a' +i</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line">	c &lt;- <span class="string">'a'</span></span><br><span class="line">	c &lt;- <span class="string">'b'</span></span><br><span class="line">	c &lt;- <span class="string">'c'</span></span><br><span class="line">	c &lt;- <span class="string">'d'</span></span><br><span class="line">	<span class="built_in">close</span>(c) <span class="comment">// 关闭channel ,会继续发送该channel类型的零值数据</span></span><br><span class="line">	time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">(c <span class="keyword">chan</span> <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">//for  &#123;</span></span><br><span class="line">	<span class="comment">//	n, ok := &lt;- c</span></span><br><span class="line">	<span class="comment">//	if !ok&#123;</span></span><br><span class="line">	<span class="comment">//		break</span></span><br><span class="line">	<span class="comment">//	&#125;</span></span><br><span class="line">	<span class="comment">//	fmt.Printf("worker received %c\n", n)</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line">	<span class="comment">// 简单写法</span></span><br><span class="line">	<span class="keyword">for</span> n := <span class="keyword">range</span> c&#123;</span><br><span class="line">		fmt.Printf(<span class="string">"worker received %c\n"</span>, n)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="如何等待Goroutine"><a href="#如何等待Goroutine" class="headerlink" title="如何等待Goroutine"></a>如何等待Goroutine</h4><p>在之前的代码里面都有使用time.Sleep(time.Millisecond)来等待Channel的结束。但是这种方法的危险肉眼可见。所以我们需要修改一下。<br>修改点：</p>
+<ul>
+<li>在执行打印的时候，不仅接受一个Channel的int，同时在打印完成后，传出一个done</li>
+<li>由于有一对chan，将这一对chan提出来做一个struct</li>
+<li>在Createworker的时候用worker构造体传值</li>
+<li>同时在创建10个worker的时候也用构造体创建构造体的slice</li>
+<li>在向内部传值后，同时加入接受done的处理</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> worker <span class="keyword">struct</span> &#123;</span><br><span class="line">	in <span class="keyword">chan</span> <span class="keyword">int</span></span><br><span class="line">	done <span class="keyword">chan</span> <span class="keyword">bool</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"channel as first_class citizen"</span>)</span><br><span class="line">	chanDemo()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">chanDemo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> workers [<span class="number">10</span>]worker</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		workers[i] = createWorker(i)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		workers[i].in &lt;- <span class="string">'a'</span> +i</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//for i := 0; i &lt; 10; i++ &#123;</span></span><br><span class="line">	<span class="comment">//	&lt;- workers[i].done</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		workers[i].in &lt;- <span class="string">'A'</span> + i</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		&lt;- workers[i].done</span><br><span class="line">		&lt;- workers[i].done</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createWorker</span><span class="params">(i <span class="keyword">int</span>)</span> <span class="title">worker</span></span> &#123;</span><br><span class="line">	w := worker&#123;</span><br><span class="line">		in: <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>),</span><br><span class="line">		done: <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">bool</span>),</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">go</span> doworker(i , w.in, w.done)</span><br><span class="line">	<span class="keyword">return</span> w</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">doworker</span><span class="params">(i <span class="keyword">int</span>, c <span class="keyword">chan</span> <span class="keyword">int</span>, done <span class="keyword">chan</span> <span class="keyword">bool</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> n := <span class="keyword">range</span> c &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"Worker %d received %c\n"</span>, i, n)</span><br><span class="line">		<span class="comment">//done &lt;- true</span></span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">			done &lt;- <span class="literal">true</span></span><br><span class="line">		&#125;()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用sync-WaitGroup-来管理goroutine结束"><a href="#使用sync-WaitGroup-来管理goroutine结束" class="headerlink" title="使用sync.WaitGroup 来管理goroutine结束"></a>使用sync.WaitGroup 来管理goroutine结束</h4><p>WaitGroup的用法：</p>
+<ul>
+<li>定义WaitGroup本身：var wg sync.WaitGroup</li>
+<li>定义需要等待的goroutine数量：wg.Add(20)</li>
+<li>等待：wg.Wait()</li>
+<li>在goroutine执行完成后done：w.done()</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"sync"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> worker <span class="keyword">struct</span> &#123;</span><br><span class="line">	in <span class="keyword">chan</span> <span class="keyword">int</span></span><br><span class="line">	<span class="comment">//done chan bool</span></span><br><span class="line">	done <span class="function"><span class="keyword">func</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"channel as first_class citizen"</span>)</span><br><span class="line">	chanDemo()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">chanDemo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> wg sync.WaitGroup</span><br><span class="line">	<span class="keyword">var</span> workers [<span class="number">10</span>]worker</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		workers[i] = createWorker(i, &amp;wg)</span><br><span class="line">	&#125;</span><br><span class="line">	wg.Add(<span class="number">20</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		workers[i].in &lt;- <span class="string">'a'</span> +i</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//for i := 0; i &lt; 10; i++ &#123;</span></span><br><span class="line">	<span class="comment">//	&lt;- workers[i].done</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		workers[i].in &lt;- <span class="string">'A'</span> + i</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//for i := 0; i &lt; 10; i++ &#123;</span></span><br><span class="line">	<span class="comment">//	&lt;- workers[i].done</span></span><br><span class="line">	<span class="comment">//	&lt;- workers[i].done</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line">	wg.Wait()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createWorker</span><span class="params">(i <span class="keyword">int</span>, wg *sync.WaitGroup)</span> <span class="title">worker</span></span> &#123;</span><br><span class="line">	w := worker&#123;</span><br><span class="line">		in: <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>),</span><br><span class="line">		<span class="comment">//done: make(chan bool),</span></span><br><span class="line">		done: <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">			wg.Done()</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">go</span> doworker(i ,w)</span><br><span class="line">	<span class="keyword">return</span> w</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">doworker</span><span class="params">(i <span class="keyword">int</span>, w worker)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> n := <span class="keyword">range</span> w.in &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"Worker %d received %c\n"</span>, i, n)</span><br><span class="line">		<span class="comment">//done &lt;- true</span></span><br><span class="line">		<span class="comment">//go func() &#123;</span></span><br><span class="line">		<span class="comment">//	done &lt;- true</span></span><br><span class="line">		<span class="comment">//&#125;()</span></span><br><span class="line">		w.done()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Don’t communicate by sharing memory, share memory by communicating.</p>
+<h4 id="不要通过共享内存进行通信，要通过通信来共享内存"><a href="#不要通过共享内存进行通信，要通过通信来共享内存" class="headerlink" title="不要通过共享内存进行通信，要通过通信来共享内存"></a>不要通过共享内存进行通信，要通过通信来共享内存</h4><p>比如我们判断前后程序是否处理是否完成的时候经常设置一个flag变量，然后通过检测这个变量来进行判断，这就是所谓通过共享内存进行通信。但是go语言更提倡通过使用Channel，通过通信来共享内存。</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单示例</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math/rand"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> c1, c2 = generator(), generator()</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> n:= &lt;- c1:</span><br><span class="line">			fmt.Println(n)</span><br><span class="line">		<span class="keyword">case</span> n := &lt;- c2:</span><br><span class="line">			fmt.Println(n)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">generator</span><span class="params">()</span> <span class="title">chan</span> <span class="title">int</span></span>&#123;</span><br><span class="line">	out := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		i := <span class="number">0</span></span><br><span class="line">		<span class="keyword">for</span>  &#123;</span><br><span class="line">			time.Sleep(time.Duration(rand.Intn(<span class="number">1500</span>))*time.Millisecond)</span><br><span class="line">			out &lt;- i</span><br><span class="line">			i ++</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">	<span class="keyword">return</span> out</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math/rand"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">generator</span><span class="params">()</span> <span class="title">chan</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	out := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		i := <span class="number">0</span></span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			time.Sleep(</span><br><span class="line">				time.Duration(rand.Intn(<span class="number">1500</span>)) *</span><br><span class="line">					time.Millisecond)</span><br><span class="line">			out &lt;- i</span><br><span class="line">			i++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">	<span class="keyword">return</span> out</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">worker</span><span class="params">(id <span class="keyword">int</span>, c <span class="keyword">chan</span> <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> n := <span class="keyword">range</span> c &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"Worker %d received %c\n"</span>,</span><br><span class="line">			id, n)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createWorker</span><span class="params">(id <span class="keyword">int</span>)</span> <span class="title">chan</span>&lt;- <span class="title">int</span></span> &#123;</span><br><span class="line">	c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">	<span class="keyword">go</span> worker(id, c)</span><br><span class="line">	<span class="keyword">return</span> c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	worker := createWorker(<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">var</span> c1, c2 = generator(), generator()</span><br><span class="line">	n := <span class="number">0</span></span><br><span class="line">	hasValue := <span class="literal">false</span></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="comment">// nil chan永远不会被select到</span></span><br><span class="line">		<span class="keyword">var</span> activeworker <span class="keyword">chan</span>&lt;- <span class="keyword">int</span> </span><br><span class="line">		<span class="keyword">if</span> hasValue &#123;</span><br><span class="line">			activeworker = worker</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> n = &lt;-c1:</span><br><span class="line">			fmt.Println(<span class="string">"Received from c1: "</span>, n)</span><br><span class="line">			hasValue = <span class="literal">true</span></span><br><span class="line">		<span class="keyword">case</span> n = &lt;-c2:</span><br><span class="line">			fmt.Println(<span class="string">"Received from c2: "</span>, n)</span><br><span class="line">			hasValue = <span class="literal">true</span></span><br><span class="line">		<span class="keyword">case</span> activeworker &lt;- n:</span><br><span class="line">			hasValue = <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/07/01/Go%E8%AF%AD%E8%A8%80goroutine/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/01/Go%E8%AF%AD%E8%A8%80goroutine/" class="post-title-link" itemprop="url">go -- goroutine -- 示例解析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-01 10:10:09" itemprop="dateCreated datePublished" datetime="2018-07-01T10:10:09+08:00">2018-07-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/goroutine/" itemprop="url" rel="index"><span itemprop="name">goroutine</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>简单的goroutine示例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a [<span class="number">10</span>]<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(i <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">			<span class="keyword">for</span>  &#123;</span><br><span class="line">				fmt.Printf(<span class="string">"Hello goroutine %d\n"</span>, i) <span class="comment">// i/O操作</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;(i)</span><br><span class="line">	&#125;</span><br><span class="line">	time.Sleep(time.Microsecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上边的代码如果不加go执行的话，只会在第一次i=0的时候无限循环执行<code>fmt.Printf(&quot;Hello goroutine %d\n&quot;, i)</code></li>
+<li>main()也是一个goroutine，主goroutine已经结束， 子goroutine还没有执行，所以需要加上<code>time.Sleep(time.Microsecond)</code></li>
+</ul>
+<h4 id="go开启的其实不是线程，而是协程"><a href="#go开启的其实不是线程，而是协程" class="headerlink" title="go开启的其实不是线程，而是协程"></a>go开启的其实不是线程，而是协程</h4><ul>
+<li>轻量级的协程</li>
+<li><strong>非抢占式</strong> 多任务处理，由协程主动交出控制权</li>
+<li>而线程再任何时候都可以被系统切换，所有线程又称之为抢占式多任务处理，哪怕程序执行到一半，都可以被系统切换</li>
+<li>编译器，解析器或者虚拟机层面的多任务</li>
+<li>协程可以看作是编译器层面的多任务而不是操作系统的多任务 操作系统只有线程没有协程</li>
+<li>go语言在执行goroutine时 编译器会有一个调度器为他调度协程 操作系统有调度器 go语言有自己的调度器</li>
+<li>多个协程可能再一个或多个线程上运行</li>
+</ul>
+<h4 id="非抢占式"><a href="#非抢占式" class="headerlink" title="非抢占式"></a>非抢占式</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a [<span class="number">10</span>]<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(i <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">			<span class="keyword">for</span>  &#123;</span><br><span class="line">				a[i]++</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;(i)</span><br><span class="line">	&#125;</span><br><span class="line">	time.Sleep(time.Microsecond)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行发现程序 夯住了，查看cpu占用，发现已经快达到100%了<br>产生的原因：</p>
+<pre><code>* a[i]++ 无法主动交出控制权
+* main函数事主goroutine，由于 go func 没有交出控制权，导致main一直等待
+</code></pre><p>从之前的代码可以看到，io操作时可以自动交出控制权的，如何手动交出控制权？可以使用<code>runtime.Gosched()</code>。一般情况下不会用到<code>runtime.Gosched()</code><br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a [<span class="number">10</span>]<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(i <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">			<span class="keyword">for</span>  &#123;</span><br><span class="line">				a[i]++</span><br><span class="line">				runtime.Gosched()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;(i)</span><br><span class="line">	&#125;</span><br><span class="line">	time.Sleep(time.Microsecond)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="go-func-中不传入变量可不可以？"><a href="#go-func-中不传入变量可不可以？" class="headerlink" title="go func(){}() 中不传入变量可不可以？"></a>go func(){}() 中不传入变量可不可以？</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过执行发现 报错了</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a [<span class="number">10</span>]<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">			<span class="keyword">for</span>  &#123;</span><br><span class="line">				a[i]++</span><br><span class="line">				runtime.Gosched()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;()</span><br><span class="line">	&#125;</span><br><span class="line">	time.Sleep(time.Microsecond)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过执行发现报错了，但是为什么报错呢？</p>
+<ul>
+<li>go run -race goroutine.go 看下究竟发生了什么</li>
+<li>从上边的执行命令,可以看出，出错的原因是因为如果不把i作为参数传给func，就不会形成闭包，在最后一次执行for的时候i会是10，导致a[10]超出范围</li>
+</ul>
+<h4 id="go语言调度器"><a href="#go语言调度器" class="headerlink" title="go语言调度器"></a>go语言调度器</h4><p>在go语言里，具体每个协程如何分配到线程里，都是交给调度器来分配，我们不用操心。</p>
+<h4 id="goroutine的定义"><a href="#goroutine的定义" class="headerlink" title="goroutine的定义"></a>goroutine的定义</h4><ul>
+<li>直接在函数前加入go</li>
+<li>不需要再定义时区分是否是异步函数</li>
+<li>调度器在合适的点进行切换</li>
+<li>使用-race检测数据访问冲突<h4 id="goroutine的切换点"><a href="#goroutine的切换点" class="headerlink" title="goroutine的切换点"></a>goroutine的切换点</h4>下面这些点可以参考，但是由于我们无法100%控制，所以只能是参考。</li>
+<li>I/O select</li>
+<li>channel</li>
+<li>等待锁</li>
+<li>函数调用（有时）</li>
+<li>runtime.Gosched()</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/05/20/Linux-%E4%BD%BF%E7%94%A8rz%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/20/Linux-%E4%BD%BF%E7%94%A8rz%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决使用 rz 命令乱码问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-20 10:20:40" itemprop="dateCreated datePublished" datetime="2018-05-20T10:20:40+08:00">2018-05-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/rz/" itemprop="url" rel="index"><span itemprop="name">rz</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>154</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="解决使用-rz-命令乱码问题"><a href="#解决使用-rz-命令乱码问题" class="headerlink" title="解决使用 rz 命令乱码问题"></a>解决使用 rz 命令乱码问题</h4><h6 id="使用-rz-命令上传一个-tar-包出现一堆乱七八糟的乱码，这个时候使用"><a href="#使用-rz-命令上传一个-tar-包出现一堆乱七八糟的乱码，这个时候使用" class="headerlink" title="使用 rz 命令上传一个 tar 包出现一堆乱七八糟的乱码，这个时候使用"></a><strong>使用 rz 命令上传一个 tar 包出现一堆乱七八糟的乱码，这个时候使用</strong></h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rz -be</span><br><span class="line">或者</span><br><span class="line">rz -e</span><br><span class="line">解析：-e</span><br><span class="line">Force sender to escape all control characters; normally XON, XOFF, DLE, CR-@-CR, and Ctrl-X are escaped.</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/03/20/Linux%20vim%E7%B2%98%E8%B4%B4%E6%A0%BC%E5%BC%8F%E9%94%99%E4%B9%B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/20/Linux%20vim%E7%B2%98%E8%B4%B4%E6%A0%BC%E5%BC%8F%E9%94%99%E4%B9%B1/" class="post-title-link" itemprop="url">linux vim复制粘贴格式错乱</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-20 22:40:41" itemprop="dateCreated datePublished" datetime="2018-03-20T22:40:41+08:00">2018-03-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/vim/" itemprop="url" rel="index"><span itemprop="name">vim</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>38</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="linux-vim复制粘贴格式错乱"><a href="#linux-vim复制粘贴格式错乱" class="headerlink" title="linux vim复制粘贴格式错乱"></a>linux vim复制粘贴格式错乱</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">先按ESC输入:set paste再复制粘贴</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/03/12/go-%E5%8F%91%E8%B5%B7GET%E8%AF%B7%E6%B1%82%E5%92%8CPOST%E8%AF%B7%E6%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/12/go-%E5%8F%91%E8%B5%B7GET%E8%AF%B7%E6%B1%82%E5%92%8CPOST%E8%AF%B7%E6%B1%82/" class="post-title-link" itemprop="url">go -- 发起GET -- 请求和POST请求</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-12 03:21:41" itemprop="dateCreated datePublished" datetime="2018-03-12T03:21:41+08:00">2018-03-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/Get/" itemprop="url" rel="index"><span itemprop="name">Get</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/Get/Post/" itemprop="url" rel="index"><span itemprop="name">Post</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Golang-发起GET请求"><a href="#Golang-发起GET请求" class="headerlink" title="Golang 发起GET请求"></a>Golang 发起GET请求</h3><h4 id="基本的GET请求"><a href="#基本的GET请求" class="headerlink" title="基本的GET请求"></a>基本的GET请求</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">	<span class="string">"net/http/httputil"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	resp, err := http.Get(<span class="string">"http://httpbin.org/get"</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line">	response, err := httputil.DumpResponse(resp, <span class="literal">true</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(response))</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="带有参数的GET请求"><a href="#带有参数的GET请求" class="headerlink" title="带有参数的GET请求"></a>带有参数的GET请求</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	resp, err := http.Get(<span class="string">"http://httpbin.org/get?name=tom&amp;age=19"</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line">	respone, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(respone))</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="动态传递GET请求参数"><a href="#动态传递GET请求参数" class="headerlink" title="动态传递GET请求参数"></a>动态传递GET请求参数</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">	<span class="string">"net/url"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	params := url.Values&#123;&#125;</span><br><span class="line">	Url, err := url.Parse(<span class="string">"http://httpbin.org/get"</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	params.Set(<span class="string">"name"</span>,<span class="string">"xiaoming"</span>)</span><br><span class="line">	params.Set(<span class="string">"age"</span>,<span class="string">"19"</span>)</span><br><span class="line">	Url.RawQuery = params.Encode()  <span class="comment">//如果参数中有中文参数,这个方法会进行URLEncode</span></span><br><span class="line">	urlPath := Url.String()  <span class="comment">// http://httpbin.org/get?age=19&amp;name=xiaoming&#123;</span></span><br><span class="line">	resp,err := http.Get(urlPath)</span><br><span class="line">	<span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line">	body, _ := ioutil.ReadAll(resp.Body)</span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(body))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="GET请求json返回值"><a href="#GET请求json返回值" class="headerlink" title="GET请求json返回值"></a>GET请求json返回值</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> result <span class="keyword">struct</span> &#123;</span><br><span class="line">	Args <span class="keyword">string</span> <span class="string">`json:"args"`</span></span><br><span class="line">	Headers <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span> <span class="string">`json:"headers"`</span></span><br><span class="line">	Origin <span class="keyword">string</span> <span class="string">`json:"origin"`</span></span><br><span class="line">	Url <span class="keyword">string</span> <span class="string">`json:"url"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	resp, err := http.Get(<span class="string">"http://httpbin.org/get"</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line">	body, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(body))</span><br><span class="line">	<span class="keyword">var</span> res result</span><br><span class="line">	_ = json.Unmarshal(body, &amp;res)</span><br><span class="line">	fmt.Printf(<span class="string">"%#v"</span>, res)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="GET请求添加请求头"><a href="#GET请求添加请求头" class="headerlink" title="GET请求添加请求头"></a>GET请求添加请求头</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	client := &amp;http.Client&#123;&#125;</span><br><span class="line">	request, err := http.NewRequest(<span class="string">"GET"</span>, <span class="string">" http://httpbin.org/get"</span>, <span class="literal">nil</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	request.Header.Add(<span class="string">"User-Agent"</span>, <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"</span>)</span><br><span class="line">	request.Header.Add(<span class="string">"name"</span>, <span class="string">"xiaoming"</span>)</span><br><span class="line">	resp, _ := client.Do(request)</span><br><span class="line">	body, _ := ioutil.ReadAll(resp.Body)</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(body))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Golang-发起POST请求"><a href="#Golang-发起POST请求" class="headerlink" title="Golang 发起POST请求"></a>Golang 发起POST请求</h3><h4 id="1-基本-POST-请求"><a href="#1-基本-POST-请求" class="headerlink" title="(1)基本 POST 请求"></a>(1)基本 POST 请求</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">	<span class="string">"net/url"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	values := url.Values&#123;&#125;</span><br><span class="line">	values.Add(<span class="string">"username"</span>, <span class="string">"xiaoming"</span>)</span><br><span class="line">	values.Add(<span class="string">"pwd"</span>, <span class="string">"pwd"</span>)</span><br><span class="line">	resp, _ := http.PostForm(<span class="string">"http://httpbin.org/post"</span>, values)</span><br><span class="line">	body, _ := ioutil.ReadAll(resp.Body)</span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(body))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-基本的post请求"><a href="#2-基本的post请求" class="headerlink" title="(2)基本的post请求"></a>(2)基本的post请求</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">	<span class="string">"net/url"</span></span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	values := url.Values&#123;</span><br><span class="line">		<span class="string">"word"</span>:&#123;<span class="string">"hello"</span>&#125;,</span><br><span class="line">		<span class="string">"gender"</span>:&#123;<span class="string">"male"</span>&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	encode := values.Encode()</span><br><span class="line">	resp, err := http.Post(<span class="string">"http://httpbin.org/post"</span>, <span class="string">"text/html"</span>, strings.NewReader(encode))</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line">	body, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(body))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="1-POST请求-发送json数据"><a href="#1-POST请求-发送json数据" class="headerlink" title="(1)POST请求 发送json数据"></a>(1)POST请求 发送json数据</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bytes"</span></span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	client := &amp;http.Client&#123;&#125;</span><br><span class="line">	data := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">	data[<span class="string">"username"</span>] = <span class="string">"xiaoming"</span></span><br><span class="line">	data[<span class="string">"pwd"</span>] = <span class="string">"pwd"</span></span><br><span class="line">	reqData, _ := json.Marshal(data)</span><br><span class="line">	req, _ := http.NewRequest(<span class="string">"POST"</span>, <span class="string">"http://httpbin.org/post"</span>, bytes.NewReader(reqData))</span><br><span class="line">	resp, _ := client.Do(req)</span><br><span class="line">	all, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(all))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-POST请求-发送json数据"><a href="#2-POST请求-发送json数据" class="headerlink" title="(2)POST请求 发送json数据"></a>(2)POST请求 发送json数据</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bytes"</span></span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	data := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">	data[<span class="string">"username"</span>] = <span class="string">"xiaoming"</span></span><br><span class="line">	data[<span class="string">"pwd"</span>] = <span class="string">"pwd"</span></span><br><span class="line">	reqData, _ := json.Marshal(data)</span><br><span class="line">	req, _ := http.Post(<span class="string">"http://httpbin.org/post"</span>,<span class="string">"application/json"</span>, bytes.NewReader(reqData))</span><br><span class="line">	all, err := ioutil.ReadAll(req.Body)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(<span class="keyword">string</span>(all))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/03/06/go-%E6%A0%87%E5%87%86%E5%BA%93-bufio/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/06/go-%E6%A0%87%E5%87%86%E5%BA%93-bufio/" class="post-title-link" itemprop="url">go -- 标准库-- bufio</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-06 01:23:09" itemprop="dateCreated datePublished" datetime="2018-03-06T01:23:09+08:00">2018-03-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/bufio/" itemprop="url" rel="index"><span itemprop="name">bufio</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>16k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>15 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://golang.org/pkg/bufio/" target="_blank" rel="noopener">bufio</a> 用来帮助处理 <a href="https://www.quora.com/In-C-what-does-buffering-I-O-or-buffered-I-O-mean/answer/Robert-Love-1" target="_blank" rel="noopener">I/O 缓存</a>。 我们将通过一些示例来熟悉其为我们提供的：Reader, Writer and Scanner 等一系列功能</p>
+<h2 id="bufio-Writer"><a href="#bufio-Writer" class="headerlink" title="bufio.Writer"></a>bufio.Writer</h2><p>多次进行小量的写操作会影响程序性能。每一次写操作最终都会体现为系统层调用，频繁进行该操作将有可能对 CPU 造成伤害。而且很多硬件设备更适合处理块对齐的数据，例如硬盘。为了减少进行多次写操作所需的开支，golang 提供了 <a href="https://golang.org/pkg/bufio/#Writer" target="_blank" rel="noopener">bufio.Writer</a>。数据将不再直接写入目的地(实现了 <a href="https://golang.org/pkg/io/#Writer" target="_blank" rel="noopener">io.Writer</a> 接口)，而是先写入缓存，当缓存写满后再统一写入目的地：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">producer --&gt; buffer --&gt; io.Writer</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/03/06/go-%E6%A0%87%E5%87%86%E5%BA%93-bufio/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/03/02/go-%E6%A0%87%E5%87%86%E5%BA%93-bytes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/02/go-%E6%A0%87%E5%87%86%E5%BA%93-bytes/" class="post-title-link" itemprop="url">go -- 标准库-- bytes.buffer</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-02 13:08:18" itemprop="dateCreated datePublished" datetime="2018-03-02T13:08:18+08:00">2018-03-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/bytes/" itemprop="url" rel="index"><span itemprop="name">bytes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/bytes/buffer/" itemprop="url" rel="index"><span itemprop="name">buffer</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>bytes.buffer是一个缓冲byte类型的缓冲器</p>
+<p>1、使用bytes.NewBuffer创建：参数是[]byte的话，缓冲器里就是这个slice的内容；如果参数是nil的话，就是创建一个空的缓冲器。</p>
+<p>2、bytes.NewBufferString创建</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">   buf1 := bytes.NewBufferString(<span class="string">"hello"</span>)</span><br><span class="line">   buf2 := bytes.NewBuffer([]<span class="keyword">byte</span>(<span class="string">"hello"</span>))</span><br><span class="line">   buf3 := bytes.NewBuffer([]<span class="keyword">byte</span>&#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>&#125;)</span><br><span class="line">   以上三者等效,输出<span class="comment">//hello</span></span><br><span class="line">   buf4 := bytes.NewBufferString(<span class="string">""</span>)</span><br><span class="line">   buf5 := bytes.NewBuffer([]<span class="keyword">byte</span>&#123;&#125;)</span><br><span class="line">   以上两者等效,输出<span class="comment">//""</span></span><br><span class="line">   fmt.Println(buf1.String(),buf2.String(),buf3.String(),buf4,buf5,<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/03/02/go-%E6%A0%87%E5%87%86%E5%BA%93-bytes/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -364,179 +1151,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2016/07/09/hexo_theme_next_github/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/07/09/hexo_theme_next_github/" class="post-title-link" itemprop="url">hexo themes/next主题文件无法提交github</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-07-09 01:48:40" itemprop="dateCreated datePublished" datetime="2016-07-09T01:48:40+08:00">2016-07-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>135</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="hexo-themes-next主题文件存在无法提交github"><a href="#hexo-themes-next主题文件存在无法提交github" class="headerlink" title="hexo themes/next主题文件存在无法提交github"></a>hexo themes/next主题文件存在无法提交github</h4><h6 id="从暂存区删除该文件夹"><a href="#从暂存区删除该文件夹" class="headerlink" title="从暂存区删除该文件夹"></a>从暂存区删除该文件夹</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cache themes/next</span><br></pre></td></tr></table></figure>
-<h5 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add themes/next/</span><br><span class="line">git commit -m <span class="string">"your description"</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2016/01/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%98%E5%82%A8%E5%8D%95%E5%85%83%E8%BD%AC%E6%8D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/01/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%98%E5%82%A8%E5%8D%95%E5%85%83%E8%BD%AC%E6%8D%A2/" class="post-title-link" itemprop="url">计算机基础 -- 存储单元转换</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-01-01 13:56:01" itemprop="dateCreated datePublished" datetime="2016-01-01T13:56:01+08:00">2016-01-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E5%AD%98%E5%82%A8%E5%8D%95%E5%85%83%E8%BD%AC%E6%8D%A2/" itemprop="url" rel="index"><span itemprop="name">存储单元转换</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>138</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>位（bit）：一个数字0或者一个数字1，代表一位。<br>字节（Byte）：每逢8位是一个字节，这是数据存储的最小单位。</p>
-<p>1 Byte = 8 bit</p>
-<p>1 KB = 1024 Byte<br>1 MB = 1024 KB<br>1 GB = 1024 MB<br>1 TB = 1024 GB<br>1 PB = 1024 TB<br>1 EB = 1024 PB<br>1 ZB = 1024 EB</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -604,20 +1222,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">93</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -664,13 +1282,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">265k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:01</span>
+    <span title="站点阅读时长">4:39</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

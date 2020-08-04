@@ -123,17 +123,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">84</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">93</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">48</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">57</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">74</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">82</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -188,6 +188,177 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/07/12/go%E8%AF%AD%E8%A8%80_make_data_script/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/12/go%E8%AF%AD%E8%A8%80_make_data_script/" class="post-title-link" itemprop="url">go -- script</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-12 23:10:21" itemprop="dateCreated datePublished" datetime="2020-07-12T23:10:21+08:00">2020-07-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/go-script/" itemprop="url" rel="index"><span itemprop="name">go_script</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math/rand"</span></span><br><span class="line">	<span class="string">"net"</span></span><br><span class="line">	<span class="string">"smartphone/db/postg"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	instr := <span class="string">`insert into aicall.t_rebot_dir (rebot_name,rebot_sign,rebot_state,card_slot,</span></span><br><span class="line"><span class="string">available_line,normal_line,except_line,device_ip,device_mac) values ($1,$2,$3,$4,$5,$6,$7,$8,$9); `</span></span><br><span class="line">	rand.Seed(time.Now().UnixNano())</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">var</span> (</span><br><span class="line">			rebot_state      <span class="keyword">int</span></span><br><span class="line">			rebot_name_alias <span class="keyword">string</span></span><br><span class="line">		)</span><br><span class="line">		<span class="keyword">if</span> i%<span class="number">2</span> == <span class="number">0</span> &#123;</span><br><span class="line">			rebot_state = <span class="number">1</span></span><br><span class="line">			rebot_name_alias = <span class="string">"外呼中心"</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			rebot_name_alias = <span class="string">"GOIP"</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		card_slot := rand.Intn(<span class="number">30</span>) + <span class="number">10</span></span><br><span class="line">		fmt.Println(card_slot)</span><br><span class="line">		except_line := rand.Intn(<span class="number">10</span>)</span><br><span class="line">		fmt.Println(except_line)</span><br><span class="line">		normal_line := card_slot - except_line</span><br><span class="line">		fmt.Println(normal_line)</span><br><span class="line">		rebot_name := fmt.Sprintf(<span class="string">"设备%d(%s)"</span>, i, rebot_name_alias)</span><br><span class="line">		fmt.Println(rebot_name)</span><br><span class="line">		ip := fmt.Sprintf(<span class="string">"%d.%d.%d.%d"</span>, rand.Intn(<span class="number">255</span>), rand.Intn(<span class="number">255</span>), rand.Intn(<span class="number">255</span>), rand.Intn(<span class="number">255</span>))</span><br><span class="line">		fmt.Println(ip)</span><br><span class="line">		<span class="comment">// 随机mac</span></span><br><span class="line">		mac := GenerateMac().String()</span><br><span class="line">		<span class="comment">// rebot_sign</span></span><br><span class="line">		rebot_sign := fmt.Sprintf(<span class="string">"22948475%d"</span>, i)</span><br><span class="line"></span><br><span class="line">		fmt.Println(mac)</span><br><span class="line">		ret, err := postg.DBConnPostGresql().Exec(instr,</span><br><span class="line">			rebot_name, rebot_sign, rebot_state, card_slot, card_slot, normal_line, except_line, ip, mac)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"inster error:%v\n"</span>, err)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		rf, _ := ret.RowsAffected()</span><br><span class="line">		fmt.Println(rf)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GenerateMac</span><span class="params">()</span> <span class="title">net</span>.<span class="title">HardwareAddr</span></span> &#123;</span><br><span class="line">	buf := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">6</span>)</span><br><span class="line">	<span class="keyword">var</span> mac net.HardwareAddr</span><br><span class="line"></span><br><span class="line">	_, err := rand.Read(buf)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Set the local bit</span></span><br><span class="line">	<span class="comment">//buf[0] = buf[0] | 2 做按位与运算</span></span><br><span class="line">	buf[<span class="number">0</span>] |= <span class="number">2</span></span><br><span class="line"></span><br><span class="line">	mac = <span class="built_in">append</span>(mac, buf[<span class="number">0</span>], buf[<span class="number">1</span>], buf[<span class="number">2</span>], buf[<span class="number">3</span>], buf[<span class="number">4</span>], buf[<span class="number">5</span>])</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> mac</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math/rand"</span></span><br><span class="line">	<span class="string">"smartphone/db/postg"</span></span><br><span class="line">	<span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	instr := <span class="string">`insert into aicall.t_rebot_dir_detail (rebot_id,line_name,line_state,except_cause) values ($1,$2,$3,$4); `</span></span><br><span class="line">	query_sql := <span class="string">`</span></span><br><span class="line"><span class="string">	select id from aicall.t_rebot_dir</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">	rand.Seed(time.Now().UnixNano())</span><br><span class="line">	rows, err := postg.DBConnPostGresql().Query(query_sql)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//var allid []int</span></span><br><span class="line">	<span class="keyword">for</span> rows.Next() &#123;</span><br><span class="line">		<span class="keyword">var</span> id <span class="keyword">int</span></span><br><span class="line">		rows.Scan(&amp;id)</span><br><span class="line">		<span class="comment">//allid = append(allid, id)</span></span><br><span class="line">		scope := rand.Intn(<span class="number">11</span>) + <span class="number">2</span></span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; scope; i++ &#123;</span><br><span class="line">			line_name := fmt.Sprintf(<span class="string">"线路%d"</span>, i)</span><br><span class="line">			<span class="keyword">var</span> line_state <span class="keyword">int</span></span><br><span class="line">			<span class="keyword">var</span> except_cause <span class="keyword">string</span></span><br><span class="line">			<span class="keyword">if</span> i%<span class="number">2</span> == <span class="number">0</span> &#123;</span><br><span class="line">				line_state = <span class="number">1</span></span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> i == <span class="number">7</span> &#123;</span><br><span class="line">				except_cause = <span class="string">"其他故障"</span></span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				except_cause = <span class="string">"欠费"</span></span><br><span class="line">			&#125;</span><br><span class="line">			ret, err := postg.DBConnPostGresql().Exec(instr, id, line_name, line_state, except_cause)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				fmt.Println(err)</span><br><span class="line">			&#125;</span><br><span class="line">			rf, _ := ret.RowsAffected()</span><br><span class="line">			fmt.Println(rf)</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//fmt.Println(allid)</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/07/06/go%E4%BD%BF%E7%94%A8excelize%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/06/go%E4%BD%BF%E7%94%A8excelize%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">go -- excelize-- 导出文件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-06 10:10:09" itemprop="dateCreated datePublished" datetime="2020-07-06T10:10:09+08:00">2020-07-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/excelize/" itemprop="url" rel="index"><span itemprop="name">excelize</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="360EntSecGroup-Skylar-excelize"><a href="#360EntSecGroup-Skylar-excelize" class="headerlink" title="360EntSecGroup-Skylar/excelize"></a>360EntSecGroup-Skylar/excelize</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com&#x2F;360EntSecGroup-Skylar&#x2F;excelize</span><br></pre></td></tr></table></figure>
+<h4 id="Gin-中导出-Excel"><a href="#Gin-中导出-Excel" class="headerlink" title="Gin 中导出 Excel"></a>Gin 中导出 Excel</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> ExportField <span class="keyword">struct</span> &#123;</span><br><span class="line">	phone_num sql.NullInt64 <span class="string">`json:"phone_num"`</span></span><br><span class="line">	intent_level sql.NullInt64</span><br><span class="line">	call_result sql.NullInt64</span><br><span class="line">	call_start_time sql.NullString</span><br><span class="line">	call_end_time sql.NullString</span><br><span class="line">	talk_duration sql.NullInt64</span><br><span class="line">	r_time  sql.NullString</span><br><span class="line">	calling_number  sql.NullString</span><br><span class="line">	hang_up_note  sql.NullString</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	engine := gin.Default()</span><br><span class="line">	engine.GET(<span class="string">"/export"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		head := []<span class="keyword">string</span>&#123;<span class="string">"序号"</span>,<span class="string">"预警意向"</span>, <span class="string">"号码"</span>, <span class="string">"完成状态"</span>, <span class="string">"开始时间"</span>, <span class="string">"结束时间"</span>, <span class="string">"通话时长"</span>, <span class="string">"通话状态"</span>, <span class="string">"主叫号码"</span>, <span class="string">"上传时间"</span>, <span class="string">"挂机短信"</span>&#125;</span><br><span class="line">		query_sql := <span class="string">`</span></span><br><span class="line"><span class="string">			SELECT</span></span><br><span class="line"><span class="string">				phone_num,</span></span><br><span class="line"><span class="string">				intent_level,</span></span><br><span class="line"><span class="string">				call_result,</span></span><br><span class="line"><span class="string">				to_char(</span></span><br><span class="line"><span class="string">					call_start_time,</span></span><br><span class="line"><span class="string">					'YYYY-MM-DD hh24:mi:ss'</span></span><br><span class="line"><span class="string">				) AS call_start_time,</span></span><br><span class="line"><span class="string">				to_char(</span></span><br><span class="line"><span class="string">					call_end_time,</span></span><br><span class="line"><span class="string">					'YYYY-MM-DD hh24:mi:ss'</span></span><br><span class="line"><span class="string">				) AS call_end_time,</span></span><br><span class="line"><span class="string">				talk_duration,</span></span><br><span class="line"><span class="string">				to_char(</span></span><br><span class="line"><span class="string">					r_time,</span></span><br><span class="line"><span class="string">					'YYYY-MM-DD hh24:mi:ss'</span></span><br><span class="line"><span class="string">				) AS r_time,</span></span><br><span class="line"><span class="string">			calling_number, hang_up_note</span></span><br><span class="line"><span class="string">			FROM</span></span><br><span class="line"><span class="string">				aicall.sbc_task_list`</span></span><br><span class="line">		rows, err := postgresql.DBConnPostGresql().Query(query_sql)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Println(err)</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">var</span> alldata [][]<span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">		<span class="keyword">var</span> num <span class="keyword">int</span></span><br><span class="line">		<span class="keyword">for</span> rows.Next()&#123;</span><br><span class="line">			<span class="keyword">var</span> export ExportField</span><br><span class="line">			err := rows.Scan(&amp;export.phone_num, &amp;export.intent_level, &amp;export.call_result, &amp;export.call_start_time,</span><br><span class="line">				&amp;export.call_end_time, &amp;export.talk_duration, &amp;export.r_time, &amp;export.calling_number, &amp;export.hang_up_note)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				fmt.Println(err)</span><br><span class="line">			&#125;</span><br><span class="line">			data := []<span class="keyword">interface</span>&#123;&#125;&#123;</span><br><span class="line">				num,</span><br><span class="line">				export.intent_level.Int64,</span><br><span class="line">				export.phone_num.Int64,</span><br><span class="line">				export.call_result.Int64,</span><br><span class="line">				export.call_start_time.String,</span><br><span class="line">				export.call_end_time.String,</span><br><span class="line">				export.talk_duration.Int64,</span><br><span class="line">				export.call_result.Int64,</span><br><span class="line">				export.calling_number.String,</span><br><span class="line">				export.r_time.String,</span><br><span class="line">				export.hang_up_note.String,</span><br><span class="line">			&#125;</span><br><span class="line">			alldata = <span class="built_in">append</span>(alldata, data)</span><br><span class="line">		&#125;</span><br><span class="line">		filename := <span class="string">"task"</span> + <span class="string">"_"</span> + time.Now().Format(<span class="string">"20060102150405"</span>) + <span class="string">".xlsx"</span></span><br><span class="line">		Export(c, head, alldata, filename)</span><br><span class="line"></span><br><span class="line">	&#125;)</span><br><span class="line">	engine.Run(<span class="string">":9900"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Export</span><span class="params">(c *gin.Context, head []<span class="keyword">string</span>, body [][]<span class="keyword">interface</span>&#123;&#125;, filename <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">	xlsx := excelize.NewFile()</span><br><span class="line">	xlsx.SetSheetRow(<span class="string">"Sheet1"</span>, <span class="string">"A1"</span>, &amp;head)</span><br><span class="line">	<span class="keyword">for</span> index, rowData :=  <span class="keyword">range</span> body&#123;</span><br><span class="line">		xlsx.SetSheetRow(<span class="string">"Sheet1"</span>, <span class="string">"A"</span> + strconv.Itoa(index + <span class="number">2</span>), &amp;rowData) <span class="comment">// SetSheetRow：设置一行数据 SetCellValue：设置一个数据</span></span><br><span class="line">	&#125;</span><br><span class="line">	c.Header(<span class="string">"Content-Type"</span>, <span class="string">"application/octet-stream"</span>)</span><br><span class="line">	c.Header(<span class="string">"Content-Disposition"</span>, <span class="string">"attachment; filename="</span> + filename)</span><br><span class="line">	c.Header(<span class="string">"Content-Transfer-Encoding"</span>, <span class="string">"binary"</span>)</span><br><span class="line">	_ = xlsx.Write(c.Writer)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -678,114 +849,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">postgresql -- 模糊查询</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-03 19:39:43" itemprop="dateCreated datePublished" datetime="2020-06-03T19:39:43+08:00">2020-06-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" itemprop="url" rel="index"><span itemprop="name">模糊查询</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>932</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="like-和-not-like"><a href="#like-和-not-like" class="headerlink" title="like  和 not like"></a><code>like</code>  和 <code>not like</code></h3><ul>
-<li><code>like、not like</code>在SQL中用于模糊查询，<code>%</code>表示任意个字符，<code>_</code>表示单个任意字符</li>
-<li><code>ESCAPE</code>转义使用</li>
-</ul>
-<h3 id="ilike-和-not-ilike"><a href="#ilike-和-not-ilike" class="headerlink" title="ilike 和 not ilike"></a><code>ilike</code> 和 <code>not ilike</code></h3><ul>
-<li><code>ilike</code>表示在模糊匹配字符串时不区分大小写，<code>i</code>即是ignore的意思。</li>
-<li><code>not ilike</code>表示不模糊匹配字符串且不区分大小写。</li>
-</ul>
-<h3 id="和-，-和"><a href="#和-，-和" class="headerlink" title="~和~*，!~和!~*"></a><code>~</code>和<code>~*</code>，<code>!~</code>和<code>!~*</code></h3><ul>
-<li><code>~</code>表示匹配正则表达式，且区分大小写。</li>
-<li><code>~*</code>表示匹配正则表达式，且不区分大小写。</li>
-<li><code>!~</code>是<code>~</code>的否定用法，表示不匹配正则表达式，且区分大小写。</li>
-<li><code>!~*</code>是<code>~*</code>的否定用法，表示不匹配正则表达式，且不区分大小写。</li>
-</ul>
-<h3 id="和-，-和-1"><a href="#和-，-和-1" class="headerlink" title="~~和~~*，!~~和!~~*"></a><code>~~</code>和<code>~~*</code>，<code>!~~</code>和<code>!~~*</code></h3><ul>
-<li><code>~~</code>等效于like，<code>~~*</code>等效于ilike。</li>
-<li><code>!~~</code>等效于not like，<code>!~~*</code>等效于not ilike。</li>
-</ul>
-<p>实例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 模糊查询，不匹配的数据</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		c.id,</span><br><span class="line">		c.licenseKey,</span><br><span class="line">		c.siteName,</span><br><span class="line">		c.topDomain,</span><br><span class="line">		c.website_type,</span><br><span class="line">		c.system_decide,</span><br><span class="line">		c.handle_result,</span><br><span class="line">		c.webmaster,</span><br><span class="line">		c.webmaster_phone,</span><br><span class="line">		c.webmaster_fixed_phone,</span><br><span class="line">		c.organizer_unit_name,</span><br><span class="line">		c.unitType,</span><br><span class="line">		c.principal_person,</span><br><span class="line">		c.principal_phone,</span><br><span class="line">		c.principal_fixed_phone,</span><br><span class="line">		c.belongingCity,</span><br><span class="line">		c.organizer_unit_addr,</span><br><span class="line">		to_char(c.r_time,<span class="string">'YYYY-MM-DD hh24:mi:ss'</span>)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">		 (<span class="keyword">select</span> * <span class="keyword">from</span> public.t_record_detail_info <span class="keyword">where</span> belongingcity ~ <span class="string">'杭州市'</span>) <span class="keyword">as</span> c</span><br><span class="line"><span class="keyword">where</span> <span class="number">1</span>=<span class="number">1</span>  <span class="keyword">and</span> organizer_unit_addr <span class="keyword">not</span> <span class="keyword">like</span>  <span class="keyword">all</span>(<span class="built_in">array</span>[<span class="string">'%上城区%'</span>,<span class="string">'%下城区%'</span>,<span class="string">'%江干区%'</span>,<span class="string">'%拱墅区%'</span>,<span class="string">'%滨江区%'</span>,<span class="string">'%西湖区%'</span>,<span class="string">'%萧山区%'</span>,<span class="string">'%余杭区%'</span>,<span class="string">'%富阳区%'</span>,<span class="string">'%临安区%'</span>,<span class="string">'%桐庐县%'</span>,<span class="string">'%淳安县%'</span>,<span class="string">'%建德市%'</span>])</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> c.r_time <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1010,6 +1073,114 @@
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">type</span>,<span class="keyword">name</span>,price,<span class="keyword">nth_value</span>(<span class="keyword">name</span>,<span class="number">2</span>) <span class="keyword">OVER</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">range</span> <span class="keyword">between</span> <span class="keyword">unbounded</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="keyword">unbounded</span> <span class="keyword">following</span> ) <span class="keyword">from</span> products;</span><br></pre></td></tr></table></figure>
 <h5 id="窗口函数-聚合函数"><a href="#窗口函数-聚合函数" class="headerlink" title="窗口函数+聚合函数"></a>窗口函数+聚合函数</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">sum(price) over (partition by type) 类别金额合计,</span><br><span class="line">(sum(price) over (order by type))/sum(price) over() 类别总额占所有品类商品百分比,</span><br><span class="line">round(price/(sum(price) over (partition by type rows between unbounded preceding and unbounded following)),3) 子除类别百分比,</span><br><span class="line">rank() over (partition by type order by price desc) 排名,</span><br><span class="line">sum(price) over() 金额总计</span><br><span class="line">from products ORDER BY type,price asc;</span><br><span class="line"><span class="comment">-- 放在from后使用</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">    <span class="keyword">id</span>,<span class="keyword">type</span>,<span class="keyword">name</span>,price,</span><br><span class="line">    <span class="keyword">sum</span>(price) <span class="keyword">over</span> w1 类别金额合计,</span><br><span class="line">    (<span class="keyword">sum</span>(price) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">type</span>))/<span class="keyword">sum</span>(price) <span class="keyword">over</span>() 类别总额占所有品类商品百分比,</span><br><span class="line">    <span class="keyword">round</span>(price/(<span class="keyword">sum</span>(price) <span class="keyword">over</span> w2),<span class="number">3</span>) 子除类别百分比,</span><br><span class="line">    <span class="keyword">rank</span>() <span class="keyword">over</span> w3 排名,</span><br><span class="line">    <span class="keyword">sum</span>(price) <span class="keyword">over</span>() 金额总计</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    products</span><br><span class="line"><span class="keyword">WINDOW</span></span><br><span class="line">    w1 <span class="keyword">as</span> (<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span>),</span><br><span class="line">    w2 <span class="keyword">as</span> (<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">rows</span> <span class="keyword">between</span> <span class="keyword">unbounded</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="keyword">unbounded</span> <span class="keyword">following</span>),</span><br><span class="line">    w3 <span class="keyword">as</span> (<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">desc</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">type</span>,price <span class="keyword">asc</span>;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">postgresql -- 模糊查询</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-03 19:39:43" itemprop="dateCreated datePublished" datetime="2020-06-03T19:39:43+08:00">2020-06-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" itemprop="url" rel="index"><span itemprop="name">模糊查询</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>932</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="like-和-not-like"><a href="#like-和-not-like" class="headerlink" title="like  和 not like"></a><code>like</code>  和 <code>not like</code></h3><ul>
+<li><code>like、not like</code>在SQL中用于模糊查询，<code>%</code>表示任意个字符，<code>_</code>表示单个任意字符</li>
+<li><code>ESCAPE</code>转义使用</li>
+</ul>
+<h3 id="ilike-和-not-ilike"><a href="#ilike-和-not-ilike" class="headerlink" title="ilike 和 not ilike"></a><code>ilike</code> 和 <code>not ilike</code></h3><ul>
+<li><code>ilike</code>表示在模糊匹配字符串时不区分大小写，<code>i</code>即是ignore的意思。</li>
+<li><code>not ilike</code>表示不模糊匹配字符串且不区分大小写。</li>
+</ul>
+<h3 id="和-，-和"><a href="#和-，-和" class="headerlink" title="~和~*，!~和!~*"></a><code>~</code>和<code>~*</code>，<code>!~</code>和<code>!~*</code></h3><ul>
+<li><code>~</code>表示匹配正则表达式，且区分大小写。</li>
+<li><code>~*</code>表示匹配正则表达式，且不区分大小写。</li>
+<li><code>!~</code>是<code>~</code>的否定用法，表示不匹配正则表达式，且区分大小写。</li>
+<li><code>!~*</code>是<code>~*</code>的否定用法，表示不匹配正则表达式，且不区分大小写。</li>
+</ul>
+<h3 id="和-，-和-1"><a href="#和-，-和-1" class="headerlink" title="~~和~~*，!~~和!~~*"></a><code>~~</code>和<code>~~*</code>，<code>!~~</code>和<code>!~~*</code></h3><ul>
+<li><code>~~</code>等效于like，<code>~~*</code>等效于ilike。</li>
+<li><code>!~~</code>等效于not like，<code>!~~*</code>等效于not ilike。</li>
+</ul>
+<p>实例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 模糊查询，不匹配的数据</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		c.id,</span><br><span class="line">		c.licenseKey,</span><br><span class="line">		c.siteName,</span><br><span class="line">		c.topDomain,</span><br><span class="line">		c.website_type,</span><br><span class="line">		c.system_decide,</span><br><span class="line">		c.handle_result,</span><br><span class="line">		c.webmaster,</span><br><span class="line">		c.webmaster_phone,</span><br><span class="line">		c.webmaster_fixed_phone,</span><br><span class="line">		c.organizer_unit_name,</span><br><span class="line">		c.unitType,</span><br><span class="line">		c.principal_person,</span><br><span class="line">		c.principal_phone,</span><br><span class="line">		c.principal_fixed_phone,</span><br><span class="line">		c.belongingCity,</span><br><span class="line">		c.organizer_unit_addr,</span><br><span class="line">		to_char(c.r_time,<span class="string">'YYYY-MM-DD hh24:mi:ss'</span>)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">		 (<span class="keyword">select</span> * <span class="keyword">from</span> public.t_record_detail_info <span class="keyword">where</span> belongingcity ~ <span class="string">'杭州市'</span>) <span class="keyword">as</span> c</span><br><span class="line"><span class="keyword">where</span> <span class="number">1</span>=<span class="number">1</span>  <span class="keyword">and</span> organizer_unit_addr <span class="keyword">not</span> <span class="keyword">like</span>  <span class="keyword">all</span>(<span class="built_in">array</span>[<span class="string">'%上城区%'</span>,<span class="string">'%下城区%'</span>,<span class="string">'%江干区%'</span>,<span class="string">'%拱墅区%'</span>,<span class="string">'%滨江区%'</span>,<span class="string">'%西湖区%'</span>,<span class="string">'%萧山区%'</span>,<span class="string">'%余杭区%'</span>,<span class="string">'%富阳区%'</span>,<span class="string">'%临安区%'</span>,<span class="string">'%桐庐县%'</span>,<span class="string">'%淳安县%'</span>,<span class="string">'%建德市%'</span>])</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> c.r_time <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1280,200 +1451,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/05/11/Postman-upload_file/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/11/Postman-upload_file/" class="post-title-link" itemprop="url">postman -- 上传文件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-11 01:01:23" itemprop="dateCreated datePublished" datetime="2020-05-11T01:01:23+08:00">2020-05-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/postman/" itemprop="url" rel="index"><span itemprop="name">postman</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>141</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="1-选择post请求"><a href="#1-选择post请求" class="headerlink" title="1.选择post请求"></a>1.选择post请求</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1:9810&#x2F;data&#x2F;site_upload_file</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/11/Postman-upload_file/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/05/10/nc%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/10/nc%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">nc 命令使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-10 03:30:40" itemprop="dateCreated datePublished" datetime="2020-05-10T03:30:40+08:00">2020-05-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/nc/" itemprop="url" rel="index"><span itemprop="name">nc</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>559</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>什么是nc</p>
-<blockquote>
-<p>nc是netcat简称</p>
-<p>1.实现任意TCP/UDP端口的监听</p>
-<p>2.与telnet类似</p>
-<p>3.端口的扫描</p>
-<p>4.机器之间传输文件</p>
-<p>5.机器之间网络测速 </p>
-</blockquote>
-<p><strong>语法格式：</strong>nc [参数]</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-l: 作为监听，开启一个port监听用户的联机</span><br><span class="line">-u: 不适用tcp而是使用udp作为连接的数据包状态</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/10/nc%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1541,20 +1522,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">93</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1601,13 +1582,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">265k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:01</span>
+    <span title="站点阅读时长">4:39</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
