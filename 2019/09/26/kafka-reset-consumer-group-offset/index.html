@@ -20,13 +20,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yijunworld.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zmj.plus","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="背景 Kafka和传统的消息引擎在设计上有很大的区别，Kafka消费者读取消息是可以重演的 像RabbitMQ和ActiveMQ等传统消息中间件，处理和响应消息的方式是破坏性 一旦消息被成功处理，就会从Broker上被删除   Kafka是基于日志结构（Log-based）的消息引擎 消费者在消费消息时，仅仅是从磁盘文件中读取数据而已，是只读操作，因为消费者不会删除消息数据 同时，由于位移数据是由">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kafka -- 重设消费者组位移">
-<meta property="og:url" content="http://yijunworld.com/2019/09/26/kafka-reset-consumer-group-offset/index.html">
+<meta property="og:url" content="http://zmj.plus/2019/09/26/kafka-reset-consumer-group-offset/index.html">
 <meta property="og:site_name" content="Action">
 <meta property="og:description" content="背景 Kafka和传统的消息引擎在设计上有很大的区别，Kafka消费者读取消息是可以重演的 像RabbitMQ和ActiveMQ等传统消息中间件，处理和响应消息的方式是破坏性 一旦消息被成功处理，就会从Broker上被删除   Kafka是基于日志结构（Log-based）的消息引擎 消费者在消费消息时，仅仅是从磁盘文件中读取数据而已，是只读操作，因为消费者不会删除消息数据 同时，由于位移数据是由">
 <meta property="og:locale" content="zh_CN">
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="Stream">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yijunworld.com/2019/09/26/kafka-reset-consumer-group-offset/">
+<link rel="canonical" href="http://zmj.plus/2019/09/26/kafka-reset-consumer-group-offset/">
 
 
 <script id="page-configurations">
@@ -199,7 +199,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/09/26/kafka-reset-consumer-group-offset/">
+    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2019/09/26/kafka-reset-consumer-group-offset/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">

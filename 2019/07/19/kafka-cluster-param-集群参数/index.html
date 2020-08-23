@@ -20,13 +20,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yijunworld.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zmj.plus","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Broker参数存储 log.dir：表示单个路径 log.dirs：表示多个路径，推荐使用 &#x2F;home&#x2F;kafka1,&#x2F;home&#x2F;kafka2,&#x2F;home&#x2F;kafka3 线上生产环境中一定要为log.dirs配置多个路径，格式为CSV，逗号分隔 建议把不同的路径挂载到不同的物理磁盘上 提升读写性能，比起单块硬盘，多块物理磁盘同时读写数据有更高的吞吐量 能够实现故障转移（Failover），从Ka">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kafka -- 集群参数">
-<meta property="og:url" content="http://yijunworld.com/2019/07/19/kafka-cluster-param-%E9%9B%86%E7%BE%A4%E5%8F%82%E6%95%B0/index.html">
+<meta property="og:url" content="http://zmj.plus/2019/07/19/kafka-cluster-param-%E9%9B%86%E7%BE%A4%E5%8F%82%E6%95%B0/index.html">
 <meta property="og:site_name" content="Action">
 <meta property="og:description" content="Broker参数存储 log.dir：表示单个路径 log.dirs：表示多个路径，推荐使用 &#x2F;home&#x2F;kafka1,&#x2F;home&#x2F;kafka2,&#x2F;home&#x2F;kafka3 线上生产环境中一定要为log.dirs配置多个路径，格式为CSV，逗号分隔 建议把不同的路径挂载到不同的物理磁盘上 提升读写性能，比起单块硬盘，多块物理磁盘同时读写数据有更高的吞吐量 能够实现故障转移（Failover），从Ka">
 <meta property="og:locale" content="zh_CN">
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="Stream">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yijunworld.com/2019/07/19/kafka-cluster-param-%E9%9B%86%E7%BE%A4%E5%8F%82%E6%95%B0/">
+<link rel="canonical" href="http://zmj.plus/2019/07/19/kafka-cluster-param-%E9%9B%86%E7%BE%A4%E5%8F%82%E6%95%B0/">
 
 
 <script id="page-configurations">
@@ -199,7 +199,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/07/19/kafka-cluster-param-%E9%9B%86%E7%BE%A4%E5%8F%82%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2019/07/19/kafka-cluster-param-%E9%9B%86%E7%BE%A4%E5%8F%82%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">

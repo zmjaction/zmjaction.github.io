@@ -20,13 +20,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yijunworld.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zmj.plus","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="os.File、bufio、ioutil 比较效率测试文件的读取效率是所有开发者都会关心的话题，尤其是当文件特别大的时候。为了尽可能的展示这三者对文件读取的性能，我准备了三个文件，分别为small.txt，midium.txt、large.txt，分别对应 KB 级别、MB 级别和 GB 级别。 创建文件12345678910111213141516171819202122232425262728">
 <meta property="og:type" content="article">
 <meta property="og:title" content="go -- os.File -- bufio -- ioutil -- 操作文件">
-<meta property="og:url" content="http://yijunworld.com/2020/08/21/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/index.html">
+<meta property="og:url" content="http://zmj.plus/2020/08/21/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/index.html">
 <meta property="og:site_name" content="Action">
 <meta property="og:description" content="os.File、bufio、ioutil 比较效率测试文件的读取效率是所有开发者都会关心的话题，尤其是当文件特别大的时候。为了尽可能的展示这三者对文件读取的性能，我准备了三个文件，分别为small.txt，midium.txt、large.txt，分别对应 KB 级别、MB 级别和 GB 级别。 创建文件12345678910111213141516171819202122232425262728">
 <meta property="og:locale" content="zh_CN">
@@ -42,7 +42,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://imghosting-1257040086.cos.ap-nanjing.myqcloud.com/img/read_file_all.jpg">
 
-<link rel="canonical" href="http://yijunworld.com/2020/08/21/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/">
+<link rel="canonical" href="http://zmj.plus/2020/08/21/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/">
 
 
 <script id="page-configurations">
@@ -202,7 +202,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/08/21/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/">
+    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2020/08/21/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">

@@ -20,13 +20,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yijunworld.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zmj.plus","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="ZooKeeper 老版本Consumer的位移管理依托于Apache ZooKeeper，自动或手动地将位移数据提交到ZK中保存 当Consumer重启后，能自动从ZK中读取位移数据，从而在上次消费截止的地方继续消费 这种设计使得Kafka Broker不需要保存位移数据，减少了Broker端需要持有的状态空间，有利于实现高伸缩性 但ZK并不适用于高频的写操作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kafka -- 位移主题">
-<meta property="og:url" content="http://yijunworld.com/2019/08/26/kafka-offset-topic/index.html">
+<meta property="og:url" content="http://zmj.plus/2019/08/26/kafka-offset-topic/index.html">
 <meta property="og:site_name" content="Action">
 <meta property="og:description" content="ZooKeeper 老版本Consumer的位移管理依托于Apache ZooKeeper，自动或手动地将位移数据提交到ZK中保存 当Consumer重启后，能自动从ZK中读取位移数据，从而在上次消费截止的地方继续消费 这种设计使得Kafka Broker不需要保存位移数据，减少了Broker端需要持有的状态空间，有利于实现高伸缩性 但ZK并不适用于高频的写操作">
 <meta property="og:locale" content="zh_CN">
@@ -41,7 +41,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://kafka-1253868755.cos.ap-guangzhou.myqcloud.com/geek-time/kafka-offset-topic-compact.jpeg">
 
-<link rel="canonical" href="http://yijunworld.com/2019/08/26/kafka-offset-topic/">
+<link rel="canonical" href="http://zmj.plus/2019/08/26/kafka-offset-topic/">
 
 
 <script id="page-configurations">
@@ -201,7 +201,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2019/08/26/kafka-offset-topic/">
+    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2019/08/26/kafka-offset-topic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">

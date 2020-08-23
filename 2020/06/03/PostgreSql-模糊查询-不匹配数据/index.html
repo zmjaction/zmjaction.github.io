@@ -20,13 +20,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yijunworld.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"zmj.plus","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="like  和 not like like、not like在SQL中用于模糊查询，%表示任意个字符，_表示单个任意字符 ESCAPE转义使用  ilike 和 not ilike ilike表示在模糊匹配字符串时不区分大小写，i即是ignore的意思。 not ilike表示不模糊匹配字符串且不区分大小写。  ~和~*，!~和!~* ~表示匹配正则表达式，且区分大小写。 ~*表示匹配正则表达式，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="postgresql -- 模糊查询">
-<meta property="og:url" content="http://yijunworld.com/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/index.html">
+<meta property="og:url" content="http://zmj.plus/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/index.html">
 <meta property="og:site_name" content="Action">
 <meta property="og:description" content="like  和 not like like、not like在SQL中用于模糊查询，%表示任意个字符，_表示单个任意字符 ESCAPE转义使用  ilike 和 not ilike ilike表示在模糊匹配字符串时不区分大小写，i即是ignore的意思。 not ilike表示不模糊匹配字符串且不区分大小写。  ~和~*，!~和!~* ~表示匹配正则表达式，且区分大小写。 ~*表示匹配正则表达式，">
 <meta property="og:locale" content="zh_CN">
@@ -39,7 +39,7 @@
 <meta property="article:tag" content="not like">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yijunworld.com/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/">
+<link rel="canonical" href="http://zmj.plus/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/">
 
 
 <script id="page-configurations">
@@ -199,7 +199,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/">
+    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
