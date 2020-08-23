@@ -1,7 +1,7 @@
 ---
-title: go -- 标准库-- bufio
+title: go -- os.File -- bufio -- ioutil -- 操作文件
 mathjax: false
-date: 2018-03-06 01:23:09
+date: 2020-08-21 11:23:09
 categories:
     - go
     - os
