@@ -25,15 +25,15 @@
 
   <meta name="description" content="os.File、bufio、ioutil 比较效率测试文件的读取效率是所有开发者都会关心的话题，尤其是当文件特别大的时候。为了尽可能的展示这三者对文件读取的性能，我准备了三个文件，分别为small.txt，midium.txt、large.txt，分别对应 KB 级别、MB 级别和 GB 级别。 创建文件12345678910111213141516171819202122232425262728">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go -- 标准库-- bufio">
-<meta property="og:url" content="http://yijunworld.com/2018/03/06/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/index.html">
+<meta property="og:title" content="go -- os.File -- bufio -- ioutil -- 操作文件">
+<meta property="og:url" content="http://yijunworld.com/2020/08/21/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/index.html">
 <meta property="og:site_name" content="Action">
 <meta property="og:description" content="os.File、bufio、ioutil 比较效率测试文件的读取效率是所有开发者都会关心的话题，尤其是当文件特别大的时候。为了尽可能的展示这三者对文件读取的性能，我准备了三个文件，分别为small.txt，midium.txt、large.txt，分别对应 KB 级别、MB 级别和 GB 级别。 创建文件12345678910111213141516171819202122232425262728">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://imghosting-1257040086.cos.ap-nanjing.myqcloud.com/img/read_file_all.jpg">
 <meta property="og:image" content="https://imghosting-1257040086.cos.ap-nanjing.myqcloud.com/img/read_file_line.jpg">
-<meta property="article:published_time" content="2018-03-05T17:23:09.000Z">
-<meta property="article:modified_time" content="2020-08-23T13:19:30.962Z">
+<meta property="article:published_time" content="2020-08-21T03:23:09.000Z">
+<meta property="article:modified_time" content="2020-08-23T13:29:27.012Z">
 <meta property="article:author" content="Action">
 <meta property="article:tag" content="go">
 <meta property="article:tag" content="os">
@@ -42,7 +42,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://imghosting-1257040086.cos.ap-nanjing.myqcloud.com/img/read_file_all.jpg">
 
-<link rel="canonical" href="http://yijunworld.com/2018/03/06/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/">
+<link rel="canonical" href="http://yijunworld.com/2020/08/21/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/">
 
 
 <script id="page-configurations">
@@ -55,7 +55,7 @@
   };
 </script>
 
-  <title>go -- 标准库-- bufio | Action</title>
+  <title>go -- os.File -- bufio -- ioutil -- 操作文件 | Action</title>
   
 
 
@@ -202,7 +202,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2018/03/06/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/">
+    <link itemprop="mainEntityOfPage" href="http://yijunworld.com/2020/08/21/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
@@ -215,7 +215,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          go -- 标准库-- bufio
+          go -- os.File -- bufio -- ioutil -- 操作文件
         </h1>
 
         <div class="post-meta">
@@ -225,7 +225,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-03-06 01:23:09" itemprop="dateCreated datePublished" datetime="2018-03-06T01:23:09+08:00">2018-03-06</time>
+              <time title="创建时间：2020-08-21 11:23:09" itemprop="dateCreated datePublished" datetime="2020-08-21T11:23:09+08:00">2020-08-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -336,13 +336,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/03/06/go-%E6%A0%87%E5%87%86%E5%BA%93-bufio/" rel="prev" title="go -- 标准库-- bufio">
-      <i class="fa fa-chevron-left"></i> go -- 标准库-- bufio
+    <a href="/2020/08/21/go-%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E5%86%85%E5%AE%B9%E8%87%AA%E5%AE%9A%E4%B9%89/" rel="prev" title="go -- 生成指定大小文件">
+      <i class="fa fa-chevron-left"></i> go -- 生成指定大小文件
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2018/03/12/go-%E5%8F%91%E8%B5%B7GET%E8%AF%B7%E6%B1%82%E5%92%8CPOST%E8%AF%B7%E6%B1%82/" rel="next" title="go -- 发起GET -- 请求和POST请求">
-      go -- 发起GET -- 请求和POST请求 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     

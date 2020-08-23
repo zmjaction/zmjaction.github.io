@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yijunworld.com/"/>
-  <updated>2020-08-23T13:17:45.605Z</updated>
+  <updated>2020-08-23T13:29:27.012Z</updated>
   <id>http://yijunworld.com/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>go -- os.File -- bufio -- ioutil -- 操作文件</title>
+    <link href="http://yijunworld.com/2020/08/21/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/"/>
+    <id>http://yijunworld.com/2020/08/21/go-os.File%E3%80%81bufio%E3%80%81ioutil%20%E6%AF%94%E8%BE%83/</id>
+    <published>2020-08-21T03:23:09.000Z</published>
+    <updated>2020-08-23T13:29:27.012Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;os-File、bufio、ioutil-比较&quot;&gt;&lt;a href=&quot;#os-File、bufio、ioutil-比较&quot; class=&quot;headerlink&quot; title=&quot;os.File、bufio、ioutil
+        
+      
+    
+    </summary>
+    
+    
+      <category term="go" scheme="http://yijunworld.com/categories/go/"/>
+    
+      <category term="os" scheme="http://yijunworld.com/categories/go/os/"/>
+    
+      <category term="bufio" scheme="http://yijunworld.com/categories/go/os/bufio/"/>
+    
+      <category term="ioutil" scheme="http://yijunworld.com/categories/go/os/bufio/ioutil/"/>
+    
+    
+      <category term="go" scheme="http://yijunworld.com/tags/go/"/>
+    
+      <category term="os" scheme="http://yijunworld.com/tags/os/"/>
+    
+      <category term="bufio" scheme="http://yijunworld.com/tags/bufio/"/>
+    
+      <category term="ioutil" scheme="http://yijunworld.com/tags/ioutil/"/>
+    
+  </entry>
   
   <entry>
     <title>go -- 生成指定大小文件</title>
@@ -110,11 +149,11 @@
   </entry>
   
   <entry>
-    <title>大数据 Hbase伪分布式集群安装</title>
-    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/"/>
-    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/</id>
+    <title>大数据 Hbase简介</title>
+    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/"/>
+    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/</id>
     <published>2020-06-20T07:27:40.000Z</published>
-    <updated>2020-06-20T08:28:01.469Z</updated>
+    <updated>2020-06-20T08:55:01.328Z</updated>
     
     <summary type="html">
     
@@ -122,7 +161,7 @@
       
         
         
-          &lt;h4 id=&quot;HBase伪分布式环境部署&quot;&gt;&lt;a href=&quot;#HBase伪分布式环境部署&quot; class=&quot;headerlink&quot; title=&quot;HBase伪分布式环境部署&quot;&gt;&lt;/a&gt;HBase伪分布式环境部署&lt;/h4&gt;&lt;figure class=&quot;highlight
+          &lt;h3 id=&quot;HBase简介&quot;&gt;&lt;a href=&quot;#HBase简介&quot; class=&quot;headerlink&quot;
         
       
     
@@ -141,11 +180,11 @@
   </entry>
   
   <entry>
-    <title>大数据 Hbase简介</title>
-    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/"/>
-    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/</id>
+    <title>大数据 Hbase伪分布式集群安装</title>
+    <link href="http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/"/>
+    <id>http://yijunworld.com/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/</id>
     <published>2020-06-20T07:27:40.000Z</published>
-    <updated>2020-06-20T08:55:01.328Z</updated>
+    <updated>2020-06-20T08:28:01.469Z</updated>
     
     <summary type="html">
     
@@ -153,7 +192,7 @@
       
         
         
-          &lt;h3 id=&quot;HBase简介&quot;&gt;&lt;a href=&quot;#HBase简介&quot; class=&quot;headerlink&quot;
+          &lt;h4 id=&quot;HBase伪分布式环境部署&quot;&gt;&lt;a href=&quot;#HBase伪分布式环境部署&quot; class=&quot;headerlink&quot; title=&quot;HBase伪分布式环境部署&quot;&gt;&lt;/a&gt;HBase伪分布式环境部署&lt;/h4&gt;&lt;figure class=&quot;highlight
         
       
     
@@ -668,37 +707,6 @@
       <category term="Linux" scheme="http://yijunworld.com/tags/Linux/"/>
     
       <category term="man" scheme="http://yijunworld.com/tags/man/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>go -- [译]配置 sql.DB  --  获得更好的性能</title>
-    <link href="http://yijunworld.com/2020/01/21/go-[%E8%AF%91]%E9%85%8D%E7%BD%AE%20sql.DB%20%E8%8E%B7%E5%BE%97%E6%9B%B4%E5%A5%BD%E7%9A%84%E6%80%A7%E8%83%BD/"/>
-    <id>http://yijunworld.com/2020/01/21/go-[%E8%AF%91]%E9%85%8D%E7%BD%AE%20sql.DB%20%E8%8E%B7%E5%BE%97%E6%9B%B4%E5%A5%BD%E7%9A%84%E6%80%A7%E8%83%BD/</id>
-    <published>2020-01-21T14:01:21.000Z</published>
-    <updated>2020-08-04T15:02:00.910Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;网上有很多教程介绍&lt;code&gt;sql.DB&lt;/code&gt;, 以及如何使用它来执行SQL数据库查询和语句,
-        
-      
-    
-    </summary>
-    
-    
-      <category term="go" scheme="http://yijunworld.com/categories/go/"/>
-    
-      <category term="sql.DB" scheme="http://yijunworld.com/categories/go/sql-DB/"/>
-    
-    
-      <category term="go" scheme="http://yijunworld.com/tags/go/"/>
-    
-      <category term="sql.DB" scheme="http://yijunworld.com/tags/sql-DB/"/>
     
   </entry>
   
