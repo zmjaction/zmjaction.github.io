@@ -3,9 +3,9 @@ title: liunx中RPM、YUM、Systemd
 mathjax: false
 date: 2020-09-06 23:31:01
 categories:
-    - linux
+    - Linux
 tags:
-    - linux
+    - Linux
     - RPM
     - YUM
     - Systemd
