@@ -4,10 +4,10 @@ mathjax: false
 date: 2020-08-21 10:31:18
 categories:
     - go
-    - go-script
+    - file
 tags:
     - go
-    - go-script
+    - file
 ---
 ```go
 package main

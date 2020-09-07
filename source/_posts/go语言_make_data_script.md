@@ -4,7 +4,7 @@ mathjax: false
 date: 2020-07-12 23:10:21
 categories:
     - go
-    - go_script
+    - make-data
 tags:
     - go
     - go_script
