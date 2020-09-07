@@ -123,17 +123,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">96</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">109</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">61</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">66</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">84</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">91</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -188,6 +188,489 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2020/09/07/go-%E5%8F%8D%E5%B0%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/07/go-%E5%8F%8D%E5%B0%84/" class="post-title-link" itemprop="url">go -- 反射</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-07 14:41:51" itemprop="dateCreated datePublished" datetime="2020-09-07T14:41:51+08:00">2020-09-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/reflect/" itemprop="url" rel="index"><span itemprop="name">reflect</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>15k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>13 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、为什么要用反射"><a href="#一、为什么要用反射" class="headerlink" title="一、为什么要用反射"></a>一、为什么要用反射</h2><p>需要反射的 2 个常见场景：</p>
+<ol>
+<li>有时你需要编写一个函数，但是并不知道传给你的参数类型是什么，可能是没约定好；也可能是传入的类型很多，这些类型并不能统一表示。这时反射就会用的上了。</li>
+<li>有时候需要根据某些条件决定调用哪个函数，比如根据用户的输入来决定。这时就需要对函数和函数的参数进行反射，在运行期间动态地执行函数。</li>
+</ol>
+<p>但是对于反射，还是有几点不太建议使用反射的理由：</p>
+<ol>
+<li>与反射相关的代码，经常是难以阅读的。在软件工程中，代码可读性也是一个非常重要的指标。</li>
+<li>Go 语言作为一门静态语言，编码过程中，编译器能提前发现一些类型错误，但是对于反射代码是无能为力的。所以包含反射相关的代码，很可能会运行很久，才会出错，这时候经常是直接 panic，可能会造成严重的后果。</li>
+<li>反射对性能影响还是比较大的，比正常代码运行速度慢一到两个数量级。所以，对于一个项目中处于运行效率关键位置的代码，尽量避免使用反射特性。</li>
+</ol>
+<h2 id="二、相关基础"><a href="#二、相关基础" class="headerlink" title="二、相关基础"></a>二、相关基础</h2><p>反射是如何实现的？我们以前学习过 interface，它是 Go 语言实现抽象的一个非常强大的工具。当向接口变量赋予一个实体类型的时候，接口会存储实体的类型信息，反射就是通过接口的类型信息实现的，反射建立在类型的基础上。</p>
+<p>Go 语言在 reflect 包里定义了各种类型，实现了反射的各种函数，通过它们可以在运行时检测类型的信息、改变类型的值。在进行更加详细的了解之前，我们需要重新温习一下Go语言相关的一些特性，所谓温故知新，从这些特性中了解其反射机制是如何使用的。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>go语言是静态类型语言。</td>
+<td>编译时类型已经确定，比如对已基本数据类型的再定义后的类型，反射时候需要确认返回的是何种类型。</td>
+</tr>
+<tr>
+<td>空接口interface{}</td>
+<td>go的反射机制是要通过接口来进行的，而类似于Java的Object的空接口可以和任何类型进行交互，因此对基本数据类型等的反射也直接利用了这一特点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Go语言的类型：</p>
+<ul>
+<li><p>变量包括（type, value）两部分</p>
+<pre><code>理解这一点就知道为什么nil != nil了
+</code></pre></li>
+<li><p>type 包括 static type和concrete type. 简单来说 static type是你在编码是看见的类型(如int、string)，concrete type是runtime系统看见的类型</p>
+</li>
+<li><p>类型断言能否成功，取决于变量的concrete type，而不是static type。因此，一个 reader变量如果它的concrete type也实现了write方法的话，它也可以被类型断言为writer。</p>
+</li>
+</ul>
+<p>Go是静态类型语言。每个变量都拥有一个静态类型，这意味着每个变量的类型在编译时都是确定的：int，float32, *AutoType, []byte,  chan []int 诸如此类。</p>
+<p>在反射的概念中， 编译时就知道变量类型的是静态类型；运行时才知道一个变量类型的叫做动态类型。</p>
+<ul>
+<li><p>静态类型<br>静态类型就是变量声明时的赋予的类型。比如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> MyInt <span class="keyword">int</span> <span class="comment">// int 就是静态类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> A <span class="keyword">struct</span>&#123;</span><br><span class="line">    Name <span class="keyword">string</span>  <span class="comment">// string就是静态</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> i *<span class="keyword">int</span>  <span class="comment">// *int就是静态类型</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>动态类型<br>动态类型：运行时给这个变量赋值时，这个值的类型(如果值为nil的时候没有动态类型)。一个变量的动态类型在运行时可能改变，这主要依赖于它的赋值（前提是这个变量是接口类型）。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> A <span class="keyword">interface</span>&#123;&#125; <span class="comment">// 静态类型interface&#123;&#125;</span></span><br><span class="line">A = <span class="number">10</span>            <span class="comment">// 静态类型为interface&#123;&#125;  动态为int</span></span><br><span class="line">A = <span class="string">"String"</span>      <span class="comment">// 静态类型为interface&#123;&#125;  动态为string</span></span><br><span class="line"><span class="keyword">var</span> M *<span class="keyword">int</span></span><br><span class="line">A = M             <span class="comment">// A的值可以改变</span></span><br></pre></td></tr></table></figure>
+<p>Go语言的反射就是建立在类型之上的，Golang的指定类型的变量的类型是静态的（也就是指定int、string这些的变量，它的type是static type），在创建变量的时候就已经确定，反射主要与Golang的interface类型相关（它的type是concrete type），只有interface类型才有反射一说。</p>
+<p>在Golang的实现中，每个interface变量都有一个对应pair，pair中记录了实际变量的值和类型:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(value, <span class="keyword">type</span>)</span><br></pre></td></tr></table></figure>
+<p>value是实际变量值，type是实际变量的类型。一个interface{}类型的变量包含了2个指针，一个指针指向值的类型【对应concrete type】，另外一个指针指向实际的值【对应value】。</p>
+<p>例如，创建类型为*os.File的变量，然后将其赋给一个接口变量r：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tty, err := os.OpenFile(<span class="string">"/dev/tty"</span>, os.O_RDWR, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> r io.Reader</span><br><span class="line">r = tty</span><br></pre></td></tr></table></figure>
+<p>接口变量r的pair中将记录如下信息：(tty, *os.File)，这个pair在接口变量的连续赋值过程中是不变的，将接口变量r赋给另一个接口变量w:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w io.Writer</span><br><span class="line">w = r.(io.Writer)</span><br></pre></td></tr></table></figure>
+<p>接口变量w的pair与r的pair相同，都是:(tty, *os.File)，即使w是空接口类型，pair也是不变的。</p>
+<p>interface及其pair的存在，是Golang中实现反射的前提，理解了pair，就更容易理解反射。反射就是用来检测存储在接口变量内部(值value；类型concrete type) pair对的一种机制。</p>
+<p>所以我们要理解两个基本概念 Type 和 Value，它们也是 Go语言包中 reflect 空间里最重要的两个类型。</p>
+<h2 id="三、Type和Value"><a href="#三、Type和Value" class="headerlink" title="三、Type和Value"></a>三、Type和Value</h2><p>我们一般用到的包是reflect包。</p>
+<p>既然反射就是用来检测存储在接口变量内部(值value；类型concrete type) pair对的一种机制。那么在Golang的reflect反射包中有什么样的方式可以让我们直接获取到变量内部的信息呢？ 它提供了两种类型（或者说两个方法）让我们可以很容易的访问接口变量内容，分别是reflect.ValueOf() 和 reflect.TypeOf()，看看官方的解释</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ValueOf returns a new Value initialized to the concrete value</span></span><br><span class="line"><span class="comment">// stored in the interface i.  ValueOf(nil) returns the zero </span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ValueOf</span><span class="params">(i <span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">Value</span></span> &#123;...&#125;</span><br><span class="line"></span><br><span class="line">翻译一下：ValueOf用来获取输入参数接口中的数据的值，如果接口为空则返回<span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeOf returns the reflection Type that represents the dynamic type of i.</span></span><br><span class="line"><span class="comment">// If i is a nil interface value, TypeOf returns nil.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TypeOf</span><span class="params">(i <span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">Type</span></span> &#123;...&#125;</span><br><span class="line"></span><br><span class="line">翻译一下：TypeOf用来动态获取输入参数接口中的值的类型，如果接口为空则返回<span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+<p>reflect.TypeOf()是获取pair中的type，reflect.ValueOf()获取pair中的value。</p>
+<p>首先需要把它转化成reflect对象(reflect.Type或者reflect.Value，根据不同的情况调用不同的函数。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t := reflect.TypeOf(i) <span class="comment">//得到类型的元数据,通过t我们能获取类型定义里面的所有元素</span></span><br><span class="line">v := reflect.ValueOf(i) <span class="comment">//得到实际的值，通过v我们获取存储在里面的值，还可以去改变值</span></span><br></pre></td></tr></table></figure>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"reflect"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//反射操作：通过反射，可以获取一个接口类型变量的 类型和数值</span></span><br><span class="line">	<span class="keyword">var</span> x <span class="keyword">float64</span> =<span class="number">3.4</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"type:"</span>,reflect.TypeOf(x)) <span class="comment">//type: float64</span></span><br><span class="line">	fmt.Println(<span class="string">"value:"</span>,reflect.ValueOf(x)) <span class="comment">//value: 3.4</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"-------------------"</span>)</span><br><span class="line">	<span class="comment">//根据反射的值，来获取对应的类型和数值</span></span><br><span class="line">	v := reflect.ValueOf(x)</span><br><span class="line">	fmt.Println(<span class="string">"kind is float64: "</span>,v.Kind() == reflect.Float64)</span><br><span class="line">	fmt.Println(<span class="string">"type : "</span>,v.Type())</span><br><span class="line">	fmt.Println(<span class="string">"value : "</span>,v.Float())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type: float64</span><br><span class="line">value: 3.4</span><br><span class="line">-------------------</span><br><span class="line">kind is float64:  true</span><br><span class="line">type :  float64</span><br><span class="line">value :  3.4</span><br></pre></td></tr></table></figure>
+<p>说明</p>
+<ol>
+<li>reflect.TypeOf： 直接给到了我们想要的type类型，如float64、int、各种pointer、struct 等等真实的类型</li>
+<li>reflect.ValueOf：直接给到了我们想要的具体的值，如1.2345这个具体数值，或者类似&amp;{1 “Allen.Wu” 25} 这样的结构体struct的值</li>
+<li>也就是说明反射可以将“接口类型变量”转换为“反射类型对象”，反射类型指的是reflect.Type和reflect.Value这两种</li>
+</ol>
+<p>Type 和 Value 都包含了大量的方法，其中第一个有用的方法应该是 Kind，这个方法返回该类型的具体信息：Uint、Float64 等。Value 类型还包含了一系列类型方法，比如 Int()，用于返回对应的值。以下是Kind的种类：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// A Kind represents the specific kind of type that a Type represents.</span></span><br><span class="line"><span class="comment">// The zero Kind is not a valid kind.</span></span><br><span class="line"><span class="keyword">type</span> Kind <span class="keyword">uint</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	Invalid Kind = <span class="literal">iota</span></span><br><span class="line">	Bool</span><br><span class="line">	Int</span><br><span class="line">	Int8</span><br><span class="line">	Int16</span><br><span class="line">	Int32</span><br><span class="line">	Int64</span><br><span class="line">	Uint</span><br><span class="line">	Uint8</span><br><span class="line">	Uint16</span><br><span class="line">	Uint32</span><br><span class="line">	Uint64</span><br><span class="line">	Uintptr</span><br><span class="line">	Float32</span><br><span class="line">	Float64</span><br><span class="line">	Complex64</span><br><span class="line">	Complex128</span><br><span class="line">	Array</span><br><span class="line">	Chan</span><br><span class="line">	Func</span><br><span class="line">	Interface</span><br><span class="line">	Map</span><br><span class="line">	Ptr</span><br><span class="line">	Slice</span><br><span class="line">	String</span><br><span class="line">	Struct</span><br><span class="line">	UnsafePointer</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="四、反射的规则"><a href="#四、反射的规则" class="headerlink" title="四、反射的规则"></a>四、反射的规则</h2><p>其实反射的操作步骤非常的简单，就是通过实体对象获取反射对象(Value、Type)，然后操作相应的方法即可。</p>
+<p>下图描述了实例、Value、Type 三者之间的转换关系：</p>
+<p><img src="https://github.com/rubyhan1314/Golang-100-Days/raw/master/Day16-20(Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6" alt="WX20190827-170219">/img/WX20190827-170219.png)</p>
+<p>反射 API 的分类总结如下：</p>
+<p><strong>1) 从实例到 Value</strong></p>
+<p>通过实例获取 Value 对象，直接使用 reflect.ValueOf() 函数。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ValueOf</span><span class="params">(i <span class="keyword">interface</span> &#123;&#125;)</span> <span class="title">Value</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>2) 从实例到 Type</strong></p>
+<p>通过实例获取反射对象的 Type，直接使用 reflect.TypeOf() 函数。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TypeOf</span><span class="params">(i <span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">Type</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>3) 从 Type 到 Value</strong></p>
+<p>Type 里面只有类型信息，所以直接从一个 Type 接口变量里面是无法获得实例的 Value 的，但可以通过该 Type 构建一个新实例的 Value。reflect 包提供了两种方法，示例如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//New 返回的是一个 Value，该 Value 的 type 为 PtrTo(typ)，即 Value 的 Type 是指定 typ 的指针类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">(typ Type)</span> <span class="title">Value</span></span></span><br><span class="line"><span class="comment">//Zero 返回的是一个 typ 类型的零佳，注意返回的 Value 不能寻址，位不可改变</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Zero</span><span class="params">(typ Type)</span> <span class="title">Value</span></span></span><br></pre></td></tr></table></figure>
+<p>如果知道一个类型值的底层存放地址，则还有一个函数是可以依据 type 和该地址值恢复出 Value 的。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewAt</span><span class="params">(typ Type, p unsafe.Pointer)</span> <span class="title">Value</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>4) 从 Value 到 Type</strong></p>
+<p>从反射对象 Value 到 Type 可以直接调用 Value 的方法，因为 Value 内部存放着到 Type 类型的指针。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v Value)</span> <span class="title">Type</span><span class="params">()</span> <span class="title">Type</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>5) 从 Value 到实例</strong></p>
+<p>Value 本身就包含类型和值信息，reflect 提供了丰富的方法来实现从 Value 到实例的转换。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//该方法最通用，用来将 Value 转换为空接口，该空接口内部存放具体类型实例</span></span><br><span class="line"><span class="comment">//可以使用接口类型查询去还原为具体的类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v Value)</span> <span class="title">Interface</span><span class="params">()</span> （<span class="title">i</span> <span class="title">interface</span></span>&#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//Value 自身也提供丰富的方法，直接将 Value 转换为简单类型实例，如果类型不匹配，则直接引起 panic</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v Value)</span> <span class="title">Bool</span> <span class="params">()</span> <span class="title">bool</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v Value)</span> <span class="title">Float</span><span class="params">()</span> <span class="title">float64</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v Value)</span> <span class="title">Int</span><span class="params">()</span> <span class="title">int64</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v Value)</span> <span class="title">Uint</span><span class="params">()</span> <span class="title">uint64</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>6) 从 Value 的指针到值</strong></p>
+<p>从一个指针类型的 Value 获得值类型 Value 有两种方法，示例如下。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果 v 类型是接口，则 Elem() 返回接口绑定的实例的 Value，如采 v 类型是指针，则返回指针值的 Value，否则引起 panic</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v Value)</span> <span class="title">Elem</span><span class="params">()</span> <span class="title">Value</span></span></span><br><span class="line"><span class="comment">//如果 v 是指针，则返回指针值的 Value，否则返回 v 自身，该函数不会引起 panic</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Indirect</span><span class="params">(v Value)</span> <span class="title">Value</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>7) Type 指针和值的相互转换</strong></p>
+<p>指针类型 Type 到值类型 Type。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//t 必须是 Array、Chan、Map、Ptr、Slice，否则会引起 panic</span></span><br><span class="line"><span class="comment">//Elem 返回的是其内部元素的 Type</span></span><br><span class="line">t.Elem() Type</span><br></pre></td></tr></table></figure>
+<p>值类型 Type 到指针类型 Type。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//PtrTo 返回的是指向 t 的指针型 Type</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">PtrTo</span><span class="params">(t Type)</span> <span class="title">Type</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>8) Value 值的可修改性</strong></p>
+<p>Value 值的修改涉及如下两个方法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过 CanSet 判断是否能修改</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v Value )</span> <span class="title">CanSet</span><span class="params">()</span> <span class="title">bool</span></span></span><br><span class="line"><span class="comment">//通过 Set 进行修改</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v Value )</span> <span class="title">Set</span><span class="params">(x Value)</span></span></span><br></pre></td></tr></table></figure>
+<p>Value 值在什么情况下可以修改？我们知道实例对象传递给接口的是一个完全的值拷贝，如果调用反射的方法 reflect.ValueOf() 传进去的是一个值类型变量， 则获得的 Value 实际上是原对象的一个副本，这个 Value 是无论如何也不能被修改的。</p>
+<p><strong>根据 Go 官方关于反射的博客，反射有三大定律：</strong></p>
+<blockquote>
+<ol>
+<li>Reflection goes from interface value to reflection object.</li>
+<li>Reflection goes from reflection object to interface value.</li>
+<li>To modify a reflection object, the value must be settable.</li>
+</ol>
+</blockquote>
+<p>第一条是最基本的：反射可以从接口值得到反射对象。</p>
+<pre><code>    反射是一种检测存储在 interface中的类型和值机制。这可以通过 TypeOf函数和 ValueOf函数得到。
+</code></pre><p>第二条实际上和第一条是相反的机制，反射可以从反射对象获得接口值。</p>
+<pre><code>    它将 ValueOf的返回值通过 Interface()函数反向转变成 interface变量。
+</code></pre><p>前两条就是说 接口型变量和 反射类型对象可以相互转化，反射类型对象实际上就是指的前面说的 reflect.Type和 reflect.Value。</p>
+<p>第三条不太好懂：如果需要操作一个反射变量，则其值必须可以修改。</p>
+<pre><code>    反射变量可设置的本质是它存储了原变量本身，这样对反射变量的操作，就会反映到原变量本身；反之，如果反射变量不能代表原变量，那么操作了反射变量，不会对原变量产生任何影响，这会给使用者带来疑惑。所以第二种情况在语言层面是不被允许的。
+</code></pre><h2 id="五、反射的使用"><a href="#五、反射的使用" class="headerlink" title="五、反射的使用"></a>五、反射的使用</h2><h3 id="5-1-从relfect-Value中获取接口interface的信息"><a href="#5-1-从relfect-Value中获取接口interface的信息" class="headerlink" title="5.1 从relfect.Value中获取接口interface的信息"></a>5.1 从relfect.Value中获取接口interface的信息</h3><p>当执行reflect.ValueOf(interface)之后，就得到了一个类型为”relfect.Value”变量，可以通过它本身的Interface()方法获得接口变量的真实内容，然后可以通过类型判断进行转换，转换为原有真实类型。不过，我们可能是已知原有类型，也有可能是未知原有类型，因此，下面分两种情况进行说明。</p>
+<h4 id="已知原有类型"><a href="#已知原有类型" class="headerlink" title="已知原有类型"></a>已知原有类型</h4><p>已知类型后转换为其对应的类型的做法如下，直接通过Interface方法然后强制转换，如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">realValue := value.Interface().(已知的类型)</span><br></pre></td></tr></table></figure>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"reflect"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> num <span class="keyword">float64</span> = <span class="number">1.2345</span></span><br><span class="line">	<span class="comment">// "接口类型变量"--&gt;"反射类型对象"</span></span><br><span class="line">	value := reflect.ValueOf(num)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 可以理解为“强制转换”，但是需要注意的时候，转换的时候，如果转换的类型不完全符合，则直接panic</span></span><br><span class="line">	<span class="comment">// Golang 对类型要求非常严格，类型一定要完全符合</span></span><br><span class="line">	<span class="comment">// 如下两个，一个是*float64，一个是float64，如果弄混，则会panic</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// "反射类型对象" --&gt; "接口类型变量"</span></span><br><span class="line">	convertValue := value.Interface().(<span class="keyword">float64</span>)</span><br><span class="line">    fmt.Println(convertValue)</span><br><span class="line">    </span><br><span class="line">    pointer := reflect.ValueOf(&amp;num)</span><br><span class="line">	convertPointer := pointer.Interface().(*<span class="keyword">float64</span>)</span><br><span class="line">	fmt.Println(convertPointer)</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0xc000098000</span><br><span class="line">1.2345</span><br></pre></td></tr></table></figure>
+<p>说明</p>
+<ol>
+<li>转换的时候，如果转换的类型不完全符合，则直接panic，类型要求非常严格！</li>
+<li>转换的时候，要区分是指针还是指</li>
+<li>也就是说反射可以将“反射类型对象”再重新转换为“接口类型变量”</li>
+</ol>
+<h4 id="未知原有类型"><a href="#未知原有类型" class="headerlink" title="未知原有类型"></a>未知原有类型</h4><p>很多情况下，我们可能并不知道其具体类型，那么这个时候，该如何做呢？需要我们进行遍历探测其Filed来得知，示例如下:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"reflect"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name <span class="keyword">string</span></span><br><span class="line">	Age <span class="keyword">int</span></span><br><span class="line">	Sex <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p Person)</span><span class="title">Say</span><span class="params">(msg <span class="keyword">string</span>)</span></span>  &#123;</span><br><span class="line">	fmt.Println(<span class="string">"hello，"</span>,msg)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p Person)</span><span class="title">PrintInfo</span><span class="params">()</span></span>  &#123;</span><br><span class="line">	fmt.Printf(<span class="string">"姓名：%s,年龄：%d，性别：%s\n"</span>,p.Name,p.Age,p.Sex)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	p1 := Person&#123;<span class="string">"王二狗"</span>,<span class="number">30</span>,<span class="string">"男"</span>&#125;</span><br><span class="line"></span><br><span class="line">	DoFiledAndMethod(p1)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过接口来获取任意参数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DoFiledAndMethod</span><span class="params">(input <span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	getType := reflect.TypeOf(input) <span class="comment">//先获取input的类型</span></span><br><span class="line">	fmt.Println(<span class="string">"get Type is :"</span>, getType.Name()) <span class="comment">// Person</span></span><br><span class="line">	fmt.Println(<span class="string">"get Kind is : "</span>, getType.Kind()) <span class="comment">// struct</span></span><br><span class="line"></span><br><span class="line">	getValue := reflect.ValueOf(input)</span><br><span class="line">	fmt.Println(<span class="string">"get all Fields is:"</span>, getValue) <span class="comment">//&#123;王二狗 30 男&#125;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取方法字段</span></span><br><span class="line">	<span class="comment">// 1. 先获取interface的reflect.Type，然后通过NumField进行遍历</span></span><br><span class="line">	<span class="comment">// 2. 再通过reflect.Type的Field获取其Field</span></span><br><span class="line">	<span class="comment">// 3. 最后通过Field的Interface()得到对应的value</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; getType.NumField(); i++ &#123;</span><br><span class="line">		field := getType.Field(i)</span><br><span class="line">		value := getValue.Field(i).Interface() <span class="comment">//获取第i个值</span></span><br><span class="line">		fmt.Printf(<span class="string">"字段名称:%s, 字段类型:%s, 字段数值:%v \n"</span>, field.Name, field.Type, value)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 通过反射，操作方法</span></span><br><span class="line">	<span class="comment">// 1. 先获取interface的reflect.Type，然后通过.NumMethod进行遍历</span></span><br><span class="line">	<span class="comment">// 2. 再公国reflect.Type的Method获取其Method</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; getType.NumMethod(); i++ &#123;</span><br><span class="line">		method := getType.Method(i)</span><br><span class="line">		fmt.Printf(<span class="string">"方法名称:%s, 方法类型:%v \n"</span>, method.Name, method.Type)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">get Type is : Person</span><br><span class="line">get Kind is :  struct</span><br><span class="line">get all Fields is: &#123;王二狗 30 男&#125;</span><br><span class="line">字段名称:Name, 字段类型:string, 字段数值:王二狗 </span><br><span class="line">字段名称:Age, 字段类型:int, 字段数值:30 </span><br><span class="line">字段名称:Sex, 字段类型:string, 字段数值:男 </span><br><span class="line">方法名称:PrintInfo, 方法类型:func(main.Person) </span><br><span class="line">方法名称:Say, 方法类型:func(main.Person, string)</span><br></pre></td></tr></table></figure>
+<p>说明</p>
+<p>通过运行结果可以得知获取未知类型的interface的具体变量及其类型的步骤为：</p>
+<ol>
+<li>先获取interface的reflect.Type，然后通过NumField进行遍历</li>
+<li>再通过reflect.Type的Field获取其Field</li>
+<li>最后通过Field的Interface()得到对应的value</li>
+</ol>
+<p>通过运行结果可以得知获取未知类型的interface的所属方法（函数）的步骤为：</p>
+<ol>
+<li>先获取interface的reflect.Type，然后通过NumMethod进行遍历</li>
+<li>再分别通过reflect.Type的Method获取对应的真实的方法（函数）</li>
+<li>最后对结果取其Name和Type得知具体的方法名</li>
+<li>也就是说反射可以将“反射类型对象”再重新转换为“接口类型变量”</li>
+<li>struct 或者 struct 的嵌套都是一样的判断处理方式</li>
+</ol>
+<p>如果是struct的话，可以使用Elem()</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tag := t.Elem().Field(<span class="number">0</span>).Tag <span class="comment">//获取定义在struct里面的Tag属性</span></span><br><span class="line">name := v.Elem().Field(<span class="number">0</span>).String() <span class="comment">//获取存储在第一个字段里面的值</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-2-通过reflect-Value设置实际变量的值"><a href="#5-2-通过reflect-Value设置实际变量的值" class="headerlink" title="5.2 通过reflect.Value设置实际变量的值"></a>5.2 通过reflect.Value设置实际变量的值</h3><p>reflect.Value是通过reflect.ValueOf(X)获得的，只有当X是指针的时候，才可以通过reflec.Value修改实际变量X的值，即：要修改反射类型的对象就一定要保证其值是“addressable”的。</p>
+<p>这里需要一个方法：</p>
+<p><img src="https://github.com/rubyhan1314/Golang-100-Days/raw/master/Day16-20(Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6" alt="WX20190826-143547">/img/WX20190826-143547.png)</p>
+<p>解释起来就是：Elem返回接口v包含的值或指针v指向的值。如果v的类型不是interface或ptr，它会恐慌。如果v为零，则返回零值。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"reflect"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> num <span class="keyword">float64</span> = <span class="number">1.2345</span></span><br><span class="line">	fmt.Println(<span class="string">"old value of pointer:"</span>, num)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 通过reflect.ValueOf获取num中的reflect.Value，注意，参数必须是指针才能修改其值</span></span><br><span class="line">	pointer := reflect.ValueOf(&amp;num)</span><br><span class="line">	newValue := pointer.Elem()</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"type of pointer:"</span>, newValue.Type())</span><br><span class="line">	fmt.Println(<span class="string">"settability of pointer:"</span>, newValue.CanSet())</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 重新赋值</span></span><br><span class="line">	newValue.SetFloat(<span class="number">77</span>)</span><br><span class="line">	fmt.Println(<span class="string">"new value of pointer:"</span>, num)</span><br><span class="line"></span><br><span class="line">	<span class="comment">////////////////////</span></span><br><span class="line">	<span class="comment">// 如果reflect.ValueOf的参数不是指针，会如何？</span></span><br><span class="line">	<span class="comment">//pointer = reflect.ValueOf(num)</span></span><br><span class="line">	<span class="comment">//newValue = pointer.Elem() // 如果非指针，这里直接panic，“panic: reflect: call of reflect.Value.Elem on float64 Value”</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 另外一个demo</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"reflect"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name <span class="keyword">string</span></span><br><span class="line">	Age <span class="keyword">int</span></span><br><span class="line">	School <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	s1 := Student&#123;<span class="string">"王二狗"</span>,<span class="number">19</span>,<span class="string">"北大"</span>&#125;</span><br><span class="line">	<span class="comment">//通过反射，更改对象的数值：前提也是数据可以被更改</span></span><br><span class="line">	fmt.Printf(<span class="string">"%T\n"</span>,s1) <span class="comment">//main.Student</span></span><br><span class="line">	p1 := &amp;s1</span><br><span class="line">	fmt.Printf(<span class="string">"%T\n"</span>,p1)  <span class="comment">//*main.Student</span></span><br><span class="line">	fmt.Println(s1.Name)</span><br><span class="line">	fmt.Println((*p1).Name,p1.Name)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//改变数值</span></span><br><span class="line">	value:=reflect.ValueOf(&amp;s1)</span><br><span class="line">	<span class="keyword">if</span> value.Kind() == reflect.Ptr&#123;</span><br><span class="line">		newValue:=value.Elem()</span><br><span class="line">		fmt.Println(newValue.CanSet())  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">		f1 :=newValue.FieldByName(<span class="string">"Name"</span>)</span><br><span class="line">		f1.SetString(<span class="string">"小明"</span>)</span><br><span class="line">		f3:=newValue.FieldByName(<span class="string">"School"</span>)</span><br><span class="line">		f3.SetString(<span class="string">"清华"</span>)</span><br><span class="line">		fmt.Println(s1)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">old value of pointer: 1.2345</span><br><span class="line">type of pointer: float64</span><br><span class="line">settability of pointer: true</span><br><span class="line">new value of pointer: 77</span><br></pre></td></tr></table></figure>
+<p>说明</p>
+<ol>
+<li>需要传入的参数是<em> float64这个指针，然后可以通过pointer.Elem()去获取所指向的Value，<em>*注意一定要是指针</em></em>。</li>
+<li>如果传入的参数不是指针，而是变量，那么<ul>
+<li>通过Elem获取原始值对应的对象则直接panic</li>
+<li>通过CanSet方法查询是否可以设置返回false</li>
+</ul>
+</li>
+<li>newValue.CantSet()表示是否可以重新设置其值，如果输出的是true则可修改，否则不能修改，修改完之后再进行打印发现真的已经修改了。</li>
+<li>reflect.Value.Elem() 表示获取原始值对应的反射对象，只有原始对象才能修改，当前反射对象是不能修改的</li>
+<li>也就是说如果要修改反射类型对象，其值必须是“addressable”【对应的要传入的是指针，同时要通过Elem方法获取原始值对应的反射对象】</li>
+<li>struct 或者 struct 的嵌套都是一样的判断处理方式</li>
+</ol>
+<h3 id="5-3-通过reflect-Value来进行方法的调用"><a href="#5-3-通过reflect-Value来进行方法的调用" class="headerlink" title="5.3 通过reflect.Value来进行方法的调用"></a>5.3 通过reflect.Value来进行方法的调用</h3><p>这算是一个高级用法了，前面我们只说到对类型、变量的几种反射的用法，包括如何获取其值、其类型、以及如何重新设置新值。但是在项目应用中，另外一个常用并且属于高级的用法，就是通过reflect来进行方法【函数】的调用。比如我们要做框架工程的时候，需要可以随意扩展方法，或者说用户可以自定义方法，那么我们通过什么手段来扩展让用户能够自定义呢？关键点在于用户的自定义方法是未可知的，因此我们可以通过reflect来搞定。</p>
+<p>Call()方法：</p>
+<p><img src="img/WX20190902-144001.png" alt="WX20190902-144001"></p>
+<p><strong>通过反射，调用方法。</strong></p>
+<p>先获取结构体对象，然后</p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"reflect"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name <span class="keyword">string</span></span><br><span class="line">	Age <span class="keyword">int</span></span><br><span class="line">	Sex <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p Person)</span><span class="title">Say</span><span class="params">(msg <span class="keyword">string</span>)</span></span>  &#123;</span><br><span class="line">	fmt.Println(<span class="string">"hello，"</span>,msg)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p Person)</span><span class="title">PrintInfo</span><span class="params">()</span></span>  &#123;</span><br><span class="line">	fmt.Printf(<span class="string">"姓名：%s,年龄：%d，性别：%s\n"</span>,p.Name,p.Age,p.Sex)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p Person)</span> <span class="title">Test</span><span class="params">(i,j <span class="keyword">int</span>,s <span class="keyword">string</span>)</span></span>&#123;</span><br><span class="line">	fmt.Println(i,j,s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如何通过反射来进行方法的调用？</span></span><br><span class="line"><span class="comment">// 本来可以用结构体对象.方法名称()直接调用的，</span></span><br><span class="line"><span class="comment">// 但是如果要通过反射，</span></span><br><span class="line"><span class="comment">// 那么首先要将方法注册，也就是MethodByName，然后通过反射调动mv.Call</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	p2 := Person&#123;<span class="string">"Ruby"</span>,<span class="number">30</span>,<span class="string">"男"</span>&#125;</span><br><span class="line">	<span class="comment">// 1. 要通过反射来调用起对应的方法，必须要先通过reflect.ValueOf(interface)来获取到reflect.Value，</span></span><br><span class="line">	<span class="comment">// 得到“反射类型对象”后才能做下一步处理</span></span><br><span class="line">	getValue := reflect.ValueOf(p2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2.一定要指定参数为正确的方法名</span></span><br><span class="line">	<span class="comment">// 先看看没有参数的调用方法</span></span><br><span class="line"></span><br><span class="line">	methodValue1 := getValue.MethodByName(<span class="string">"PrintInfo"</span>)</span><br><span class="line">	fmt.Printf(<span class="string">"Kind : %s, Type : %s\n"</span>,methodValue1.Kind(),methodValue1.Type())</span><br><span class="line">	methodValue1.Call(<span class="literal">nil</span>) <span class="comment">//没有参数，直接写nil</span></span><br><span class="line"></span><br><span class="line">	args1 := <span class="built_in">make</span>([]reflect.Value, <span class="number">0</span>) <span class="comment">//或者创建一个空的切片也可以</span></span><br><span class="line">	methodValue1.Call(args1)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 有参数的方法调用</span></span><br><span class="line">	methodValue2 := getValue.MethodByName(<span class="string">"Say"</span>)</span><br><span class="line">	fmt.Printf(<span class="string">"Kind : %s, Type : %s\n"</span>,methodValue2.Kind(),methodValue2.Type())</span><br><span class="line">	args2 := []reflect.Value&#123;reflect.ValueOf(<span class="string">"反射机制"</span>)&#125;</span><br><span class="line">	methodValue2.Call(args2)</span><br><span class="line"></span><br><span class="line">	methodValue3 := getValue.MethodByName(<span class="string">"Test"</span>)</span><br><span class="line">	fmt.Printf(<span class="string">"Kind : %s, Type : %s\n"</span>,methodValue3.Kind(),methodValue3.Type())</span><br><span class="line">	args3 := []reflect.Value&#123;reflect.ValueOf(<span class="number">100</span>), reflect.ValueOf(<span class="number">200</span>),reflect.ValueOf(<span class="string">"Hello"</span>)&#125;</span><br><span class="line"></span><br><span class="line">	methodValue3.Call(args3)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Kind : func, Type : func()</span><br><span class="line">姓名：Ruby,年龄：30，性别：男</span><br><span class="line">姓名：Ruby,年龄：30，性别：男</span><br><span class="line">Kind : func, Type : func(string)</span><br><span class="line">hello， 反射机制</span><br><span class="line">Kind : func, Type : func(int, int, string)</span><br><span class="line">100 200 Hello</span><br></pre></td></tr></table></figure>
+<p><strong>通过反射，调用函数。</strong></p>
+<p>首先我们要先确认一点，函数像普通的变量一样，之前的章节中我们在讲到函数的本质的时候，是可以把函数作为一种变量类型的，而且是引用类型。如果说Fun()是一个函数，那么f1 := Fun也是可以的，那么f1也是一个函数，如果直接调用f1()，那么运行的就是Fun()函数。</p>
+<p>那么我们就先通过ValueOf()来获取函数的反射对象，可以判断它的Kind，是一个func，那么就可以执行Call()进行函数的调用。</p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"reflect"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//函数的反射</span></span><br><span class="line">	f1 := fun1</span><br><span class="line">	value := reflect.ValueOf(f1)</span><br><span class="line">	fmt.Printf(<span class="string">"Kind : %s , Type : %s\n"</span>,value.Kind(),value.Type()) <span class="comment">//Kind : func , Type : func()</span></span><br><span class="line"></span><br><span class="line">	value2 := reflect.ValueOf(fun2)</span><br><span class="line">	fmt.Printf(<span class="string">"Kind : %s , Type : %s\n"</span>,value2.Kind(),value2.Type()) <span class="comment">//Kind : func , Type : func(int, string)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//通过反射调用函数</span></span><br><span class="line">	value.Call(<span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line">	value2.Call([]reflect.Value&#123;reflect.ValueOf(<span class="number">100</span>),reflect.ValueOf(<span class="string">"hello"</span>)&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun1</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fmt.Println(<span class="string">"我是函数fun1()，无参的。。"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun2</span><span class="params">(i <span class="keyword">int</span>, s <span class="keyword">string</span>)</span></span>&#123;</span><br><span class="line">	fmt.Println(<span class="string">"我是函数fun2()，有参数。。"</span>,i,s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>说明</strong></p>
+<ol>
+<li>要通过反射来调用起对应的方法，必须要先通过reflect.ValueOf(interface)来获取到reflect.Value，得到“反射类型对象”后才能做下一步处理</li>
+<li>reflect.Value.MethodByName这个MethodByName，需要指定准确真实的方法名字，如果错误将直接panic，MethodByName返回一个函数值对应的reflect.Value方法的名字。</li>
+<li>[]reflect.Value，这个是最终需要调用的方法的参数，可以没有或者一个或者多个，根据实际参数来定。</li>
+<li>reflect.Value的 Call 这个方法，这个方法将最终调用真实的方法，参数务必保持一致，如果reflect.Value.Kind不是一个方法，那么将直接panic。</li>
+<li>本来可以用对象访问方法直接调用的，但是如果要通过反射，那么首先要将方法注册，也就是MethodByName，然后通过反射调用methodValue.Call</li>
+</ol>
+<p>本文参照：</p>
+<p><a href="http://www.sohu.com/a/313420275_657921" target="_blank" rel="noopener">http://www.sohu.com/a/313420275_657921</a></p>
+<p><a href="https://studygolang.com/articles/12348?fr=sidebar" target="_blank" rel="noopener">https://studygolang.com/articles/12348?fr=sidebar</a></p>
+<p><a href="http://c.biancheng.net/golang/" target="_blank" rel="noopener">http://c.biancheng.net/golang/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2020/09/06/Linux-%E4%B8%ADRPM%E3%80%81YUM%E3%80%81Systemd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/06/Linux-%E4%B8%ADRPM%E3%80%81YUM%E3%80%81Systemd/" class="post-title-link" itemprop="url">liunx中RPM、YUM、Systemd</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-06 23:31:01" itemprop="dateCreated datePublished" datetime="2020-09-06T23:31:01+08:00">2020-09-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="RPM软件包"><a href="#RPM软件包" class="headerlink" title="RPM软件包"></a>RPM软件包</h2><p>在RPM（红帽软件包管理器）公布之前，要想在Linux系统中安装软件只能采取源码包的方式安装。早期在Linux系统中安装程序是一件非常困难、耗费耐心的事情，而且大多数的服务程序仅仅提供源代码，需要运维人员自行编译代码并解决许多的软件依赖关系，因此要安装好一个服务程序，运维人员需要具备丰富知识、高超的技能，甚至良好的耐心。而且在安装、升级、卸载服务程序时还要考虑到其他程序、库的依赖关系，所以在进行校验、安装、卸载、查询、升级等管理软件操作时难度都非常大。</p>
+<p>RPM机制则为解决这些问题而设计的。RPM有点像Windows系统中的控制面板，会建立统一的数据库文件，详细记录软件信息并能够自动分析依赖关系。目前RPM的优势已经被公众所认可，使用范围也已不局限在红帽系统中了。表1-1是一些常用的RPM软件包命令，当前不需要记住它们，大致混个“脸熟”就足够了。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/06/Linux-%E4%B8%ADRPM%E3%80%81YUM%E3%80%81Systemd/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2020/08/27/go-Gin%E4%B8%AD%E4%BD%BF%E7%94%A8JWT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/27/go-Gin%E4%B8%AD%E4%BD%BF%E7%94%A8JWT/" class="post-title-link" itemprop="url">Gin中使用JWT</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-27 00:15:11" itemprop="dateCreated datePublished" datetime="2020-08-27T00:15:11+08:00">2020-08-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/" itemprop="url" rel="index"><span itemprop="name">go</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/Gin/" itemprop="url" rel="index"><span itemprop="name">Gin</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="为什么需要JWT？"><a href="#为什么需要JWT？" class="headerlink" title="为什么需要JWT？"></a>为什么需要JWT？</h2><p>在之前的一些web项目中，我们通常使用的是Cookie-Session模式实现用户认证。相关流程大致如下：</p>
+<ol>
+<li>用户在浏览器端填写用户名和密码，并发送给服务端</li>
+<li>服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的session数据和一个与之对应的标识（通常称为session_id）</li>
+<li>服务端返回响应时将上一步的session_id写入用户浏览器的Cookie</li>
+<li>后续用户来自该浏览器的每次请求都会自动携带包含session_id的Cookie</li>
+<li>服务端通过请求中的session_id就能找到之前保存的该用户那份session数据，从而获取该用户的相关信息。</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/27/go-Gin%E4%B8%AD%E4%BD%BF%E7%94%A8JWT/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -361,7 +844,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/go/go-script/" itemprop="url" rel="index"><span itemprop="name">go-script</span></a>
+                  <a href="/categories/go/file/" itemprop="url" rel="index"><span itemprop="name">file</span></a>
                 </span>
             </span>
 
@@ -445,7 +928,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/go/go-script/" itemprop="url" rel="index"><span itemprop="name">go_script</span></a>
+                  <a href="/categories/go/make-data/" itemprop="url" rel="index"><span itemprop="name">make-data</span></a>
                 </span>
             </span>
 
@@ -561,91 +1044,6 @@
       
           <h2 id="360EntSecGroup-Skylar-excelize"><a href="#360EntSecGroup-Skylar-excelize" class="headerlink" title="360EntSecGroup-Skylar/excelize"></a>360EntSecGroup-Skylar/excelize</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com&#x2F;360EntSecGroup-Skylar&#x2F;excelize</span><br></pre></td></tr></table></figure>
 <h4 id="Gin-中导出-Excel"><a href="#Gin-中导出-Excel" class="headerlink" title="Gin 中导出 Excel"></a>Gin 中导出 Excel</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> ExportField <span class="keyword">struct</span> &#123;</span><br><span class="line">	phone_num sql.NullInt64 <span class="string">`json:"phone_num"`</span></span><br><span class="line">	intent_level sql.NullInt64</span><br><span class="line">	call_result sql.NullInt64</span><br><span class="line">	call_start_time sql.NullString</span><br><span class="line">	call_end_time sql.NullString</span><br><span class="line">	talk_duration sql.NullInt64</span><br><span class="line">	r_time  sql.NullString</span><br><span class="line">	calling_number  sql.NullString</span><br><span class="line">	hang_up_note  sql.NullString</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	engine := gin.Default()</span><br><span class="line">	engine.GET(<span class="string">"/export"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		head := []<span class="keyword">string</span>&#123;<span class="string">"序号"</span>,<span class="string">"预警意向"</span>, <span class="string">"号码"</span>, <span class="string">"完成状态"</span>, <span class="string">"开始时间"</span>, <span class="string">"结束时间"</span>, <span class="string">"通话时长"</span>, <span class="string">"通话状态"</span>, <span class="string">"主叫号码"</span>, <span class="string">"上传时间"</span>, <span class="string">"挂机短信"</span>&#125;</span><br><span class="line">		query_sql := <span class="string">`</span></span><br><span class="line"><span class="string">			SELECT</span></span><br><span class="line"><span class="string">				phone_num,</span></span><br><span class="line"><span class="string">				intent_level,</span></span><br><span class="line"><span class="string">				call_result,</span></span><br><span class="line"><span class="string">				to_char(</span></span><br><span class="line"><span class="string">					call_start_time,</span></span><br><span class="line"><span class="string">					'YYYY-MM-DD hh24:mi:ss'</span></span><br><span class="line"><span class="string">				) AS call_start_time,</span></span><br><span class="line"><span class="string">				to_char(</span></span><br><span class="line"><span class="string">					call_end_time,</span></span><br><span class="line"><span class="string">					'YYYY-MM-DD hh24:mi:ss'</span></span><br><span class="line"><span class="string">				) AS call_end_time,</span></span><br><span class="line"><span class="string">				talk_duration,</span></span><br><span class="line"><span class="string">				to_char(</span></span><br><span class="line"><span class="string">					r_time,</span></span><br><span class="line"><span class="string">					'YYYY-MM-DD hh24:mi:ss'</span></span><br><span class="line"><span class="string">				) AS r_time,</span></span><br><span class="line"><span class="string">			calling_number, hang_up_note</span></span><br><span class="line"><span class="string">			FROM</span></span><br><span class="line"><span class="string">				aicall.sbc_task_list`</span></span><br><span class="line">		rows, err := postgresql.DBConnPostGresql().Query(query_sql)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Println(err)</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">var</span> alldata [][]<span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">		<span class="keyword">var</span> num <span class="keyword">int</span></span><br><span class="line">		<span class="keyword">for</span> rows.Next()&#123;</span><br><span class="line">			<span class="keyword">var</span> export ExportField</span><br><span class="line">			err := rows.Scan(&amp;export.phone_num, &amp;export.intent_level, &amp;export.call_result, &amp;export.call_start_time,</span><br><span class="line">				&amp;export.call_end_time, &amp;export.talk_duration, &amp;export.r_time, &amp;export.calling_number, &amp;export.hang_up_note)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				fmt.Println(err)</span><br><span class="line">			&#125;</span><br><span class="line">			data := []<span class="keyword">interface</span>&#123;&#125;&#123;</span><br><span class="line">				num,</span><br><span class="line">				export.intent_level.Int64,</span><br><span class="line">				export.phone_num.Int64,</span><br><span class="line">				export.call_result.Int64,</span><br><span class="line">				export.call_start_time.String,</span><br><span class="line">				export.call_end_time.String,</span><br><span class="line">				export.talk_duration.Int64,</span><br><span class="line">				export.call_result.Int64,</span><br><span class="line">				export.calling_number.String,</span><br><span class="line">				export.r_time.String,</span><br><span class="line">				export.hang_up_note.String,</span><br><span class="line">			&#125;</span><br><span class="line">			alldata = <span class="built_in">append</span>(alldata, data)</span><br><span class="line">		&#125;</span><br><span class="line">		filename := <span class="string">"task"</span> + <span class="string">"_"</span> + time.Now().Format(<span class="string">"20060102150405"</span>) + <span class="string">".xlsx"</span></span><br><span class="line">		Export(c, head, alldata, filename)</span><br><span class="line"></span><br><span class="line">	&#125;)</span><br><span class="line">	engine.Run(<span class="string">":9900"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Export</span><span class="params">(c *gin.Context, head []<span class="keyword">string</span>, body [][]<span class="keyword">interface</span>&#123;&#125;, filename <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">	xlsx := excelize.NewFile()</span><br><span class="line">	xlsx.SetSheetRow(<span class="string">"Sheet1"</span>, <span class="string">"A1"</span>, &amp;head)</span><br><span class="line">	<span class="keyword">for</span> index, rowData :=  <span class="keyword">range</span> body&#123;</span><br><span class="line">		xlsx.SetSheetRow(<span class="string">"Sheet1"</span>, <span class="string">"A"</span> + strconv.Itoa(index + <span class="number">2</span>), &amp;rowData) <span class="comment">// SetSheetRow：设置一行数据 SetCellValue：设置一个数据</span></span><br><span class="line">	&#125;</span><br><span class="line">	c.Header(<span class="string">"Content-Type"</span>, <span class="string">"application/octet-stream"</span>)</span><br><span class="line">	c.Header(<span class="string">"Content-Disposition"</span>, <span class="string">"attachment; filename="</span> + filename)</span><br><span class="line">	c.Header(<span class="string">"Content-Transfer-Encoding"</span>, <span class="string">"binary"</span>)</span><br><span class="line">	_ = xlsx.Write(c.Writer)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/" class="post-title-link" itemprop="url">大数据 Hbase伪分布式集群安装</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-20 15:27:40" itemprop="dateCreated datePublished" datetime="2020-06-20T15:27:40+08:00">2020-06-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hbase/" itemprop="url" rel="index"><span itemprop="name">Hbase</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="HBase伪分布式环境部署"><a href="#HBase伪分布式环境部署" class="headerlink" title="HBase伪分布式环境部署"></a>HBase伪分布式环境部署</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">hadoop@hadoop001:~ $ cd ~&#x2F;softeware</span><br><span class="line">hadoop@hadoop001:~&#x2F;software $ tar -zxvf hbase-1.2.4-bin.tar.gz –C ..&#x2F;app</span><br><span class="line">hadoop@hadoop001:~&#x2F;software $ cd ..&#x2F;app</span><br><span class="line">hadoop@hadoop001:~&#x2F;app $ cd hbase-1.2.4&#x2F;conf</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cp ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;etc&#x2F;hadoop</span><br><span class="line">&#x2F;hdfs-site.xml .</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cp ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;etc&#x2F;hadoop</span><br><span class="line">&#x2F;core-site.xml .</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ vi hbase-env.sh</span><br><span class="line">export JAVA_HOME&#x3D;~&#x2F;app&#x2F;jdk1.8.0_161</span><br><span class="line"># export HBASE_MASTER_OPTS&#x3D;”$HBASE_MASTER_OPTS –XX:PermSize&#x3D;128m –XX:MaxPermSize</span><br><span class="line">&#x3D;128m”</span><br><span class="line"># export HBASE_REGIONSERVER_OPTS&#x3D;”$HBASE_REGIONSERVER_OPTS –XX:PermSize&#x3D;128m –XX:</span><br><span class="line">MaxPermSize&#x3D;128m”</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ vi hbase-site.xml</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.root.dir &lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;hdfs:&#x2F;&#x2F;localhost:9000&#x2F;hbase&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.zookeeper.property.dataDir&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;&#x2F;home&#x2F;hadoop&#x2F;hadoop_data&#x2F;zookeeper &lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.cluster.distributed&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;true&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cd ..&#x2F;bin</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ .&#x2F;start-hbase.sh</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ jps</span><br><span class="line">13792 HQuorumPeer</span><br><span class="line">13968 HRegionServer</span><br><span class="line">13864 HMaster</span><br><span class="line">12156 NameNode</span><br><span class="line">12556 SecondaryNameNode</span><br><span class="line">14317 Jps</span><br><span class="line">12335 DataNode</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ .&#x2F;hbase shell</span><br><span class="line">hbase(main):001:0&gt; status</span><br><span class="line">1 active master, 0 backup master, 1 servers, 0 dead, 2.0000 average load </span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ cd ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;bin</span><br><span class="line">hadoop@hadoop001: ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;bin $ .&#x2F;hdfs dfs –ls &#x2F;</span><br><span class="line">Found 2 items</span><br><span class="line">drwxr-xr-x  - hadoop supergroup 0 2018-07-15 17:23 &#x2F;hbase</span><br><span class="line">drwxr-xr-x  - hadoop supergroup 0 2018-07-15 17:08 &#x2F;test</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -855,6 +1253,91 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Action">
+      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Action">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/" class="post-title-link" itemprop="url">大数据 Hbase伪分布式集群安装</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-20 15:27:40" itemprop="dateCreated datePublished" datetime="2020-06-20T15:27:40+08:00">2020-06-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hbase/" itemprop="url" rel="index"><span itemprop="name">Hbase</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="HBase伪分布式环境部署"><a href="#HBase伪分布式环境部署" class="headerlink" title="HBase伪分布式环境部署"></a>HBase伪分布式环境部署</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">hadoop@hadoop001:~ $ cd ~&#x2F;softeware</span><br><span class="line">hadoop@hadoop001:~&#x2F;software $ tar -zxvf hbase-1.2.4-bin.tar.gz –C ..&#x2F;app</span><br><span class="line">hadoop@hadoop001:~&#x2F;software $ cd ..&#x2F;app</span><br><span class="line">hadoop@hadoop001:~&#x2F;app $ cd hbase-1.2.4&#x2F;conf</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cp ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;etc&#x2F;hadoop</span><br><span class="line">&#x2F;hdfs-site.xml .</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cp ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;etc&#x2F;hadoop</span><br><span class="line">&#x2F;core-site.xml .</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ vi hbase-env.sh</span><br><span class="line">export JAVA_HOME&#x3D;~&#x2F;app&#x2F;jdk1.8.0_161</span><br><span class="line"># export HBASE_MASTER_OPTS&#x3D;”$HBASE_MASTER_OPTS –XX:PermSize&#x3D;128m –XX:MaxPermSize</span><br><span class="line">&#x3D;128m”</span><br><span class="line"># export HBASE_REGIONSERVER_OPTS&#x3D;”$HBASE_REGIONSERVER_OPTS –XX:PermSize&#x3D;128m –XX:</span><br><span class="line">MaxPermSize&#x3D;128m”</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ vi hbase-site.xml</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.root.dir &lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;hdfs:&#x2F;&#x2F;localhost:9000&#x2F;hbase&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.zookeeper.property.dataDir&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;&#x2F;home&#x2F;hadoop&#x2F;hadoop_data&#x2F;zookeeper &lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hbase.cluster.distributed&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;true&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;conf $ cd ..&#x2F;bin</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ .&#x2F;start-hbase.sh</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ jps</span><br><span class="line">13792 HQuorumPeer</span><br><span class="line">13968 HRegionServer</span><br><span class="line">13864 HMaster</span><br><span class="line">12156 NameNode</span><br><span class="line">12556 SecondaryNameNode</span><br><span class="line">14317 Jps</span><br><span class="line">12335 DataNode</span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ .&#x2F;hbase shell</span><br><span class="line">hbase(main):001:0&gt; status</span><br><span class="line">1 active master, 0 backup master, 1 servers, 0 dead, 2.0000 average load </span><br><span class="line">hadoop@hadoop001:~&#x2F;app&#x2F;hbase-1.2.4&#x2F;bin $ cd ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;bin</span><br><span class="line">hadoop@hadoop001: ~&#x2F;app&#x2F;hadoop-2.7.3&#x2F;bin $ .&#x2F;hdfs dfs –ls &#x2F;</span><br><span class="line">Found 2 items</span><br><span class="line">drwxr-xr-x  - hadoop supergroup 0 2018-07-15 17:23 &#x2F;hbase</span><br><span class="line">drwxr-xr-x  - hadoop supergroup 0 2018-07-15 17:08 &#x2F;test</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://zmj.plus/2020/06/08/kafka-LEO-HW/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -924,499 +1407,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2020/06/04/PostgreSql-%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/04/PostgreSql-%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">postgresql -- 高级操作</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-04 20:23:19" itemprop="dateCreated datePublished" datetime="2020-06-04T20:23:19+08:00">2020-06-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">高级操作</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="归并数据"><a href="#归并数据" class="headerlink" title="归并数据"></a>归并数据</h4><p>归并数据又称为<code>UPSERT</code>语法，指的是<code>INSERT .. ON CONFLICT UPDATE</code></p>
-<blockquote>
-<p>当发生冲突的时候，可以忽略改插入操作，也可以执行指定的更新<code>UPDATE</code>操作</p>
-</blockquote>
-<p>语法格式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="keyword">WITH</span> [ <span class="keyword">RECURSIVE</span> ] with_query [, ...] ]  </span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name [ <span class="keyword">AS</span> <span class="keyword">alias</span> ] [ ( column_name [, ...] ) ]  </span><br><span class="line">    &#123; <span class="keyword">DEFAULT</span> <span class="keyword">VALUES</span> | <span class="keyword">VALUES</span> ( &#123; expression | <span class="keyword">DEFAULT</span> &#125; [, ...] ) [, ...] | <span class="keyword">query</span> &#125;  </span><br><span class="line">    [ <span class="keyword">ON</span> CONFLICT [ conflict_target ] conflict_action ]  </span><br><span class="line">    [ <span class="keyword">RETURNING</span> * | output_expression [ [ <span class="keyword">AS</span> ] output_name ] [, ...] ]</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>ON CONFLICT DO NOTHING</code>:不采取任何动作</li>
-<li><code>ON CONFLICT DO UPDATE</code>: 更新与要插入的行冲突的已有行<ul>
-<li><code>conflict_target:指定冲突的目标，哪些可用约束或唯一索引产生的冲突</code></li>
-<li><code>conflict_action:</code>指定一个冲突发生时的可选的动作</li>
-</ul>
-</li>
-</ul>
-<p>1.创建一张测试表:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">test</span>(<span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>, <span class="keyword">name</span> <span class="built_in">text</span>, r_time <span class="built_in">timestamp</span>);  </span><br><span class="line"><span class="comment">-- 注意：on conflict (必须是主键，或者唯一索引)，如果指定name 需要创建唯一索引</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> name_idx <span class="keyword">ON</span> <span class="keyword">test</span> (<span class="keyword">name</span>)</span><br></pre></td></tr></table></figure>
-<p>2.不存在则插入，存在则更新</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 插入数据</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span> <span class="keyword">values</span> (<span class="number">1</span>,<span class="string">'xiaoming'</span>,<span class="keyword">now</span>()) <span class="keyword">on</span> conflict (<span class="keyword">id</span>) <span class="keyword">do</span> <span class="keyword">update</span> <span class="keyword">set</span> <span class="keyword">name</span>=excluded.name,r_time=excluded.r_time; </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看数据</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 通过指定id，再插入一条，发现已经被更新</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span> <span class="keyword">values</span> (<span class="number">1</span>,<span class="string">'lilei'</span>,<span class="keyword">now</span>()) <span class="keyword">on</span> conflict (<span class="keyword">id</span>) <span class="keyword">do</span> <span class="keyword">update</span> <span class="keyword">set</span> <span class="keyword">name</span>=excluded.name,r_time=excluded.r_time;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看数据，发现已经被更新</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
-<p>3.不存在则插入，存在则直接返回(不做任何处理)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 插入数据</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span> <span class="keyword">values</span> (<span class="number">1</span>,<span class="string">'tom'</span>,<span class="keyword">now</span>()) <span class="keyword">on</span> conflict (<span class="keyword">id</span>) <span class="keyword">do</span> <span class="keyword">nothing</span>;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span> <span class="keyword">values</span> (<span class="number">1</span>,<span class="string">'marry'</span>,<span class="keyword">now</span>()) <span class="keyword">on</span> conflict (<span class="keyword">id</span>) <span class="keyword">do</span> <span class="keyword">nothing</span>;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">test</span> <span class="keyword">values</span> (<span class="number">2</span>,<span class="string">'tony'</span>,<span class="keyword">now</span>()) <span class="keyword">on</span> conflict (<span class="keyword">id</span>) <span class="keyword">do</span> <span class="keyword">nothing</span>;</span><br><span class="line"><span class="comment">-- 查看数据，发现只有tom,tony这两条数据</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="批量插入"><a href="#批量插入" class="headerlink" title="批量插入"></a>批量插入</h4><h5 id="1-INSERT-INTO-SELECT"><a href="#1-INSERT-INTO-SELECT" class="headerlink" title="1. INSERT INTO ... SELECT ..."></a>1. <code>INSERT INTO ... SELECT ...</code></h5><blockquote>
-<p>注意必须是表结构相同的两个表</p>
-</blockquote>
-<p>语法格式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test1 <span class="keyword">SELECT</span> * <span class="keyword">from</span> test2</span><br></pre></td></tr></table></figure>
-<h5 id="2-INSERT-INTO-…-VALUES"><a href="#2-INSERT-INTO-…-VALUES" class="headerlink" title="2. INSERT INTO … VALUES(),(),()"></a>2. INSERT INTO … VALUES(),(),()</h5><p>语法格式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span>  </span><br><span class="line">	test1 (<span class="keyword">name</span>,r_time)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">	(<span class="string">"tom"</span>, <span class="keyword">now</span>()),</span><br><span class="line">	(<span class="string">"tony"</span>, <span class="keyword">now</span>()),</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
-<h5 id="3-BEGIN-…-多条insert-…-END"><a href="#3-BEGIN-…-多条insert-…-END" class="headerlink" title="3. BEGIN … 多条insert …; END"></a>3. BEGIN … 多条insert …; END</h5><blockquote>
-<p>通过一个事务，插入多条sql，减少commit次数</p>
-</blockquote>
-<p>语法格式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0006'</span>, <span class="string">'iPhone X'</span>, <span class="string">'9600'</span>, <span class="literal">null</span>, <span class="string">'电器'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0012'</span>, <span class="string">'电视'</span>, <span class="string">'3299'</span>, <span class="string">'4'</span>, <span class="string">'电器'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0004'</span>, <span class="string">'辣条'</span>, <span class="string">'5.6'</span>, <span class="string">'4'</span>, <span class="string">'零食'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0007'</span>, <span class="string">'薯条'</span>, <span class="string">'7.5'</span>, <span class="string">'1'</span>, <span class="string">'零食'</span>);</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
-<h5 id="4-COPY"><a href="#4-COPY" class="headerlink" title="4. COPY"></a>4. COPY</h5><p>语法格式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">COPY table_name [ ( column_name [, ...] ) ]</span><br><span class="line">    FROM &#123; 'filename' | PROGRAM 'command' | STDIN &#125;</span><br><span class="line">    [ [ <span class="keyword">WITH</span> ] ( <span class="keyword">option</span> [, ...] ) ]</span><br></pre></td></tr></table></figure>
-<p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">COPY test1 from '/home/action/batch.txt'</span><br><span class="line">copy tbl_test1(a,b,c) from stdin delimiter ',' csv header;</span><br></pre></td></tr></table></figure>
-<p>示例2：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- copy 标准输出，字段间用','分隔</span></span><br><span class="line">copy tbl_test1(a,b) to stdout delimiter ',' csv header;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>copy 文件—&gt; 表</p>
-<p>copy to 表—&gt; 文件</p>
-</blockquote>
-<h4 id="批量更新"><a href="#批量更新" class="headerlink" title="批量更新"></a>批量更新</h4><p>语法格式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">FROM</span> ... <span class="keyword">VALUES</span>(),()...</span><br></pre></td></tr></table></figure>
-<p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> <span class="keyword">test</span> <span class="keyword">set</span> info=tmp.info <span class="keyword">from</span> (<span class="keyword">values</span> (<span class="number">1</span>,<span class="string">'new1'</span>),(<span class="number">2</span>,<span class="string">'new2'</span>),(<span class="number">6</span>,<span class="string">'new6'</span>)) <span class="keyword">as</span> tmp (<span class="keyword">id</span>,info) <span class="keyword">where</span> test.id=tmp.id;</span><br></pre></td></tr></table></figure>
-<h4 id="关联更新"><a href="#关联更新" class="headerlink" title="关联更新"></a>关联更新</h4><h4 id="批量删除"><a href="#批量删除" class="headerlink" title="批量删除"></a>批量删除</h4><p>语法格式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">using</span> (<span class="keyword">values</span> (<span class="number">3</span>),(<span class="number">4</span>),(<span class="number">5</span>)) <span class="keyword">as</span> tmp(<span class="keyword">id</span>) <span class="keyword">where</span> test.id=tmp.id;</span><br></pre></td></tr></table></figure>
-<h4 id="关联删除"><a href="#关联删除" class="headerlink" title="关联删除"></a>关联删除</h4><h4 id="移动数据到历史表"><a href="#移动数据到历史表" class="headerlink" title="移动数据到历史表"></a>移动数据到历史表</h4><h4 id="清空表"><a href="#清空表" class="headerlink" title="清空表"></a>清空表</h4><p>语法格式：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">truncate</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">postgresql -- 窗口函数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-03 19:39:43" itemprop="dateCreated datePublished" datetime="2020-06-03T19:39:43+08:00">2020-06-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" itemprop="url" rel="index"><span itemprop="name">窗口函数</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h4><ul>
-<li><ol>
-<li>与使用聚合函数执行的计算类似</li>
-</ol>
-</li>
-<li><ol>
-<li>不会使多行聚合成一行，与聚合的函数的区别</li>
-</ol>
-</li>
-</ul>
-<h5 id="窗口函数的语法"><a href="#窗口函数的语法" class="headerlink" title="窗口函数的语法"></a>窗口函数的语法</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function_name ([expression [, expression ... ]]) OVER ( window_definition )</span><br><span class="line">window_definition语法：</span><br><span class="line">	[PARTITION BY expression [,...]]</span><br><span class="line">	[ORDER BY expression [ASC|DESC|USING operator] [NULLS &#123;FIRST|LAST&#125;] [,...] ]</span><br></pre></td></tr></table></figure>
-<ul>
-<li><ol>
-<li>总是包含一个<code>OVER</code>子句，即窗口函数的名称和参数, 决定究竟将 查询的行如何通过窗口函数拆分处理</li>
-</ol>
-</li>
-<li><ol>
-<li><code>partition by</code> ：对结果集进行分组</li>
-</ol>
-</li>
-<li><ol>
-<li><code>OVER</code>不使用<code>PARTITION BY</code>时即代表整个表</li>
-</ol>
-</li>
-<li><ol>
-<li><code>order by</code>：设定结果集的分组数据排序</li>
-</ol>
-</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>返回类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>row_number()</code></td>
-<td><code>bigint</code></td>
-<td>在其分区中的当前行号，从1计</td>
-</tr>
-<tr>
-<td><code>rank()</code></td>
-<td><code>bigint</code></td>
-<td>有间隔的当前行排名；与它的第一个相同行的<code>row_number</code>相同</td>
-</tr>
-<tr>
-<td><code>dense_rank()</code></td>
-<td><code>bigint</code></td>
-<td>没有间隔的当前行排名；这个函数计数对等组。</td>
-</tr>
-<tr>
-<td><code>percent_rank()</code></td>
-<td><code>double precision</code></td>
-<td>当前行的相对排名: (<code>rank</code> - 1) / (总行数 - 1)</td>
-</tr>
-<tr>
-<td><code>cume_dist()</code></td>
-<td><code>double precision</code></td>
-<td>当前行的相对排名：(前面的行数或与当前行相同的行数)/(总行数)</td>
-</tr>
-<tr>
-<td><code>ntile(*num_buckets* integer)</code></td>
-<td><code>integer</code></td>
-<td>从1到参数值的整数范围，尽可能相等的划分分区。</td>
-</tr>
-<tr>
-<td><code>lag(*value* any [, *offset* integer [, *default* any ]])</code></td>
-<td><code>类型同 value</code></td>
-<td>计算分区当前行的前<code>*offset*</code> 行，返回<code>*value*</code> 。如果没有这样的行， 返回<code>*default*</code>替代。 <code>*offset*</code>和<code>*default*</code> 都是当前行计算的结果。如果忽略了，则<code>*offset*</code> 默认是1，<code>*default*</code>默认是 null。</td>
-</tr>
-<tr>
-<td><code>lead(*value* any [, *offset* integer [, *default* any ]])</code></td>
-<td><code>类型同value</code></td>
-<td>计算分区当前行的后<code>*offset*</code>行， 返回<code>*value*</code>。如果没有这样的行， 返回<code>*default*</code>替代。 <code>*offset*</code>和<code>*default*</code> 都是当前行计算的结果。如果忽略了，则<code>*offset*</code> 默认是1，<code>*default*</code>默认是 null。</td>
-</tr>
-<tr>
-<td><code>first_value(*value* any)</code></td>
-<td><code>类型同value</code></td>
-<td>返回窗口第一行的计算<code>*value*</code>值。</td>
-</tr>
-<tr>
-<td><code>last_value(*value* any)</code></td>
-<td><code>类型同value</code></td>
-<td>返回窗口最后一行的计算<code>*value*</code>值。</td>
-</tr>
-<tr>
-<td><code>nth_value(*value* any, *nth* integer)</code></td>
-<td><code>类型同value</code></td>
-<td>返回窗口第<code>*nth*</code>行的计算 <code>*value*</code>值（行从1计数）；没有这样的行则返回 null。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<p>最近在看《深入浅出PostgreSql》想总结下窗口函数，书上示例比较少，网上搜索一番，发现了一篇好的文章，借以引用望原作者知晓，<a href="https://www.cnblogs.com/funnyzpc/p/9311281.html" target="_blank" rel="noopener">参考连接</a></p>
-</blockquote>
-<h5 id="创建表，插入原始测试数据"><a href="#创建表，插入原始测试数据" class="headerlink" title="创建表，插入原始测试数据"></a>创建表，插入原始测试数据</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">"public"</span>.<span class="string">"products"</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">"public"</span>.<span class="string">"products"</span> (</span><br><span class="line">    <span class="string">"id"</span> <span class="built_in">varchar</span>(<span class="number">10</span>) <span class="keyword">COLLATE</span> <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"name"</span> <span class="built_in">text</span> <span class="keyword">COLLATE</span> <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"price"</span> <span class="built_in">numeric</span>,</span><br><span class="line">    <span class="string">"uid"</span> <span class="built_in">varchar</span>(<span class="number">14</span>) <span class="keyword">COLLATE</span> <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"type"</span> <span class="built_in">varchar</span>(<span class="number">100</span>) <span class="keyword">COLLATE</span> <span class="string">"default"</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">WITH</span> (OIDS=<span class="literal">FALSE</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">BEGIN</span>;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0006'</span>, <span class="string">'iPhone X'</span>, <span class="string">'9600'</span>, <span class="literal">null</span>, <span class="string">'电器'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0012'</span>, <span class="string">'电视'</span>, <span class="string">'3299'</span>, <span class="string">'4'</span>, <span class="string">'电器'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0004'</span>, <span class="string">'辣条'</span>, <span class="string">'5.6'</span>, <span class="string">'4'</span>, <span class="string">'零食'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0007'</span>, <span class="string">'薯条'</span>, <span class="string">'7.5'</span>, <span class="string">'1'</span>, <span class="string">'零食'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0009'</span>, <span class="string">'方便面'</span>, <span class="string">'3.5'</span>, <span class="string">'1'</span>, <span class="string">'零食'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0005'</span>, <span class="string">'铅笔'</span>, <span class="string">'7'</span>, <span class="string">'4'</span>, <span class="string">'文具'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0014'</span>, <span class="string">'作业本'</span>, <span class="string">'1'</span>, <span class="literal">null</span>, <span class="string">'文具'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0001'</span>, <span class="string">'鞋子'</span>, <span class="string">'27'</span>, <span class="string">'2'</span>, <span class="string">'衣物'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0002'</span>, <span class="string">'外套'</span>, <span class="string">'110.9'</span>, <span class="string">'3'</span>, <span class="string">'衣物'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0013'</span>, <span class="string">'围巾'</span>, <span class="string">'93'</span>, <span class="string">'5'</span>, <span class="string">'衣物'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0008'</span>, <span class="string">'香皂'</span>, <span class="string">'17.5'</span>, <span class="string">'2'</span>, <span class="string">'日用品'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0010'</span>, <span class="string">'水杯'</span>, <span class="string">'27'</span>, <span class="string">'3'</span>, <span class="string">'日用品'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0015'</span>, <span class="string">'洗发露'</span>, <span class="string">'36'</span>, <span class="string">'1'</span>, <span class="string">'日用品'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0011'</span>, <span class="string">'毛巾'</span>, <span class="string">'15'</span>, <span class="string">'1'</span>, <span class="string">'日用品'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0003'</span>, <span class="string">'手表'</span>, <span class="string">'1237.55'</span>, <span class="string">'5'</span>, <span class="string">'电器'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0016'</span>, <span class="string">'绘图笔'</span>, <span class="string">'15'</span>, <span class="literal">null</span>, <span class="string">'文具'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"public"</span>.<span class="string">"products"</span> <span class="keyword">VALUES</span> (<span class="string">'0017'</span>, <span class="string">'汽水'</span>, <span class="string">'3.5'</span>, <span class="literal">null</span>, <span class="string">'零食'</span>);</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
-<h5 id="row-number-使用"><a href="#row-number-使用" class="headerlink" title="row_number()使用"></a><strong>row_number()</strong>使用</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,row_number() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">as</span> idx <span class="keyword">from</span> products</span><br></pre></td></tr></table></figure>
-<p><img src="//tvax1.sinaimg.cn/large/d479ba17gy1gfmef0ig19j208a0cwglx.jpg" alt=""></p>
-<h5 id="Partition-by"><a href="#Partition-by" class="headerlink" title="Partition by"></a>Partition by</h5><blockquote>
-<p>以上输出想要在type 类别，按照价格price 升序排序</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,row_number() <span class="keyword">over</span>(<span class="keyword">PARTITION</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">as</span> idx <span class="keyword">from</span> products ;</span><br></pre></td></tr></table></figure>
-<p><img src="//tva4.sinaimg.cn/large/d479ba17gy1gfmei9kezrj208j0cpmxg.jpg" alt=""></p>
-<h5 id="rank"><a href="#rank" class="headerlink" title="rank()"></a>rank()</h5><blockquote>
-<p>以上输出，方便面和汽水价格是一样，如何将零食和汽水并列第一呢？</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,<span class="keyword">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">from</span> products</span><br></pre></td></tr></table></figure>
-<p><img src="//tva4.sinaimg.cn/large/d479ba17gy1gfmel68ud8j209b0cudg2.jpg" alt=""></p>
-<h5 id="dense-rank"><a href="#dense-rank" class="headerlink" title="dense_rank()"></a><strong>dense_rank</strong>()</h5><blockquote>
-<p>以上输出中，辣条排在了第三位，想要排在第二位怎么处理呢？</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,<span class="keyword">dense_rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">from</span> products;</span><br></pre></td></tr></table></figure>
-<p><img src="//tva1.sinaimg.cn/large/d479ba17gy1gfmenzzfekj20a00cq74m.jpg" alt=""></p>
-<h5 id="percernt-rank"><a href="#percernt-rank" class="headerlink" title="percernt_rank()"></a><strong>percernt_rank</strong>()</h5><blockquote>
-<p>限制序号在0~1之间,(0作为第一个序)</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,<span class="keyword">percent_rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">from</span> products</span><br></pre></td></tr></table></figure>
-<p><img src="//tva1.sinaimg.cn/large/d479ba17gy1gfmeqwjuxlj20be0d30t4.jpg" alt=""></p>
-<h5 id="cume-dist"><a href="#cume-dist" class="headerlink" title="cume_dist()"></a><strong>cume_dist</strong>()</h5><blockquote>
-<p>限制序号在0~1之间相对排名</p>
-</blockquote>
-<p><img src="//tvax4.sinaimg.cn/large/d479ba17gy1gfmes99eh7j20bb0d374p.jpg" alt=""></p>
-<h5 id="ntile-val1"><a href="#ntile-val1" class="headerlink" title="ntile(val1)"></a><strong>ntile(val1)</strong></h5><blockquote>
-<p>限制最大序列号</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">type</span>,<span class="keyword">name</span>,price,ntile(<span class="number">10</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">from</span> products;</span><br></pre></td></tr></table></figure>
-<p><img src="//tva1.sinaimg.cn/large/d479ba17gy1gfmeud4oj3j208w0ciaae.jpg" alt=""></p>
-<h5 id="lag-val1-val2-val3"><a href="#lag-val1-val2-val3" class="headerlink" title="lag(val1,val2,val3)"></a>l<strong>ag(val1,val2,val3)</strong></h5><blockquote>
-<p>获取偏移值(向下偏移)</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT id,type,name,price,lag(id,1,&#39;&#39;) over(partition by type order by price asc) as topid from products;</span><br></pre></td></tr></table></figure>
-<p><img src="//tva4.sinaimg.cn/large/d479ba17gy1gfmewwinw8j20ak0cr74p.jpg" alt=""></p>
-<h5 id="lead-val1-val2-val3"><a href="#lead-val1-val2-val3" class="headerlink" title="lead(val1,val2,val3)"></a><strong>lead(val1,val2,val3)</strong></h5><blockquote>
-<p>偏移值(向上偏移) </p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">type</span>,<span class="keyword">name</span>,price,<span class="keyword">lead</span>(<span class="keyword">id</span>,<span class="number">1</span>,<span class="string">''</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">asc</span>) <span class="keyword">as</span> downid <span class="keyword">from</span> products;</span><br></pre></td></tr></table></figure>
-<h5 id="first-value-val1"><a href="#first-value-val1" class="headerlink" title="first_value(val1)"></a><strong>first_value(val1)</strong></h5><blockquote>
-<p>第一条记录的某个字段的值</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT id,type,name,price,first_value(name) over(partition by type order by price asc) from products;</span><br></pre></td></tr></table></figure>
-<p><img src="//tva3.sinaimg.cn/large/d479ba17gy1gfmf0vqrooj20ar0cv0t7.jpg" alt=""></p>
-<h5 id="last-value-val1"><a href="#last-value-val1" class="headerlink" title="last_value(val1)"></a><strong>last_value(val1)</strong></h5><blockquote>
-<p>最后一条记录的某个字段</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT id,type,name,price,last_value(name) over(partition by type order by price range between unbounded preceding and unbounded following) from products;</span><br></pre></td></tr></table></figure>
-<h5 id="nth-value-val1-val2"><a href="#nth-value-val1-val2" class="headerlink" title="nth_value(val1,val2)"></a><strong>nth_value(val1,val2)</strong></h5><blockquote>
-<p>指定序号记录的某个字段值</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">type</span>,<span class="keyword">name</span>,price,<span class="keyword">nth_value</span>(<span class="keyword">name</span>,<span class="number">2</span>) <span class="keyword">OVER</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">range</span> <span class="keyword">between</span> <span class="keyword">unbounded</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="keyword">unbounded</span> <span class="keyword">following</span> ) <span class="keyword">from</span> products;</span><br></pre></td></tr></table></figure>
-<h5 id="窗口函数-聚合函数"><a href="#窗口函数-聚合函数" class="headerlink" title="窗口函数+聚合函数"></a>窗口函数+聚合函数</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">sum(price) over (partition by type) 类别金额合计,</span><br><span class="line">(sum(price) over (order by type))/sum(price) over() 类别总额占所有品类商品百分比,</span><br><span class="line">round(price/(sum(price) over (partition by type rows between unbounded preceding and unbounded following)),3) 子除类别百分比,</span><br><span class="line">rank() over (partition by type order by price desc) 排名,</span><br><span class="line">sum(price) over() 金额总计</span><br><span class="line">from products ORDER BY type,price asc;</span><br><span class="line"><span class="comment">-- 放在from后使用</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">    <span class="keyword">id</span>,<span class="keyword">type</span>,<span class="keyword">name</span>,price,</span><br><span class="line">    <span class="keyword">sum</span>(price) <span class="keyword">over</span> w1 类别金额合计,</span><br><span class="line">    (<span class="keyword">sum</span>(price) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">type</span>))/<span class="keyword">sum</span>(price) <span class="keyword">over</span>() 类别总额占所有品类商品百分比,</span><br><span class="line">    <span class="keyword">round</span>(price/(<span class="keyword">sum</span>(price) <span class="keyword">over</span> w2),<span class="number">3</span>) 子除类别百分比,</span><br><span class="line">    <span class="keyword">rank</span>() <span class="keyword">over</span> w3 排名,</span><br><span class="line">    <span class="keyword">sum</span>(price) <span class="keyword">over</span>() 金额总计</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    products</span><br><span class="line"><span class="keyword">WINDOW</span></span><br><span class="line">    w1 <span class="keyword">as</span> (<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span>),</span><br><span class="line">    w2 <span class="keyword">as</span> (<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">rows</span> <span class="keyword">between</span> <span class="keyword">unbounded</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="keyword">unbounded</span> <span class="keyword">following</span>),</span><br><span class="line">    w3 <span class="keyword">as</span> (<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">type</span> <span class="keyword">order</span> <span class="keyword">by</span> price <span class="keyword">desc</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">type</span>,price <span class="keyword">asc</span>;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://zmj.plus/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Action">
-      <meta itemprop="description" content="热爱你所坚持的，坚持你所热爱的">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Action">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">postgresql -- 模糊查询</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-03 19:39:43" itemprop="dateCreated datePublished" datetime="2020-06-03T19:39:43+08:00">2020-06-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/" itemprop="url" rel="index"><span itemprop="name">postgresql</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" itemprop="url" rel="index"><span itemprop="name">模糊查询</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>932</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="like-和-not-like"><a href="#like-和-not-like" class="headerlink" title="like  和 not like"></a><code>like</code>  和 <code>not like</code></h3><ul>
-<li><code>like、not like</code>在SQL中用于模糊查询，<code>%</code>表示任意个字符，<code>_</code>表示单个任意字符</li>
-<li><code>ESCAPE</code>转义使用</li>
-</ul>
-<h3 id="ilike-和-not-ilike"><a href="#ilike-和-not-ilike" class="headerlink" title="ilike 和 not ilike"></a><code>ilike</code> 和 <code>not ilike</code></h3><ul>
-<li><code>ilike</code>表示在模糊匹配字符串时不区分大小写，<code>i</code>即是ignore的意思。</li>
-<li><code>not ilike</code>表示不模糊匹配字符串且不区分大小写。</li>
-</ul>
-<h3 id="和-，-和"><a href="#和-，-和" class="headerlink" title="~和~*，!~和!~*"></a><code>~</code>和<code>~*</code>，<code>!~</code>和<code>!~*</code></h3><ul>
-<li><code>~</code>表示匹配正则表达式，且区分大小写。</li>
-<li><code>~*</code>表示匹配正则表达式，且不区分大小写。</li>
-<li><code>!~</code>是<code>~</code>的否定用法，表示不匹配正则表达式，且区分大小写。</li>
-<li><code>!~*</code>是<code>~*</code>的否定用法，表示不匹配正则表达式，且不区分大小写。</li>
-</ul>
-<h3 id="和-，-和-1"><a href="#和-，-和-1" class="headerlink" title="~~和~~*，!~~和!~~*"></a><code>~~</code>和<code>~~*</code>，<code>!~~</code>和<code>!~~*</code></h3><ul>
-<li><code>~~</code>等效于like，<code>~~*</code>等效于ilike。</li>
-<li><code>!~~</code>等效于not like，<code>!~~*</code>等效于not ilike。</li>
-</ul>
-<p>实例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 模糊查询，不匹配的数据</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">		c.id,</span><br><span class="line">		c.licenseKey,</span><br><span class="line">		c.siteName,</span><br><span class="line">		c.topDomain,</span><br><span class="line">		c.website_type,</span><br><span class="line">		c.system_decide,</span><br><span class="line">		c.handle_result,</span><br><span class="line">		c.webmaster,</span><br><span class="line">		c.webmaster_phone,</span><br><span class="line">		c.webmaster_fixed_phone,</span><br><span class="line">		c.organizer_unit_name,</span><br><span class="line">		c.unitType,</span><br><span class="line">		c.principal_person,</span><br><span class="line">		c.principal_phone,</span><br><span class="line">		c.principal_fixed_phone,</span><br><span class="line">		c.belongingCity,</span><br><span class="line">		c.organizer_unit_addr,</span><br><span class="line">		to_char(c.r_time,<span class="string">'YYYY-MM-DD hh24:mi:ss'</span>)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">		 (<span class="keyword">select</span> * <span class="keyword">from</span> public.t_record_detail_info <span class="keyword">where</span> belongingcity ~ <span class="string">'杭州市'</span>) <span class="keyword">as</span> c</span><br><span class="line"><span class="keyword">where</span> <span class="number">1</span>=<span class="number">1</span>  <span class="keyword">and</span> organizer_unit_addr <span class="keyword">not</span> <span class="keyword">like</span>  <span class="keyword">all</span>(<span class="built_in">array</span>[<span class="string">'%上城区%'</span>,<span class="string">'%下城区%'</span>,<span class="string">'%江干区%'</span>,<span class="string">'%拱墅区%'</span>,<span class="string">'%滨江区%'</span>,<span class="string">'%西湖区%'</span>,<span class="string">'%萧山区%'</span>,<span class="string">'%余杭区%'</span>,<span class="string">'%富阳区%'</span>,<span class="string">'%临安区%'</span>,<span class="string">'%桐庐县%'</span>,<span class="string">'%淳安县%'</span>,<span class="string">'%建德市%'</span>])</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> c.r_time <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1484,20 +1478,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">84</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-count">66</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">96</span>
+        <span class="site-state-item-count">109</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1544,13 +1538,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">316k</span>
+    <span title="站点总字数">347k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:47</span>
+    <span title="站点阅读时长">5:15</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zmj.plus/"/>
-  <updated>2020-08-23T13:29:27.012Z</updated>
+  <updated>2020-09-07T06:42:35.335Z</updated>
   <id>http://zmj.plus/</id>
   
   <author>
@@ -15,6 +15,99 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>go -- 反射</title>
+    <link href="http://zmj.plus/2020/09/07/go-%E5%8F%8D%E5%B0%84/"/>
+    <id>http://zmj.plus/2020/09/07/go-%E5%8F%8D%E5%B0%84/</id>
+    <published>2020-09-07T06:41:51.000Z</published>
+    <updated>2020-09-07T06:42:35.335Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、为什么要用反射&quot;&gt;&lt;a href=&quot;#一、为什么要用反射&quot; class=&quot;headerlink&quot; title=&quot;一、为什么要用反射&quot;&gt;&lt;/a&gt;一、为什么要用反射&lt;/h2&gt;&lt;p&gt;需要反射的 2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="go" scheme="http://zmj.plus/categories/go/"/>
+    
+      <category term="reflect" scheme="http://zmj.plus/categories/go/reflect/"/>
+    
+    
+      <category term="go" scheme="http://zmj.plus/tags/go/"/>
+    
+      <category term="reflect" scheme="http://zmj.plus/tags/reflect/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>liunx中RPM、YUM、Systemd</title>
+    <link href="http://zmj.plus/2020/09/06/Linux-%E4%B8%ADRPM%E3%80%81YUM%E3%80%81Systemd/"/>
+    <id>http://zmj.plus/2020/09/06/Linux-%E4%B8%ADRPM%E3%80%81YUM%E3%80%81Systemd/</id>
+    <published>2020-09-06T15:31:01.000Z</published>
+    <updated>2020-09-07T06:50:45.795Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;RPM软件包&quot;&gt;&lt;a href=&quot;#RPM软件包&quot; class=&quot;headerlink&quot; title=&quot;RPM软件包&quot;&gt;&lt;/a&gt;RPM软件包&lt;/h2&gt;&lt;p&gt;在RPM（红帽软件包管理器）公布之前，要想在Linux系统中安装软件只能采取源码包的方式安装。早期在Linux系统中安装程序是一件非常困难、耗费耐心的事情，而且大多数的服务程序仅仅提供源代码，需要运维人员自行编译代码并解决许多的软件依赖关系，因此要安装好一个服务程序，运维人员需要具备丰富知识、高超的技能，甚至良好的耐心。而且在安装、升级、卸载服务程序时还要考虑到其他程序、库的依赖关系，所以在进行校验、安装、卸载、查询、升级等管理软件操作时难度都非常大。&lt;/p&gt;
+&lt;p&gt;RPM机制则为解决这些问题而设计的。RPM有点像Windows系统中的控制面板，会建立统一的数据库文件，详细记录软件信息并能够自动分析依赖关系。目前RPM的优势已经被公众所认可，使用范围也已不局限在红帽系统中了。表1-1是一些常用的RPM软件包命令，当前不需要记住它们，大致混个“脸熟”就足够了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://zmj.plus/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://zmj.plus/tags/linux/"/>
+    
+      <category term="RPM" scheme="http://zmj.plus/tags/RPM/"/>
+    
+      <category term="YUM" scheme="http://zmj.plus/tags/YUM/"/>
+    
+      <category term="Systemd" scheme="http://zmj.plus/tags/Systemd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gin中使用JWT</title>
+    <link href="http://zmj.plus/2020/08/27/go-Gin%E4%B8%AD%E4%BD%BF%E7%94%A8JWT/"/>
+    <id>http://zmj.plus/2020/08/27/go-Gin%E4%B8%AD%E4%BD%BF%E7%94%A8JWT/</id>
+    <published>2020-08-26T16:15:11.000Z</published>
+    <updated>2020-09-07T06:54:17.618Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;为什么需要JWT？&quot;&gt;&lt;a href=&quot;#为什么需要JWT？&quot; class=&quot;headerlink&quot; title=&quot;为什么需要JWT？&quot;&gt;&lt;/a&gt;为什么需要JWT？&lt;/h2&gt;&lt;p&gt;在之前的一些web项目中，我们通常使用的是Cookie-Session模式实现用户认证。相关流程大致如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;用户在浏览器端填写用户名和密码，并发送给服务端&lt;/li&gt;
+&lt;li&gt;服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的session数据和一个与之对应的标识（通常称为session_id）&lt;/li&gt;
+&lt;li&gt;服务端返回响应时将上一步的session_id写入用户浏览器的Cookie&lt;/li&gt;
+&lt;li&gt;后续用户来自该浏览器的每次请求都会自动携带包含session_id的Cookie&lt;/li&gt;
+&lt;li&gt;服务端通过请求中的session_id就能找到之前保存的该用户那份session数据，从而获取该用户的相关信息。&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="go" scheme="http://zmj.plus/categories/go/"/>
+    
+      <category term="Gin" scheme="http://zmj.plus/categories/go/Gin/"/>
+    
+    
+      <category term="go" scheme="http://zmj.plus/tags/go/"/>
+    
+      <category term="gin" scheme="http://zmj.plus/tags/gin/"/>
+    
+      <category term="JWT" scheme="http://zmj.plus/tags/JWT/"/>
+    
+  </entry>
   
   <entry>
     <title>go -- os.File -- bufio -- ioutil -- 操作文件</title>
@@ -47,9 +140,9 @@
     
       <category term="go" scheme="http://zmj.plus/tags/go/"/>
     
-      <category term="bufio" scheme="http://zmj.plus/tags/bufio/"/>
-    
       <category term="os" scheme="http://zmj.plus/tags/os/"/>
+    
+      <category term="bufio" scheme="http://zmj.plus/tags/bufio/"/>
     
       <category term="ioutil" scheme="http://zmj.plus/tags/ioutil/"/>
     
@@ -60,7 +153,7 @@
     <link href="http://zmj.plus/2020/08/21/go-%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E5%86%85%E5%AE%B9%E8%87%AA%E5%AE%9A%E4%B9%89/"/>
     <id>http://zmj.plus/2020/08/21/go-%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E5%86%85%E5%AE%B9%E8%87%AA%E5%AE%9A%E4%B9%89/</id>
     <published>2020-08-21T02:31:18.000Z</published>
-    <updated>2020-08-23T13:17:45.605Z</updated>
+    <updated>2020-09-07T06:47:40.993Z</updated>
     
     <summary type="html">
     
@@ -77,12 +170,12 @@
     
       <category term="go" scheme="http://zmj.plus/categories/go/"/>
     
-      <category term="go-script" scheme="http://zmj.plus/categories/go/go-script/"/>
+      <category term="file" scheme="http://zmj.plus/categories/go/file/"/>
     
     
       <category term="go" scheme="http://zmj.plus/tags/go/"/>
     
-      <category term="go-script" scheme="http://zmj.plus/tags/go-script/"/>
+      <category term="file" scheme="http://zmj.plus/tags/file/"/>
     
   </entry>
   
@@ -91,7 +184,7 @@
     <link href="http://zmj.plus/2020/07/12/go%E8%AF%AD%E8%A8%80_make_data_script/"/>
     <id>http://zmj.plus/2020/07/12/go%E8%AF%AD%E8%A8%80_make_data_script/</id>
     <published>2020-07-12T15:10:21.000Z</published>
-    <updated>2020-08-04T15:03:18.944Z</updated>
+    <updated>2020-09-07T06:48:11.418Z</updated>
     
     <summary type="html">
     
@@ -108,7 +201,7 @@
     
       <category term="go" scheme="http://zmj.plus/categories/go/"/>
     
-      <category term="go_script" scheme="http://zmj.plus/categories/go/go-script/"/>
+      <category term="make-data" scheme="http://zmj.plus/categories/go/make-data/"/>
     
     
       <category term="go" scheme="http://zmj.plus/tags/go/"/>
@@ -149,11 +242,11 @@
   </entry>
   
   <entry>
-    <title>大数据 Hbase伪分布式集群安装</title>
-    <link href="http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/"/>
-    <id>http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/</id>
+    <title>大数据 Hbase简介</title>
+    <link href="http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/"/>
+    <id>http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/</id>
     <published>2020-06-20T07:27:40.000Z</published>
-    <updated>2020-06-20T08:28:01.469Z</updated>
+    <updated>2020-06-20T08:55:01.328Z</updated>
     
     <summary type="html">
     
@@ -161,7 +254,7 @@
       
         
         
-          &lt;h4 id=&quot;HBase伪分布式环境部署&quot;&gt;&lt;a href=&quot;#HBase伪分布式环境部署&quot; class=&quot;headerlink&quot; title=&quot;HBase伪分布式环境部署&quot;&gt;&lt;/a&gt;HBase伪分布式环境部署&lt;/h4&gt;&lt;figure class=&quot;highlight
+          &lt;h3 id=&quot;HBase简介&quot;&gt;&lt;a href=&quot;#HBase简介&quot; class=&quot;headerlink&quot;
         
       
     
@@ -180,11 +273,11 @@
   </entry>
   
   <entry>
-    <title>大数据 Hbase简介</title>
-    <link href="http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/"/>
-    <id>http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/</id>
+    <title>大数据 Hbase伪分布式集群安装</title>
+    <link href="http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/"/>
+    <id>http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/</id>
     <published>2020-06-20T07:27:40.000Z</published>
-    <updated>2020-06-20T08:55:01.328Z</updated>
+    <updated>2020-06-20T08:28:01.469Z</updated>
     
     <summary type="html">
     
@@ -192,7 +285,7 @@
       
         
         
-          &lt;h3 id=&quot;HBase简介&quot;&gt;&lt;a href=&quot;#HBase简介&quot; class=&quot;headerlink&quot;
+          &lt;h4 id=&quot;HBase伪分布式环境部署&quot;&gt;&lt;a href=&quot;#HBase伪分布式环境部署&quot; class=&quot;headerlink&quot; title=&quot;HBase伪分布式环境部署&quot;&gt;&lt;/a&gt;HBase伪分布式环境部署&lt;/h4&gt;&lt;figure class=&quot;highlight
         
       
     
@@ -270,41 +363,6 @@
   </entry>
   
   <entry>
-    <title>postgresql -- 窗口函数</title>
-    <link href="http://zmj.plus/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
-    <id>http://zmj.plus/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/</id>
-    <published>2020-06-03T11:39:43.000Z</published>
-    <updated>2020-06-09T14:45:28.129Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;窗口函数&quot;&gt;&lt;a href=&quot;#窗口函数&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据库" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="postgresql" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/"/>
-    
-      <category term="窗口函数" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
-    
-    
-      <category term="数据库" scheme="http://zmj.plus/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="postgresql" scheme="http://zmj.plus/tags/postgresql/"/>
-    
-      <category term="窗口函数" scheme="http://zmj.plus/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>postgresql -- 模糊查询</title>
     <link href="http://zmj.plus/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/"/>
     <id>http://zmj.plus/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/</id>
@@ -338,6 +396,41 @@
       <category term="like" scheme="http://zmj.plus/tags/like/"/>
     
       <category term="not like" scheme="http://zmj.plus/tags/not-like/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>postgresql -- 窗口函数</title>
+    <link href="http://zmj.plus/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
+    <id>http://zmj.plus/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/</id>
+    <published>2020-06-03T11:39:43.000Z</published>
+    <updated>2020-06-09T14:45:28.129Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;窗口函数&quot;&gt;&lt;a href=&quot;#窗口函数&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="postgresql" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/"/>
+    
+      <category term="窗口函数" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
+    
+    
+      <category term="数据库" scheme="http://zmj.plus/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="postgresql" scheme="http://zmj.plus/tags/postgresql/"/>
+    
+      <category term="窗口函数" scheme="http://zmj.plus/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   
@@ -612,101 +705,6 @@
       <category term="多路复用" scheme="http://zmj.plus/tags/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/"/>
     
       <category term="TCP/IP" scheme="http://zmj.plus/tags/TCP-IP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>postgresql -- case-- case when</title>
-    <link href="http://zmj.plus/2020/05/01/PostgreSql-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%EF%BC%9ACASE%E3%80%81CASE%20WHEN/"/>
-    <id>http://zmj.plus/2020/05/01/PostgreSql-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%EF%BC%9ACASE%E3%80%81CASE%20WHEN/</id>
-    <published>2020-05-01T15:39:41.000Z</published>
-    <updated>2020-06-09T14:47:02.031Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;1-CASE条件判断&quot;&gt;&lt;a href=&quot;#1-CASE条件判断&quot; class=&quot;headerlink&quot; title=&quot;1. CASE条件判断&quot;&gt;&lt;/a&gt;1. &lt;code&gt;CASE&lt;/code&gt;条件判断&lt;/h4&gt;&lt;figure class=&quot;highlight
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据库" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="postgresql" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/"/>
-    
-      <category term="case" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/case/"/>
-    
-    
-      <category term="数据库" scheme="http://zmj.plus/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="postgresql" scheme="http://zmj.plus/tags/postgresql/"/>
-    
-      <category term="case" scheme="http://zmj.plus/tags/case/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>字符编码-ASCII-Unicode-UTF8</title>
-    <link href="http://zmj.plus/2020/03/21/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%EF%BC%9AASCII-Unicode-%E5%92%8CUTF-8/"/>
-    <id>http://zmj.plus/2020/03/21/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%EF%BC%9AASCII-Unicode-%E5%92%8CUTF-8/</id>
-    <published>2020-03-21T10:11:32.000Z</published>
-    <updated>2020-06-20T09:00:24.385Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;ASCII&quot;&gt;&lt;a href=&quot;#ASCII&quot; class=&quot;headerlink&quot; title=&quot;ASCII&quot;&gt;&lt;/a&gt;ASCII&lt;/h4&gt;&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-    
-      <category term="字符编码" scheme="http://zmj.plus/categories/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/"/>
-    
-    
-      <category term="ASCII" scheme="http://zmj.plus/tags/ASCII/"/>
-    
-      <category term="Unicode" scheme="http://zmj.plus/tags/Unicode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux -- 中man 1 和 man 2 ...</title>
-    <link href="http://zmj.plus/2020/03/09/Linux%E4%B8%ADman1-man2-man3%E5%8C%BA%E5%88%AB/"/>
-    <id>http://zmj.plus/2020/03/09/Linux%E4%B8%ADman1-man2-man3%E5%8C%BA%E5%88%AB/</id>
-    <published>2020-03-08T18:01:32.000Z</published>
-    <updated>2020-06-08T05:53:30.769Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://zmj.plus/categories/Linux/"/>
-    
-      <category term="man" scheme="http://zmj.plus/categories/Linux/man/"/>
-    
-    
-      <category term="Linux" scheme="http://zmj.plus/tags/Linux/"/>
-    
-      <category term="man" scheme="http://zmj.plus/tags/man/"/>
     
   </entry>
   
