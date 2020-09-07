@@ -52,7 +52,7 @@
     <link href="http://zmj.plus/2020/09/06/Linux-%E4%B8%ADRPM%E3%80%81YUM%E3%80%81Systemd/"/>
     <id>http://zmj.plus/2020/09/06/Linux-%E4%B8%ADRPM%E3%80%81YUM%E3%80%81Systemd/</id>
     <published>2020-09-06T15:31:01.000Z</published>
-    <updated>2020-09-07T06:50:45.795Z</updated>
+    <updated>2020-09-07T07:12:44.834Z</updated>
     
     <summary type="html">
     
@@ -62,10 +62,10 @@
     </summary>
     
     
-      <category term="linux" scheme="http://zmj.plus/categories/linux/"/>
+      <category term="Linux" scheme="http://zmj.plus/categories/Linux/"/>
     
     
-      <category term="linux" scheme="http://zmj.plus/tags/linux/"/>
+      <category term="Linux" scheme="http://zmj.plus/tags/Linux/"/>
     
       <category term="RPM" scheme="http://zmj.plus/tags/RPM/"/>
     
@@ -242,11 +242,11 @@
   </entry>
   
   <entry>
-    <title>大数据 Hbase简介</title>
-    <link href="http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/"/>
-    <id>http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/</id>
+    <title>大数据 Hbase伪分布式集群安装</title>
+    <link href="http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/"/>
+    <id>http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/</id>
     <published>2020-06-20T07:27:40.000Z</published>
-    <updated>2020-06-20T08:55:01.328Z</updated>
+    <updated>2020-06-20T08:28:01.469Z</updated>
     
     <summary type="html">
     
@@ -254,7 +254,7 @@
       
         
         
-          &lt;h3 id=&quot;HBase简介&quot;&gt;&lt;a href=&quot;#HBase简介&quot; class=&quot;headerlink&quot;
+          &lt;h4 id=&quot;HBase伪分布式环境部署&quot;&gt;&lt;a href=&quot;#HBase伪分布式环境部署&quot; class=&quot;headerlink&quot; title=&quot;HBase伪分布式环境部署&quot;&gt;&lt;/a&gt;HBase伪分布式环境部署&lt;/h4&gt;&lt;figure class=&quot;highlight
         
       
     
@@ -273,11 +273,11 @@
   </entry>
   
   <entry>
-    <title>大数据 Hbase伪分布式集群安装</title>
-    <link href="http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/"/>
-    <id>http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-hbase%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4/</id>
+    <title>大数据 Hbase简介</title>
+    <link href="http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/"/>
+    <id>http://zmj.plus/2020/06/20/%E5%A4%A7%E6%95%B0%E6%8D%AE-Hbase/</id>
     <published>2020-06-20T07:27:40.000Z</published>
-    <updated>2020-06-20T08:28:01.469Z</updated>
+    <updated>2020-06-20T08:55:01.328Z</updated>
     
     <summary type="html">
     
@@ -285,7 +285,7 @@
       
         
         
-          &lt;h4 id=&quot;HBase伪分布式环境部署&quot;&gt;&lt;a href=&quot;#HBase伪分布式环境部署&quot; class=&quot;headerlink&quot; title=&quot;HBase伪分布式环境部署&quot;&gt;&lt;/a&gt;HBase伪分布式环境部署&lt;/h4&gt;&lt;figure class=&quot;highlight
+          &lt;h3 id=&quot;HBase简介&quot;&gt;&lt;a href=&quot;#HBase简介&quot; class=&quot;headerlink&quot;
         
       
     
@@ -363,6 +363,41 @@
   </entry>
   
   <entry>
+    <title>postgresql -- 窗口函数</title>
+    <link href="http://zmj.plus/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
+    <id>http://zmj.plus/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/</id>
+    <published>2020-06-03T11:39:43.000Z</published>
+    <updated>2020-06-09T14:45:28.129Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;窗口函数&quot;&gt;&lt;a href=&quot;#窗口函数&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="postgresql" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/"/>
+    
+      <category term="窗口函数" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
+    
+    
+      <category term="数据库" scheme="http://zmj.plus/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="postgresql" scheme="http://zmj.plus/tags/postgresql/"/>
+    
+      <category term="窗口函数" scheme="http://zmj.plus/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>postgresql -- 模糊查询</title>
     <link href="http://zmj.plus/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/"/>
     <id>http://zmj.plus/2020/06/03/PostgreSql-%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2-%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%95%B0%E6%8D%AE/</id>
@@ -396,41 +431,6 @@
       <category term="like" scheme="http://zmj.plus/tags/like/"/>
     
       <category term="not like" scheme="http://zmj.plus/tags/not-like/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>postgresql -- 窗口函数</title>
-    <link href="http://zmj.plus/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
-    <id>http://zmj.plus/2020/06/03/PostgreSql-%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/</id>
-    <published>2020-06-03T11:39:43.000Z</published>
-    <updated>2020-06-09T14:45:28.129Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;窗口函数&quot;&gt;&lt;a href=&quot;#窗口函数&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据库" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="postgresql" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/"/>
-    
-      <category term="窗口函数" scheme="http://zmj.plus/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/postgresql/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
-    
-    
-      <category term="数据库" scheme="http://zmj.plus/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="postgresql" scheme="http://zmj.plus/tags/postgresql/"/>
-    
-      <category term="窗口函数" scheme="http://zmj.plus/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   
